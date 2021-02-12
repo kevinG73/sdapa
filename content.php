@@ -52,22 +52,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
 
             <div class="d-flex mt-4">
-                <div class="col-2">
-                    <label for="exampleFormControlSelect1">Niveau</label>
-                    <select class="form-control" name="niveau" id="id_niveau">
-                        <option value="3" <?php if (isset($niveau) && $niveau === '3') echo 'selected'; ?>>
-                            Licence 3
-                        </option>
-                    </select>
-                </div>
-
                 <div class="col-4 mr-5">
                     <label for="exampleFormControlSelect1">Parcours</label>
                     <select class="form-control" name="id_parcours" id="id_parcours">
                         <option value="0">parcours</option>
                     </select>
                 </div>
-
             </div>
 
             <div class="float-right mt-2 pr-2">

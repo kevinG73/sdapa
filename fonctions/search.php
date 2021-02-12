@@ -1,10 +1,9 @@
 <?php
 
-function EtudiantFiltre($annee, $niveau_etude, $id_parcours, $id_departement)
+function EtudiantFiltre($annee, $id_parcours, $id_departement)
 {
     global $bdd;
-    $requete = "select * from inscriptions where annee = $annee AND
-    niveau_etude = $niveau_etude AND id_parcours = $id_parcours AND id_departement = $id_departement";
+    $requete = "select * from inscriptions where annee = $annee AND id_parcours = $id_parcours AND id_departement = $id_departement";
     $resultat = $bdd->query($requete);
 
     if (is_bool($resultat)) {
@@ -106,21 +105,5 @@ function InfoDepartement($id_etablissement = null)
         return array();
     } else {
         return $resultat->fetch();
-    }
-}
-
-/***
- * Etablissements
- * @return array
- */
-function InsererCalcul()
-{
-    global $bdd;
-    $requete = "INSERT INTO inscriptions SET ";
-    $resultat = $bdd->query($requete);
-    if (is_bool($resultat)) {
-        return [];
-    } else {
-        return $resultat->fetchAll();
     }
 }
