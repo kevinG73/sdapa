@@ -5,11 +5,30 @@ include('tcpdf/tcpdf.php');
 
 class MYTCPDF extends TCPDF
 {
+    public function legende()
+    {
+        $this->SetFont('Helvetica', '', 7);
+
+        $gn = "Légende du document ";
+        $this->WriteHTMLCell(275, 10, 15, 50, $gn, 0);
+        /* FIP */
+        $gn = ": <b>TPL</b> Le temps passé en Licence ,";
+        $this->WriteHTMLCell(275, 10, 45, 50, $gn, 0);
+        $grs = "<b>N.M</b> Le nombre de mention obtenue ,";
+        $this->WriteHTMLCell(275, 10, 85, 50, $grs, 0);
+        $gru = "<b>P.C</b>  point critère";
+        $this->WriteHTMLCell(275, 10, 135, 50, $gru, 0);
+        $gru = "<b>moy</b>  moyenne";
+        $this->WriteHTMLCell(275, 10, 165, 50, $gru, 0);
+    }
+
     public function title()
     {
+        $this->legende();
+
         $this->SetFont('Helvetica', 'B', 11);
-        $pv = "Liste des étudiants admissibles de la Licence 3 en Master 1";
-        $this->WriteHTMLCell('', 10, 78, 15, $pv, 0);
+        $pv = "Liste des étudiants admissibles en Master 1";
+        $this->WriteHTMLCell('', 10, 105, 15, $pv, 0);
         $this->SetFont('Helvetica', '', 9);
         $this->SetTextColor(0, 0, 0);
     }
@@ -64,15 +83,7 @@ class MYTCPDF extends TCPDF
 
     public function Footer()
     {
-        $this->SetFont('Helvetica', '', 7);
 
-        /* FIP */
-        $gn = "<b>TPL</b> Le temps passé en Licence";
-        $this->WriteHTMLCell(275, 10, 247, 180, $gn, 0);
-        $grs = "<b>N.M</b> Le nombre de mention obtenue";
-        $this->WriteHTMLCell(275, 10, 247, 184, $grs, 0);
-        $gru = "<b>P.C</b>  point critère";
-        $this->WriteHTMLCell(275, 10, 247, 188, $gru, 0);
 
         $this->SetFont('Helvetica', '', 8);
         // pagination

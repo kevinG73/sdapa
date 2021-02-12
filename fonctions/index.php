@@ -28,8 +28,8 @@ function ListeEtudiants()
 function infoEtudiant($numero)
 {
     global $bdd;
-    $SQL = "SELECT 	*  FROM etudiants etd 
-    JOIN inscriptions ins ON etd.numero_carte = ins.numero_carte 
+    $SQL = "SELECT 	*  FROM etudiant_sdapa etd 
+    JOIN inscription_sdapa ins ON etd.id = ins.id_etudiant 
     JOIN nationalite nat ON nat.id_nationalite = etd.nationalite
     WHERE ins.id = $numero";
     $resultat = $bdd->query($SQL);
