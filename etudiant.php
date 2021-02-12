@@ -278,8 +278,9 @@ $anne = ListeAnnee();
                             <div class="form-row">
                                 <div class="form-group col-md-4">
                                     <label class="col-form-label-sm">Date de Naissance</label>
-                                    <input type="date" class="form-control text-uppercase" id="datenaiss" required name="date_naissance"
+                                    <input type="date" class="form-control text-uppercase" onchange="testage(this.value)" id="datenaiss" required name="date_naissance"
                                            value="<?php echo @ $res['date_naissance'] ?>" max="<?= date('Y-m-d'); ?>">
+                                    <div class="invalid-tooltip" id="Vdatemin" style="display: none">Age minimum 16 ans</div>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label class="col-form-label-sm">Lieu Naissance</label>
@@ -314,6 +315,47 @@ $anne = ListeAnnee();
                                 </div>
 
 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card show mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">CURSUS UNIVERSITAIRE ANTERIEUR</h6>
+                        </div>
+                        <div class="card-body">
+                            <br>
+                            <div class="col-md-12">
+                                <table class="table table-bordered">
+                                    <tbody>
+                                    <tr>
+                                        <th class="text-center">Année academique</th>
+                                        <th class="text-center">Niveau</th>
+                                        <th class="text-center">Série</th>
+                                        <th class="text-center">Etablissement Origine</th>
+                                        <th class="text-center">Pays Obtention Bac</th>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">
+                                            <select class="form-control" id="annebac" name="annee_bac" >
+
+                                            </select>
+                                        </td>
+                                        <td class="text-center">
+
+                                        </td>
+                                        <td class="text-center">
+
+                                        </td>
+                                        <td class="text-center">
+                                            <input type="text" class="form-control" id="etablori" name="etablissement_origine" />
+                                            <span class="invalid-tooltip" id="Vetaori" style="display: none">Saisir l'établissement d'origine</span>
+                                        </td>
+                                        <td class="text-center">
+
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -539,6 +581,17 @@ $anne = ListeAnnee();
     }
     function destroy(){
         $('#destroy').load('destroy.php')
+    }
+
+    function testage(value) {
+        dob = new Date(value);
+        var today = new Date();
+        var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
+        if (age<16){
+            $('#Vdatemin').show();
+        }else {
+            $('#Vdatemin').hide();
+        }
     }
 
 </script>

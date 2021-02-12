@@ -48,12 +48,18 @@ class etudiant
             $erreur='Veuillez remplir le(s) champ(s) vide(s)';
             return $erreur;
         }
+
         else
         {
             $syntaxe = '#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#';
             if(preg_match($syntaxe,$this->email))
             { /*email bon*/
+                if (strlen($this->telephone)!=10)
+                {
+                    $erreur='Le numero de téléphone doit contenir 10 chiffres';
+                    return $erreur;
 
+                }
                 return 1;
             }
             else
@@ -67,8 +73,8 @@ class etudiant
 
     public function enregistrement()
     {
-        $requete= $this->bdd->prepare('SELECT * FROM etudiant_sdapa WHERE numero_carte=:numero_carte ');
-        $requete->execute(array('numero_carte'=>  $this->numero_carte
+        $requete= $this->bdd->prepare('SELECT * FROM etudiant_sdapa WHERE numero_carte=:numero_carte AND ufhb=:ufhb ');
+        $requete->execute(array('numero_carte'=>  $this->numero_carte,'ufhb'=>1
         ));
         $reponse=$requete->fetch();
         if ($reponse)
@@ -91,8 +97,8 @@ class etudiant
 
     public function modification()
     {
-        $requete= $this->bdd->prepare('SELECT * FROM etudiant_sdapa WHERE numero_carte=:numero_carte ');
-        $requete->execute(array('numero_carte'=>  $this->numero_carte
+        $requete= $this->bdd->prepare('SELECT * FROM etudiant_sdapa WHERE numero_carte=:numero_carte AND ufhb=:ufhb ');
+        $requete->execute(array('numero_carte'=>  $this->numero_carte,'ufhb'=>1
         ));
         $reponse=$requete->fetch();
         if ($reponse && $reponse['numero_carte']!=$this->numero_carte)
