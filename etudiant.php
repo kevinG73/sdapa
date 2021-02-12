@@ -8,6 +8,7 @@ if (!isset($_SESSION['connecte']) || $_SESSION['connecte'] === "") {
 require "config/connexion.php";
 include "fonctions/index.php";
 include 'inscription.class.php';
+
 $etudiants = ListeEtudiants();
 $etablissements = ListeEtablissements();
 $anne = ListeAnnee();
@@ -69,13 +70,12 @@ $anne = ListeAnnee();
                 $nationaliteget = $bdd->query("select * from nationalite");
 
                 if (isset($_POST['enregistrer'])){
-
-
+                    include 'crud_etudiant/enregister_etudiant.php';
                 }
 
                 if (isset($_POST['modifier'])){
 
-
+                    include 'crud_etudiant/modifier_etudiant.php';
 
                 }
 
@@ -93,7 +93,7 @@ $anne = ListeAnnee();
                 }
 
                 if (isset($_POST['supprimer'])) {
-
+                    include 'crud_etudiant/supprimer_etudiant.php';
                 }
 
                 ?>
@@ -134,13 +134,13 @@ $anne = ListeAnnee();
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label class="col-form-label-sm" for="id_etablissement">Etablissements</label>
+                                    <label class="col-form-label-sm" for="exampleFormControlSelect1">Etablissements</label>
                                     <select class="form-control" name="id_etablissement" id="id_etablissement">
                                         <?php foreach ($etablissements as $p): ?>
                                             <option value="<?php echo $p['id_etablissement'] ?>"
                                             <?php if (isset($id_etablissement) && $id_etablissement === $p['id_etablissement']) echo 'selected'; ?>
                                             <?php
-                                            if ($p['id_etablissement']==$_SESSION['id_etablissement'])
+                                            if ($p['id_etablissement']==@$_SESSION['id_etablissement'])
                                             {
                                                 ?>
                                                 <option selected value="<?=$p['id_etablissement']?>"> <?=$p['nom_etablissement']?></option>
@@ -160,7 +160,6 @@ $anne = ListeAnnee();
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
-
                                 <div class="form-group col-md-4">
                                     <label class="col-form-label-sm" for="id_departement">Départements</label>
                                     <select class="form-control" name="id_departement" id="id_departement">
@@ -232,7 +231,10 @@ $anne = ListeAnnee();
                                     </div>
                                 <?php
                                 else:
-
+                                    ?>
+                                    <input type="hidden" class="form-control text-uppercase" name="numero_carte" value="<?php echo @ $res['numero_carte'] ?>">
+                                    <input type="hidden" class="form-control text-uppercase" name="numero_mers" value="<?php echo @ $res['mesrs'] ?>">
+                                <?php
                                 endif;
                             else:
                                 ?>
@@ -260,7 +262,7 @@ $anne = ListeAnnee();
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label class="col-form-label-sm">Genre</label>
-                                    <select class="form-control text-uppercase" id="id_sexe" required name="id_sexe">
+                                    <select class="form-control text-uppercase" id="id_sexe"  name="id_sexe">
                                         <?php foreach ($sexes as $sexe): ?>
                                             <?php if ($res['sexe'] == $sexe['id_sexe']) : ?>
                                                 <option selected
@@ -286,7 +288,7 @@ $anne = ListeAnnee();
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label class="col-form-label-sm ">Nationalité</label>
-                                    <select class="form-control text-uppercase" id="paysnaiss" name="origine">
+                                    <select class="form-control text-uppercase" id="paysnaiss" required name="origine">
                                         <?php foreach ($nationalites as $nationalite): ?>
                                             <?php if ($res['nationalite'] == $nationalite['id_nationalite']): ?>
                                                 <option selected
