@@ -1,4 +1,5 @@
 <?php
+session_start();
 require "../config/connexion.php";
 require "../fonctions/index.php";
 
@@ -12,11 +13,28 @@ if (isset($_GET['id_etablissement']) && !empty($_GET['id_etablissement'])):
     $liste = $resultat->fetchAll();
     if (count($liste) > 0):
         foreach ($liste as $res):?>
-            <option value="<?= $res['id_departement'] ?>"><?= $res['nom_departement'] ?></option>
+
+            <?php
+            if ($res['id_departement'] ==$_SESSION['id_departement'])
+            {
+                ?>
+                <option selected value="<?=$res['id_departement']?>"> <?=$res['nom_departement']?></option>
+                <?php
+
+            }
+            else
+            {
+
+                ?>
+                <option  value="<?=$res['id_departement']?>"> <?=$res['nom_departement']?></option>
+
+
+                <?php
+            }
+            ?>
         <?php endforeach; ?>
     <?php else: ?>
         <option value="0">selectionner</option>
     <?php endif; ?>
 <?php endif; ?>
-
 
