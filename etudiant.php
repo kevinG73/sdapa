@@ -224,12 +224,12 @@ $pays = ListePays();
                                         <div class="form-row" id="voir_num_carte">
                                             <div class="form-group col-md-4">
                                                 <label class="col-form-label-sm">Numero Carte etudiant</label>
-                                                <input type="text" class="form-control text-uppercase" name="numero_carte"
+                                                <input type="text" class="form-control text-uppercase" id="carte_et" required name="numero_carte"
                                                        value="<?php echo @ $res['numero_carte'] ?>">
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label class="col-form-label-sm">Numero Mers</label>
-                                                <input type="text" class="form-control text-uppercase" name="numero_mers"
+                                                <input type="text" class="form-control text-uppercase" id="numero_mers" required name="numero_mers"
                                                        value="<?php echo @ $res['mesrs'] ?>">
                                             </div>
                                         </div>
@@ -245,11 +245,11 @@ $pays = ListePays();
                                     <div class="form-row" id="voir_num_carte">
                                         <div class="form-group col-md-4">
                                             <label class="col-form-label-sm">Numero Carte etudiant</label>
-                                            <input type="text" class="form-control text-uppercase" name="numero_carte">
+                                            <input type="text" class="form-control text-uppercase" id="carte_et" required name="numero_carte">
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label class="col-form-label-sm">Numero Mers</label>
-                                            <input type="text" class="form-control text-uppercase" name="numero_mers">
+                                            <input type="text" class="form-control text-uppercase" id="numero_mers" required name="numero_mers">
                                         </div>
                                     </div>
                                 <?php endif; ?>
@@ -288,7 +288,7 @@ $pays = ListePays();
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label class="col-form-label-sm">Lieu Naissance</label>
-                                        <input type="text" class="form-control text-uppercase" name="lieu_naissance" required
+                                        <input type="text" class="form-control text-uppercase" id="lieu_naissance" name="lieu_naissance" required
                                                value="<?php echo @ $res['lieu_naissance'] ?>">
                                     </div>
                                     <div class="form-group col-md-4">
@@ -309,12 +309,12 @@ $pays = ListePays();
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
                                         <label class="col-form-label-sm">Email</label>
-                                        <input type="email" class="form-control" id="datenaiss" name="mail" required
+                                        <input type="email" class="form-control" id="maila" name="mail"  required
                                                value="<?php echo @ $res['email'] ?>">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label class="col-form-label-sm">Contact</label>
-                                        <input type="text" class="form-control text-uppercase" name="contat" required
+                                        <input type="text" class="form-control text-uppercase" id="contact" name="contat" required
                                                value="<?php echo @ $res['telephone'] ?>">
                                     </div>
 
@@ -356,7 +356,7 @@ $pays = ListePays();
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label class="col-form-label-sm" for="exampleFormControlSelect1">Etablissement origine</label>
-                                        <input type="text" class="form-control text-uppercase" value="<?=@$resdip['etablissement']?>" name="eta_anterieur">
+                                        <input type="text" class="form-control text-uppercase" value="<?=@$resdip['etablissement']?>" id="eta_anterieur" name="eta_anterieur">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label class="col-form-label-sm" for="exampleFormControlSelect1">Pays obtention diplome</label>
@@ -543,6 +543,12 @@ $pays = ListePays();
 <script src="js/datatable_etd.js"></script>
 <script src="js/ajax.js"></script>
 <script src="js/etudiant_js.js"></script>
+<script src="js/validation/dist/bootstrap-validate.js"></script>
+<script>
+    bootstrapValidate(['#carte_et','#numero_mers','#nom','#prenoms','#lieu_naissance','#datenaiss','#maila','#contact','#eta_anterieur'], 'required: Veuillez remplir les champs!')
+    bootstrapValidate('#maila', 'email: Entrer email valide!')
+    bootstrapValidate('#contact', 'min:10: Entrer votre numero sur 10 chiffres')
+</script>
 
 </body>
 

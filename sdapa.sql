@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Feb 12, 2021 at 10:45 AM
--- Server version: 5.7.24
--- PHP Version: 7.3.2
+-- Hôte : localhost:3306
+-- Généré le : sam. 13 fév. 2021 à 08:17
+-- Version du serveur :  5.7.24
+-- Version de PHP : 7.2.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `sdapa`
+-- Base de données : `sdapa`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `administrateur`
+-- Structure de la table `administrateur`
 --
 
 CREATE TABLE `administrateur` (
@@ -36,7 +35,7 @@ CREATE TABLE `administrateur` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `administrateur`
+-- Déchargement des données de la table `administrateur`
 --
 
 INSERT INTO `administrateur` (`id`, `email`, `motdepasse`, `activer`) VALUES
@@ -45,7 +44,7 @@ INSERT INTO `administrateur` (`id`, `email`, `motdepasse`, `activer`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `annee_academique`
+-- Structure de la table `annee_academique`
 --
 
 CREATE TABLE `annee_academique` (
@@ -59,7 +58,7 @@ CREATE TABLE `annee_academique` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `annee_academique`
+-- Déchargement des données de la table `annee_academique`
 --
 
 INSERT INTO `annee_academique` (`id_annee_academique`, `libelle_annee_academique`, `annee_ouverture`, `annee_cloture`, `date_ouverture`, `date_fermeture`, `ouverture`) VALUES
@@ -71,7 +70,7 @@ INSERT INTO `annee_academique` (`id_annee_academique`, `libelle_annee_academique
 -- --------------------------------------------------------
 
 --
--- Table structure for table `composer_maquette`
+-- Structure de la table `composer_maquette`
 --
 
 CREATE TABLE `composer_maquette` (
@@ -86,7 +85,7 @@ CREATE TABLE `composer_maquette` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `composer_maquette`
+-- Déchargement des données de la table `composer_maquette`
 --
 
 INSERT INTO `composer_maquette` (`id_composer_maquette`, `id_specialite`, `id_ue`, `id_ecue`, `ue_obligatoire`, `id_semestre`, `ecue_obligatoire`, `id_annee_academique`) VALUES
@@ -28410,7 +28409,32 @@ INSERT INTO `composer_maquette` (`id_composer_maquette`, `id_specialite`, `id_ue
 -- --------------------------------------------------------
 
 --
--- Table structure for table `departement`
+-- Structure de la table `cursus`
+--
+
+CREATE TABLE `cursus` (
+  `id_cursus` bigint(11) NOT NULL,
+  `id_etudiant` varchar(255) NOT NULL,
+  `id_diplomes` int(11) NOT NULL,
+  `etablissement` varchar(255) NOT NULL,
+  `id_anne_ante` int(11) NOT NULL,
+  `id_pays_obtention` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `cursus`
+--
+
+INSERT INTO `cursus` (`id_cursus`, `id_etudiant`, `id_diplomes`, `etablissement`, `id_anne_ante`, `id_pays_obtention`) VALUES
+(2, 'SADP60271dfab8b69', 22, 'IRIS', 1, 1),
+(3, 'SADP60271e6aa59a9', 23, 'MIAGE-RENNE', 1, 9),
+(4, 'SADP60271f139bede', 24, 'MIAGE-RENNE', 1, 9),
+(5, 'SADP602778dab2e65', 4, 'IRIS', 3, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `departement`
 --
 
 CREATE TABLE `departement` (
@@ -28425,7 +28449,7 @@ CREATE TABLE `departement` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `departement`
+-- Déchargement des données de la table `departement`
 --
 
 INSERT INTO `departement` (`id_departement`, `nom_departement`, `code_departement`, `id_etablissement`, `affichage`, `unite_formation`, `salle_de_formation`, `code_origine_departement`) VALUES
@@ -28487,7 +28511,37 @@ INSERT INTO `departement` (`id_departement`, `nom_departement`, `code_departemen
 -- --------------------------------------------------------
 
 --
--- Table structure for table `etablissement`
+-- Structure de la table `diplomes`
+--
+
+CREATE TABLE `diplomes` (
+  `id_diplomes` int(11) NOT NULL,
+  `code_diplomes` varchar(255) DEFAULT NULL,
+  `libelle_diplomes` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `diplomes`
+--
+
+INSERT INTO `diplomes` (`id_diplomes`, `code_diplomes`, `libelle_diplomes`) VALUES
+(1, 'LI', 'LICENCE'),
+(2, 'MA', 'MASTER'),
+(3, 'DEUG', 'Diplôme d\'études universitaires Générales'),
+(4, 'DOC', 'DOCTORAT'),
+(5, 'maîtrise', 'maîtrise'),
+(6, 'BTS', 'Brevet de Technicien Supérieur'),
+(7, 'MST', 'Maîtrise de Sciences et Techniques'),
+(8, 'DU', 'Diplôme d\'université'),
+(9, 'DESS', 'Diplôme d\'étude Supérieures Spécialisées'),
+(22, NULL, 'INGENIEUR BATIMENT'),
+(23, NULL, 'INGENIEUR WEB DESIGN'),
+(24, NULL, 'MASTER LOGISTIQUE-IMAGE');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `etablissement`
 --
 
 CREATE TABLE `etablissement` (
@@ -28504,7 +28558,7 @@ CREATE TABLE `etablissement` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `etablissement`
+-- Déchargement des données de la table `etablissement`
 --
 
 INSERT INTO `etablissement` (`id_etablissement`, `nom_etablissement`, `code_etablissement`, `logo_etablissement`, `domaine_etablissement`, `afficher`, `id_type_etablissement`, `salle_de_cours`, `id_groupe_ecole_doc`, `code_origine_etablissement`) VALUES
@@ -28563,11 +28617,11 @@ INSERT INTO `etablissement` (`id_etablissement`, `nom_etablissement`, `code_etab
 -- --------------------------------------------------------
 
 --
--- Table structure for table `etudiant_sdapa`
+-- Structure de la table `etudiant_sdapa`
 --
 
 CREATE TABLE `etudiant_sdapa` (
-  `id` bigint(20) NOT NULL,
+  `id` varchar(255) NOT NULL,
   `numero_carte` varchar(255) DEFAULT NULL,
   `mesrs` varchar(255) DEFAULT NULL,
   `nom` varchar(255) DEFAULT NULL,
@@ -28582,24 +28636,22 @@ CREATE TABLE `etudiant_sdapa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `etudiant_sdapa`
+-- Déchargement des données de la table `etudiant_sdapa`
 --
 
 INSERT INTO `etudiant_sdapa` (`id`, `numero_carte`, `mesrs`, `nom`, `prenoms`, `date_naissance`, `lieu_naissance`, `sexe`, `nationalite`, `email`, `telephone`, `ufhb`) VALUES
-(1, 'C145D5F5454', '', 'Guelade', 'kevin maxim', '1994-02-07', 'koumassi', '1', '69', 'kevinguelade@gmail.com', '0708863719', 1),
-(2, 'C145D5F54554', 'ADKFHFHN', 'AKA', 'CHRISTIAN DE PACQUES', '1990-03-21', 'koumassi', '1', '1', 'akachristian@gmail.com', '4574856585', 1),
-(3, 'C145D5F578', '', 'Konan', 'elysée', '2021-02-11', 'koumassi', '1', '1', 'akachristian@gmail.com', '0708863719', 1);
+('SADP602778dab2e65', 'CIOJ34867', 'DFG4', 'AKA', 'CHRISTIAN DE PACQUES', '1996-04-22', 'ABIDAJN', '1', '15', 'chris@gmail.com', '0143148561', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `inscription_sdapa`
+-- Structure de la table `inscription_sdapa`
 --
 
 CREATE TABLE `inscription_sdapa` (
   `id` bigint(20) NOT NULL,
   `annee` varchar(11) DEFAULT NULL,
-  `id_etudiant` bigint(20) NOT NULL,
+  `id_etudiant` varchar(255) NOT NULL,
   `temps_mis_en_Licence` varchar(11) DEFAULT NULL,
   `moy_ann_l1` varchar(255) DEFAULT NULL,
   `moy_ann_l2` varchar(255) DEFAULT NULL,
@@ -28613,10 +28665,17 @@ CREATE TABLE `inscription_sdapa` (
   `demande_accepte` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Déchargement des données de la table `inscription_sdapa`
+--
+
+INSERT INTO `inscription_sdapa` (`id`, `annee`, `id_etudiant`, `temps_mis_en_Licence`, `moy_ann_l1`, `moy_ann_l2`, `moy_ann_l3`, `id_total_mention`, `total_point_critere`, `niveau_etude`, `id_parcours`, `id_departement`, `id_etablissement`, `demande_accepte`) VALUES
+(1, '4', 'SADP602778dab2e65', '', '', '', '', NULL, '', '3', '1', '24', '13', 0);
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mention`
+-- Structure de la table `mention`
 --
 
 CREATE TABLE `mention` (
@@ -28629,7 +28688,7 @@ CREATE TABLE `mention` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `mention`
+-- Déchargement des données de la table `mention`
 --
 
 INSERT INTO `mention` (`id_mention`, `libelle_mention`, `code_mention`, `id_etablissement`, `id_departement`, `id_domaine`) VALUES
@@ -28688,7 +28747,7 @@ INSERT INTO `mention` (`id_mention`, `libelle_mention`, `code_mention`, `id_etab
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nationalite`
+-- Structure de la table `nationalite`
 --
 
 CREATE TABLE `nationalite` (
@@ -28698,11 +28757,11 @@ CREATE TABLE `nationalite` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `nationalite`
+-- Déchargement des données de la table `nationalite`
 --
 
 INSERT INTO `nationalite` (`id_nationalite`, `libelle_nationalite`, `pays_nationalite`) VALUES
-(1, 'Française', 0),
+(1, 'Ivoirienne', 0),
 (2, 'Suisse', 0),
 (3, 'Belge', 0),
 (4, 'Allemande', 0),
@@ -28785,7 +28844,7 @@ INSERT INTO `nationalite` (`id_nationalite`, `libelle_nationalite`, `pays_nation
 (81, 'Irlandaise', 0),
 (82, 'Islandaise', 0),
 (83, 'Israélienne', 0),
-(84, 'Ivoirienne', 0),
+(84, 'Française', 0),
 (85, 'Jamaïcaine', 0),
 (86, 'Japonaise', 0),
 (87, 'Jordanienne', 0),
@@ -28900,7 +28959,271 @@ INSERT INTO `nationalite` (`id_nationalite`, `libelle_nationalite`, `pays_nation
 -- --------------------------------------------------------
 
 --
--- Table structure for table `semestre`
+-- Structure de la table `pays`
+--
+
+CREATE TABLE `pays` (
+  `id_pays` int(11) NOT NULL,
+  `lib_pays` varchar(255) NOT NULL,
+  `indicatif` varchar(255) NOT NULL,
+  `alpha_2` varchar(255) NOT NULL,
+  `alpha_3` varchar(255) NOT NULL,
+  `id_fictif` varchar(255) NOT NULL,
+  `id_goupe_eco` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `pays`
+--
+
+INSERT INTO `pays` (`id_pays`, `lib_pays`, `indicatif`, `alpha_2`, `alpha_3`, `id_fictif`, `id_goupe_eco`) VALUES
+(1, 'COTE D\'IVOIRE', '225', 'CI', 'CIV', '110', 1),
+(2, 'BURKINA FASO', '226', 'BF', 'BFA', '233', 2),
+(3, 'MALI', '466', 'ML', 'MLI', '134', 2),
+(4, 'GHANA', '288', 'GH', 'GHA', '85', 3),
+(5, 'GUINEE', '324', 'GN', 'GIN', '94', 3),
+(6, 'LIBERIA', '430', 'LR', 'LBR', '124', 3),
+(7, 'BENIN', '204', 'BJ', 'BEN', '59', 2),
+(8, 'CONGO BRAZZAVILE', '178', 'CG', 'COG', '51', 3),
+(9, 'FRANCE', '33', 'FR', 'FRA', '75', 3),
+(10, 'TOGO', '768', 'TG', 'TGO', '214', 2),
+(11, 'CAMEROUN', '120', 'CM', 'CMR', '36', 3),
+(13, 'ALLEMAGNE', '276', 'DE', 'DEU', '84', 3),
+(14, 'MADAGASCAR', '450', 'MG', 'MDG', '130', 3),
+(15, 'ESPAGNE', '724', 'ES', 'ESP', '203', 3),
+(16, 'NIGERIA', '566', 'NG', 'NGA', '158', 3),
+(17, 'NIGER', '562', 'NE', 'NER', '157', 2),
+(18, 'CHINE', '156', 'CN', 'CHN', '44', 3),
+(19, 'PORTUGAL', '620', 'PT', 'PRT', '175', 3),
+(20, 'AUTRE', '', '', '', '', 3),
+(21, 'ETATS UNIS D\'AMERIQUE', '1', 'US', 'USA', '231', 3),
+(22, 'CENTRAFRIQUE', '140', 'CF', 'CAF', '40', 3),
+(23, 'GABON', '266', 'GA', 'GAB', '80', 3),
+(24, 'LIBAN', '422', 'LB', 'LBN', '121', 3),
+(25, 'MAURITANIE', '478', 'MR', 'MRT', '137', 3),
+(26, 'REPUBLIQUE DEMOCRATIQUE DU CONGO', '180', 'CD', 'COD', '52', 3),
+(27, 'SENEGAL', '686', 'SN', 'SEN', '193', 2),
+(28, 'SIERRA LEONE', '694', 'SL', 'SLE', '195', 3),
+(29, 'TCHAD', '148', 'TD', 'TCD', '42', 3),
+(30, 'Afghanistan', '4', 'AF', 'AFG', '1', 3),
+(31, 'Albanie', '8', 'AL', 'ALB', '2', 3),
+(32, 'Antarctique', '10', 'AQ', 'ATA', '3', 3),
+(33, 'Algérie', '12', 'DZ', 'DZA', '4', 3),
+(34, 'Samoa Américaines', '16', 'AS', 'ASM', '5', 3),
+(35, 'Andorre', '20', 'AD', 'AND', '6', 3),
+(36, 'Angola', '24', 'AO', 'AGO', '7', 3),
+(37, 'Antigua-et-Barbuda', '28', 'AG', 'ATG', '8', 3),
+(38, 'Azerbaïdjan', '31', 'AZ', 'AZE', '9', 3),
+(39, 'Argentine', '32', 'AR', 'ARG', '10', 3),
+(40, 'Australie', '36', 'AU', 'AUS', '11', 3),
+(41, 'Autriche', '40', 'AT', 'AUT', '12', 3),
+(42, 'Bahamas', '44', 'BS', 'BHS', '13', 3),
+(43, 'Bahreïn', '48', 'BH', 'BHR', '14', 3),
+(44, 'Bangladesh', '50', 'BD', 'BGD', '15', 3),
+(45, 'Arménie', '51', 'AM', 'ARM', '16', 3),
+(46, 'Barbade', '52', 'BB', 'BRB', '17', 3),
+(47, 'Belgique', '56', 'BE', 'BEL', '18', 3),
+(48, 'Bermudes', '60', 'BM', 'BMU', '19', 3),
+(49, 'Bhoutan', '64', 'BT', 'BTN', '20', 3),
+(50, 'Bolivie', '68', 'BO', 'BOL', '21', 3),
+(51, 'Bosnie-Herzégovine', '70', 'BA', 'BIH', '22', 3),
+(52, 'Botswana', '72', 'BW', 'BWA', '23', 3),
+(53, 'Île Bouvet', '74', 'BV', 'BVT', '24', 3),
+(54, 'Brésil', '76', 'BR', 'BRA', '25', 3),
+(55, 'Belize', '84', 'BZ', 'BLZ', '26', 3),
+(56, 'Territoire Britannique de l\'Océan Indien', '86', 'IO', 'IOT', '27', 3),
+(57, 'Îles Salomon', '90', 'SB', 'SLB', '28', 3),
+(58, 'Îles Vierges Britanniques', '92', 'VG', 'VGB', '29', 3),
+(59, 'Brunéi Darussalam', '96', 'BN', 'BRN', '30', 3),
+(60, 'Bulgarie', '100', 'BG', 'BGR', '31', 3),
+(61, 'Myanmar', '104', 'MM', 'MMR', '32', 3),
+(62, 'Burundi', '108', 'BI', 'BDI', '33', 3),
+(63, 'Bélarus', '112', 'BY', 'BLR', '34', 3),
+(64, 'Cambodge', '116', 'KH', 'KHM', '35', 3),
+(65, 'Canada', '1', 'CA', 'CAN', '37', 3),
+(66, 'Cap-vert', '132', 'CV', 'CPV', '38', 3),
+(67, 'Îles Caïmanes', '136', 'KY', 'CYM', '39', 3),
+(68, 'Sri Lanka', '144', 'LK', 'LKA', '41', 3),
+(69, 'Chili', '152', 'CL', 'CHL', '43', 3),
+(70, 'Taïwan', '158', 'TW', 'TWN', '45', 3),
+(71, 'Île Christmas', '162', 'CX', 'CXR', '46', 3),
+(72, 'Îles Cocos (Keeling)', '166', 'CC', 'CCK', '47', 3),
+(73, 'Colombie', '170', 'CO', 'COL', '48', 3),
+(74, 'Comores', '174', 'KM', 'COM', '49', 3),
+(75, 'Mayotte', '175', 'YT', 'MYT', '50', 3),
+(76, 'Îles Cook', '184', 'CK', 'COK', '53', 3),
+(77, 'Costa Rica', '188', 'CR', 'CRI', '54', 3),
+(78, 'Croatie', '191', 'HR', 'HRV', '55', 3),
+(79, 'Cuba', '192', 'CU', 'CUB', '56', 3),
+(80, 'Chypre', '196', 'CY', 'CYP', '57', 3),
+(81, 'République Tchèque', '203', 'CZ', 'CZE', '58', 3),
+(82, 'Danemark', '208', 'DK', 'DNK', '60', 3),
+(83, 'Dominique', '212', 'DM', 'DMA', '61', 3),
+(84, 'République Dominicaine', '214', 'DO', 'DOM', '62', 3),
+(85, 'Équateur', '218', 'EC', 'ECU', '63', 3),
+(86, 'El Salvador', '222', 'SV', 'SLV', '64', 3),
+(87, 'Guinée Équatoriale', '240', 'GQ', 'GNQ', '65', 3),
+(88, 'Éthiopie', '231', 'ET', 'ETH', '66', 3),
+(89, 'Érythrée', '232', 'ER', 'ERI', '67', 3),
+(90, 'Estonie', '233', 'EE', 'EST', '68', 3),
+(91, 'Îles Féroé', '234', 'FO', 'FRO', '69', 3),
+(92, 'Îles (malvinas) Falkland', '238', 'FK', 'FLK', '70', 3),
+(93, 'Géorgie du Sud et les Îles Sandwich du Sud', '239', 'GS', 'SGS', '71', 3),
+(94, 'Fidji', '242', 'FJ', 'FJI', '72', 3),
+(95, 'Finlande', '246', 'FI', 'FIN', '73', 3),
+(96, 'Îles Åland', '248', 'AX', 'ALA', '74', 3),
+(97, 'Guyane Française', '254', 'GF', 'GUF', '76', 3),
+(98, 'Polynésie Française', '258', 'PF', 'PYF', '77', 3),
+(99, 'Terres Australes Françaises', '260', 'TF', 'ATF', '78', 3),
+(100, 'Djibouti', '262', 'DJ', 'DJI', '79', 3),
+(101, 'Géorgie', '268', 'GE', 'GEO', '81', 3),
+(102, 'Gambie', '270', 'GM', 'GMB', '82', 3),
+(103, 'Territoire Palestinien Occupé', '275', 'PS', 'PSE', '83', 3),
+(104, 'Gibraltar', '292', 'GI', 'GIB', '86', 3),
+(105, 'Kiribati', '296', 'KI', 'KIR', '87', 3),
+(106, 'Grèce', '300', 'GR', 'GRC', '88', 3),
+(107, 'Groenland', '304', 'GL', 'GRL', '89', 3),
+(108, 'Grenade', '308', 'GD', 'GRD', '90', 3),
+(109, 'Guadeloupe', '312', 'GP', 'GLP', '91', 3),
+(110, 'Guam', '316', 'GU', 'GUM', '92', 3),
+(111, 'Guatemala', '320', 'GT', 'GTM', '93', 3),
+(112, 'Guyana', '328', 'GY', 'GUY', '95', 3),
+(113, 'Haïti', '332', 'HT', 'HTI', '96', 3),
+(114, 'Îles Heard et Mcdonald', '334', 'HM', 'HMD', '97', 3),
+(115, 'Saint-Siège (état de la Cité du Vatican)', '336', 'VA', 'VAT', '98', 3),
+(116, 'Honduras', '340', 'HN', 'HND', '99', 3),
+(117, 'Hong-Kong', '344', 'HK', 'HKG', '100', 3),
+(118, 'Hongrie', '348', 'HU', 'HUN', '101', 3),
+(119, 'Islande', '352', 'IS', 'ISL', '102', 3),
+(120, 'Inde', '356', 'IN', 'IND', '103', 3),
+(121, 'Indonésie', '360', 'ID', 'IDN', '104', 3),
+(122, 'République Islamique d\'Iran', '364', 'IR', 'IRN', '105', 3),
+(123, 'Iraq', '368', 'IQ', 'IRQ', '106', 3),
+(124, 'Irlande', '372', 'IE', 'IRL', '107', 3),
+(125, 'Israël', '376', 'IL', 'ISR', '108', 3),
+(126, 'Italie', '380', 'IT', 'ITA', '109', 3),
+(127, 'Jamaïque', '388', 'JM', 'JAM', '111', 3),
+(128, 'Japon', '392', 'JP', 'JPN', '112', 3),
+(129, 'Kazakhstan', '398', 'KZ', 'KAZ', '113', 3),
+(130, 'Jordanie', '400', 'JO', 'JOR', '114', 3),
+(131, 'Kenya', '404', 'KE', 'KEN', '115', 3),
+(132, 'République Populaire Démocratique de Corée', '408', 'KP', 'PRK', '116', 3),
+(133, 'République de Corée', '410', 'KR', 'KOR', '117', 3),
+(134, 'Koweït', '414', 'KW', 'KWT', '118', 3),
+(135, 'Kirghizistan', '417', 'KG', 'KGZ', '119', 3),
+(136, 'République Démocratique Populaire Lao', '418', 'LA', 'LAO', '120', 3),
+(137, 'Lesotho', '426', 'LS', 'LSO', '122', 3),
+(138, 'Lettonie', '428', 'LV', 'LVA', '123', 3),
+(139, 'Jamahiriya Arabe Libyenne', '434', 'LY', 'LBY', '125', 3),
+(140, 'Liechtenstein', '438', 'LI', 'LIE', '126', 3),
+(141, 'Lituanie', '440', 'LT', 'LTU', '127', 3),
+(142, 'Luxembourg', '442', 'LU', 'LUX', '128', 3),
+(143, 'Macao', '446', 'MO', 'MAC', '129', 3),
+(144, 'Malawi', '454', 'MW', 'MWI', '131', 3),
+(145, 'Malaisie', '458', 'MY', 'MYS', '132', 3),
+(146, 'Maldives', '462', 'MV', 'MDV', '133', 3),
+(147, 'Malte', '470', 'MT', 'MLT', '135', 3),
+(148, 'Martinique', '474', 'MQ', 'MTQ', '136', 3),
+(149, 'Maurice', '480', 'MU', 'MUS', '138', 3),
+(150, 'Mexique', '484', 'MX', 'MEX', '139', 3),
+(151, 'Monaco', '492', 'MC', 'MCO', '140', 3),
+(152, 'Mongolie', '496', 'MN', 'MNG', '141', 3),
+(153, 'République de Moldova', '498', 'MD', 'MDA', '142', 3),
+(154, 'Montserrat', '500', 'MS', 'MSR', '143', 3),
+(155, 'Maroc', '504', 'MA', 'MAR', '144', 3),
+(156, 'Mozambique', '508', 'MZ', 'MOZ', '145', 3),
+(157, 'Oman', '512', 'OM', 'OMN', '146', 3),
+(158, 'Namibie', '516', 'NA', 'NAM', '147', 3),
+(159, 'Nauru', '520', 'NR', 'NRU', '148', 3),
+(160, 'Népal', '524', 'NP', 'NPL', '149', 3),
+(161, 'Pays-Bas', '528', 'NL', 'NLD', '150', 3),
+(162, 'Antilles Néerlandaises', '530', 'AN', 'ANT', '151', 3),
+(163, 'Aruba', '533', 'AW', 'ABW', '152', 3),
+(164, 'Nouvelle-Calédonie', '540', 'NC', 'NCL', '153', 3),
+(165, 'Vanuatu', '548', 'VU', 'VUT', '154', 3),
+(166, 'Nouvelle-Zélande', '554', 'NZ', 'NZL', '155', 3),
+(167, 'Nicaragua', '558', 'NI', 'NIC', '156', 3),
+(168, 'Niué', '570', 'NU', 'NIU', '159', 3),
+(169, 'Île Norfolk', '574', 'NF', 'NFK', '160', 3),
+(170, 'Norvège', '578', 'NO', 'NOR', '161', 3),
+(171, 'Îles Mariannes du Nord', '580', 'MP', 'MNP', '162', 3),
+(172, 'Îles Mineures Éloignées des États-Unis', '581', 'UM', 'UMI', '163', 3),
+(173, 'États Fédérés de Micronésie', '583', 'FM', 'FSM', '164', 3),
+(174, 'Îles Marshall', '584', 'MH', 'MHL', '165', 3),
+(175, 'Palaos', '585', 'PW', 'PLW', '166', 3),
+(176, 'Pakistan', '586', 'PK', 'PAK', '167', 3),
+(177, 'Panama', '591', 'PA', 'PAN', '168', 3),
+(178, 'Papouasie-Nouvelle-Guinée', '598', 'PG', 'PNG', '169', 3),
+(179, 'Paraguay', '600', 'PY', 'PRY', '170', 3),
+(180, 'Pérou', '604', 'PE', 'PER', '171', 3),
+(181, 'Philippines', '608', 'PH', 'PHL', '172', 3),
+(182, 'Pitcairn', '612', 'PN', 'PCN', '173', 3),
+(183, 'Pologne', '616', 'PL', 'POL', '174', 3),
+(184, 'Guinée-Bissau', '624', 'GW', 'GNB', '176', 2),
+(185, 'Timor-Leste', '626', 'TL', 'TLS', '177', 3),
+(186, 'Porto Rico', '630', 'PR', 'PRI', '178', 3),
+(187, 'Qatar', '634', 'QA', 'QAT', '179', 3),
+(188, 'Réunion', '638', 'RE', 'REU', '180', 3),
+(189, 'Roumanie', '642', 'RO', 'ROU', '181', 3),
+(190, 'Fédération de Russie', '643', 'RU', 'RUS', '182', 3),
+(191, 'Rwanda', '646', 'RW', 'RWA', '183', 3),
+(192, 'Sainte-Hélène', '654', 'SH', 'SHN', '184', 3),
+(193, 'Saint-Kitts-et-Nevis', '659', 'KN', 'KNA', '185', 3),
+(194, 'Anguilla', '660', 'AI', 'AIA', '186', 3),
+(195, 'Sainte-Lucie', '662', 'LC', 'LCA', '187', 3),
+(196, 'Saint-Pierre-et-Miquelon', '666', 'PM', 'SPM', '188', 3),
+(197, 'Saint-Vincent-et-les Grenadines', '670', 'VC', 'VCT', '189', 3),
+(198, 'Saint-Marin', '674', 'SM', 'SMR', '190', 3),
+(199, 'Sao Tomé-et-Principe', '678', 'ST', 'STP', '191', 3),
+(200, 'Arabie Saoudite', '682', 'SA', 'SAU', '192', 3),
+(201, 'Seychelles', '690', 'SC', 'SYC', '194', 3),
+(202, 'Singapour', '702', 'SG', 'SGP', '196', 3),
+(203, 'Slovaquie', '703', 'SK', 'SVK', '197', 3),
+(204, 'Viet Nam', '704', 'VN', 'VNM', '198', 3),
+(205, 'Slovénie', '705', 'SI', 'SVN', '199', 3),
+(206, 'Somalie', '706', 'SO', 'SOM', '200', 3),
+(207, 'Afrique du Sud', '710', 'ZA', 'ZAF', '201', 3),
+(208, 'Zimbabwe', '716', 'ZW', 'ZWE', '202', 3),
+(209, 'Sahara Occidental', '732', 'EH', 'ESH', '204', 3),
+(210, 'Soudan', '736', 'SD', 'SDN', '205', 3),
+(211, 'Suriname', '740', 'SR', 'SUR', '206', 3),
+(212, 'Svalbard etÎle Jan Mayen', '744', 'SJ', 'SJM', '207', 3),
+(213, 'Swaziland', '748', 'SZ', 'SWZ', '208', 3),
+(214, 'Suède', '752', 'SE', 'SWE', '209', 3),
+(215, 'Suisse', '756', 'CH', 'CHE', '210', 3),
+(216, 'République Arabe Syrienne', '760', 'SY', 'SYR', '211', 3),
+(217, 'Tadjikistan', '762', 'TJ', 'TJK', '212', 3),
+(218, 'Thaïlande', '764', 'TH', 'THA', '213', 3),
+(219, 'Tokelau', '772', 'TK', 'TKL', '215', 3),
+(220, 'Tonga', '776', 'TO', 'TON', '216', 3),
+(221, 'Trinité-et-Tobago', '780', 'TT', 'TTO', '217', 3),
+(222, 'Émirats Arabes Unis', '784', 'AE', 'ARE', '218', 3),
+(223, 'Tunisie', '788', 'TN', 'TUN', '219', 3),
+(224, 'Turquie', '792', 'TR', 'TUR', '220', 3),
+(225, 'Turkménistan', '795', 'TM', 'TKM', '221', 3),
+(226, 'Îles Turks et Caïques', '796', 'TC', 'TCA', '222', 3),
+(227, 'Tuvalu', '798', 'TV', 'TUV', '223', 3),
+(228, 'Ouganda', '800', 'UG', 'UGA', '224', 3),
+(229, 'Ukraine', '804', 'UA', 'UKR', '225', 3),
+(230, 'L\'ex-République Yougoslave de Macédoine', '807', 'MK', 'MKD', '226', 3),
+(231, 'Égypte', '818', 'EG', 'EGY', '227', 3),
+(232, 'Royaume-Uni', '826', 'GB', 'GBR', '228', 3),
+(233, 'Île de Man', '833', 'IM', 'IMN', '229', 3),
+(234, 'République-Unie de Tanzanie', '834', 'TZ', 'TZA', '230', 3),
+(235, 'Îles Vierges des États-Unis', '850', 'VI', 'VIR', '232', 3),
+(236, 'Uruguay', '858', 'UY', 'URY', '234', 3),
+(237, 'Ouzbékistan', '860', 'UZ', 'UZB', '235', 3),
+(238, 'Venezuela', '862', 'VE', 'VEN', '236', 3),
+(239, 'Wallis et Futuna', '876', 'WF', 'WLF', '237', 3),
+(240, 'Samoa', '882', 'WS', 'WSM', '238', 3),
+(241, 'Yémen', '887', 'YE', 'YEM', '239', 3),
+(242, 'Serbie-et-Monténégro', '891', 'CS', 'SCG', '240', 3),
+(243, 'Zambie', '894', 'ZM', 'ZMB', '241', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `semestre`
 --
 
 CREATE TABLE `semestre` (
@@ -28910,7 +29233,7 @@ CREATE TABLE `semestre` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `semestre`
+-- Déchargement des données de la table `semestre`
 --
 
 INSERT INTO `semestre` (`id_semestre`, `libelle_semestre`, `id_niveau`) VALUES
@@ -28934,7 +29257,7 @@ INSERT INTO `semestre` (`id_semestre`, `libelle_semestre`, `id_niveau`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sexe`
+-- Structure de la table `sexe`
 --
 
 CREATE TABLE `sexe` (
@@ -28944,7 +29267,7 @@ CREATE TABLE `sexe` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `sexe`
+-- Déchargement des données de la table `sexe`
 --
 
 INSERT INTO `sexe` (`id_sexe`, `libelle_sexe`, `libelle_sexe_court`) VALUES
@@ -28954,7 +29277,7 @@ INSERT INTO `sexe` (`id_sexe`, `libelle_sexe`, `libelle_sexe_court`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `specialite`
+-- Structure de la table `specialite`
 --
 
 CREATE TABLE `specialite` (
@@ -28970,7 +29293,7 @@ CREATE TABLE `specialite` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `specialite`
+-- Déchargement des données de la table `specialite`
 --
 
 INSERT INTO `specialite` (`id_specialite`, `libelle_specialite`, `code_specialite`, `id_mention`, `id_departement`, `id_tronc_commun`, `date_creation_specialite`, `id_statut_specialite`, `code_origine_specialite`) VALUES
@@ -29259,7 +29582,7 @@ INSERT INTO `specialite` (`id_specialite`, `libelle_specialite`, `code_specialit
 -- --------------------------------------------------------
 
 --
--- Table structure for table `total_mentions`
+-- Structure de la table `total_mentions`
 --
 
 CREATE TABLE `total_mentions` (
@@ -29271,23 +29594,23 @@ CREATE TABLE `total_mentions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Indexes for dumped tables
+-- Index pour les tables déchargées
 --
 
 --
--- Indexes for table `administrateur`
+-- Index pour la table `administrateur`
 --
 ALTER TABLE `administrateur`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `annee_academique`
+-- Index pour la table `annee_academique`
 --
 ALTER TABLE `annee_academique`
   ADD PRIMARY KEY (`id_annee_academique`);
 
 --
--- Indexes for table `composer_maquette`
+-- Index pour la table `composer_maquette`
 --
 ALTER TABLE `composer_maquette`
   ADD PRIMARY KEY (`id_composer_maquette`),
@@ -29298,33 +29621,45 @@ ALTER TABLE `composer_maquette`
   ADD KEY `id_annee_academique` (`id_annee_academique`);
 
 --
--- Indexes for table `departement`
+-- Index pour la table `cursus`
+--
+ALTER TABLE `cursus`
+  ADD PRIMARY KEY (`id_cursus`);
+
+--
+-- Index pour la table `departement`
 --
 ALTER TABLE `departement`
   ADD PRIMARY KEY (`id_departement`),
   ADD KEY `id_etablissement` (`id_etablissement`);
 
 --
--- Indexes for table `etablissement`
+-- Index pour la table `diplomes`
+--
+ALTER TABLE `diplomes`
+  ADD PRIMARY KEY (`id_diplomes`);
+
+--
+-- Index pour la table `etablissement`
 --
 ALTER TABLE `etablissement`
   ADD PRIMARY KEY (`id_etablissement`),
   ADD KEY `id_type_etablissement` (`id_type_etablissement`);
 
 --
--- Indexes for table `etudiant_sdapa`
+-- Index pour la table `etudiant_sdapa`
 --
 ALTER TABLE `etudiant_sdapa`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `inscription_sdapa`
+-- Index pour la table `inscription_sdapa`
 --
 ALTER TABLE `inscription_sdapa`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `mention`
+-- Index pour la table `mention`
 --
 ALTER TABLE `mention`
   ADD PRIMARY KEY (`id_mention`),
@@ -29333,26 +29668,32 @@ ALTER TABLE `mention`
   ADD KEY `id_domaine` (`id_domaine`);
 
 --
--- Indexes for table `nationalite`
+-- Index pour la table `nationalite`
 --
 ALTER TABLE `nationalite`
   ADD PRIMARY KEY (`id_nationalite`);
 
 --
--- Indexes for table `semestre`
+-- Index pour la table `pays`
+--
+ALTER TABLE `pays`
+  ADD PRIMARY KEY (`id_pays`);
+
+--
+-- Index pour la table `semestre`
 --
 ALTER TABLE `semestre`
   ADD PRIMARY KEY (`id_semestre`),
   ADD KEY `id_niveau` (`id_niveau`);
 
 --
--- Indexes for table `sexe`
+-- Index pour la table `sexe`
 --
 ALTER TABLE `sexe`
   ADD PRIMARY KEY (`id_sexe`);
 
 --
--- Indexes for table `specialite`
+-- Index pour la table `specialite`
 --
 ALTER TABLE `specialite`
   ADD PRIMARY KEY (`id_specialite`),
@@ -29362,53 +29703,59 @@ ALTER TABLE `specialite`
   ADD KEY `id_statut_specialite` (`id_statut_specialite`);
 
 --
--- Indexes for table `total_mentions`
+-- Index pour la table `total_mentions`
 --
 ALTER TABLE `total_mentions`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
--- AUTO_INCREMENT for table `administrateur`
+-- AUTO_INCREMENT pour la table `administrateur`
 --
 ALTER TABLE `administrateur`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `annee_academique`
+-- AUTO_INCREMENT pour la table `annee_academique`
 --
 ALTER TABLE `annee_academique`
   MODIFY `id_annee_academique` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `etudiant_sdapa`
+-- AUTO_INCREMENT pour la table `cursus`
 --
-ALTER TABLE `etudiant_sdapa`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `cursus`
+  MODIFY `id_cursus` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `inscription_sdapa`
+-- AUTO_INCREMENT pour la table `diplomes`
+--
+ALTER TABLE `diplomes`
+  MODIFY `id_diplomes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT pour la table `inscription_sdapa`
 --
 ALTER TABLE `inscription_sdapa`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `nationalite`
+-- AUTO_INCREMENT pour la table `nationalite`
 --
 ALTER TABLE `nationalite`
   MODIFY `id_nationalite` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=195;
 
 --
--- AUTO_INCREMENT for table `sexe`
+-- AUTO_INCREMENT pour la table `sexe`
 --
 ALTER TABLE `sexe`
   MODIFY `id_sexe` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `total_mentions`
+-- AUTO_INCREMENT pour la table `total_mentions`
 --
 ALTER TABLE `total_mentions`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
