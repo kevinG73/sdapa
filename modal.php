@@ -22,6 +22,7 @@
                             <div class="form-group col-md-3">
                                 <label for="inputNom">Numero de carte Etudiant</label>
                                 <input type="text" class="form-control" name="numero_carte" id="numero_carte" readonly>
+                                <input type="hidden" class="form-control" name="etudiant_id" id="id_etudiant" readonly>
                             </div>
                         </div>
                         <div class="form-row">
@@ -105,13 +106,14 @@
                                             </td>
                                             <td class="align-middle" id="div_l<?= $i ?>_c4">
                                                 <input type="text" min="0" max="14" value="0"
-                                                       id="total_l<?= $i ?>_c4"
+                                                       id="total_l<?= $i ?>_c4" name="total_l<?= $i ?>"
                                                        class="form-control"
                                             </td>
                                             <td class="align-middle" id="div_l<?= $i ?>_c5">
                                                 <input type="number" min="0" max="14" value="0"
-                                                       id="total_l<?= $i ?>_c5" disabled
+                                                       id="total_l<?= $i ?>_c5" readonly name="moypond_l<?= $i ?>"
                                                        class="form-control">
+
                                             </td>
                                         </tr>
                                     <?php endfor; ?>
@@ -140,7 +142,7 @@
                                         <td class="align-middle">Moyenne pondérée</td>
                                         <td class="align-middle"><input type="number" name="moyp" value="0"
                                                                         class="form-control w-100"
-                                                                        id="inputMA" min="0" max="20"></td>
+                                                                        id="inputMA" min="0" max="20" disabled></td>
                                     </tr>
                                 </table>
                             </div>

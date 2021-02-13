@@ -52,7 +52,7 @@ $(document).ready(function () {
             data: {etudiantid: eventId},
             success: function (response) {
                 var myArray = jQuery.parseJSON(response);
-
+                $("#id_etudiant").val(myArray.id_etudiant)
                 $("#numero_carte").val(myArray.numero_carte);
                 $("#inputNom").val(myArray.nom);
                 $("#inputPrenom").val(myArray.prenoms);
