@@ -59,6 +59,41 @@ function ListeAnnee()
     }
 }
 
+function ListeAnneeAnter()
+{
+    global $bdd;
+    $requete = "SELECT * FROM annee_academique order by id_annee_academique asc";
+    $resultat = $bdd->query($requete);
+    if (is_bool($resultat)) {
+        return array();
+    } else {
+        return $resultat->fetchAll();
+    }
+}
+
+function ListePays()
+{
+    global $bdd;
+    $requete = "SELECT * FROM pays";
+    $resultat = $bdd->query($requete);
+    if (is_bool($resultat)) {
+        return array();
+    } else {
+        return $resultat->fetchAll();
+    }
+}
+
+function ListeDiplome(){
+    global $bdd;
+    $requete = "SELECT * FROM diplomes";
+    $resultat = $bdd->query($requete);
+    if (is_bool($resultat)) {
+        return array();
+    } else {
+        return $resultat->fetchAll();
+    }
+}
+
 
 function DeterminerAnnee($id)
 {

@@ -12,6 +12,8 @@ include 'inscription.class.php';
 $etudiants = ListeEtudiants();
 $etablissements = ListeEtablissements();
 $anne = ListeAnnee();
+$anneanterieur = ListeAnneeAnter();
+$pays = ListePays();
 ?>
 
 <!DOCTYPE html>
@@ -34,6 +36,7 @@ $anne = ListeAnnee();
 
     <!-- Custom styles for this template -->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
 
     <!-- Custom styles for this page -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -67,14 +70,11 @@ $anne = ListeAnnee();
                 $sexes = fetchSexe();
                 $nationalites = fetchNationalite();
 
-                $nationaliteget = $bdd->query("select * from nationalite");
-
                 if (isset($_POST['enregistrer'])){
-                    include 'crud_etudiant/enregister_etudiant.php';
+                   include 'crud_etudiant/enregister_etudiant.php';
                 }
 
                 if (isset($_POST['modifier'])){
-
                     include 'crud_etudiant/modifier_etudiant.php';
 
                 }
@@ -85,10 +85,13 @@ $anne = ListeAnnee();
                     $res = $etud->fetch();
                     $insc = $bdd->query('select * from inscription_sdapa where id_etudiant ="' . $_GET['id'] . '"') or die(print_r($bdd->errorInfo()));
                     $resins = $insc->fetch();
+                    $resdd = $bdd->query('select * from cursus where id_etudiant ="' . $_GET['id'] . '"') or die(print_r($bdd->errorInfo()));
+                    $resdip = $resdd->fetch();
                     $_SESSION['annee']=$resins['annee'];
                     $_SESSION['id_etablissement']=$resins['id_etablissement'];
                     $_SESSION['id_parcours']=$resins['id_parcours'];
                     $_SESSION['id_departement']=$resins['id_departement'];
+                    $_SESSION['anneeante'] = $resdip['id_anne_ante'];
 
                 }
 
@@ -107,7 +110,7 @@ $anne = ListeAnnee();
                             <div class="d-flex justify-content-end">
                                 <div class="float-right pr-2">
                                     <label class="col-form-label-sm">Année académique</label>
-                                    <select class="form-control" name="annee">
+                                    <select class="form-control" name="annee" id="anneaca">
                                         <?php foreach ($anne as $repanne): ?>
                                             <?php
                                             if ($repanne['id_annee_academique']==$_SESSION['annee'])
@@ -252,12 +255,12 @@ $anne = ListeAnnee();
                             <div class="form-row">
                                 <div class="form-group col-md-4">
                                     <label class="col-form-label-sm">Nom</label>
-                                    <input type="text" class="form-control text-uppercase" required id="nom" name="nom"
+                                    <input type="text" class="form-control text-uppercase" id="nom" name="nom"
                                            value="<?php echo @ $res['nom'] ?>">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label class="col-form-label-sm">Prénoms</label>
-                                    <input type="text" class="form-control text-uppercase" required id="prenoms" name="prenoms"
+                                    <input type="text" class="form-control text-uppercase" id="prenoms" name="prenoms"
                                            value="<?php echo @ $res['prenoms'] ?>">
                                 </div>
                                 <div class="form-group col-md-3">
@@ -278,18 +281,18 @@ $anne = ListeAnnee();
                             <div class="form-row">
                                 <div class="form-group col-md-4">
                                     <label class="col-form-label-sm">Date de Naissance</label>
-                                    <input type="date" class="form-control text-uppercase" onchange="testage(this.value)" id="datenaiss" required name="date_naissance"
+                                    <input type="date" class="form-control text-uppercase" onchange="testage(this.value)" id="datenaiss" name="date_naissance"
                                            value="<?php echo @ $res['date_naissance'] ?>" max="<?= date('Y-m-d'); ?>">
                                     <div class="invalid-tooltip" id="Vdatemin" style="display: none">Age minimum 16 ans</div>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label class="col-form-label-sm">Lieu Naissance</label>
-                                    <input type="text" class="form-control text-uppercase" required name="lieu_naissance"
+                                    <input type="text" class="form-control text-uppercase" name="lieu_naissance"
                                            value="<?php echo @ $res['lieu_naissance'] ?>">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label class="col-form-label-sm ">Nationalité</label>
-                                    <select class="form-control text-uppercase" id="paysnaiss" required name="origine">
+                                    <select class="form-control text-uppercase" id="paysnaiss" name="origine">
                                         <?php foreach ($nationalites as $nationalite): ?>
                                             <?php if ($res['nationalite'] == $nationalite['id_nationalite']): ?>
                                                 <option selected
@@ -305,12 +308,12 @@ $anne = ListeAnnee();
                             <div class="form-row">
                                 <div class="form-group col-md-4">
                                     <label class="col-form-label-sm">Email</label>
-                                    <input type="email" class="form-control" id="datenaiss" required name="mail"
+                                    <input type="email" class="form-control" id="datenaiss" name="mail"
                                            value="<?php echo @ $res['email'] ?>">
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label class="col-form-label-sm">Contact</label>
-                                    <input type="text" class="form-control text-uppercase" required name="contat"
+                                    <input type="text" class="form-control text-uppercase" name="contat"
                                            value="<?php echo @ $res['telephone'] ?>">
                                 </div>
 
@@ -323,39 +326,78 @@ $anne = ListeAnnee();
                             <h6 class="m-0 font-weight-bold text-primary">CURSUS UNIVERSITAIRE ANTERIEUR</h6>
                         </div>
                         <div class="card-body">
-                            <br>
-                            <div class="col-md-12">
-                                <table class="table table-bordered">
-                                    <tbody>
-                                    <tr>
-                                        <th class="text-center">Année academique</th>
-                                        <th class="text-center">Niveau</th>
-                                        <th class="text-center">Série</th>
-                                        <th class="text-center">Etablissement Origine</th>
-                                        <th class="text-center">Pays Obtention Bac</th>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">
-                                            <select class="form-control" id="annebac" name="annee_bac" >
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label class="col-form-label-sm">Année académique obtention diplome</label>
+                                    <select class="form-control" name="annee_anterieur" id="annee-anterieur">
+                                        <?php foreach ($anneanterieur as $repanneante): ?>
+                                            <?php
+                                            if ($repanneante['id_annee_academique']==$_SESSION['anneeante'])
+                                            {
+                                                ?>
+                                                <option selected value="<?=$repanneante['id_annee_academique']?>"> <?=$repanneante['libelle_annee_academique']?></option>
+                                                <?php
 
-                                            </select>
-                                        </td>
-                                        <td class="text-center">
+                                            }
+                                            else
+                                            {
 
-                                        </td>
-                                        <td class="text-center">
+                                                ?>
+                                                <option  value="<?=$repanneante['id_annee_academique']?>"> <?=$repanneante['libelle_annee_academique']?></option>
 
-                                        </td>
-                                        <td class="text-center">
-                                            <input type="text" class="form-control" id="etablori" name="etablissement_origine" />
-                                            <span class="invalid-tooltip" id="Vetaori" style="display: none">Saisir l'établissement d'origine</span>
-                                        </td>
-                                        <td class="text-center">
+                                                <?php
+                                            }
+                                            ?>
 
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label class="col-form-label-sm" for="exampleFormControlSelect1">Etablissement origine</label>
+                                    <input type="text" class="form-control text-uppercase" value="<?=@$resdip['etablissement']?>" name="eta_anterieur">
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label class="col-form-label-sm" for="exampleFormControlSelect1">Pays obtention diplome</label>
+                                    <select class="form-control text-uppercase" name="pays_anterieur">
+                                        <?php foreach ($pays as $payt): ?>
+                                            <?php if ($resdip['id_pays_obtention'] == $payt['id_pays']) : ?>
+                                                <option selected
+                                                        value="<?= $payt['id_pays'] ?>"> <?= $payt['lib_pays'] ?></option>
+                                            <?php else: ?>
+                                                <option value="<?= $payt['id_pays'] ?>"> <?= $payt['lib_pays'] ?></option>
+                                            <?php endif; ?>
+                                            ?>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-4" id="diplome1">
+                                    <label class="col-form-label-sm" for="exampleFormControlSelect1">Diplome obtenue</label>
+                                    <select class="form-control text-uppercase" id="diplome1"  name="diplome1">
+                                        <?php $diplome = ListeDiplome()?>
+                                        <?php foreach ($diplome as $dip): ?>
+                                            <?php if ($resdip['id_diplomes'] == $dip['id_diplomes']) : ?>
+                                                <option selected
+                                                        value="<?= $dip['id_diplomes'] ?>"> <?= $dip['libelle_diplomes'] ?></option>
+                                            <?php else: ?>
+                                                <option value="<?= $dip['id_diplomes'] ?>"> <?= $dip['libelle_diplomes'] ?></option>
+                                            <?php endif; ?>
+                                            ?>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                                <div class="form-group col-md-4" id="diplome2">
+                                    <label class="col-form-label-sm" for="exampleFormControlSelect1">Saisir diplome obtenue</label>
+                                    <input type="text" class="form-control text-uppercase" name="diplome2">
+                                </div>
+                                <button class="btn btn-sm btn-info mr-5" type="button" onclick="autre()" data-dismiss="modal" style="height: 47px;margin-top: 2rem;">
+                                    Autres
+                                </button>
+
+
                             </div>
                         </div>
                     </div>
@@ -569,6 +611,7 @@ $anne = ListeAnnee();
 <script src="js/datatable_etd.js"></script>
 <script src="js/ajax.js"></script>
 <script>
+    $('#diplome2').hide();
     function load_page1()
     {
         $('#voir_num_carte').show();
@@ -583,6 +626,11 @@ $anne = ListeAnnee();
         $('#destroy').load('destroy.php')
     }
 
+    function autre(){
+        $('#diplome1').toggle();
+        $('#diplome2').toggle();
+    }
+
     function testage(value) {
         dob = new Date(value);
         var today = new Date();
@@ -593,6 +641,7 @@ $anne = ListeAnnee();
             $('#Vdatemin').hide();
         }
     }
+
 
 </script>
 

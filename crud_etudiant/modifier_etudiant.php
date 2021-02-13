@@ -18,6 +18,7 @@ if (isset($_POST['modifier'])) {
     $verificaion = $insertEt->verification();
     if ($verificaion === 1) {
         $modification = $insertEt->modification();
+        $cursus = $insertEt->modifiercursus($code_et,$annee_anterieur,$eta_anterieur,$diplome1,$diplome2,$pays_anterieur);
         if ($modification == 1) {
             $inscription = new inscription($annee, $code_et,'',
                 '', '', '', '',

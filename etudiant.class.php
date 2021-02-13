@@ -71,6 +71,45 @@ class etudiant
         }
     }
 
+    public function insertcursus($id_etudiant,$anne,$etabl,$diplome1,$diplome2,$id_pays){
+        if ($diplome2 == null){
+            $requete = $this->bdd->query('insert into cursus (id_etudiant, id_diplomes, etablissement, id_anne_ante, id_pays_obtention) 
+VALUES ("'.$id_etudiant.'","'.$diplome1.'","'.$etabl.'","'.$anne.'","'.$id_pays.'")');
+        }else{
+            $requete = 'insert into diplomes(libelle_diplomes) values("'.$diplome2.'") ';
+            $rep = $this->bdd->query($requete);
+            $dip2 = $this->bdd->query('select max(id_diplomes) as dip from diplomes');
+            $dip2rep = $dip2->fetch();
+            $requete2 = $this->bdd->query('insert into cursus (id_etudiant, id_diplomes, etablissement, id_anne_ante, id_pays_obtention) 
+VALUES ("'.$id_etudiant.'","'.$dip2rep['dip'].'","'.$etabl.'","'.$anne.'","'.$id_pays.'")');
+
+        }
+
+    }
+
+    public function modifiercursus($id_etudiant,$anne,$etabl,$diplome1,$diplome2,$id_pays){
+        if ($diplome2 == null){
+            $requete = 'update cursus set 
+                  etablissement = "'.$etabl.'", id_anne_ante = "'.$anne.'" , id_pays_obtention = "'.$id_pays.'"
+                , id_diplomes = "'.$diplome1.'" where id_etudiant = "'.$id_etudiant.'"';
+            $rep3 = $this->bdd->prepare($requete);
+
+            $rep3->execute();
+        }else{
+            $requete = 'insert into diplomes(libelle_diplomes) values("'.$diplome2.'") ';
+            $rep = $this->bdd->query($requete);
+            $dip2 = $this->bdd->query('select max(id_diplomes) as dip from diplomes');
+            $dip2rep = $dip2->fetch();
+            $requete2 = 'update cursus set 
+                  etablissement = "'.$etabl.'", id_anne_ante = "'.$anne.'" , id_pays_obtention = "'.$id_pays.'"
+                , id_diplomes = "'.$dip2rep['dip'].'" where id_etudiant = "'.$id_etudiant.'"';
+            $rep3 = $this->bdd->prepare($requete2);
+
+            $rep3->execute();
+
+        }
+    }
+
     public function enregistrement()
     {
         $requete= $this->bdd->prepare('SELECT * FROM etudiant_sdapa WHERE numero_carte=:numero_carte AND ufhb=:ufhb ');
@@ -154,7 +193,13 @@ class etudiant
         $requete->execute(array(
             'id'=>  $this->id));
 
-        $requete = $this->bdd->prepare('DELETE FROM inscriptions WHERE id_etudiant=:id');
+        $requete = $this->bdd->prepare('DELETE FROM inscriptions_sdapa WHERE id_etudiant=:id');
+
+        $requete->execute(array(
+            'id'=>  $this->id));
+
+
+        $requete = $this->bdd->prepare('DELETE FROM cursus WHERE id_etudiant=:id');
 
         $requete->execute(array(
             'id'=>  $this->id));

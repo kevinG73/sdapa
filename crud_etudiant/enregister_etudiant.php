@@ -31,6 +31,7 @@ $insertEt = new etudiant($code_et,$numero_carte,$mesrs,$nom,$prenoms,$date_naiss
 $verificaion = $insertEt->verification();
 if ($verificaion ==1) {
     $enregistrement = $insertEt->enregistrement();
+    $cursus = $insertEt->insertcursus($code_et,$annee_anterieur,$eta_anterieur,$diplome1,$diplome2,$pays_anterieur);
     if ($enregistrement == 1) {
         $inscription = new inscription($annee, $code_et,'',
             '', '', '', '',
