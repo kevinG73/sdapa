@@ -86,6 +86,7 @@ require "config/connexion.php";
 <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 <script src="js/datatable.js"></script>
 <script src="js/ajax.js"></script>
+<script src="js/calcul_nombre_mention.js"></script>
 </body>
 
 </html>

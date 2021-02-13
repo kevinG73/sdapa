@@ -19,8 +19,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="d-flex justify-content-end">
                 <div class="float-right pr-2">
-                    <label for="exampleFormControlSelect1">Année académique</label>
-                    <select class="form-control" name="annee">
+                    <label for="id_annee">Année académique</label>
+                    <select class="form-control" name="id_annee" id="id_annee">
                         <?php foreach ($annee as $an): ?>
                             <option value="<?= $an['id_annee_academique'] ?>">
                                 <?= $an['libelle_annee_academique'] ?>
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="d-flex">
                 <div class="col-6 mr-5">
-                    <label for="exampleFormControlSelect1">Etablissements</label>
+                    <label for="id_etablissement">Etablissements</label>
                     <select class="form-control" name="id_etablissement" id="id_etablissement">
                         <?php foreach ($etablissements as $p): ?>
                             <option value="<?php echo $p['id_etablissement'] ?>"
@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
 
                 <div class="col-4">
-                    <label for="exampleFormControlSelect1">Départements</label>
+                    <label for="id_departement">Départements</label>
                     <select class="form-control" name="id_departement" id="id_departement">
                         <option value="0">selectionner</option>
                     </select>
@@ -53,9 +53,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="d-flex mt-4">
                 <div class="col-4 mr-5">
-                    <label for="exampleFormControlSelect1">Parcours</label>
+                    <label for="id_parcours">Parcours</label>
                     <select class="form-control" name="id_parcours" id="id_parcours">
                         <option value="0">parcours</option>
+                    </select>
+                </div>
+
+                <div class="col-4 mr-5">
+                    <label for="id_critere_selection">critère de selection</label>
+                    <select class="form-control" name="id_critere_selection" id="id_critere_selection">
+                        <?php for ($i = 1; $i <= 20; $i++): ?>
+                            <option value="<?= $i ?>">point superieur à <?= $i ?> </option>
+                        <?php endfor; ?>
                     </select>
                 </div>
             </div>
@@ -73,21 +82,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <h6 class="m-0 font-weight-bold text-primary text-uppercase">Consultation des points d'admissibilités </h6>
     </div>
     <div class="card-body">
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-            <thead>
-            <tr>
-                <th>numero de carte étudiant</th>
-                <th>nom</th>
-                <th>prenoms</th>
-                <th>date de naissance</th>
-                <th>moy l1</th>
-                <th>moy l2</th>
-                <th>moy l3</th>
-                <th>point critère</th>
-                <th></th>
-            </tr>
-            </thead>
-        </table>
+        <div class="table-responsive">
+            <table class="table table-bordered w-100" id="dataTable">
+                <thead>
+                <tr>
+                    <th>nom</th>
+                    <th>prenoms</th>
+                    <th>moy l1</th>
+                    <th>moy l2</th>
+                    <th>moy l3</th>
+                    <th>point critère</th>
+                    <th></th>
+                </tr>
+                </thead>
+            </table>
+        </div>
     </div>
 </div>
 

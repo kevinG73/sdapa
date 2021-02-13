@@ -7,39 +7,36 @@ $(document).ready(function () {
         /* parcours */
         var id_departement = $("#id_departement").val();
         var id_parcours = $("#id_parcours").val();
-        chargerDatatable(id_departement, id_parcours);
+        var id_annee = $("#id_annee").val();
+        chargerDatatable(id_departement, id_parcours, id_annee);
     });
 
     /* fonction pour charger les données du datatable */
-    function chargerDatatable(id_departement, id_parcours) {
+    function chargerDatatable(id_departement, id_parcours, id_annee) {
         dataTTT = $('#dataTable').DataTable(
             {
                 bDestroy: true,
-                language: {
-                    url: "https://cdn.datatables.net/plug-ins/1.10.22/i18n/French.json"
-                },
                 ajax: {
                     url: './ajax/fetch_etudiant.php',
                     contentType: "application/json",
                     data: {
                         "id_departement": id_departement,
-                        "id_parcours": id_parcours,
+                        "id_annee": id_annee,
+                        "id_parcours": id_parcours
                     }
                 },
                 columns: [
-                    {data: 'numero_carte', title: 'numero de carte étudiant'},
                     {data: 'nom', title: 'nom'},
                     {data: 'prenoms', title: 'prenoms'},
                     {data: 'moy_ann_l1', title: 'moy l1'},
                     {data: 'moy_ann_l2', title: 'moy l2'},
                     {data: 'moy_ann_l3', title: 'moy l3'},
-                    {data: 'date_naissance', title: 'date de naissance'},
                     {data: 'total_point_critere', title: 'point critère'},
                     {
                         data: "id", render: function (data, type, row, meta) {
-                            return '<button class="btn btn-primary btn-determiner"  data-id="' + data + '" >calculer</a>';
+                            return '<button class="btn btn-sm btn-primary btn-determiner"  data-id="' + data + '" >calculer</a>';
                         }
-                    },
+                    }
                 ]
             }
         );

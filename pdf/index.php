@@ -7,20 +7,18 @@ $filtre = [
     'annee_academique' => $_SESSION['impression']['annee'],
     'id_etablissement' => $_SESSION['impression']['id_etablissement'],
     'id_departement' => $_SESSION['impression']['id_departement'],
-    'id_parcours' => $_SESSION['impression']['id_parcours'],
-    'niveau_etude' => $_SESSION['impression']['niveau']
+    'id_parcours' => $_SESSION['impression']['id_parcours']
 ];
 
 /* liste des étudiants */
 extract($filtre);
 
 global $bdd;
-$requete = "select * from inscriptions ins 
-    JOIN etudiants etd ON etd.numero_carte = ins.numero_carte
+$requete = "select * from inscription_sdapa ins 
+    JOIN etudiant_sdapa etd ON etd.id = ins.id_etudiant
     JOIN sexe ON etd.sexe = sexe.id_sexe
     JOIN nationalite nat ON nat.id_nationalite = etd.nationalite
-    where annee = $annee_academique AND
-    niveau_etude = $niveau_etude AND id_parcours = $id_parcours AND id_departement = $id_departement";
+    where annee = $annee_academique AND id_parcours = $id_parcours AND id_departement = $id_departement";
 
 
 $resultat = $bdd->query($requete);
@@ -37,7 +35,7 @@ $liste_decouper = array_chunk($etudiants, 12);
 
 /* make TCPDF object */
 $pdf = new MYTCPDF('L', 'mm', 'A4');
-$pdf->SetMargins(15, 50, 10);
+$pdf->SetMargins(15, 55, 10);
 $pdf->setFontSubsetting(false);
 
 $tbl = '';
@@ -82,7 +80,7 @@ foreach ($liste_decouper as $index => $etd) {
     <td> ' . $et['moy_ann_l2'] . '</td>
     <td> ' . $et['moy_ann_l3'] . '</td>
     <td> ' . $et['temps_mis_en_Licence'] . '</td>
-    <td> ' . $et['nombre_de_mentions'] . '</td>
+    <td> </td>
     <td> ' . $et['total_point_critere'] . '</td>
 </tr>
 ';
@@ -96,7 +94,7 @@ foreach ($liste_decouper as $index => $etd) {
 
 //output
 $pdf->SetFooterMargin(250);
-$pdf->Output('liste-' . rand(),'I');
+$pdf->Output('liste-' . rand());
 
 
 
