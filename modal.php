@@ -53,7 +53,13 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="form-inline col-md-6">
+                            <div class="form-group col-md-3">
+                                <label for="inputTemps1" class="mr-2">L'âge de l'étudiant</label>
+                                <input type="number" class="form-control w-25" id="inputAge" name="age"
+                                       disabled>
+                                <span id="age-point"></span>
+                            </div>
+                            <div class="form-group col-md-3">
                                 <label for="inputTemps1" class="mr-2">Le temps passé en Licence</label>
                                 <input type="number" class="form-control w-25" id="inputTemps1" name="temps" min="3"
                                        max="6"
@@ -66,7 +72,7 @@
                         </div>
                         <div class="form-row mb-3">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="liste_nombre_mentions">
+                                <table id="activity_table" class="table table-bordered" id="liste_nombre_mentions">
                                     <tr>
                                         <th>Niveau</th>
                                         <th>AB</th>
@@ -78,39 +84,34 @@
                                     <?php for ($i = 1; $i <= 4; $i++): ?>
                                         <tr class="w-100">
                                             <?php if ($i < 4): ?>
-                                                <td class="text-uppercase align-middle">L<?= $i ?></td>
+                                                <td class="text-uppercase align-middle">L<?= $i ?>
                                             <?php else: ?>
                                                 <td class="text-uppercase align-middle">TOTAL</td>
                                             <?php endif; ?>
                                             <td class="align-middle" id="div_l<?= $i ?>_c1">
                                                 <input type="number" min="0" max="14" value="0"
                                                        id="mention_l<?= $i ?>_c1" name="mention_l<?= $i ?>_c1"
-                                                       class="form-control" onchange="calcul(this.id)"
-                                                       oninput="calcul(this.id)">
+                                                       class="form-control saisie">
                                             </td>
                                             <td class="align-middle" id="div_l<?= $i ?>_c2">
                                                 <input type="number" min="0" max="14" value="0"
                                                        id="mention_l<?= $i ?>_c2" name="mention_l<?= $i ?>_c2"
-                                                       class="form-control" onchange="calcul(this.id)"
-                                                       oninput="calcul(this.id)"
+                                                       class="form-control saisie"
                                             </td>
                                             <td class="align-middle" id="div_l<?= $i ?>_c3">
                                                 <input type="number" min="0" max="14" value="0"
                                                        id="mention_l<?= $i ?>_c3" name="mention_l<?= $i ?>_c3"
-                                                       class="form-control" onchange="calcul(this.id)"
-                                                       oninput="calcul(this.id)"
+                                                       class="form-control saisie"
                                             </td>
                                             <td class="align-middle" id="div_l<?= $i ?>_c4">
-                                                <input type="number" min="0" max="14" value="0"
-                                                       id="total_l<?= $i ?>_c4" disabled name="total_l<?= $i ?>_c4"
-                                                       class="form-control" onchange="calcul(this.id)"
-                                                       oninput="calcul(this.id)"
+                                                <input type="text" min="0" max="14" value="0"
+                                                       id="total_l<?= $i ?>_c4"
+                                                       class="form-control"
                                             </td>
                                             <td class="align-middle" id="div_l<?= $i ?>_c5">
                                                 <input type="number" min="0" max="14" value="0"
-                                                       id="total_l<?= $i ?>_c4" disabled name="total_l<?= $i ?>_c4"
-                                                       class="form-control" onchange="calcul(this.id)"
-                                                       oninput="calcul(this.id)"
+                                                       id="total_l<?= $i ?>_c5" disabled
+                                                       class="form-control">
                                             </td>
                                         </tr>
                                     <?php endfor; ?>
@@ -137,9 +138,9 @@
                                                                         class="form-control w-100"
                                                                         id="inputML3" min="0" max="20"></td>
                                         <td class="align-middle">Moyenne pondérée</td>
-                                        <td class="align-middle"><input type="number" name="moyl3" value="0"
+                                        <td class="align-middle"><input type="number" name="moyp" value="0"
                                                                         class="form-control w-100"
-                                                                        id="inputML3" min="0" max="20"></td>
+                                                                        id="inputMA" min="0" max="20"></td>
                                     </tr>
                                 </table>
                             </div>

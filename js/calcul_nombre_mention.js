@@ -1,56 +1,67 @@
-
-function calcul(id) {
-    var l1c1= $('#mention_l1_c1').val();
-    var l1c2= $('#mention_l1_c2').val();
-    var l1c3= $('#mention_l1_c3').val();
-
-    var l2c1= $('#mention_l2_c1').val();
-    var l2c2= $('#mention_l2_c2').val();
-    var l2c3= $('#mention_l2_c3').val();
-
-    var l3c1= $('#mention_l3_c1').val();
-    var l3c2= $('#mention_l3_c2').val();
-    var l3c3= $('#mention_l3_c3').val();
-
-
-    var a = id.split('_');
-
-    if (a[1]=='l1')
-    {
-        $('#div_'+a[1]+'_c4').load('loader/total1c4.php',
-            {
-                l1c1:l1c1,
-                l1c2:l1c2,
-                l1c3:l1c3
+function updateTotals() {
+    /* ligne total */
+    $('td:not(:first-child):not(:last-child)',
+        '#activity_table tr:eq(1)').each(function () {
+        var ci = this.cellIndex;
+        var total = 0;
+        $('td',
+            '#activity_table tr:gt(0)')
+            .filter(function () {
+                return this.cellIndex === ci;
+            })
+            .each(function () {
+                var inp = $('input', this);
+                if (inp.length) {
+                    if (!$(this).closest('tr').is(':last-child')) {
+                        total += $('input', this).val() * 1;
+                    } else {
+                        $('input', this).val(total)
+                        moyennePondere();
+                    }
+                }
             });
+    });
+    /* colonne totale */
+    $('#activity_table tr:gt(0)').each(function () {
+        var total = 0;
+        $('td:not(:first-child):not(:last-child):not(:nth-last-child(2))',
+            this).each(function () {
+            total += $('input', this).val() * 1;
+        });
+        $('input', this).eq(3).val(total)
+
+    });
+};
 
 
-    }
+function moyennePondere() {
 
-    if (a[1]=='l2')
-    {
-        $('#div_'+a[1]+'_c4').load('loader/total2c4.php',
-            {
-                l2c1:l2c1,
-                l2c2:l2c2,
-                l2c3:l2c3
+    var l1c1 = parseInt($("#mention_l1_c1").val()) || 0;
+    var l1c2 = parseInt($("#mention_l1_c2").val()) || 0;
+    var l1c3 = parseInt($("#mention_l1_c3").val()) || 0;
 
-            });
-    }
+    var l2c1 = parseInt($("#mention_l2_c1").val()) || 0;
+    var l2c2 = parseInt($("#mention_l2_c2").val()) || 0;
+    var l2c3 = parseInt($("#mention_l2_c3").val()) || 0;
 
-    if (a[1]=='l3')
-    {
-        $('#div_'+a[1]+'_c4').load('loader/total3c4.php',
-            {
-                l3c1:l3c1,
-                l3c2:l3c2,
-                l3c3:l3c3
+    var l3c1 = parseInt($("#mention_l3_c1").val()) || 0;
+    var l3c2 = parseInt($("#mention_l3_c2").val()) || 0;
+    var l3c3 = parseInt($("#mention_l3_c3").val()) || 0;
 
-            });
-    }
+    var moyp1 = parseFloat((l1c1 + (l1c2 * 2) + (l1c3 * 3)) / 7);
+    var moyp2 = parseFloat((l2c1 + (l2c2 * 2) + (l2c3 * 3)) / 7);
+    var moyp3 = parseFloat((l3c1 + (l3c2 * 2) + (l3c3 * 3)) / 7);
+    var total = moyp1 + moyp2 + moyp3;
 
-
-
-
+    $("#total_l1_c5").val(moyp1.toFixed(2));
+    $("#total_l2_c5").val(moyp2.toFixed(2));
+    $("#total_l3_c5").val(moyp3.toFixed(2));
+    $("#total_l4_c5").val(total.toFixed(2));
 }
 
+
+updateTotals();
+moyennePondere();
+
+
+$('#activity_table input').on('keyup change', updateTotals);
