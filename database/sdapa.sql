@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost:3306
--- Généré le : sam. 13 fév. 2021 à 08:17
--- Version du serveur :  5.7.24
--- Version de PHP : 7.2.19
+-- Host: localhost:3306
+-- Generation Time: Feb 13, 2021 at 02:42 PM
+-- Server version: 5.7.24
+-- PHP Version: 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `sdapa`
+-- Database: `sdapa`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `administrateur`
+-- Table structure for table `administrateur`
 --
 
 CREATE TABLE `administrateur` (
@@ -35,7 +36,7 @@ CREATE TABLE `administrateur` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `administrateur`
+-- Dumping data for table `administrateur`
 --
 
 INSERT INTO `administrateur` (`id`, `email`, `motdepasse`, `activer`) VALUES
@@ -44,7 +45,7 @@ INSERT INTO `administrateur` (`id`, `email`, `motdepasse`, `activer`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `annee_academique`
+-- Table structure for table `annee_academique`
 --
 
 CREATE TABLE `annee_academique` (
@@ -58,7 +59,7 @@ CREATE TABLE `annee_academique` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `annee_academique`
+-- Dumping data for table `annee_academique`
 --
 
 INSERT INTO `annee_academique` (`id_annee_academique`, `libelle_annee_academique`, `annee_ouverture`, `annee_cloture`, `date_ouverture`, `date_fermeture`, `ouverture`) VALUES
@@ -70,7 +71,7 @@ INSERT INTO `annee_academique` (`id_annee_academique`, `libelle_annee_academique
 -- --------------------------------------------------------
 
 --
--- Structure de la table `composer_maquette`
+-- Table structure for table `composer_maquette`
 --
 
 CREATE TABLE `composer_maquette` (
@@ -85,7 +86,7 @@ CREATE TABLE `composer_maquette` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `composer_maquette`
+-- Dumping data for table `composer_maquette`
 --
 
 INSERT INTO `composer_maquette` (`id_composer_maquette`, `id_specialite`, `id_ue`, `id_ecue`, `ue_obligatoire`, `id_semestre`, `ecue_obligatoire`, `id_annee_academique`) VALUES
@@ -28409,7 +28410,7 @@ INSERT INTO `composer_maquette` (`id_composer_maquette`, `id_specialite`, `id_ue
 -- --------------------------------------------------------
 
 --
--- Structure de la table `cursus`
+-- Table structure for table `cursus`
 --
 
 CREATE TABLE `cursus` (
@@ -28422,19 +28423,17 @@ CREATE TABLE `cursus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `cursus`
+-- Dumping data for table `cursus`
 --
 
 INSERT INTO `cursus` (`id_cursus`, `id_etudiant`, `id_diplomes`, `etablissement`, `id_anne_ante`, `id_pays_obtention`) VALUES
-(2, 'SADP60271dfab8b69', 22, 'IRIS', 1, 1),
-(3, 'SADP60271e6aa59a9', 23, 'MIAGE-RENNE', 1, 9),
-(4, 'SADP60271f139bede', 24, 'MIAGE-RENNE', 1, 9),
-(5, 'SADP602778dab2e65', 4, 'IRIS', 3, 1);
+(2, 'SADP6027853d90a06', 22, 'ESATICS', 1, 1),
+(3, 'SADP602785fa527d9', 1, 'ZER', 1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `departement`
+-- Table structure for table `departement`
 --
 
 CREATE TABLE `departement` (
@@ -28449,7 +28448,7 @@ CREATE TABLE `departement` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `departement`
+-- Dumping data for table `departement`
 --
 
 INSERT INTO `departement` (`id_departement`, `nom_departement`, `code_departement`, `id_etablissement`, `affichage`, `unite_formation`, `salle_de_formation`, `code_origine_departement`) VALUES
@@ -28511,7 +28510,7 @@ INSERT INTO `departement` (`id_departement`, `nom_departement`, `code_departemen
 -- --------------------------------------------------------
 
 --
--- Structure de la table `diplomes`
+-- Table structure for table `diplomes`
 --
 
 CREATE TABLE `diplomes` (
@@ -28521,7 +28520,7 @@ CREATE TABLE `diplomes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `diplomes`
+-- Dumping data for table `diplomes`
 --
 
 INSERT INTO `diplomes` (`id_diplomes`, `code_diplomes`, `libelle_diplomes`) VALUES
@@ -28534,14 +28533,13 @@ INSERT INTO `diplomes` (`id_diplomes`, `code_diplomes`, `libelle_diplomes`) VALU
 (7, 'MST', 'Maîtrise de Sciences et Techniques'),
 (8, 'DU', 'Diplôme d\'université'),
 (9, 'DESS', 'Diplôme d\'étude Supérieures Spécialisées'),
-(22, NULL, 'INGENIEUR BATIMENT'),
-(23, NULL, 'INGENIEUR WEB DESIGN'),
-(24, NULL, 'MASTER LOGISTIQUE-IMAGE');
+(22, NULL, 'RIEN'),
+(23, NULL, 'OPZERR');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `etablissement`
+-- Table structure for table `etablissement`
 --
 
 CREATE TABLE `etablissement` (
@@ -28558,7 +28556,7 @@ CREATE TABLE `etablissement` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `etablissement`
+-- Dumping data for table `etablissement`
 --
 
 INSERT INTO `etablissement` (`id_etablissement`, `nom_etablissement`, `code_etablissement`, `logo_etablissement`, `domaine_etablissement`, `afficher`, `id_type_etablissement`, `salle_de_cours`, `id_groupe_ecole_doc`, `code_origine_etablissement`) VALUES
@@ -28617,7 +28615,7 @@ INSERT INTO `etablissement` (`id_etablissement`, `nom_etablissement`, `code_etab
 -- --------------------------------------------------------
 
 --
--- Structure de la table `etudiant_sdapa`
+-- Table structure for table `etudiant_sdapa`
 --
 
 CREATE TABLE `etudiant_sdapa` (
@@ -28636,28 +28634,29 @@ CREATE TABLE `etudiant_sdapa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `etudiant_sdapa`
+-- Dumping data for table `etudiant_sdapa`
 --
 
 INSERT INTO `etudiant_sdapa` (`id`, `numero_carte`, `mesrs`, `nom`, `prenoms`, `date_naissance`, `lieu_naissance`, `sexe`, `nationalite`, `email`, `telephone`, `ufhb`) VALUES
-('SADP602778dab2e65', 'CIOJ34867', 'DFG4', 'AKA', 'CHRISTIAN DE PACQUES', '1996-04-22', 'ABIDAJN', '1', '15', 'chris@gmail.com', '0143148561', 1);
+('SADP6027853d90a06', 'C145D5F54554', 'ADKFHFHN', 'AKA', 'kevin', '1994-12-01', 'koumassi', '1', '1', 'kevinguelade@gmail.com', '0708863719', 1),
+('SADP602785fa527d9', 'C145D5F5454', '', 'guelade', 'kevin', '1995-03-03', 'kumassi', '1', '1', 'kevinguelade@gmail.com', '4574856585', 2);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `inscription_sdapa`
+-- Table structure for table `inscription_sdapa`
 --
 
 CREATE TABLE `inscription_sdapa` (
   `id` bigint(20) NOT NULL,
   `annee` varchar(11) DEFAULT NULL,
   `id_etudiant` varchar(255) NOT NULL,
-  `temps_mis_en_Licence` varchar(11) DEFAULT NULL,
-  `moy_ann_l1` varchar(255) DEFAULT NULL,
-  `moy_ann_l2` varchar(255) DEFAULT NULL,
-  `moy_ann_l3` varchar(255) DEFAULT NULL,
+  `temps_mis_en_Licence` varchar(11) DEFAULT '0',
+  `moy_ann_l1` varchar(255) DEFAULT '0',
+  `moy_ann_l2` varchar(255) DEFAULT '0',
+  `moy_ann_l3` varchar(255) DEFAULT '0',
   `id_total_mention` varchar(20) DEFAULT NULL,
-  `total_point_critere` varchar(11) DEFAULT NULL,
+  `total_point_critere` varchar(11) DEFAULT '0',
   `niveau_etude` varchar(255) DEFAULT NULL,
   `id_parcours` varchar(255) DEFAULT NULL,
   `id_departement` varchar(255) DEFAULT NULL,
@@ -28666,16 +28665,18 @@ CREATE TABLE `inscription_sdapa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `inscription_sdapa`
+-- Dumping data for table `inscription_sdapa`
 --
 
 INSERT INTO `inscription_sdapa` (`id`, `annee`, `id_etudiant`, `temps_mis_en_Licence`, `moy_ann_l1`, `moy_ann_l2`, `moy_ann_l3`, `id_total_mention`, `total_point_critere`, `niveau_etude`, `id_parcours`, `id_departement`, `id_etablissement`, `demande_accepte`) VALUES
-(1, '4', 'SADP602778dab2e65', '', '', '', '', NULL, '', '3', '1', '24', '13', 0);
+(10, '4', 'SADP6027853d90a06', '0', '0', '0', '0', NULL, '0', '3', '1', '24', '13', 0),
+(11, '4', 'SADP602785fa527d9', '0', '0', '0', '0', NULL, '0', '3', '1', '24', '13', 0),
+(12, '4', 'SADP60279012ee6ef', '', '', '', '', NULL, '', '3', '1', '24', '13', 0);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `mention`
+-- Table structure for table `mention`
 --
 
 CREATE TABLE `mention` (
@@ -28688,7 +28689,7 @@ CREATE TABLE `mention` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `mention`
+-- Dumping data for table `mention`
 --
 
 INSERT INTO `mention` (`id_mention`, `libelle_mention`, `code_mention`, `id_etablissement`, `id_departement`, `id_domaine`) VALUES
@@ -28747,7 +28748,7 @@ INSERT INTO `mention` (`id_mention`, `libelle_mention`, `code_mention`, `id_etab
 -- --------------------------------------------------------
 
 --
--- Structure de la table `nationalite`
+-- Table structure for table `nationalite`
 --
 
 CREATE TABLE `nationalite` (
@@ -28757,7 +28758,7 @@ CREATE TABLE `nationalite` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `nationalite`
+-- Dumping data for table `nationalite`
 --
 
 INSERT INTO `nationalite` (`id_nationalite`, `libelle_nationalite`, `pays_nationalite`) VALUES
@@ -28959,7 +28960,7 @@ INSERT INTO `nationalite` (`id_nationalite`, `libelle_nationalite`, `pays_nation
 -- --------------------------------------------------------
 
 --
--- Structure de la table `pays`
+-- Table structure for table `pays`
 --
 
 CREATE TABLE `pays` (
@@ -28973,7 +28974,7 @@ CREATE TABLE `pays` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `pays`
+-- Dumping data for table `pays`
 --
 
 INSERT INTO `pays` (`id_pays`, `lib_pays`, `indicatif`, `alpha_2`, `alpha_3`, `id_fictif`, `id_goupe_eco`) VALUES
@@ -29223,7 +29224,7 @@ INSERT INTO `pays` (`id_pays`, `lib_pays`, `indicatif`, `alpha_2`, `alpha_3`, `i
 -- --------------------------------------------------------
 
 --
--- Structure de la table `semestre`
+-- Table structure for table `semestre`
 --
 
 CREATE TABLE `semestre` (
@@ -29233,7 +29234,7 @@ CREATE TABLE `semestre` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `semestre`
+-- Dumping data for table `semestre`
 --
 
 INSERT INTO `semestre` (`id_semestre`, `libelle_semestre`, `id_niveau`) VALUES
@@ -29257,7 +29258,7 @@ INSERT INTO `semestre` (`id_semestre`, `libelle_semestre`, `id_niveau`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `sexe`
+-- Table structure for table `sexe`
 --
 
 CREATE TABLE `sexe` (
@@ -29267,7 +29268,7 @@ CREATE TABLE `sexe` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `sexe`
+-- Dumping data for table `sexe`
 --
 
 INSERT INTO `sexe` (`id_sexe`, `libelle_sexe`, `libelle_sexe_court`) VALUES
@@ -29277,7 +29278,7 @@ INSERT INTO `sexe` (`id_sexe`, `libelle_sexe`, `libelle_sexe_court`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `specialite`
+-- Table structure for table `specialite`
 --
 
 CREATE TABLE `specialite` (
@@ -29293,7 +29294,7 @@ CREATE TABLE `specialite` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `specialite`
+-- Dumping data for table `specialite`
 --
 
 INSERT INTO `specialite` (`id_specialite`, `libelle_specialite`, `code_specialite`, `id_mention`, `id_departement`, `id_tronc_commun`, `date_creation_specialite`, `id_statut_specialite`, `code_origine_specialite`) VALUES
@@ -29582,35 +29583,35 @@ INSERT INTO `specialite` (`id_specialite`, `libelle_specialite`, `code_specialit
 -- --------------------------------------------------------
 
 --
--- Structure de la table `total_mentions`
+-- Table structure for table `total_mentions`
 --
 
 CREATE TABLE `total_mentions` (
-  `id` bigint(20) NOT NULL,
+  `id` varchar(255) NOT NULL,
   `id_niveau` varchar(255) DEFAULT NULL,
-  `sem1` varchar(255) DEFAULT NULL,
-  `sem2` varchar(255) DEFAULT NULL,
-  `annuel` varchar(255) DEFAULT NULL
+  `ab` varchar(255) DEFAULT NULL,
+  `b` varchar(255) DEFAULT NULL,
+  `tb` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Index pour les tables déchargées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `administrateur`
+-- Indexes for table `administrateur`
 --
 ALTER TABLE `administrateur`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `annee_academique`
+-- Indexes for table `annee_academique`
 --
 ALTER TABLE `annee_academique`
   ADD PRIMARY KEY (`id_annee_academique`);
 
 --
--- Index pour la table `composer_maquette`
+-- Indexes for table `composer_maquette`
 --
 ALTER TABLE `composer_maquette`
   ADD PRIMARY KEY (`id_composer_maquette`),
@@ -29621,45 +29622,45 @@ ALTER TABLE `composer_maquette`
   ADD KEY `id_annee_academique` (`id_annee_academique`);
 
 --
--- Index pour la table `cursus`
+-- Indexes for table `cursus`
 --
 ALTER TABLE `cursus`
   ADD PRIMARY KEY (`id_cursus`);
 
 --
--- Index pour la table `departement`
+-- Indexes for table `departement`
 --
 ALTER TABLE `departement`
   ADD PRIMARY KEY (`id_departement`),
   ADD KEY `id_etablissement` (`id_etablissement`);
 
 --
--- Index pour la table `diplomes`
+-- Indexes for table `diplomes`
 --
 ALTER TABLE `diplomes`
   ADD PRIMARY KEY (`id_diplomes`);
 
 --
--- Index pour la table `etablissement`
+-- Indexes for table `etablissement`
 --
 ALTER TABLE `etablissement`
   ADD PRIMARY KEY (`id_etablissement`),
   ADD KEY `id_type_etablissement` (`id_type_etablissement`);
 
 --
--- Index pour la table `etudiant_sdapa`
+-- Indexes for table `etudiant_sdapa`
 --
 ALTER TABLE `etudiant_sdapa`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `inscription_sdapa`
+-- Indexes for table `inscription_sdapa`
 --
 ALTER TABLE `inscription_sdapa`
   ADD PRIMARY KEY (`id`);
 
 --
--- Index pour la table `mention`
+-- Indexes for table `mention`
 --
 ALTER TABLE `mention`
   ADD PRIMARY KEY (`id_mention`),
@@ -29668,32 +29669,32 @@ ALTER TABLE `mention`
   ADD KEY `id_domaine` (`id_domaine`);
 
 --
--- Index pour la table `nationalite`
+-- Indexes for table `nationalite`
 --
 ALTER TABLE `nationalite`
   ADD PRIMARY KEY (`id_nationalite`);
 
 --
--- Index pour la table `pays`
+-- Indexes for table `pays`
 --
 ALTER TABLE `pays`
   ADD PRIMARY KEY (`id_pays`);
 
 --
--- Index pour la table `semestre`
+-- Indexes for table `semestre`
 --
 ALTER TABLE `semestre`
   ADD PRIMARY KEY (`id_semestre`),
   ADD KEY `id_niveau` (`id_niveau`);
 
 --
--- Index pour la table `sexe`
+-- Indexes for table `sexe`
 --
 ALTER TABLE `sexe`
   ADD PRIMARY KEY (`id_sexe`);
 
 --
--- Index pour la table `specialite`
+-- Indexes for table `specialite`
 --
 ALTER TABLE `specialite`
   ADD PRIMARY KEY (`id_specialite`),
@@ -29703,62 +29704,56 @@ ALTER TABLE `specialite`
   ADD KEY `id_statut_specialite` (`id_statut_specialite`);
 
 --
--- Index pour la table `total_mentions`
+-- Indexes for table `total_mentions`
 --
 ALTER TABLE `total_mentions`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT pour les tables déchargées
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT pour la table `administrateur`
+-- AUTO_INCREMENT for table `administrateur`
 --
 ALTER TABLE `administrateur`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT pour la table `annee_academique`
+-- AUTO_INCREMENT for table `annee_academique`
 --
 ALTER TABLE `annee_academique`
   MODIFY `id_annee_academique` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT pour la table `cursus`
+-- AUTO_INCREMENT for table `cursus`
 --
 ALTER TABLE `cursus`
-  MODIFY `id_cursus` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_cursus` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT pour la table `diplomes`
+-- AUTO_INCREMENT for table `diplomes`
 --
 ALTER TABLE `diplomes`
-  MODIFY `id_diplomes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_diplomes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- AUTO_INCREMENT pour la table `inscription_sdapa`
+-- AUTO_INCREMENT for table `inscription_sdapa`
 --
 ALTER TABLE `inscription_sdapa`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT pour la table `nationalite`
+-- AUTO_INCREMENT for table `nationalite`
 --
 ALTER TABLE `nationalite`
   MODIFY `id_nationalite` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=195;
 
 --
--- AUTO_INCREMENT pour la table `sexe`
+-- AUTO_INCREMENT for table `sexe`
 --
 ALTER TABLE `sexe`
   MODIFY `id_sexe` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT pour la table `total_mentions`
---
-ALTER TABLE `total_mentions`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
