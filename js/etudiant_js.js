@@ -2,12 +2,15 @@ $('#diplome2').hide();
 function load_page1()
 {
     $('#voir_num_carte').show();
+    $('#carte_et').attr('required', true)
+    $('#numero_mers').attr('required', true)
 
 }
 function load_page2()
 {
     $('#voir_num_carte').hide();
-
+    $('#carte_et').attr('required', false)
+    $('#numero_mers').attr('required', false)
 }
 function destroy(){
     $('#destroy').load('destroy.php')
