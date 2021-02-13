@@ -55,6 +55,24 @@ function fetchTypeIns()
 
 
 }
+
+
+function fetchTotalMention($id)
+{
+    global $bdd;
+    $requete = "SELECT *
+    FROM total_mentions where id_etudiant = '".$id."' ORDER BY id_niveau asc";
+
+    $resultat = $bdd->query($requete);
+    if (is_bool($resultat)) {
+        return [];
+    } else {
+        return $resultat->fetchAll();
+    }
+
+
+}
+
 function fetchFil()
 {
     global $bdd;

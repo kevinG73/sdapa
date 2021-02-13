@@ -1,4 +1,5 @@
 <!-- Modal -->
+
 <div class="modal fade" id="empModal" role="dialog">
     <div class="modal-dialog  modal-xl modal-dialog-scrollable">
         <!-- Modal content-->
@@ -41,7 +42,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-3">
                                 <label for="inputDateNaissance">Date de naissance</label>
-                                <input type="date" class="form-control" id="inputDateNaissance" name="date_naissance">
+                                <input type="date" class="form-control" id="inputDateNaissance" readonly name="date_naissance">
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="inputNationalite">Nationalité</label>
@@ -82,7 +83,13 @@
                                         <th>Nombre total de mention</th>
                                         <th>Moyenne pondérée</th>
                                     </tr>
-                                    <?php for ($i = 1; $i <= 4; $i++): ?>
+                                    <?php
+                                    require 'fonction.php';
+                                    $totalMention = fetchTotalMention($_SESSION['etudiant_id']);
+                                    ?>
+                                    <?php for ($i = 1; $i <= 4; $i++):
+                                        $a = $i-1;
+                                        ?>
                                         <tr class="w-100">
                                             <?php if ($i < 4): ?>
                                                 <td class="text-uppercase align-middle">L<?= $i ?>
@@ -90,27 +97,28 @@
                                                 <td class="text-uppercase align-middle">TOTAL</td>
                                             <?php endif; ?>
                                             <td class="align-middle" id="div_l<?= $i ?>_c1">
-                                                <input type="number" min="0" max="14" value="0"
+                                                <input type="number" min="0" max="14" value="<?=$totalMention[$a]['ab']?>"
                                                        id="mention_l<?= $i ?>_c1" name="mention_l<?= $i ?>_c1"
                                                        class="form-control saisie">
                                             </td>
                                             <td class="align-middle" id="div_l<?= $i ?>_c2">
-                                                <input type="number" min="0" max="14" value="0"
+                                                <input type="number" min="0" max="14" value="<?=$totalMention[$a]['mb']?>"
                                                        id="mention_l<?= $i ?>_c2" name="mention_l<?= $i ?>_c2"
                                                        class="form-control saisie"
                                             </td>
                                             <td class="align-middle" id="div_l<?= $i ?>_c3">
-                                                <input type="number" min="0" max="14" value="0"
+                                                <input type="number" min="0" max="14" value="<?=$totalMention[$a]['tb']
+                                                ?>"
                                                        id="mention_l<?= $i ?>_c3" name="mention_l<?= $i ?>_c3"
                                                        class="form-control saisie"
                                             </td>
                                             <td class="align-middle" id="div_l<?= $i ?>_c4">
-                                                <input type="text" min="0" max="14" value="0"
+                                                <input type="text" min="0" max="14" value="<?=$totalMention[$a]['total_mention']?>"
                                                        id="total_l<?= $i ?>_c4" name="total_l<?= $i ?>"
                                                        class="form-control"
                                             </td>
                                             <td class="align-middle" id="div_l<?= $i ?>_c5">
-                                                <input type="number" min="0" max="14" value="0"
+                                                <input type="number" min="0" max="14" value="<?=$totalMention[$a]['moy_pondere']?>"
                                                        id="total_l<?= $i ?>_c5" readonly name="moypond_l<?= $i ?>"
                                                        class="form-control">
 
@@ -142,7 +150,7 @@
                                         <td class="align-middle">Moyenne pondérée</td>
                                         <td class="align-middle"><input type="number" name="moyp" value="0"
                                                                         class="form-control w-100"
-                                                                        id="inputMA" min="0" max="20" disabled></td>
+                                                                        id="inputMA" min="0" max="20" readonly></td>
                                     </tr>
                                 </table>
                             </div>

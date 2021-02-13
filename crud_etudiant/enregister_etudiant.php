@@ -36,7 +36,9 @@ if ($verificaion ==1) {
         $inscription = new inscription($annee, $code_et,0,
             0, 0, 0, 0,
             3, $id_parcours, $id_departement, $id_etablissement, $bdd);
-
+        for ($i=1; $i <= 3; $i++){
+            $mention = $bdd->query('insert into total_mentions(id_niveau, id_etudiant, ab, mb, tb, total_mention, moy_pondere) VALUES ("'.$i.'","'.$code_et.'",0,0,0,0,0)')or die(print_r($bdd->errorInfo()));
+        }
         $enregistrement2 = $inscription->enregistrement();
         ?>
         <div>

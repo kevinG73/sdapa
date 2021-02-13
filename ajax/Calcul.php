@@ -9,6 +9,7 @@ if (isset($_POST) && !empty($_POST)):
     $moyl1 = (float)$_POST['moyl1'];
     $moyl2 = (float)$_POST['moyl2'];
     $moyl3 = (float)$_POST['moyl3'];
+    $moyp = (float)$_POST['moyp'];
     $id_etudiant = $_POST['etudiant_id'];
 
     $critere_age = 0;
@@ -55,7 +56,7 @@ if (isset($_POST) && !empty($_POST)):
     } elseif ($critere_temps1 == 4) {
         $p_temps1 = 3;
     } elseif ($critere_temps1 == 5) {
-        $critere_temps1 = 1;
+        $p_temps1 = 1;
     } elseif ($critere_temps1 == 6) {
         $p_temps1 = 0;
     }
@@ -95,65 +96,35 @@ if (isset($_POST) && !empty($_POST)):
 
     /* update */
     $update = $bdd->query("UPDATE inscription_sdapa 
-        SET moy_ann_l1 = $moyl1 , moy_ann_l2 = $moyl2 , moy_ann_l3 = $moyl3 
-     ,total_point_critere = $total , temps_mis_en_Licence = $p_temps1 WHERE id_etudiant = '$id_etudiant'")or die(print_r($bdd->errorInfo()));
+        SET moy_ann_l1 = $moyl1 , moy_ann_l2 = $moyl2 , moy_ann_l3 = $moyl3 , moy_pondere = $moyp
+     ,total_point_critere = $total , temps_mis_en_Licence = $critere_temps1 WHERE id_etudiant = '$id_etudiant'")or die(print_r($bdd->errorInfo()));
 
 
-    $totalre = $bdd->query('select count(id) as total from total_mentions where id_etudiant = "'.$id_etudiant.'"');
-    $totalrep = $totalre->fetch();
 
-    if ($totalrep['total'] > 0){
+    for ($i=1; $i <= 3; $i++){
 
-        for ($i=1; $i <= 3; $i++){
+        if (isset($_POST['mention_l'.$i.'_c1'])){
+            $ab[$i] = (int)$_POST['mention_l'.$i.'_c1'];
+        }
+        if (isset($_POST['mention_l'.$i.'_c2'])){
+            $b[$i] = (int)$_POST['mention_l'.$i.'_c2'];
+        }
+        if (isset($_POST['mention_l'.$i.'_c3'])){
+            $tb[$i] = (int)$_POST['mention_l'.$i.'_c3'];
+        }
+        if (isset($_POST['total_l'.$i])){
+            $total_l[$i] = (int)$_POST['total_l'.$i];
+        }
+        if (isset($_POST['moypond_l'.$i])){
+            $moypondl[$i] = (float)$_POST['moypond_l'.$i];
+        }
 
-            if (isset($_POST['mention_l'.$i.'_c1'])){
-                $ab[$i] = (int)$_POST['mention_l'.$i.'_c1'];
-            }
-            if (isset($_POST['mention_l'.$i.'_c2'])){
-                $b[$i] = (int)$_POST['mention_l'.$i.'_c2'];
-            }
-            if (isset($_POST['mention_l'.$i.'_c3'])){
-                $tb[$i] = (int)$_POST['mention_l'.$i.'_c3'];
-            }
-            if (isset($_POST['total_l'.$i])){
-                $total_l[$i] = (int)$_POST['total_l'.$i];
-            }
-            if (isset($_POST['moypond_l'.$i])){
-                $moypondl[$i] = (float)$_POST['moypond_l'.$i];
-            }
-
-            $requupdate = 'update total_mentions set ab = "'.$ab[$i].'" , b= "'.$b[$i].'" , tb= "'.$tb[$i].'" , 
+        $requupdate = 'update total_mentions set ab = "'.$ab[$i].'" , mb= "'.$b[$i].'" , tb= "'.$tb[$i].'" , 
                           total_mention = "'.$total_l[$i].'" , moy_pondere = "'.$moypondl[$i].'"  where id_etudiant = "'.$id_etudiant.'" and id_niveau = "'.$i.'" ';
-            $rep3 = $bdd->prepare($requupdate);
-            $rep3->execute();
+        $rep3 = $bdd->prepare($requupdate);
+        $rep3->execute();
 
-        }
-    }else{
-        for ($i=1; $i <= 3; $i++){
-
-            if (isset($_POST['mention_l'.$i.'_c1'])){
-                $ab[$i] = (int)$_POST['mention_l'.$i.'_c1'];
-            }
-            if (isset($_POST['mention_l'.$i.'_c2'])){
-                $b[$i] = (int)$_POST['mention_l'.$i.'_c2'];
-            }
-            if (isset($_POST['mention_l'.$i.'_c3'])){
-                $tb[$i] = (int)$_POST['mention_l'.$i.'_c3'];
-            }
-            if (isset($_POST['total_l'.$i])){
-                $total_l[$i] = (int)$_POST['total_l'.$i];
-            }
-            if (isset($_POST['moypond_l'.$i])){
-                $moypondl[$i] = (float)$_POST['moypond_l'.$i];
-            }
-
-            $mention = $bdd->query('insert into total_mentions(id_niveau, id_etudiant, ab, b, tb, total_mention, moy_pondere) VALUES ("'.$i.'","'.$id_etudiant.'","'.$ab[$i].'","'.$b[$i].'","'.$tb[$i].'","'.$total_l[$i].'","'.$moypondl[$i].'")')or die(print_r($bdd->errorInfo()));
-
-        }
     }
-
-
-
 
     exit;
 else:

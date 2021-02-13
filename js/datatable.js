@@ -45,6 +45,7 @@ $(document).ready(function () {
     /* clique sur un bouton du datatable */
     $("#dataTable").on("click", ".btn-determiner", function () {
         var eventId = $(this).data('id');
+
         // AJAX request
         $.ajax({
             url: './ajax/infoEtudiant.php',
@@ -63,6 +64,8 @@ $(document).ready(function () {
                 $("#inputML1").val(myArray.moy_ann_l1);
                 $("#inputML2").val(myArray.moy_ann_l2);
                 $("#inputML3").val(myArray.moy_ann_l3);
+                $("#inputMA").val(myArray.moy_pondere);
+
 
                 // Display Modal
                 $('#empModal').modal('show');
