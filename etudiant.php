@@ -545,10 +545,21 @@ $pays = ListePays();
 <script src="js/ajax.js"></script>
 <script src="js/etudiant_js.js"></script>
 <script src="js/validation/dist/bootstrap-validate.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyDeLFbqUYXI7Ozg5B9nJpIZyQtoA3dGQco"></script>
 <script>
     bootstrapValidate(['#carte_et','#numero_mers','#nom','#prenoms','#lieu_naissance','#datenaiss','#maila','#contact','#eta_anterieur'], 'required: Veuillez remplir les champs!')
     bootstrapValidate('#maila', 'email: Entrer email valide!')
     bootstrapValidate('#contact', 'min:10: Entrer votre numero sur 10 chiffres')
+    var searchInput = 'lieu_naissance';
+    $(document).ready(function () {
+        var autocomplete;
+        autocomplete = new google.maps.places.Autocomplete((document.getElementById(searchInput)), {
+            types: ['geocode']
+        });
+        google.maps.event.addListener(autocomplete, 'place_changed', function () {
+            var near_place = autocomplete.getPlace();
+        });
+    })
 </script>
 
 </body>
