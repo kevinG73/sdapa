@@ -1,10 +1,10 @@
 <!-- Modal -->
 <div class="modal fade" id="empModal" role="dialog">
-    <div class="modal-dialog  modal-dialog-centered modal-lg">
+    <div class="modal-dialog  modal-xl modal-dialog-scrollable">
         <!-- Modal content-->
         <div class="modal-content rounded-0 border border-primary">
             <div class="modal-header bg-primary text-white">
-                <h4 class="modal-title text-uppercase">Remplissez les champs ci-dessous pour déterminer </h4>
+                <h4 class="modal-title text-uppercase">Calcul du point critère</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
@@ -38,11 +38,11 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-3">
                                 <label for="inputDateNaissance">Date de naissance</label>
                                 <input type="date" class="form-control" id="inputDateNaissance" name="date_naissance">
                             </div>
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-3">
                                 <label for="inputNationalite">Nationalité</label>
                                 <input type="text" class="form-control" id="inputNationalite" disabled>
                             </div>
@@ -53,21 +53,16 @@
                             </div>
                         </div>
                         <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="inputTemps1">Le temps passé en Licence</label>
+                            <div class="form-inline col-md-6">
+                                <label for="inputTemps1" class="mr-2">Le temps passé en Licence</label>
                                 <input type="number" class="form-control w-25" id="inputTemps1" name="temps" min="3"
                                        max="6"
                                        value="3">
                             </div>
-                            <div class="form-group col-md-6">
-                                <label for="inputNbMention">Le nombre de mention obtenue</label>
-                                <input type="number" class="form-control w-25" id="inputNbMention" name="nbr_mention"
-                                       min="0" max="42" value="1">
-                            </div>
                         </div>
 
                         <div class="form-row">
-                            <p class="text-primary text-uppercase">mentions</p>
+                            <p class="text-primary text-uppercase">Le nombre de mention obtenue</p>
                         </div>
                         <div class="form-row mb-3">
                             <div class="table-responsive">
@@ -88,19 +83,27 @@
                                             <?php endif; ?>
                                             <td class="align-middle" id="div_l<?= $i ?>_c1">
                                                 <input type="number" min="0" max="14" value="0"
-                                                       id="mention_l<?= $i ?>_c1" name="mention_l<?= $i ?>_c1" class="form-control"  onchange="calcul(this.id)" oninput="calcul(this.id)">
+                                                       id="mention_l<?= $i ?>_c1" name="mention_l<?= $i ?>_c1"
+                                                       class="form-control" onchange="calcul(this.id)"
+                                                       oninput="calcul(this.id)">
                                             </td>
-                                            <td class="align-middle" id="div_l<?= $i ?>_c2" >
+                                            <td class="align-middle" id="div_l<?= $i ?>_c2">
                                                 <input type="number" min="0" max="14" value="0"
-                                                       id="mention_l<?= $i ?>_c2"  name="mention_l<?= $i ?>_c2" class="form-control"  onchange="calcul(this.id)" oninput="calcul(this.id)"
+                                                       id="mention_l<?= $i ?>_c2" name="mention_l<?= $i ?>_c2"
+                                                       class="form-control" onchange="calcul(this.id)"
+                                                       oninput="calcul(this.id)"
                                             </td>
                                             <td class="align-middle" id="div_l<?= $i ?>_c3">
                                                 <input type="number" min="0" max="14" value="0"
-                                                       id="mention_l<?= $i ?>_c3" name="mention_l<?= $i ?>_c3" class="form-control"  onchange="calcul(this.id)" oninput="calcul(this.id)"
+                                                       id="mention_l<?= $i ?>_c3" name="mention_l<?= $i ?>_c3"
+                                                       class="form-control" onchange="calcul(this.id)"
+                                                       oninput="calcul(this.id)"
                                             </td>
                                             <td class="align-middle" id="div_l<?= $i ?>_c4">
                                                 <input type="number" min="0" max="14" value="0"
-                                                       id="total_l<?= $i ?>_c4" disabled name="total_l<?= $i ?>_c4" class="form-control"  onchange="calcul(this.id)" oninput="calcul(this.id)"
+                                                       id="total_l<?= $i ?>_c4" disabled name="total_l<?= $i ?>_c4"
+                                                       class="form-control" onchange="calcul(this.id)"
+                                                       oninput="calcul(this.id)"
                                             </td>
                                         </tr>
                                     <?php endfor; ?>

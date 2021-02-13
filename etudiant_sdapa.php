@@ -87,7 +87,6 @@ $anne = ListeAnnee();
                 include "crud_etudiant/supprimer_etudiant.php";
 
 
-
                 ?>
 
                 <div class="card shadow mb-4">
@@ -169,9 +168,11 @@ $anne = ListeAnnee();
                                     <label class="col-form-label-sm">Etes vous étudiant de l'UFHB</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="radio" name="etudiant_ufhb" id="radio1" onchange="load_page1()" value="OUI">
+                                    <input type="radio" name="etudiant_ufhb" id="radio1" onchange="load_page1()"
+                                           value="OUI">
                                     <label class="form-control-sm">OUI</label>
-                                    <input type="radio" name="etudiant_ufhb" id="radio2" onchange="load_page2()" checked="" value="NON">
+                                    <input type="radio" name="etudiant_ufhb" id="radio2" onchange="load_page2()"
+                                           checked="" value="NON">
                                     <label class="form-control-sm">NON</label>
                                 </div>
                             </div>

@@ -10,7 +10,7 @@ if (isset($_POST['supprimer'])) {
         }
         ?>
         <div><span class="form-text text-success font-weight-bold"><i
-                        class="fas fa-check-square fa-md fa-fw mr-2"></i>Informations supprimé avec succès .</span>
+                        class="fas fa-check-square fa-md fa-fw mr-2"></i>Informations supprimées avec succès .</span>
         </div>
         <?php
     }
