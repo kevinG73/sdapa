@@ -256,12 +256,12 @@ $pays = ListePays();
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
                                         <label class="col-form-label-sm">Nom</label>
-                                        <input type="text" class="form-control text-uppercase" id="nom" name="nom"
+                                        <input type="text" class="form-control text-uppercase" required id="nom" name="nom"
                                                value="<?php echo @ $res['nom'] ?>">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label class="col-form-label-sm">Prénoms</label>
-                                        <input type="text" class="form-control text-uppercase" id="prenoms" name="prenoms"
+                                        <input type="text" class="form-control text-uppercase" id="prenoms" required name="prenoms"
                                                value="<?php echo @ $res['prenoms'] ?>">
                                     </div>
                                     <div class="form-group col-md-3">
@@ -282,13 +282,13 @@ $pays = ListePays();
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
                                         <label class="col-form-label-sm">Date de Naissance</label>
-                                        <input type="date" class="form-control text-uppercase" onchange="testage(this.value)" id="datenaiss" name="date_naissance"
+                                        <input required type="date" class="form-control text-uppercase" onchange="testage(this.value)" id="datenaiss" name="date_naissance"
                                                value="<?php echo @ $res['date_naissance'] ?>" max="<?= date('Y-m-d'); ?>">
                                         <div class="invalid-tooltip" id="Vdatemin" style="display: none">Age minimum 16 ans</div>
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label class="col-form-label-sm">Lieu Naissance</label>
-                                        <input type="text" class="form-control text-uppercase" name="lieu_naissance"
+                                        <input type="text" class="form-control text-uppercase" name="lieu_naissance" required
                                                value="<?php echo @ $res['lieu_naissance'] ?>">
                                     </div>
                                     <div class="form-group col-md-4">
@@ -309,12 +309,12 @@ $pays = ListePays();
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
                                         <label class="col-form-label-sm">Email</label>
-                                        <input type="email" class="form-control" id="datenaiss" name="mail"
+                                        <input type="email" class="form-control" id="datenaiss" name="mail" required
                                                value="<?php echo @ $res['email'] ?>">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label class="col-form-label-sm">Contact</label>
-                                        <input type="text" class="form-control text-uppercase" name="contat"
+                                        <input type="text" class="form-control text-uppercase" name="contat" required
                                                value="<?php echo @ $res['telephone'] ?>">
                                     </div>
 
