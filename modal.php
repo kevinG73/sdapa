@@ -72,7 +72,8 @@
                                         <th>AB</th>
                                         <th>B</th>
                                         <th>TB</th>
-                                        <th>total</th>
+                                        <th>Nombre total de mention</th>
+                                        <th>Moyenne pondérée</th>
                                     </tr>
                                     <?php for ($i = 1; $i <= 4; $i++): ?>
                                         <tr class="w-100">
@@ -105,6 +106,12 @@
                                                        class="form-control" onchange="calcul(this.id)"
                                                        oninput="calcul(this.id)"
                                             </td>
+                                            <td class="align-middle" id="div_l<?= $i ?>_c5">
+                                                <input type="number" min="0" max="14" value="0"
+                                                       id="total_l<?= $i ?>_c4" disabled name="total_l<?= $i ?>_c4"
+                                                       class="form-control" onchange="calcul(this.id)"
+                                                       oninput="calcul(this.id)"
+                                            </td>
                                         </tr>
                                     <?php endfor; ?>
                                 </table>
@@ -126,6 +133,10 @@
                                                                         class="form-control w-100"
                                                                         id="inputML2" min="0" max="20"></td>
                                         <td class="align-middle">Licence 3</td>
+                                        <td class="align-middle"><input type="number" name="moyl3" value="0"
+                                                                        class="form-control w-100"
+                                                                        id="inputML3" min="0" max="20"></td>
+                                        <td class="align-middle">Moyenne pondérée</td>
                                         <td class="align-middle"><input type="number" name="moyl3" value="0"
                                                                         class="form-control w-100"
                                                                         id="inputML3" min="0" max="20"></td>
