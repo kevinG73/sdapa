@@ -76,7 +76,6 @@ $pays = ListePays();
 
                 if (isset($_POST['modifier'])){
                     include 'crud_etudiant/modifier_etudiant.php';
-
                 }
 
 
@@ -102,363 +101,321 @@ $pays = ListePays();
                 ?>
 
                 <form method="post">
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">STRUCTURE D'ACCEUIL</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="d-flex justify-content-end">
-                                <div class="float-right pr-2">
-                                    <label class="col-form-label-sm">Année académique</label>
-                                    <select class="form-control" name="annee" id="anneaca">
-                                        <?php foreach ($anne as $repanne): ?>
-                                            <?php
-                                            if ($repanne['id_annee_academique']==$_SESSION['annee'])
-                                            {
-                                                ?>
-                                                <option selected value="<?=$repanne['id_annee_academique']?>"> <?=$repanne['libelle_annee_academique']?></option>
-                                                <?php
 
-                                            }
-                                            else
-                                            {
-
-                                                ?>
-                                                <option  value="<?=$repanne['id_annee_academique']?>"> <?=$repanne['libelle_annee_academique']?></option>
-
-                                                <?php
-                                            }
-                                            ?>
-
-
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
+                    <div>
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">STRUCTURE D'ACCEUIL</h6>
                             </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label class="col-form-label-sm" for="exampleFormControlSelect1">Etablissements</label>
-                                    <select class="form-control" name="id_etablissement" id="id_etablissement">
-                                        <?php foreach ($etablissements as $p): ?>
-                                            <option value="<?php echo $p['id_etablissement'] ?>"
-                                            <?php if (isset($id_etablissement) && $id_etablissement === $p['id_etablissement']) echo 'selected'; ?>
-                                            <?php
-                                            if ($p['id_etablissement']==@$_SESSION['id_etablissement'])
-                                            {
-                                                ?>
-                                                <option selected value="<?=$p['id_etablissement']?>"> <?=$p['nom_etablissement']?></option>
+                            <div class="card-body">
+                                <div class="d-flex justify-content-end">
+                                    <div class="float-right pr-2">
+                                        <label class="col-form-label-sm">Année académique</label>
+                                        <select class="form-control" name="annee" id="anneaca">
+                                            <?php foreach ($anne as $repanne): ?>
                                                 <?php
+                                                if ($repanne['id_annee_academique']==$_SESSION['annee'])
+                                                {
+                                                    ?>
+                                                    <option selected value="<?=$repanne['id_annee_academique']?>"> <?=$repanne['libelle_annee_academique']?></option>
+                                                    <?php
 
-                                            }
-                                            else
-                                            {
+                                                }
+                                                else
+                                                {
 
+                                                    ?>
+                                                    <option  value="<?=$repanne['id_annee_academique']?>"> <?=$repanne['libelle_annee_academique']?></option>
+
+                                                    <?php
+                                                }
                                                 ?>
-                                                <option  value="<?=$p['id_etablissement']?>"> <?=$p['nom_etablissement']?></option>
 
-                                                <?php
-                                            }
-                                            ?>
 
-                                        <?php endforeach; ?>
-                                    </select>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <label class="col-form-label-sm" for="id_departement">Départements</label>
-                                    <select class="form-control" name="id_departement" id="id_departement">
-                                        <option value="0">selectionner</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label class="col-form-label-sm" for="id_parcours">Parcours</label>
-                                    <select class="form-control" name="id_parcours" id="id_parcours">
-                                        <option value="0">parcours</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">IDENTITE ETUDIANT</h6>
-                        </div>
-                        <div class="card-body">
-                            <?php
-                            if (isset($_GET['id'])) :
-                                ?>
                                 <div class="form-row">
-                                    <div class="col-md-4">
-                                        <label class="col-form-label-sm">Etes vous étudiant de l'UFHB</label>
+                                    <div class="form-group col-md-6">
+                                        <label class="col-form-label-sm" for="exampleFormControlSelect1">Etablissements</label>
+                                        <select class="form-control" name="id_etablissement" id="id_etablissement">
+                                            <?php foreach ($etablissements as $p): ?>
+                                                <option value="<?php echo $p['id_etablissement'] ?>"
+                                                <?php if (isset($id_etablissement) && $id_etablissement === $p['id_etablissement']) echo 'selected'; ?>
+                                                <?php
+                                                if ($p['id_etablissement']==@$_SESSION['id_etablissement'])
+                                                {
+                                                    ?>
+                                                    <option selected value="<?=$p['id_etablissement']?>"> <?=$p['nom_etablissement']?></option>
+                                                    <?php
+
+                                                }
+                                                else
+                                                {
+
+                                                    ?>
+                                                    <option  value="<?=$p['id_etablissement']?>"> <?=$p['nom_etablissement']?></option>
+
+                                                    <?php
+                                                }
+                                                ?>
+
+                                            <?php endforeach; ?>
+                                        </select>
                                     </div>
-                                    <div class="col-md-6">
-                                        <input type="radio" id="radio1"
-                                            <?php if ($res['ufhb'] == 1): echo 'checked disabled'; endif;?>>
-                                        <label class="form-control-sm">Oui</label>
-                                        <input type="radio" id="radio2"
-                                            <?php if ($res['ufhb'] == 2): echo 'checked disabled'; endif;?>>
-                                        <label class="form-control-sm">Non</label>
+                                    <div class="form-group col-md-4">
+                                        <label class="col-form-label-sm" for="id_departement">Départements</label>
+                                        <select class="form-control" name="id_departement" id="id_departement">
+                                            <option value="0">selectionner</option>
+                                        </select>
                                     </div>
                                 </div>
-                            <?php
-                            else:
-                                ?>
                                 <div class="form-row">
-                                    <div class="col-md-4">
-                                        <label class="col-form-label-sm">Etes vous étudiant de l'UFHB</label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input type="radio" name="etudiant_ufhb" id="radio1" onchange="load_page1()" checked value="OUI">
-                                        <label class="form-control-sm">Oui</label>
-                                        <input type="radio" name="etudiant_ufhb" id="radio2" onchange="load_page2()" value="NON">
-                                        <label class="form-control-sm">Non</label>
+                                    <div class="form-group col-md-6">
+                                        <label class="col-form-label-sm" for="id_parcours">Parcours</label>
+                                        <select class="form-control" name="id_parcours" id="id_parcours">
+                                            <option value="0">parcours</option>
+                                        </select>
                                     </div>
                                 </div>
-                            <?php endif; ?>
-                            <?php
-                            if (isset($_GET['id'])) :
-                                if ($res['ufhb'] == 1):
+                            </div>
+                        </div>
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">IDENTITE ETUDIANT</h6>
+                            </div>
+                            <div class="card-body">
+                                <?php
+                                if (isset($_GET['id'])) :
                                     ?>
-                                    <div class="form-row" id="voir_num_carte">
-                                        <div class="form-group col-md-4">
-                                            <label class="col-form-label-sm">Numero Carte etudiant</label>
-                                            <input type="text" class="form-control text-uppercase" name="numero_carte"
-                                                   value="<?php echo @ $res['numero_carte'] ?>">
+                                    <div class="form-row">
+                                        <div class="col-md-4">
+                                            <label class="col-form-label-sm">Etes vous étudiant de l'UFHB</label>
                                         </div>
-                                        <div class="form-group col-md-4">
-                                            <label class="col-form-label-sm">Numero Mers</label>
-                                            <input type="text" class="form-control text-uppercase" name="numero_mers"
-                                                   value="<?php echo @ $res['mesrs'] ?>">
+                                        <div class="col-md-6">
+                                            <input type="radio" id="radio1"
+                                                <?php if ($res['ufhb'] == 1): echo 'checked disabled'; endif;?>>
+                                            <label class="form-control-sm">Oui</label>
+                                            <input type="radio" id="radio2"
+                                                <?php if ($res['ufhb'] == 2): echo 'checked disabled'; endif;?>>
+                                            <label class="form-control-sm">Non</label>
                                         </div>
                                     </div>
                                 <?php
                                 else:
                                     ?>
-                                    <input type="hidden" class="form-control text-uppercase" name="numero_carte" value="<?php echo @ $res['numero_carte'] ?>">
-                                    <input type="hidden" class="form-control text-uppercase" name="numero_mers" value="<?php echo @ $res['mesrs'] ?>">
+                                    <div class="form-row">
+                                        <div class="col-md-4">
+                                            <label class="col-form-label-sm">Etes vous étudiant de l'UFHB</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="radio" name="etudiant_ufhb" id="radio1" onchange="load_page1()" checked value="OUI">
+                                            <label class="form-control-sm">Oui</label>
+                                            <input type="radio" name="etudiant_ufhb" id="radio2" onchange="load_page2()" value="NON">
+                                            <label class="form-control-sm">Non</label>
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
                                 <?php
-                                endif;
-                            else:
-                                ?>
-                                <div class="form-row" id="voir_num_carte">
+                                if (isset($_GET['id'])) :
+                                    if ($res['ufhb'] == 1):
+                                        ?>
+                                        <div class="form-row" id="voir_num_carte">
+                                            <div class="form-group col-md-4">
+                                                <label class="col-form-label-sm">Numero Carte etudiant</label>
+                                                <input type="text" class="form-control text-uppercase" name="numero_carte"
+                                                       value="<?php echo @ $res['numero_carte'] ?>">
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label class="col-form-label-sm">Numero Mers</label>
+                                                <input type="text" class="form-control text-uppercase" name="numero_mers"
+                                                       value="<?php echo @ $res['mesrs'] ?>">
+                                            </div>
+                                        </div>
+                                    <?php
+                                    else:
+                                        ?>
+                                        <input type="hidden" class="form-control text-uppercase" name="numero_carte" value="<?php echo @ $res['numero_carte'] ?>">
+                                        <input type="hidden" class="form-control text-uppercase" name="numero_mers" value="<?php echo @ $res['mesrs'] ?>">
+                                    <?php
+                                    endif;
+                                else:
+                                    ?>
+                                    <div class="form-row" id="voir_num_carte">
+                                        <div class="form-group col-md-4">
+                                            <label class="col-form-label-sm">Numero Carte etudiant</label>
+                                            <input type="text" class="form-control text-uppercase" name="numero_carte">
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label class="col-form-label-sm">Numero Mers</label>
+                                            <input type="text" class="form-control text-uppercase" name="numero_mers">
+                                        </div>
+                                    </div>
+                                <?php endif; ?>
+                                <div class="form-row">
                                     <div class="form-group col-md-4">
-                                        <label class="col-form-label-sm">Numero Carte etudiant</label>
-                                        <input type="text" class="form-control text-uppercase" name="numero_carte">
+                                        <label class="col-form-label-sm">Nom</label>
+                                        <input type="text" class="form-control text-uppercase" id="nom" name="nom"
+                                               value="<?php echo @ $res['nom'] ?>">
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label class="col-form-label-sm">Numero Mers</label>
-                                        <input type="text" class="form-control text-uppercase" name="numero_mers">
+                                        <label class="col-form-label-sm">Prénoms</label>
+                                        <input type="text" class="form-control text-uppercase" id="prenoms" name="prenoms"
+                                               value="<?php echo @ $res['prenoms'] ?>">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label class="col-form-label-sm">Genre</label>
+                                        <select class="form-control text-uppercase" id="id_sexe"  name="id_sexe">
+                                            <?php foreach ($sexes as $sexe): ?>
+                                                <?php if ($res['sexe'] == $sexe['id_sexe']) : ?>
+                                                    <option selected
+                                                            value="<?= $sexe['id_sexe'] ?>"> <?= $sexe['libelle_sexe'] ?></option>
+                                                <?php else: ?>
+                                                    <option value="<?= $sexe['id_sexe'] ?>"> <?= $sexe['libelle_sexe'] ?></option>
+                                                <?php endif; ?>
+                                                ?>
+                                            <?php endforeach; ?>
+                                        </select>
                                     </div>
                                 </div>
-                            <?php endif; ?>
-                            <div class="form-row">
-                                <div class="form-group col-md-4">
-                                    <label class="col-form-label-sm">Nom</label>
-                                    <input type="text" class="form-control text-uppercase" id="nom" name="nom"
-                                           value="<?php echo @ $res['nom'] ?>">
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label class="col-form-label-sm">Prénoms</label>
-                                    <input type="text" class="form-control text-uppercase" id="prenoms" name="prenoms"
-                                           value="<?php echo @ $res['prenoms'] ?>">
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <label class="col-form-label-sm">Genre</label>
-                                    <select class="form-control text-uppercase" id="id_sexe"  name="id_sexe">
-                                        <?php foreach ($sexes as $sexe): ?>
-                                            <?php if ($res['sexe'] == $sexe['id_sexe']) : ?>
-                                                <option selected
-                                                        value="<?= $sexe['id_sexe'] ?>"> <?= $sexe['libelle_sexe'] ?></option>
-                                            <?php else: ?>
-                                                <option value="<?= $sexe['id_sexe'] ?>"> <?= $sexe['libelle_sexe'] ?></option>
-                                            <?php endif; ?>
-                                            ?>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-4">
-                                    <label class="col-form-label-sm">Date de Naissance</label>
-                                    <input type="date" class="form-control text-uppercase" onchange="testage(this.value)" id="datenaiss" name="date_naissance"
-                                           value="<?php echo @ $res['date_naissance'] ?>" max="<?= date('Y-m-d'); ?>">
-                                    <div class="invalid-tooltip" id="Vdatemin" style="display: none">Age minimum 16 ans</div>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label class="col-form-label-sm">Lieu Naissance</label>
-                                    <input type="text" class="form-control text-uppercase" name="lieu_naissance"
-                                           value="<?php echo @ $res['lieu_naissance'] ?>">
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label class="col-form-label-sm ">Nationalité</label>
-                                    <select class="form-control text-uppercase" id="paysnaiss" name="origine">
-                                        <?php foreach ($nationalites as $nationalite): ?>
-                                            <?php if ($res['nationalite'] == $nationalite['id_nationalite']): ?>
-                                                <option selected
-                                                        value="<?= $res['nationalite'] ?>"> <?= $nationalite['libelle_nationalite'] ?></option>
-                                            <?php else: ?>
-                                                <option value="<?= $nationalite['id_nationalite'] ?>"> <?= $nationalite['libelle_nationalite'] ?></option>
-                                            <?php endif; ?>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label class="col-form-label-sm">Date de Naissance</label>
+                                        <input type="date" class="form-control text-uppercase" onchange="testage(this.value)" id="datenaiss" name="date_naissance"
+                                               value="<?php echo @ $res['date_naissance'] ?>" max="<?= date('Y-m-d'); ?>">
+                                        <div class="invalid-tooltip" id="Vdatemin" style="display: none">Age minimum 16 ans</div>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label class="col-form-label-sm">Lieu Naissance</label>
+                                        <input type="text" class="form-control text-uppercase" name="lieu_naissance"
+                                               value="<?php echo @ $res['lieu_naissance'] ?>">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label class="col-form-label-sm ">Nationalité</label>
+                                        <select class="form-control text-uppercase" id="paysnaiss" name="origine">
+                                            <?php foreach ($nationalites as $nationalite): ?>
+                                                <?php if ($res['nationalite'] == $nationalite['id_nationalite']): ?>
+                                                    <option selected
+                                                            value="<?= $res['nationalite'] ?>"> <?= $nationalite['libelle_nationalite'] ?></option>
+                                                <?php else: ?>
+                                                    <option value="<?= $nationalite['id_nationalite'] ?>"> <?= $nationalite['libelle_nationalite'] ?></option>
+                                                <?php endif; ?>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
 
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-4">
-                                    <label class="col-form-label-sm">Email</label>
-                                    <input type="email" class="form-control" id="datenaiss" name="mail"
-                                           value="<?php echo @ $res['email'] ?>">
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <label class="col-form-label-sm">Contact</label>
-                                    <input type="text" class="form-control text-uppercase" name="contat"
-                                           value="<?php echo @ $res['telephone'] ?>">
-                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label class="col-form-label-sm">Email</label>
+                                        <input type="email" class="form-control" id="datenaiss" name="mail"
+                                               value="<?php echo @ $res['email'] ?>">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label class="col-form-label-sm">Contact</label>
+                                        <input type="text" class="form-control text-uppercase" name="contat"
+                                               value="<?php echo @ $res['telephone'] ?>">
+                                    </div>
 
 
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="card show mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">CURSUS UNIVERSITAIRE ANTERIEUR</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="form-row">
-                                <div class="form-group col-md-4">
-                                    <label class="col-form-label-sm">Année académique obtention diplome</label>
-                                    <select class="form-control" name="annee_anterieur" id="annee-anterieur">
-                                        <?php foreach ($anneanterieur as $repanneante): ?>
-                                            <?php
-                                            if ($repanneante['id_annee_academique']==$_SESSION['anneeante'])
-                                            {
-                                                ?>
-                                                <option selected value="<?=$repanneante['id_annee_academique']?>"> <?=$repanneante['libelle_annee_academique']?></option>
+                        <div class="card show mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">CURSUS UNIVERSITAIRE ANTERIEUR</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label class="col-form-label-sm">Année académique obtention diplome</label>
+                                        <select class="form-control" name="annee_anterieur" id="annee-anterieur">
+                                            <?php foreach ($anneanterieur as $repanneante): ?>
                                                 <?php
+                                                if ($repanneante['id_annee_academique']==$_SESSION['anneeante'])
+                                                {
+                                                    ?>
+                                                    <option selected value="<?=$repanneante['id_annee_academique']?>"> <?=$repanneante['libelle_annee_academique']?></option>
+                                                    <?php
 
-                                            }
-                                            else
-                                            {
+                                                }
+                                                else
+                                                {
 
+                                                    ?>
+                                                    <option  value="<?=$repanneante['id_annee_academique']?>"> <?=$repanneante['libelle_annee_academique']?></option>
+
+                                                    <?php
+                                                }
                                                 ?>
-                                                <option  value="<?=$repanneante['id_annee_academique']?>"> <?=$repanneante['libelle_annee_academique']?></option>
-
-                                                <?php
-                                            }
-                                            ?>
 
 
-                                        <?php endforeach; ?>
-                                    </select>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label class="col-form-label-sm" for="exampleFormControlSelect1">Etablissement origine</label>
+                                        <input type="text" class="form-control text-uppercase" value="<?=@$resdip['etablissement']?>" name="eta_anterieur">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label class="col-form-label-sm" for="exampleFormControlSelect1">Pays obtention diplome</label>
+                                        <select class="form-control text-uppercase" name="pays_anterieur">
+                                            <?php foreach ($pays as $payt): ?>
+                                                <?php if ($resdip['id_pays_obtention'] == $payt['id_pays']) : ?>
+                                                    <option selected
+                                                            value="<?= $payt['id_pays'] ?>"> <?= $payt['lib_pays'] ?></option>
+                                                <?php else: ?>
+                                                    <option value="<?= $payt['id_pays'] ?>"> <?= $payt['lib_pays'] ?></option>
+                                                <?php endif; ?>
+                                                ?>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <label class="col-form-label-sm" for="exampleFormControlSelect1">Etablissement origine</label>
-                                    <input type="text" class="form-control text-uppercase" value="<?=@$resdip['etablissement']?>" name="eta_anterieur">
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label class="col-form-label-sm" for="exampleFormControlSelect1">Pays obtention diplome</label>
-                                    <select class="form-control text-uppercase" name="pays_anterieur">
-                                        <?php foreach ($pays as $payt): ?>
-                                            <?php if ($resdip['id_pays_obtention'] == $payt['id_pays']) : ?>
-                                                <option selected
-                                                        value="<?= $payt['id_pays'] ?>"> <?= $payt['lib_pays'] ?></option>
-                                            <?php else: ?>
-                                                <option value="<?= $payt['id_pays'] ?>"> <?= $payt['lib_pays'] ?></option>
-                                            <?php endif; ?>
-                                            ?>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4" id="diplome1">
+                                        <label class="col-form-label-sm" for="exampleFormControlSelect1">Diplome obtenue</label>
+                                        <select class="form-control text-uppercase" id="diplome1"  name="diplome1">
+                                            <?php $diplome = ListeDiplome()?>
+                                            <?php foreach ($diplome as $dip): ?>
+                                                <?php if ($resdip['id_diplomes'] == $dip['id_diplomes']) : ?>
+                                                    <option selected
+                                                            value="<?= $dip['id_diplomes'] ?>"> <?= $dip['libelle_diplomes'] ?></option>
+                                                <?php else: ?>
+                                                    <option value="<?= $dip['id_diplomes'] ?>"> <?= $dip['libelle_diplomes'] ?></option>
+                                                <?php endif; ?>
+                                                ?>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4" id="diplome2">
+                                        <label class="col-form-label-sm" for="exampleFormControlSelect1">Saisir diplome obtenue</label>
+                                        <input type="text" class="form-control text-uppercase" name="diplome2">
+                                    </div>
+                                    <button class="btn btn-sm btn-info mr-5" type="button" onclick="autre()" data-dismiss="modal" style="height: 47px;margin-top: 2rem;">
+                                        Autres
+                                    </button>
 
+
+                                </div>
                             </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-4" id="diplome1">
-                                    <label class="col-form-label-sm" for="exampleFormControlSelect1">Diplome obtenue</label>
-                                    <select class="form-control text-uppercase" id="diplome1"  name="diplome1">
-                                        <?php $diplome = ListeDiplome()?>
-                                        <?php foreach ($diplome as $dip): ?>
-                                            <?php if ($resdip['id_diplomes'] == $dip['id_diplomes']) : ?>
-                                                <option selected
-                                                        value="<?= $dip['id_diplomes'] ?>"> <?= $dip['libelle_diplomes'] ?></option>
-                                            <?php else: ?>
-                                                <option value="<?= $dip['id_diplomes'] ?>"> <?= $dip['libelle_diplomes'] ?></option>
-                                            <?php endif; ?>
-                                            ?>
-                                        <?php endforeach; ?>
-                                    </select>
-                                </div>
-                                <div class="form-group col-md-4" id="diplome2">
-                                    <label class="col-form-label-sm" for="exampleFormControlSelect1">Saisir diplome obtenue</label>
-                                    <input type="text" class="form-control text-uppercase" name="diplome2">
-                                </div>
-                                <button class="btn btn-sm btn-info mr-5" type="button" onclick="autre()" data-dismiss="modal" style="height: 47px;margin-top: 2rem;">
-                                    Autres
-                                </button>
 
 
-                            </div>
                         </div>
+
+                        <?php
+                        include "crud_etudiant/modal_insert.php";
+                        ?>
+
+                        <?php
+                        include "crud_etudiant/modal_modifier.php";
+                        ?>
                     </div>
-                    <div class="modal fade" id="saveClasseModal" tabindex="-1" role="dialog"
-                         aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Voulez-vous vraiment
-                                        enregistrer ces informations ?</h5>
-                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">×</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">Cliquez sur le bouton "Enregistrer" ci-dessous si vous
-                                    voulez valider ces informations.
-                                </div>
-                                <div class="modal-footer">
-                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">
-                                        Annuler
-                                    </button>
-                                    <!--<a class="btn btn-primary" href="index.php?page=aj_etab&amp;act=save">Enregistrer</a>-->
-                                    <button type="submit" class="btn btn-primary" name="enregistrer"
-                                            data-toggle="modal" data-target="#saveClasseModal"><i
-                                                class="fas fa-plus-square fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        Enregister
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal fade" id="updateClasseModal" tabindex="-1" role="dialog"
-                         aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Voulez-vous vraiment modifier
-                                        ces informations ?</h5>
-                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">×</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">Cliquez sur le bouton "Modifier" ci-dessous si vous
-                                    voulez valider ces informations.
-                                </div>
-                                <div class="modal-footer">
-                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">
-                                        Annuler
-                                    </button>
-                                    <!--<a class="btn btn-primary" href="index.php?page=aj_etab&amp;act=save">Enregistrer</a>-->
-                                    <button type="submit" class="btn btn-primary" name="modifier"
-                                            data-toggle="modal" data-target="#saveClasseModal"><i
-                                                class="fas fa-edit fa-sm fa-fw mr-2 text-gray-400"></i> Modifier
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                 </form>
 
-                <br>
                 <div align="right">
                     <?php if (!isset($_GET['id'])): ?>
                         <button class="btn btn-lg btn-primary" data-toggle="modal"
@@ -546,32 +503,7 @@ $pays = ListePays();
                         <div><a class="btn btn-danger" href="#" data-toggle="modal" data-target="#DeleteEvaluationModal"
                                 style="margin: 20px;"><i class="fas fa-trash fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Supprimer la sélection</a></div>
-
-                        <div class="modal fade" id="DeleteEvaluationModal" tabindex="-1" role="dialog"
-                             aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Voulez-vous vraiment supprimer la
-                                            sélection ?</h5>
-                                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">×</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">Cliquez sur le bouton "Supprimer" ci-dessous si vous voulez
-                                        supprimer les éléments sélectionnés.
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler
-                                        </button>
-                                        <!--<a class="btn btn-primary" href="index.php?page=aj_etab&amp;act=save">Enregistrer</a>-->
-                                        <button type="submit" class="btn btn-danger" name="supprimer"><i
-                                                    class="fas fa-trash fa-sm fa-fw mr-2 text-gray-400"></i> Supprimer
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <?php include "crud_etudiant/modal_supp.php"; ?>
                     </div>
 
             </div>
@@ -610,40 +542,7 @@ $pays = ListePays();
 <!-- Page level custom scripts -->
 <script src="js/datatable_etd.js"></script>
 <script src="js/ajax.js"></script>
-<script>
-    $('#diplome2').hide();
-    function load_page1()
-    {
-        $('#voir_num_carte').show();
-
-    }
-    function load_page2()
-    {
-        $('#voir_num_carte').hide();
-
-    }
-    function destroy(){
-        $('#destroy').load('destroy.php')
-    }
-
-    function autre(){
-        $('#diplome1').toggle();
-        $('#diplome2').toggle();
-    }
-
-    function testage(value) {
-        dob = new Date(value);
-        var today = new Date();
-        var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
-        if (age<16){
-            $('#Vdatemin').show();
-        }else {
-            $('#Vdatemin').hide();
-        }
-    }
-
-
-</script>
+<script src="js/etudiant_js.js"></script>
 
 </body>
 
