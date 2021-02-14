@@ -1,11 +1,17 @@
 $(document).ready(function () {
     var age = 0;
+    var p_temps1 = 0;
+    var p_moyenne_annuelle = 0;
+    var p_nombre_mention = 0;
+    var p_age = 0;
+    var total = 0;
 
     $('#empModal').on('show.bs.modal', function () {
         determinerAge();
         determinerPointTemps();
         determinerPointMoyenne();
         determinerPointMention();
+        total_point_critere();
     });
 
     /* afficher l'âge de l'étudiant */
@@ -15,17 +21,17 @@ $(document).ready(function () {
 
     function determinerAge() {
         var Bday = +new Date($("#inputDateNaissance").val());
-        var age = parseInt(~~((Date.now() - Bday) / (31557600000)));
-        $("#inputAge").val(age);
-
+        age = parseInt(~~((Date.now() - Bday) / (31557600000))) || 0;
         /* afficher le point de l'âge à côté du champ age*/
+        $("#inputAge").val(age);
         if (age >= 20 && age < 24) {
-            $("#age-point").text(4 + " points");
+            p_age = 4;
         } else if (age >= 24 && age < 26) {
-            $("#age-point").text(2 + " points");
+            p_age = 2;
         } else if (age >= 26) {
-            $("#age-point").text(0 + " point(s)");
+            p_age = 0;
         }
+        $("#age-point").text(p_age + " points");
     }
 
     /* temps passé en licence */
@@ -35,14 +41,14 @@ $(document).ready(function () {
             && e.keyCode !== 8
         ) {
             e.preventDefault();
-            $(this).val(6);
+            $(this).val(0);
         }
         determinerPointTemps();
     });
 
     function determinerPointTemps() {
         var critere_temps1 = parseInt($("#inputTemps1").val()) || 0;
-        var p_temps1 = 0;
+        p_temps1 = 0;
         /* afficher le point de l'âge à côté du champ age*/
         if (critere_temps1 === 3) {
             p_temps1 = 4;
@@ -58,7 +64,7 @@ $(document).ready(function () {
 
     function determinerPointMoyenne() {
         var critere_moyenne_annuelle = parseFloat($("#inputMA").val()) || 0;
-        var p_moyenne_annuelle = 0;
+        p_moyenne_annuelle = 0;
         if (critere_moyenne_annuelle >= 18 && critere_moyenne_annuelle < 20) {
             p_moyenne_annuelle = 8;
         } else if (critere_moyenne_annuelle >= 16 && critere_moyenne_annuelle < 18) {
@@ -82,21 +88,15 @@ $(document).ready(function () {
 
     function determinerPointMention() {
         var critere_nombre_mention = parseFloat($("#total_l4_c5").val()) || 0;
-        var p_nombre_mention = 0;
-        /* afficher le point de l'âge à côté du champ age*/
-        if (critere_nombre_mention >= 42) {
-            p_nombre_mention = 10;
-        } else if (critere_nombre_mention >= 32 && critere_nombre_mention < 42) {
-            p_nombre_mention = 8;
-        } else if (critere_nombre_mention >= 22 && critere_nombre_mention < 32) {
-            p_nombre_mention = 5;
-        } else if (critere_nombre_mention >= 12 && critere_nombre_mention < 22) {
-            p_nombre_mention = 4;
-        } else if (critere_nombre_mention >= 10 && critere_nombre_mention < 12) {
-            p_nombre_mention = 2;
-        } else if (critere_nombre_mention < 10) {
-            p_nombre_mention = 1;
-        }
-        $("#mention-point").text(p_nombre_mention + " point(s)");
+        p_nombre_mention = parseInt(critere_nombre_mention) || 0;
+    }
+
+    $(document).on("change keyup click blur mouseup", "#empModal input", function () {
+        total_point_critere();
+    });
+
+    function total_point_critere() {
+        total = p_moyenne_annuelle + p_nombre_mention + p_temps1 + p_age
+        $("#point_critere").val(total);
     }
 });

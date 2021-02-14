@@ -36,6 +36,7 @@ if (isset($_POST) && !empty($_POST)):
 
     if (isset($_POST['moypond_l4'])) {
         $critere_nombre_mention = (float)$_POST['moypond_l4'];
+        $p_nombre_mention = (int)$critere_nombre_mention;
     }
 
     /* critère age */
@@ -73,20 +74,6 @@ if (isset($_POST) && !empty($_POST)):
         $p_moyenne_annuelle = 0;
     }
 
-    /*  critère nbr mention */
-    if ($critere_nombre_mention >= 42) {
-        $p_nombre_mention = 10;
-    } elseif ($critere_nombre_mention >= 32 && $critere_nombre_mention < 42) {
-        $p_nombre_mention = 8;
-    } elseif ($critere_nombre_mention >= 22 && $critere_nombre_mention < 32) {
-        $p_nombre_mention = 5;
-    } elseif ($critere_nombre_mention >= 12 && $critere_nombre_mention < 22) {
-        $p_nombre_mention = 4;
-    } elseif ($critere_nombre_mention >= 10 && $critere_nombre_mention < 12) {
-        $p_nombre_mention = 2;
-    } elseif ($critere_nombre_mention < 10) {
-        $p_nombre_mention = 1;
-    }
 
     /* Total */
     $total = $p_nombre_mention + $p_moyenne_annuelle + $p_temps1 + $p_age;
