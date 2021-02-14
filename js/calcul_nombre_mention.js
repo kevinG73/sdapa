@@ -15,7 +15,7 @@ function updateTotals() {
                     if (!$(this).closest('tr').is(':last-child')) {
                         if ($('input', this).val() > 14
                         ) {
-                            total += $('input', this).val(14) * 1;
+                            total += $('input', this).val(0) * 1;
                         } else {
                             total += $('input', this).val() * 1;
                         }
