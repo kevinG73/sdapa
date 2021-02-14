@@ -9,8 +9,12 @@ require "config/connexion.php";
 include "fonctions/index.php";
 include 'inscription.class.php';
 
+if ($_SESSION['id_type_utilisateur '] == 1){
+    $etablissements = ListeEtablissements();
+}else{
+    $etablissements = ListeEtablissementsSession($_SESSION['id_etablissement']);
+}
 $etudiants = ListeEtudiants();
-$etablissements = ListeEtablissements();
 $anne = ListeAnnee();
 $anneanterieur = ListeAnneeAnter();
 $pays = ListePays();
@@ -435,7 +439,12 @@ $pays = ListePays();
                 </div>
 
                 <?php
-                $gu = $bdd->query("SELECT * FROM etudiant_sdapa") or die(print_r($bdd->errorInfo()));
+                if ($_SESSION['id_type_utilisateur '] == 1){
+                    $gu = $bdd->query("select * from etudiant_sdapa,inscription_sdapa group by inscription_sdapa.id") or die(print_r($bdd->errorInfo()));
+                }else{
+                    $gu = $bdd->query("select * from etudiant_sdapa,inscription_sdapa where inscription_sdapa.id_etablissement = '".$_SESSION['id_etablissement']."' and inscription_sdapa.id_departement = '".$_SESSION['id_departement']."' group by inscription_sdapa.id") or die(print_r($bdd->errorInfo()));
+                }
+
                 ?>
 
                 <br>

@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Feb 14, 2021 at 11:42 AM
--- Server version: 5.7.24
--- PHP Version: 7.3.2
+-- Hôte : localhost:3306
+-- Généré le : Dim 14 fév. 2021 à 14:15
+-- Version du serveur :  5.7.24
+-- Version de PHP : 7.2.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `sdapa`
+-- Base de données : `sdapa`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `administrateur`
+-- Structure de la table `administrateur`
 --
 
 CREATE TABLE `administrateur` (
@@ -36,7 +35,7 @@ CREATE TABLE `administrateur` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `administrateur`
+-- Déchargement des données de la table `administrateur`
 --
 
 INSERT INTO `administrateur` (`id`, `email`, `motdepasse`, `activer`) VALUES
@@ -45,7 +44,7 @@ INSERT INTO `administrateur` (`id`, `email`, `motdepasse`, `activer`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `annee_academique`
+-- Structure de la table `annee_academique`
 --
 
 CREATE TABLE `annee_academique` (
@@ -59,7 +58,7 @@ CREATE TABLE `annee_academique` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `annee_academique`
+-- Déchargement des données de la table `annee_academique`
 --
 
 INSERT INTO `annee_academique` (`id_annee_academique`, `libelle_annee_academique`, `annee_ouverture`, `annee_cloture`, `date_ouverture`, `date_fermeture`, `ouverture`) VALUES
@@ -71,7 +70,7 @@ INSERT INTO `annee_academique` (`id_annee_academique`, `libelle_annee_academique
 -- --------------------------------------------------------
 
 --
--- Table structure for table `composer_maquette`
+-- Structure de la table `composer_maquette`
 --
 
 CREATE TABLE `composer_maquette` (
@@ -86,7 +85,7 @@ CREATE TABLE `composer_maquette` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `composer_maquette`
+-- Déchargement des données de la table `composer_maquette`
 --
 
 INSERT INTO `composer_maquette` (`id_composer_maquette`, `id_specialite`, `id_ue`, `id_ecue`, `ue_obligatoire`, `id_semestre`, `ecue_obligatoire`, `id_annee_academique`) VALUES
@@ -28410,7 +28409,7 @@ INSERT INTO `composer_maquette` (`id_composer_maquette`, `id_specialite`, `id_ue
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cursus`
+-- Structure de la table `cursus`
 --
 
 CREATE TABLE `cursus` (
@@ -28423,16 +28422,18 @@ CREATE TABLE `cursus` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `cursus`
+-- Déchargement des données de la table `cursus`
 --
 
 INSERT INTO `cursus` (`id_cursus`, `id_etudiant`, `id_diplomes`, `etablissement`, `id_anne_ante`, `id_pays_obtention`) VALUES
-(3, 'SADP60284066a95d7', 1, 'IRIS', 1, 1);
+(3, 'SADP60284066a95d7', 1, 'IRIS', 1, 1),
+(4, 'SADP60292506d47d3', 1, 'IRIS', 1, 1),
+(5, 'SADP6029252d8fb64', 1, 'IRIS', 1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `departement`
+-- Structure de la table `departement`
 --
 
 CREATE TABLE `departement` (
@@ -28447,7 +28448,7 @@ CREATE TABLE `departement` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `departement`
+-- Déchargement des données de la table `departement`
 --
 
 INSERT INTO `departement` (`id_departement`, `nom_departement`, `code_departement`, `id_etablissement`, `affichage`, `unite_formation`, `salle_de_formation`, `code_origine_departement`) VALUES
@@ -28509,7 +28510,7 @@ INSERT INTO `departement` (`id_departement`, `nom_departement`, `code_departemen
 -- --------------------------------------------------------
 
 --
--- Table structure for table `diplomes`
+-- Structure de la table `diplomes`
 --
 
 CREATE TABLE `diplomes` (
@@ -28519,7 +28520,7 @@ CREATE TABLE `diplomes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `diplomes`
+-- Déchargement des données de la table `diplomes`
 --
 
 INSERT INTO `diplomes` (`id_diplomes`, `code_diplomes`, `libelle_diplomes`) VALUES
@@ -28536,7 +28537,7 @@ INSERT INTO `diplomes` (`id_diplomes`, `code_diplomes`, `libelle_diplomes`) VALU
 -- --------------------------------------------------------
 
 --
--- Table structure for table `etablissement`
+-- Structure de la table `etablissement`
 --
 
 CREATE TABLE `etablissement` (
@@ -28553,7 +28554,7 @@ CREATE TABLE `etablissement` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `etablissement`
+-- Déchargement des données de la table `etablissement`
 --
 
 INSERT INTO `etablissement` (`id_etablissement`, `nom_etablissement`, `code_etablissement`, `logo_etablissement`, `domaine_etablissement`, `afficher`, `id_type_etablissement`, `salle_de_cours`, `id_groupe_ecole_doc`, `code_origine_etablissement`) VALUES
@@ -28612,7 +28613,7 @@ INSERT INTO `etablissement` (`id_etablissement`, `nom_etablissement`, `code_etab
 -- --------------------------------------------------------
 
 --
--- Table structure for table `etudiant_sdapa`
+-- Structure de la table `etudiant_sdapa`
 --
 
 CREATE TABLE `etudiant_sdapa` (
@@ -28631,16 +28632,17 @@ CREATE TABLE `etudiant_sdapa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `etudiant_sdapa`
+-- Déchargement des données de la table `etudiant_sdapa`
 --
 
 INSERT INTO `etudiant_sdapa` (`id`, `numero_carte`, `mesrs`, `nom`, `prenoms`, `date_naissance`, `lieu_naissance`, `sexe`, `nationalite`, `email`, `telephone`, `ufhb`) VALUES
-('SADP60284066a95d7', 'CIOJ34867', 'DFG4', 'AKA', 'CHRISTIAN DE', '1996-04-22', 'ABIDAJN', '1', '1', 'chris@gmail.com', '0143148561', 1);
+('SADP60284066a95d7', 'CIOJ34867', 'DFG4', 'AKA', 'CHRISTIAN DE', '1996-04-22', 'ABIDAJN', '1', '1', 'chris@gmail.com', '0143148561', 1),
+('SADP6029252d8fb64', '', '', 'AKA', 'CEDRIC', '1996-04-22', 'Abidjan, Côte d\'Ivoire', '1', '1', 'chris@gmail.com', '0143148561', 2);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `inscription_sdapa`
+-- Structure de la table `inscription_sdapa`
 --
 
 CREATE TABLE `inscription_sdapa` (
@@ -28662,16 +28664,17 @@ CREATE TABLE `inscription_sdapa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `inscription_sdapa`
+-- Déchargement des données de la table `inscription_sdapa`
 --
 
 INSERT INTO `inscription_sdapa` (`id`, `annee`, `id_etudiant`, `temps_mis_en_Licence`, `moy_ann_l1`, `moy_ann_l2`, `moy_ann_l3`, `moy_pondere`, `total_point_critere`, `total_mention`, `niveau_etude`, `id_parcours`, `id_departement`, `id_etablissement`, `demande_accepte`) VALUES
-(3, '4', 'SADP60284066a95d7', '4', '10.65', '16.25', '12.35', '13.08', '9', '6', '3', '1', '24', '13', 0);
+(3, '4', 'SADP60284066a95d7', '4', '10.65', '16.25', '12.35', '13.08', '9', '6', '3', '1', '24', '13', 0),
+(4, '4', 'SADP6029252d8fb64', '0', '0', '0', '0', '0', '0', '0', '3', '2', '24', '13', 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mention`
+-- Structure de la table `mention`
 --
 
 CREATE TABLE `mention` (
@@ -28684,7 +28687,7 @@ CREATE TABLE `mention` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `mention`
+-- Déchargement des données de la table `mention`
 --
 
 INSERT INTO `mention` (`id_mention`, `libelle_mention`, `code_mention`, `id_etablissement`, `id_departement`, `id_domaine`) VALUES
@@ -28743,7 +28746,7 @@ INSERT INTO `mention` (`id_mention`, `libelle_mention`, `code_mention`, `id_etab
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nationalite`
+-- Structure de la table `nationalite`
 --
 
 CREATE TABLE `nationalite` (
@@ -28753,7 +28756,7 @@ CREATE TABLE `nationalite` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `nationalite`
+-- Déchargement des données de la table `nationalite`
 --
 
 INSERT INTO `nationalite` (`id_nationalite`, `libelle_nationalite`, `pays_nationalite`) VALUES
@@ -28955,7 +28958,7 @@ INSERT INTO `nationalite` (`id_nationalite`, `libelle_nationalite`, `pays_nation
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pays`
+-- Structure de la table `pays`
 --
 
 CREATE TABLE `pays` (
@@ -28969,7 +28972,7 @@ CREATE TABLE `pays` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `pays`
+-- Déchargement des données de la table `pays`
 --
 
 INSERT INTO `pays` (`id_pays`, `lib_pays`, `indicatif`, `alpha_2`, `alpha_3`, `id_fictif`, `id_goupe_eco`) VALUES
@@ -29219,7 +29222,7 @@ INSERT INTO `pays` (`id_pays`, `lib_pays`, `indicatif`, `alpha_2`, `alpha_3`, `i
 -- --------------------------------------------------------
 
 --
--- Table structure for table `semestre`
+-- Structure de la table `semestre`
 --
 
 CREATE TABLE `semestre` (
@@ -29229,7 +29232,7 @@ CREATE TABLE `semestre` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `semestre`
+-- Déchargement des données de la table `semestre`
 --
 
 INSERT INTO `semestre` (`id_semestre`, `libelle_semestre`, `id_niveau`) VALUES
@@ -29253,7 +29256,7 @@ INSERT INTO `semestre` (`id_semestre`, `libelle_semestre`, `id_niveau`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sexe`
+-- Structure de la table `sexe`
 --
 
 CREATE TABLE `sexe` (
@@ -29263,7 +29266,7 @@ CREATE TABLE `sexe` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `sexe`
+-- Déchargement des données de la table `sexe`
 --
 
 INSERT INTO `sexe` (`id_sexe`, `libelle_sexe`, `libelle_sexe_court`) VALUES
@@ -29273,7 +29276,7 @@ INSERT INTO `sexe` (`id_sexe`, `libelle_sexe`, `libelle_sexe_court`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `specialite`
+-- Structure de la table `specialite`
 --
 
 CREATE TABLE `specialite` (
@@ -29289,7 +29292,7 @@ CREATE TABLE `specialite` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `specialite`
+-- Déchargement des données de la table `specialite`
 --
 
 INSERT INTO `specialite` (`id_specialite`, `libelle_specialite`, `code_specialite`, `id_mention`, `id_departement`, `id_tronc_commun`, `date_creation_specialite`, `id_statut_specialite`, `code_origine_specialite`) VALUES
@@ -29578,7 +29581,7 @@ INSERT INTO `specialite` (`id_specialite`, `libelle_specialite`, `code_specialit
 -- --------------------------------------------------------
 
 --
--- Table structure for table `total_mentions`
+-- Structure de la table `total_mentions`
 --
 
 CREATE TABLE `total_mentions` (
@@ -29593,18 +29596,21 @@ CREATE TABLE `total_mentions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `total_mentions`
+-- Déchargement des données de la table `total_mentions`
 --
 
 INSERT INTO `total_mentions` (`id`, `id_niveau`, `id_etudiant`, `ab`, `mb`, `tb`, `total_mention`, `moy_pondere`) VALUES
 (13, '1', 'SADP60284066a95d7', '14', '0', '0', '14', '2'),
 (14, '2', 'SADP60284066a95d7', '14', '0', '0', '14', '2'),
-(15, '3', 'SADP60284066a95d7', '14', '0', '0', '14', '2');
+(15, '3', 'SADP60284066a95d7', '14', '0', '0', '14', '2'),
+(16, '1', 'SADP6029252d8fb64', '0', '0', '0', '0', '0'),
+(17, '2', 'SADP6029252d8fb64', '0', '0', '0', '0', '0'),
+(18, '3', 'SADP6029252d8fb64', '0', '0', '0', '0', '0');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `utilisateur`
+-- Structure de la table `utilisateur`
 --
 
 CREATE TABLE `utilisateur` (
@@ -29631,30 +29637,1925 @@ CREATE TABLE `utilisateur` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `utilisateur`
+-- Déchargement des données de la table `utilisateur`
 --
 
 INSERT INTO `utilisateur` (`id_utilisateur`, `matricule_utilisateur`, `nom_utilisateur`, `prenom_utilisateur`, `tel_utilisateur`, `adresse_utilisateur`, `email_utilisateur`, `login_utilisateur`, `mot_passe_utilisateur`, `id_type_utilisateur`, `id_etablissement`, `id_departement`, `id_groupe_utilisateur`, `id_qualite_utilisateur`, `parametres_envoye`, `date_envoie`, `heure_envoie`, `connexion_reussie`, `date_derniere_connexion`, `heure_derniere_connexion`) VALUES
-(1, '4545456456', 'guelade', 'kevin', '0708863719', 'koumassi', 'kevinguelade@gmail.com', 'kevin73', '123456', NULL, 13, 24, NULL, NULL, '', '2021-02-14', '00:00:00', '', '2021-02-14', '00:00:00');
+(1, '', 'KOTEI-NIKOI', 'Samuel', '', '', 'nikkosa@yahoo.fr', 'nikkosa', 'pass3721', 1, NULL, NULL, NULL, NULL, 'OUI', '2019-05-27', '17:54:34', 'OUI', '2020-09-09', '11:58:20'),
+(2, '233 324 X', 'MAMADOU ', 'DIARRA', '58 88 95 88', '06 BP 6926 ABIDJAN 06', 'patoudiarra@hotmail.com', 'diarramamadou', 'rouille', 4, 13, 24, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-17', '05:54:38'),
+(4, '252 975 F', 'KOUA ', 'BROU JEAN CLAUDE', '03 28 52 41', '09 BP 2367 ABIDJAN 09', 'k_brou@hotmail.com', 'koua', 'KB08jc19!', 5, 13, 24, 17, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-09-05', '19:30:25'),
+(6, '227 928 X', 'AFFIAN', 'KOUADIO', '41 41 40 40', '', 'k_affian@yahoo.fr', 'affian', 'xov82500', 2, 12, 36, 5, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-30', '14:24:31'),
+(12, '163 737 X', 'ABALO ', 'KOFFI ENYONAM', '07 73 08 86', '', 'demavi14@gmail.com', 'abalokoffi', 'Bouddha14', 4, 13, 24, 27, 2, 'OUI', '2019-06-18', '12:30:25', 'OUI', '2020-01-21', '14:13:39'),
+(13, '131 438 L', 'ADJE', 'ASSOHOUN ', '', '', 'Adje_assohoun@hotmail.com', 'adjeassohoun', 'Egli19534', 3, 13, 24, 14, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-02-11', '19:34:06'),
+(17, '253 567 F', 'KAMARA', 'ALIMA', ' 08 35 18 50', ' ', 'Kamaradpse@gmail.com', 'Kamaradpse', 'Kamalim', 4, 13, 24, 23, 2, 'OUI', '2020-06-23', '20:45:16', 'OUI', '2020-06-28', '23:37:40'),
+(18, '110 776 D', 'KARAMOKO', 'ABOU BOIQUAIH ', ' ', ' ', '', 'karamokoabou', 'pass', 2, 4, 20, 4, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-05-25', '08:54:32'),
+(19, '165 089 U', 'SANGARE', ' ABDOULAYE', ' ', ' ', 'sang_abdoulaye@yahoo.fr', 'sangareabdoulaye', '086cc0e4', 2, 6, 78, 6, 1, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(20, '117 951 Q', 'ATTA ', 'KOFFI LAZARE', '07 07 61 28', '', 'pr_attakoffi@yahoo.fr', 'attakoffi', '5beee47b', 2, 4, 28, 7, 1, 'OUI', '2019-12-23', '14:32:03', '', '0000-00-00', '00:00:00'),
+(21, '327 129 S', 'FOFANA ', 'ALHASSANE', ' 02 94 10 97', ' ', 'fofhassane@hotmail.com', 'fofanaalhassane', '12Fofy12', 2, 3, 48, 8, 1, 'OUI', '2019-11-25', '17:29:44', 'OUI', '2020-08-05', '15:13:21'),
+(22, '234 731 Y', 'KONANDRI ', 'AFFOUE VIRGINIE', '05 95 34 87', '', 'affouekv@yahoo.fr', 'konandriaffoue', 'tcH@mw1971', 2, 11, 16, 10, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-06', '19:20:10'),
+(23, '', 'Mamadou', 'DIOMANDE Ahmed', '', '', '', 'mamadoudiomande', 'pass', 2, 17, 57, 3, 3, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(24, '281 081 R', 'HAUHOUOT', 'ASSEYPO CELESTIN PAUL', ' 07 84 73 96', ' ', 'c_hauhouot@yahoo.fr', 'c_hauhouot', 'e02f2bee', 2, 4, 86, 9, 1, 'OUI', '2019-12-23', '15:12:19', 'OUI', '2020-08-17', '10:04:34'),
+(25, '253 219 J', 'N\'GUESSAN ', 'KOFFI SYLVAIN', ' ', ' ', 'koffi.nguessyl@univ-fhb.edu.ci', 'nguessankoffi', 'csee-ufhb.syge0202#', 2, 8, 47, 11, 1, 'OUI', '2020-02-07', '19:15:35', 'OUI', '2020-09-09', '11:13:44'),
+(26, '278 645 W', 'KOUAMELAN ', 'ESSETCHI PAUL', ' ', ' ', 'kessetch2012@gmail.com', 'kouamenanessetchi', 'muriel94', 3, 5, 42, 14, 1, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-07-21', '14:30:14'),
+(27, '290 496 T', 'YEBOUET ', 'BOAH GOFY PASCAL D\'HENRY LE GRAND', '', '', 'henry_yebouet@yahoo.fr', 'yebouetboah', '2c21a819', 3, 9, 46, 14, 1, 'OUI', '2020-03-31', '11:03:14', 'OUI', '2020-04-17', '18:55:14'),
+(28, '257 576 C', 'BAHI', 'AGHI TAPE AUGUSTE NESTOR', '', '', 'aghi.bahi@gmail.com', 'bahiaghi', 'fevrier1962', 3, 10, 89, 14, 1, 'OUI', '2020-01-13', '12:42:07', 'OUI', '2020-06-11', '09:20:33'),
+(29, '245 563 B', 'COULIBALY ', 'ADAMA', '42 12 81 81', '', 'adamaqul@yahoo.fr', 'adamaqul', 'nourah00', 3, 11, 16, 14, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-19', '07:43:40'),
+(30, '239 892 Y', 'KOFFI', 'NÃƒâ€°E GNAGNE AGNERO NOME DELPHINE YOLANDE', ' ', ' ', 'gkyolande@gmail.com', 'koffignagne', '23b1b674', 3, 8, 47, 14, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2019-08-22', '14:47:38'),
+(31, '340 008 W', 'BALLO ', 'ZIE', '', '', 'zieballo@hotmail.com', 'zieballo', 'tiohzie05081968', 3, 2, 49, 14, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-03-19', '16:46:01'),
+(32, '138 737 W', 'BAHA BI ', ' YOUZAN', '', '', 'dbahabi@yahoo.fr', 'bahabi', '7032e944', 3, 4, 30, 14, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-05-25', '08:49:29'),
+(33, '120 757 C', 'KASSIA BI', 'OULA JOACHIM', ' 06 65 91 91', ' ', 'kassia_o@yahoo.fr', 'kassiabi', '3e48161b', 3, 1, 82, 14, 1, 'OUI', '2019-08-02', '08:20:21', 'OUI', '2019-12-26', '15:07:52'),
+(34, '116 081 B', 'NANDJUI ', 'NANSE BEATRICE', ' ', ' ', 'bmnandjui@hotmail.com', 'nandjuinanse', 'fed11b24', 3, 6, 78, 14, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-05-25', '08:52:34'),
+(35, '149 551 F', 'KONE ', 'NÃƒâ€°E BAMBA DIENEBA', ' ', ' ', 'konebamba@hotmail.com', 'konebamba', '9940d9d3', 3, 7, 51, 14, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2019-07-23', '11:31:08'),
+(36, '279 505 L', 'ADJOU', 'ANE', '', '', 'adjouane@hotmail.com', 'adjouane', '223535ef', 3, 3, 48, 14, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-01-13', '15:09:03'),
+(37, '239 363 L', 'SORO', 'NAGNIN', '08 88 27 67', '', 'soro_nagnin@yahoo.fr', 'soronagnin', '19s6sn89', 3, 12, 35, 14, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-14', '09:58:10'),
+(38, '309 104 R', 'KOUADJO', 'KOFFI HILAIRE', ' ', ' ', 'kk.hilaire@yahoo.com', 'kouadjokoffi', 'fa013a80', 3, 14, 58, 30, 1, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(39, '280 072 A', 'DIARRA', 'IBRAHIM', '05 62 97 31', '', 'diarraib@gmail.com', 'diarraibrahim', 'bc2c39ca', 3, 15, 44, 30, 1, 'OUI', '2019-08-04', '22:37:52', 'OUI', '2020-03-31', '18:49:10'),
+(40, '203 291 A', 'DESQUITH ', 'ETIENNE', '', '', 'desquith@hotmail.com', 'desquithetienne', 'c6fa3936', 3, 16, 45, 30, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-05-03', '09:17:12'),
+(41, '228 990 B', 'CISSE', 'OUALHASSANE IDRISSA', '05 06 49 90', '', 'idriwa@yahoo.fr', 'cisseoualhassane', '6da416db', 2, 11, 16, 31, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2019-07-26', '09:11:32'),
+(42, '', 'TEBAO ', 'Tia Saint Claire', '', '', '', 'tebaotia', 'pass', 2, 17, 55, 2, 3, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-18', '17:35:12'),
+(47, '239 382 G', 'BROU', 'PATRICE MAGLOIRE', '55 70 16 00', '', 'bpatricem@yahoo.fr', 'broupatrice', 'f6c856d5', 4, 13, 24, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-25', '16:43:58'),
+(49, '', 'NATCHA', 'JEANNE TRA BI', '', '', '', 'natcha', '6925f392', 3, 10, 37, 12, 3, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(50, '', 'CRITIE TOBOUE', 'HERMANCE', '', '', '', 'critietoboue', '7a3a9ccd', 3, 8, 47, 12, 3, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(51, '275 308 S', 'KOUAME', 'YOBOUE', '', '', 'kyobouet.k225@gmail.com', 'kouameyoboue', '54231315', 3, 13, 24, 12, 3, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(54, '389 761 J', 'KOUADIO ', 'KOFFI CLEMENT', ' ', ' ', 'kklements@yahoo.fr', 'kklements', 'c691c65c', 5, 12, 35, 17, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-11', '14:12:24'),
+(55, '252 975 F', 'KOUA', 'BROU JEAN CLAUDE', '03 28 52 41', '09 BP 2367 ABIDJAN 09', 'k_brou@hotmail.com', 'adminkoua', 'KB08!jc19?', 1, 13, 24, 17, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-09-08', '16:37:24'),
+(60, '700 178 V', 'KOUAME', 'EHOBLA BERNADETTE', '41 02 95 43', '', 'bernadettekmea@yahoo.fr', 'bernadettekme', 'f8b91bce', 3, 5, 42, 13, 3, 'OUI', '2019-07-11', '09:27:43', '', '0000-00-00', '00:00:00'),
+(63, '255 998 A', 'MONSAN', 'VINCENT', ' ', ' ', 'vmonsan@yahoo.fr', 'monsanv', 'MaMBo*1979', 3, 13, 24, 15, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-16', '11:44:30'),
+(64, '244 478 M', 'N\'ZI ', 'YAO KOFFI MODESTE', '42 13 95 95', ' ', 'modestenzi@yahoo.fr', 'nzimodeste', 'b0510e6b', 3, 13, 24, 16, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-03', '23:48:34'),
+(67, '273 252 P', 'ANVILE ', 'N\'GORAN JEAN JACQUES', '', '', 'jjanvile@gmail.com', 'anvilejeanjacques', '77421f44', 3, 1, 82, 15, 1, 'OUI', '2019-08-01', '20:23:38', '', '0000-00-00', '00:00:00'),
+(68, '269 623 P', 'OBROU ', 'KOUADIO OLIVIER', ' 02 41 50 34', ' ', 'olivier.obrou@fulbrightmail.org', 'obroukouadio', 'colinet@2006', 3, 3, 48, 16, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-15', '16:54:30'),
+(69, '312 436 P', 'KONAN ', 'KOFFI LEON', ' ', ' ', 'leonkonan2000@yahoo.fr', 'konankoffileon', 'paul2014', 3, 3, 48, 15, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-22', '00:05:24'),
+(70, '249 454 J', 'INWOLEY', ' KOKOU ANDRE', ' ', ' ', 'andre.inwoley@gmail.com', 'inwoleyandre', '0260d087', 3, 7, 51, 15, 1, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(71, '278 494 G', 'OGA ', ' AGBAYA STEPHANE SERGE', ' ', ' ', 'ass_oga@yahoo.fr', 'ogastephane', '43680340', 3, 7, 51, 16, 1, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(72, '301 099 F', 'COULIBALY ', 'AOUA SOUGO', '02 03 86 38', '', 'aouasougo@yahoo.fr', 'coulibalyaoua', '23058590', 3, 12, 35, 16, 1, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(73, '229 190 A', 'ADOUKO', 'NÃƒâ€°E AKA JEANNETTE APOLINE', '09281478', '', 'jeannetteadouko@yahoo.fr', 'akaadouko', 'a142f172', 3, 8, 47, 16, 1, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(74, '332 669 L', 'DIDIA ', ' EKOW LEON ERIC', '', '', 'ericdidia2001@yahoo.fr', 'didiaekow', '3db64ea2', 3, 8, 47, 15, 1, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(75, '253 579 K', 'NANDJUI ', 'DANHO PIERRE', ' 05 69 47 88', ' ', 'danhopierrenandjui@gmail.com', 'nadjuipierre', '92116104', 3, 1, 82, 15, 1, 'OUI', '2019-08-02', '08:47:03', '', '0000-00-00', '00:00:00'),
+(76, '315 031 P', 'ADOU', 'YAO CONSTANT YVES', '42 12 75 75', '', 'adouyaocy@gmail.com', 'adouyaoconstant', 'koss3111', 3, 5, 42, 16, 1, 'OUI', '2020-04-28', '16:25:30', 'OUI', '2020-05-23', '09:39:59'),
+(77, '290 497 U', 'N\'GUESSAN ', 'JEAN DAVID', ' 41028199', ' ', 'nguessanjd@yahoo.fr', 'nguessanyaodavid', 'biochimie', 3, 5, 42, 15, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-24', '14:09:23'),
+(78, '315 028 U', 'KOUADIO', 'KONAN EMMANUEL', ' ', ' ', 'emmanuelkouadio.ci@gmail.com', 'kouadiokonanemmanuel', 'vdpstrm', 3, 12, 35, 15, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-29', '16:30:19'),
+(79, '253 645 M', 'N\'GUESSAN-BECHIE ', 'PAUL', ' 01 44 52 54', ' ', 'bechiepaul@yahoo.fr', 'nguessanbechie', 'natacha1974', 3, 11, 18, 15, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-05-27', '10:53:08'),
+(80, '327 127 Q', 'KRA ', 'KOUASSI RAYMOND', ' ', ' ', 'kraraymond@yahoo.fr', 'krakouassiraymond', '504160d9', 4, 10, 37, 27, 2, 'OUI', '2020-01-02', '16:19:17', 'OUI', '2020-01-06', '12:06:57'),
+(81, '322 748 R', 'ADHEPEAU', 'JULIEN LAURENT MICHEL', '08 56 46 09', '', 'jadhepeau@yahoo.fr', 'jadhepeau', 'Maman2020', 4, 10, 37, 27, 2, 'OUI', '2020-01-02', '16:07:14', 'OUI', '2020-01-02', '23:17:09'),
+(82, '301 097 V', 'AKADJE ', 'AHIOURE MATHIEU', '', '', 'mathieu.akadje@yahoo.fr', 'akadjemathieu', 'ama', 3, 9, 46, 15, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-09', '16:02:21'),
+(83, '340 006 L', 'BALLO', 'YACOUBA', '58 07 30 61', '', 'yballo@hotmail.com', 'balloyacouba', '10f53194', 3, 9, 46, 16, 1, 'OUI', '2019-07-18', '19:46:47', 'OUI', '2020-07-09', '15:59:02'),
+(85, '347 840 K', 'KOMENAN ', 'AKA NARCISSE', ' 08 21 48 48', ' ', 'komenan_narcisse@hotmail.com', 'komenanaka', '62faead6', 3, 2, 49, 15, 1, 'OUI', '2019-08-04', '22:37:06', 'OUI', '2020-06-26', '15:35:04'),
+(87, '417 722 P', 'AHIPO ', ' KWALHA YVES MARCEL', '79 39 32 12', '', 'yahipo@yahoo.fr', 'ahipoyvesmarcel', '230f38ae', 4, 13, 24, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(88, '324 747 A', 'BAHI ', 'LOUIS CLEMENT YOHOU', '07 74 42 68', '', 'baclemsy@yahoo.fr', 'bahiyohou', 'valval1977', 4, 13, 24, 27, 2, 'OUI', '2019-06-07', '15:31:54', 'OUI', '2020-06-22', '01:00:21'),
+(89, '502 460 B', 'DIALLO', 'MOHAMED BOBO', '77 01 45 22', '', 'diallo.med@gmail.com', 'diallobobo', 'Tariq@1983++', 4, 13, 24, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-29', '12:40:00'),
+(90, '332 005 X', 'DOSSO ', 'MOUHAMADOU', '01 13 06 47 ', '', 'mouhamadoudoss@yahoo.fr', 'dossomouhamadou', 'mamadou71', 4, 13, 24, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-28', '17:54:23'),
+(91, '241 053 B', 'MOBIO ', 'AKICHI JOSEPH', '01 00 45 73', ' ', 'mobiojosephakichi@yahoo.fr', 'mobiojoseph', '91009a5f', 4, 13, 24, 27, 2, 'OUI', '2019-12-05', '14:00:40', '', '0000-00-00', '00:00:00'),
+(92, '389 845 F', 'SEKA', 'LOUIS-PAUL', '01 13 34 05', '', 'lpseka@yahoo.fr', 'sekalouispaul', 'LiliLoupi@19', 4, 13, 24, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-16', '11:19:34'),
+(93, '344 444 F', 'OKOU', 'A.KPETIHI SAHOUA HYPOLITHE', '05 82 58 12 ', ' ', 'okouakpetihi@hotmail.com', 'okouhsahoua', 'okoumariejo2005', 4, 13, 24, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-29', '17:53:30'),
+(94, '426 918 M', 'BAROU', 'ROPLO ANGE-PAULIN', '08 08 00 73', '', 'barouange@yahoo.fr', 'barouroplo', 'Aggape@777', 4, 13, 24, 27, 2, 'OUI', '2019-07-23', '07:43:09', 'OUI', '2020-08-21', '10:46:51'),
+(95, '253 043 D', 'BERETE ', 'SIAKA', '55 70 16 00', '', 'beretesiaka@yahoo.fr', 'beretesiaka', '0bc83e8c', 4, 13, 24, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(96, '345 005 C', 'COULIBALY ', 'NAMORY', '07 67 56 95', '', 'coulnamson@hotmail.com', 'coulinalynamory', '3efac874', 4, 13, 24, 27, 2, 'OUI', '2020-06-10', '12:08:58', 'OUI', '2020-06-23', '15:24:46'),
+(97, '265 877 A', 'WODIE ', 'AOBA JEAN-CHRISTOPHE', '07 40 75 51', '', 'wodie_jc@yahoo.fr', 'wodieaoba', '*,23qHM/1aA', 4, 13, 24, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-19', '01:31:30'),
+(100, '251 798 M', 'ABETO ', 'CONSTANCE MARIE JULIETTE BYA EPSE BOKA', '05 32 82 92', '', 'bokaabeto@gmail.com', 'abetoboka', '60ad9f75', 4, 4, 86, 27, 2, 'OUI', '2019-12-23', '14:32:03', '', '0000-00-00', '00:00:00'),
+(101, '389 906 D', 'ABOYA ', 'NARCISSE', '07 72 71 75', '', 'aboyanarcisse@yahoo.fr', 'aboyanarcisse', 'narcisse0204', 4, 4, 86, 27, 2, 'OUI', '2020-05-05', '16:54:18', 'OUI', '2020-05-13', '00:33:22'),
+(102, '389 907 E', 'ACHI ', 'ESSETCHI NARCISSE', '', '', 'achinazo@yahoo.fr', 'achinarcisse', 'cd6d3fa8', 4, 4, 23, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(103, '133 088 K', 'ADAMA', 'CISSE', '', '', '', 'adamacisse', 'a4d91627', 5, 4, 32, 20, 1, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(112, '251 983 X', 'ADIKO ', 'NÃ‰E YACE ADELINE LUCIE', '', '', 'adelineyace@yahoo.fr', 'adelineyace', '4aj2017k', 4, 11, 15, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-12', '15:05:05'),
+(113, '142 352 G', 'BAMBA', ' LOU MATHIEU', '', '', 'loumathieub@yahoo.fr', 'loumathieub', '32a929a9', 4, 4, 20, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(114, '202 183 V', 'BOA', 'THIEMELE LEON', 'O2 11 56 88', '', 'boathie@yahoo.fr', 'boathie', '57d0b211', 3, 4, 20, 21, 1, 'OUI', '2019-05-28', '13:54:17', 'OUI', '2019-06-24', '15:13:54'),
+(115, '098 775 D', 'KONATE', 'YACOUBA', ' ', ' ', '', 'konateyacouba', 'f67bfa3e', 3, 4, 20, 21, 1, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(116, '396 446 W', 'KOUADIO ', 'DJOKO LUIS STEPHANE', ' ', ' ', 'djokoluis1@yahoo.fr', 'djokoluis1', 'MaÃ®tre-assistant2017', 5, 11, 15, 17, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-09-02', '05:49:52'),
+(119, '209 714 P', 'BEIRA', 'EHI MARC', '05 05 12 70', '', 'beiraehi@gmail.com', 'behiraehimarc', '626d9d80', 4, 1, 82, 27, 2, 'OUI', '2019-08-01', '20:23:38', '', '0000-00-00', '00:00:00'),
+(120, '231 562 U', 'ASSAMOI ', 'KOSSI HUGUETTE FRANCOISE', '07 61 92 02 ', '', 'assamoi.huguette@yahoo.fr', 'assamoihuguette', '20cb95c2', 4, 1, 82, 28, 2, 'OUI', '2019-08-01', '20:23:38', '', '0000-00-00', '00:00:00'),
+(121, '163 135 L', 'COULIBALY', 'N\'GAPELE LUCIE', '01 28 72 62', '', 'luciecoul@hotmail.fr', 'luciecoul', '3ddb5fac', 4, 1, 82, 28, 2, 'OUI', '2019-08-01', '20:23:38', '', '0000-00-00', '00:00:00'),
+(123, '124 101 L', 'CARLOS', 'ORDUNA DIEZ', '77 87 84 17', '', 'carlosabidjan@gmail.com', 'carlosorduna', '0232194DgCsVa', 4, 11, 15, 28, 2, 'OUI', '2019-07-23', '22:12:11', 'OUI', '2020-08-30', '15:51:28'),
+(124, '206 779 V', 'AMIDOU ', 'SANOGO', '05 76 65 03', '', 'sanogo.amidou@univ-fhb.edu.ci', 'amidousanogo', 'yeyenabisso62', 4, 11, 16, 27, 2, 'OUI', '2019-10-01', '13:06:01', 'OUI', '2020-07-06', '17:59:24'),
+(125, '241 247 J', 'GNALEGA', 'MAKAGNON RENE', ' 44 57 71 72', ' ', 'gnalega_rene@yahoo.fr', 'gnalegarene', 'd2f651b8', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '15:50:11', '', '0000-00-00', '00:00:00'),
+(130, '147 551 V', 'BAKAYOKO-LY ', ' RAMATA', '', '', '', 'lyramata', 'bc41aae0', 4, 8, 47, 24, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(132, '301 112 Y', 'YEO ', 'LACINA', '02 38 27 61', '', 'tdlyeo@gmail.com', 'yeolacina', '1969', 5, 11, 18, 20, 1, 'OUI', '2020-01-29', '10:44:12', 'OUI', '2020-01-30', '16:21:52'),
+(133, '335 580 T', 'SILUE', 'NANOURGO DJIBRIL', '', '', 'siluedjibril@yahoo.fr', 'siluedjibril', 'd99fa61c', 5, 11, 14, 20, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-01-14', '08:53:34'),
+(134, '309 105 J', 'ATCHA ', ' AMANGOUA PHILIP', '06713128', '', 'atcha.philip@gmail.com', 'atchaphilip', 'Ethan215?', 5, 11, 16, 20, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-21', '07:29:20'),
+(135, '253 589 E', 'BOGNY', 'YAPO JOSEPH', '07 82 29 23', '', 'joseph.bogny@gmail.com', 'josephbogny', '2c7e9b1e', 5, 11, 19, 20, 1, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(136, '205 927 Z', 'KOUA', 'KADIO PASCAL', ' 08043529', ' ', 'attoumanikadio@yahoo.fr', 'attoumanikadio', 'kouaoua59', 5, 11, 15, 20, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-28', '09:41:51'),
+(137, '353 583 U', 'TOH', 'ALAIN', '01 41 23 48', '', 'alain.toh.1@gmail.com', 'alaintoh', 'Dlionnel73', 5, 4, 22, 20, 1, 'OUI', '2019-06-14', '17:43:55', 'OUI', '2019-06-16', '11:07:06'),
+(138, '290 490 H', 'KOUDOU ', 'LANDRY ROLAND', ' 02218794', ' ', 'landryroland@yahoo.fr', 'landryroland', 'la14', 5, 4, 20, 20, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2019-06-24', '19:08:20'),
+(139, '296 256 B', 'OTEME ', ' APOLOS CHRISTOPHE', ' 47951613', ' ', 'otemeap@yahoo.fr', 'otemeapolos', 'yemlie25', 5, 4, 23, 20, 1, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(140, '302 218 K', 'PARE', 'MOUSSA', ' 07 37 00 67', ' ', 'pare_mous@yahoo.fr', 'pare_mous', 'ismael2007', 5, 4, 21, 20, 1, 'OUI', '2020-06-22', '10:31:16', 'OUI', '2020-08-20', '14:33:10'),
+(144, '955 001 A', 'OUANYOU', 'Alfred', '', '', 'alfredouanyou@gmail.com', 'alfredouanyou', '052193f0', 5, 13, 24, 19, 3, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(148, '955 006 E', 'NOE', 'Patrick', '', '', 'dumerypatrick@yahoo.fr', 'noepatrick', 'c6b2f32a', 5, 11, 19, 19, 3, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(151, '398 046 A', 'ACHO ', 'APIE MONIQUE', '58 22 83 35', '', 'achomonique@gmail.com', 'achoapie', '514d08c1', 4, 9, 46, 27, 2, 'OUI', '2019-07-16', '21:27:25', 'OUI', '2020-01-14', '14:29:34'),
+(152, '395 970 E', 'ABOUDOU ', 'AKA CELESTIN', '08 84 64 47', '', 'akacelestinab@gmail.com', 'aboudouaka', '', 4, 9, 46, 28, 2, 'OUI', '2019-07-16', '21:27:25', 'OUI', '2020-01-23', '15:38:18'),
+(153, '389 613 E', 'AHISSAN', 'KOUASSI ALEXANDRE', '07 82 12 62', '', 'ahissanfr@hotmail.fr', 'ahissankouassi', 'xander16', 4, 9, 46, 27, 2, 'OUI', '2019-07-16', '21:27:25', 'OUI', '2020-03-18', '18:03:58'),
+(154, '202 625 F', 'ASSY ', 'EDMOND PAUL', '07 23 21 02', '', 'assyedmondpaul@gmail.com', 'assiedmond', '6a4b2d88', 4, 9, 46, 27, 2, 'OUI', '2019-07-16', '21:27:25', 'OUI', '2019-08-20', '14:44:35'),
+(155, '426 469 T', 'BAKARY ', 'OUATTARA', '07 18 85 38', '', 'ouattarabakary2000@gmail.com', 'bakaryouattara', '23avril1978', 4, 9, 46, 27, 2, 'OUI', '2020-01-14', '11:28:33', 'OUI', '2020-01-21', '14:30:26'),
+(159, '900 202 R', 'BONI', 'HERVE', '', '', '', 'boniherve', '582a42da', 5, 11, 19, 19, 3, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(161, '700 601 C', 'YAO', 'SERGE', '09 67 65 39', '', 'serge.yao@univ-fhb.edu.ci', 'serge.yao', '2949af63', 2, 17, 54, 1, 3, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(166, '365 068 N', 'SILUE', 'LEFARA', '', '', 'lefaras@yahoo.com', 'sillefara2007', 'pankoun', 4, 11, 14, 27, 2, 'OUI', '2019-12-17', '16:18:24', 'OUI', '2019-12-24', '22:10:12'),
+(171, '141 467 T', 'BLAY', 'KOFFI', '', '', 'koffiblay@yahoo.fr', 'blaykoffi', '37e7488c', 3, 1, 82, 12, 3, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(172, '239 543 H', 'HIE', 'KLA MARTIN', '42 13 24 24', '', 'martiinhie@yahoo.fr', 'hieklamartin', 'b296e6c6', 3, 12, 35, 12, 3, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(173, '275 260 V', 'OUATTARA', 'KAYO CHRISTELLE EPSE NANIHIO', '42 13 33 33', '', 'nanihioouattara@yahoo.fr', 'ouattarakayo', '74b26d78', 3, 9, 46, 12, 3, 'OUI', '2019-07-31', '19:16:51', '', '0000-00-00', '00:00:00'),
+(174, '', 'ACQUET', 'JUSTIN PATRICE', '', '', '', 'acquetjustin', '265cfcf0', 3, 3, 48, 12, 3, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(175, '', 'CISSE', 'YOUSSOUF JEAN MARC', '', '', '', 'cisseyoussouf', '93e04973', 3, 2, 49, 12, 3, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(176, '', 'YOH', 'ALAIN GUY', '', '', '', 'yohalainguiy', '3fd7cff8', 3, 4, 22, 12, 3, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(177, '', 'AKPRO', 'MARIE JOSSETTE EPSE NADO', '', '', '', 'akprojossette', 'c90d6ab8', 3, 7, 51, 12, 3, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(178, '256 606 J', 'ACHI', 'OSSEY ALPHONSE', '', '', 'aosseyalphonse@yahoo.fr', 'aosseyalphonseosse', 'f5910626', 3, 11, 18, 12, 3, 'OUI', '2019-07-23', '22:12:11', 'OUI', '2020-02-12', '08:41:22'),
+(179, '', 'KONAN', 'NORBERT', '', '', 'konannobbert@yahoo.fr', 'konannorbert', 'c69472d8', 3, 5, 42, 12, 3, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(180, '258 455 L', 'ABO ', 'KOUAKOU JEAN CLAUDE', '07 83 95 94', '', 'abojeanclaude2016@gmail.com', 'abokouakoujc', 'hc19berenice', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-15', '22:29:54'),
+(181, '290 494 Z', 'LEZOU', 'AIMEE-DANIELLE EUGENIE SIMONE EPSE KOFF', ' 07 49 09 19', ' ', 'koffidanielle@yahoo.fr', 'koffidanielle', '2136f77c', 3, 11, 16, 16, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-09', '09:26:36'),
+(183, '396 654 E', 'OTCHOUMOU', 'KRAIDY ATHANASE', ' ', ' ', 'tchoumou2@yahoo.fr', 'tchoumou2', 'edwatha2', 3, 5, 42, 18, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-09-02', '08:43:41'),
+(184, '266 705 P', 'GORAN', ' KOFFI MODESTE ARMAND', ' ', ' ', 'modeste_armandgoran@yahoo.fr', 'gorankoffi', '43278ee6', 3, 10, 37, 18, 1, 'OUI', '2019-11-26', '18:28:54', 'OUI', '2020-08-18', '12:40:01'),
+(185, '253 561 H', 'COULIBALY ', 'ADAMA', '', '', 'couliba@yahoo.fr', 'couliba', 'ahmedyassikader', 3, 13, 24, 18, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2019-06-29', '10:08:10'),
+(186, '290 872 B', 'KONE ', 'KOLOMDOU', ' ', ' ', 'akonea@yahoo.fr', 'akonea', '9d76fa46', 3, 8, 47, 18, 1, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(187, '236 163 Z', 'NIGUE', ' LUC', ' ', ' ', 'lucnigue@yahoo.fr', 'lucnigue', 'f677bc98', 3, 6, 78, 18, 1, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(188, '304 715 F', 'DJOHAN ', ' VINCENT', '', '', 'vincentdjohan@hotmail.com', 'vincentdjohan', 'b350894f', 3, 7, 51, 18, 1, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(189, '290 482 V', 'COULIBALY ', 'VAMOUSSA', '05 66 08 21', '', 'coulibaly_vamoussa@yahoo.fr', 'coulibaly_vamoussa', 'vamoussa77', 3, 3, 48, 18, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-24', '15:48:54'),
+(190, '309 591 H', 'ZORO  EPSE DIAMA ', 'EMMA GEORGINA HUEVA', '', '', 'gina_zoro@yahoo.fr', 'gina_zoro', 'hueva.ZD', 3, 3, 48, 18, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-15', '14:41:37'),
+(191, '290 488 B', 'APHING-KOUASSI ', 'N\'DRI GERMAIN', '07 93 37 24', '', 'germain_ak@yahoo.fr', 'germain_ak', '6a193764', 3, 4, 28, 18, 1, 'OUI', '2019-12-23', '14:32:03', '', '0000-00-00', '00:00:00'),
+(192, '275 989 D', 'AZANE', 'KODJO', '', '', '', 'azanekodjo', 'cf432f23', 2, 17, 54, 1, 3, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-09-07', '14:39:41'),
+(193, '335 059 F', 'AKRE', 'NEE KONE ROSEMONDE CONSTANCE', '', '', '', 'rosemondeakre', 'b2794ffa', 2, 17, 54, 1, 3, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(194, '395 977 Z', 'ADAYE', 'AKOUA ASSOUNTA', '08 42 95 47', '', 'adayeakoua@yahoo.fr', 'adayeakoua', 'a4d91627', 4, 4, 86, 27, 2, 'OUI', '2019-12-23', '14:32:03', 'OUI', '2020-04-18', '13:03:56'),
+(195, '241 627 F', 'GNAMMON ', 'NAMBOU AGNES BENEDICTA EPSE ADIKO', '08  08 16 61', '', 'agnes.gnammonadiko@yahoo.fr', 'agnes.gnammonadiko', '1a479f80', 4, 4, 86, 27, 2, 'OUI', '2020-01-08', '23:05:20', '', '0000-00-00', '00:00:00'),
+(196, '389 911 Z', 'ADJE ', 'N\'GORAN PASCAL', '07 58 45 13', '', 'adngopas@yahoo.fr', 'adngopas', '65cf8fa9', 4, 4, 28, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(197, '203 617 G', 'KOUADIO', 'GUESSAN', '05 03 01 59', ' ', 'ben.guessan@yahoo.fr', 'ben.guessan', 'e17c311d', 3, 4, 21, 15, 1, 'OUI', '2020-08-12', '21:02:29', '', '0000-00-00', '00:00:00'),
+(198, '304 234 D', 'VAHOUA ', ' KALLET ABREAM', '', '', 'vahouakallet@yahoo.fr', 'vahouakallet', 'kwadjo27', 3, 11, 19, 18, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-29', '13:46:08'),
+(199, '229 360 T', 'KEI', 'MATHIAS', ' 06 00 23 91', ' ', 'mathiaskei@yahoo.fr', 'mathiaskei', 'dc253f1a', 5, 4, 34, 20, 1, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(200, '269 622 N', 'BIKPO ', 'NÃ‰E KOFFIE CELINE YOLANDE', '07 91 88 81', '', 'bikpoceline@yahoo.fr', 'bikpoceline', 'Yolande1967', 5, 4, 28, 20, 1, 'OUI', '2019-12-23', '16:57:16', 'OUI', '2020-04-30', '18:27:06'),
+(202, '257 520 G', 'ADOUKO ', 'BERNADIN', '40 96 14 12', '', 'adoukobe@yahoo.fr', 'adoukobe', '018c70a8', 5, 2, 49, 17, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-23', '17:56:40'),
+(203, '354 536 V', 'BOMISSO', ' EDSON LEZIN', '', '', 'lebomisso@yahoo.fr', 'lebomisso', 'a08edfd7', 5, 5, 42, 17, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-05-23', '09:17:43'),
+(204, '243 126 T', 'AKA ', ' TIOMAN ', '', '', 'aka_tioman@yahoo.fr', 'aka_tioman', '20884109', 5, 3, 48, 17, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-17', '17:40:40'),
+(205, '100 988 A', 'BOGUI', ' PASCAL', '', '', 'pasbogui@yahoo.fr', 'pasbogui', 'b91e15b9', 5, 6, 78, 17, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-05-02', '19:03:22'),
+(206, '253 593 S', 'ANOH ', 'KOUASSI PAUL', '08 03 90 40', '', 'anohpaul@yahoo.fr', 'anohpaulGEO', '4f4c2aec', 5, 4, 86, 17, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-05-15', '20:39:01'),
+(207, '364 994 T', 'DOUA ', 'EDMOND', '', '', 'edmund_doua@yahoo.fr', 'edmund_doua', '13041304', 5, 10, 37, 20, 1, 'OUI', '2020-07-08', '11:57:18', '', '0000-00-00', '00:00:00'),
+(208, '275 041 H', 'KOUASSI ', 'ADACK GILBERT', ' ', ' ', 'adackgilbert@gmail.com', 'adackgilbert', '773dc865', 5, 10, 37, 20, 1, 'OUI', '2020-07-09', '18:42:28', 'OUI', '2020-08-26', '12:44:06'),
+(209, '111 026 E', 'BROU', 'AHOU CLEMENTINE EPSE DIALLO', '44 88 70 56 ', '', 'brouahouclementine@yahoo.fr', 'brouahouclementine', '4bd21f74', 5, 11, 19, 25, 1, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(210, '249 167 J', 'KOUAME ', 'ABO JUSTIN', ' ', ' ', '', 'kouameabojustion', 'e26fbad6', 5, 11, 26, 26, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-05-07', '10:08:57'),
+(211, '249 167 J', 'KOUAME ', 'ABO JUSTIN', ' 42 12 93 93', ' ', 'justabo@yahoo.fr', 'kouameabojustion', '35ad8b33', 4, 11, 18, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-03', '15:13:37'),
+(212, '156 186 R', 'ASKA ', 'KOUADIO', '07852296', '', 'askakoua@yahoo.com', 'askakouadio', '25998f6e', 5, 4, 33, 20, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2019-08-22', '15:24:39'),
+(213, '131 825 G', 'YEO', ' SONOURGO SOULEYMANE', '', '', '', 'yeosonourgo', '411d3839', 5, 4, 30, 20, 1, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(214, '290 491 W', 'YAO ', 'YAO LEOPOLD', '45-03-99-47', '', 'yaoleopold@yahoo.fr', 'yaoleopold', 'leoyaoy', 5, 4, 31, 20, 1, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(215, '228 986 T', 'GONNIN', 'GILBERT', ' 07 84 35 61', ' ', 'gilbertgonnin@yahoo.fr', 'gilbertgonnin', 'bernadette4', 5, 4, 29, 26, 1, 'OUI', '2020-06-22', '09:45:59', 'OUI', '2020-07-15', '13:32:00'),
+(216, '279 406 R', 'AGNISSAN', 'ASSI AUBIN', '09-38-71-71', '', 'agnissane@yahoo.fr', 'agnissane', 'syntyche', 5, 4, 31, 20, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-09-06', '09:01:29'),
+(217, '365 483 U', 'KOUAME', 'ADONIS KROU DAMIEN', ' 78 08 58 93', ' ', 'adonisdamien@yahoo.fr', 'adonisdamienkrou', 'AdonisDamien', 4, 12, 36, 27, 2, 'OUI', '2019-05-30', '21:37:25', 'OUI', '2020-08-13', '12:48:21'),
+(218, '', 'WAH', 'LAURENT MEDARD', '', '', '', 'wahmedard', 'b451a2a7', 2, 17, 56, 1, 3, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-24', '13:34:56'),
+(219, '500 099 B', 'LAVRADOR ', 'BENVINDA MARIA DA SILVA CALDEIRA', ' ', ' ', 'flavrador@gmail.com', 'lavrador', 'portugues', 4, 11, 17, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-09-09', '00:06:24'),
+(221, '233 497 N', 'SOHOU ', 'TOUSSAINT', '02 44 67 46', '', 'sohoutous@yahoo.fr', 'souhoutoussaint', 'Sohou_Grewin$MI2019', 5, 13, 24, 17, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-20', '14:19:52'),
+(222, '156 358 L', 'RANDRIANANDRASANA', 'FLORENTIN', '77 22 07 41', ' ', 'randriflo@yahoo.fr', 'randrianandrasana', 'olw36752?', 5, 13, 24, 17, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2019-12-05', '11:32:12'),
+(223, '285 394 T', 'AMAN ', 'AUGUSTE', '57 01 29 59', '', 'augusteaman5@yahoo.fr', 'amanauguste', 'Anogisele1208', 3, 13, 24, 21, 1, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(224, '500 076 B', 'FEDIDA ', 'EDMOND', ' ', ' ', 'fedida_edmond@yahoo.fr', 'fedidaedmond', 'af1b3abc', 3, 13, 24, 21, 1, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(225, '239 514 U', 'DANHO', 'EMILE', '07 50 82 63', '', 'danhoemile@yahoo.com', 'danhoemile', 'f430803c', 3, 13, 24, 21, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-01-21', '14:12:24'),
+(226, '203 559 N', 'CISSE ', 'ALHASSANE DAOUDA', '07 93 21 47', '', 'sciss_79@yahoo.fr', 'sciss_79', '9ce2a851', 2, 11, 16, 8, 1, 'OUI', '2019-08-28', '14:55:49', '', '0000-00-00', '00:00:00'),
+(227, '404 046 Z', 'ANOUMAN ', 'ADIKO JEAN-MICHEL', '', '', 'adiko.anouman222@gmail.com', 'adiko.anouman222', '2f8748c9', 4, 10, 37, 27, 2, 'OUI', '2020-07-09', '18:04:12', 'OUI', '2020-07-10', '17:03:14'),
+(228, '206 779 V', 'AMIDOU ', 'SANOGO', '05 76 65 03', '', 'sanogo.amidou@univ-fhb.edu.ci', 'amidousanogo', 'odokol62', 4, 11, 16, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-03', '13:16:17'),
+(229, '320 283 A', 'ADAMA ', 'SAMAKE', '', '', 'adamasamake81@gmail.com', 'adamasamake71', 'cabiya01ta..', 4, 11, 16, 27, 2, 'OUI', '2019-10-21', '07:54:53', 'OUI', '2020-05-24', '01:45:28'),
+(230, '097 088 Q', 'ZINSOU', 'EDME MICHEL YAMBODE', '', '', 'zinsoue@hotmail.com', 'zinsoue', '4338e3e6', 5, 4, 34, 17, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2019-12-11', '15:19:23'),
+(231, '389 950 L', 'ASSI', 'ASSI RAOUL', '05-01-56-52', '', 'assiraoul2@gmail.com', 'assiraoul2', '6c7110a2', 5, 4, 31, 17, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-05-01', '20:11:10'),
+(232, '336 638 H', 'KOUAME ', 'KOIA JEAN-MARTIAL', ' ', ' ', 'jeanmartial.kouame@gmail.com', 'marcidel', 'Assena2015', 4, 11, 25, 27, 2, 'OUI', '2019-12-21', '20:30:05', 'OUI', '2020-05-22', '15:24:12'),
+(235, '316 335 V', 'ADEKPATE ', ' ALAIN ALBERT', '', '', 'aliadek@hotmail.fr', 'aliadek', 'bd81a67a', 5, 11, 19, 17, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-02-17', '17:31:16'),
+(236, '344 939 F', 'ABLI', 'JEAN UBERSON', '', '', 'johnhuberson@hotmail.com', 'johnhuberson', 'c8cc35f0', 4, 1, 82, 27, 2, 'OUI', '2019-08-01', '20:23:38', '', '0000-00-00', '00:00:00'),
+(237, '162 835 R', 'ABOA ', 'AFFOUM APO JUSTINE', '04 87 83 66', '', 'justineaboa@hotmail.com', 'aboajustine', 'ee3e6040', 4, 1, 82, 27, 2, 'OUI', '2019-08-01', '20:23:38', '', '0000-00-00', '00:00:00'),
+(238, '204 051 D', 'ABOA ', 'CYRILLE ALAIN', '57 16 35 02', '', 'avocat_affaires@yahoo.fr', 'aboacyrille', 'a3a2c0fc', 4, 1, 82, 27, 2, 'OUI', '2019-08-01', '20:23:38', '', '0000-00-00', '00:00:00'),
+(239, '270 371 X', 'ACKA ', 'KASSY JOSEPHE', '49 47 37 30', '', 'josepheacka@yahoo.fr', 'ackakassy', '6a14164c', 4, 1, 82, 27, 2, 'OUI', '2019-08-01', '20:23:38', '', '0000-00-00', '00:00:00'),
+(240, '389 737 A', 'ADOPO EPSE KOFFI', 'ANNICK MARIE-DOMINIQUE', '07 06 14 36', '', 'mkoffi2011@gmail.com', 'mkoffi2011', 'b219f8fe', 4, 1, 82, 27, 2, 'OUI', '2019-08-01', '20:23:38', 'OUI', '2019-08-27', '13:34:37'),
+(241, '389 614 F', 'AHOUNAN', 'KOIDJANE FULBERT', '01 08 94 03', '', 'ahounankoidjane@gmail.com', 'ahounankoidjane', 'alexas02', 3, 1, 82, 18, 1, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(242, '361 768 U', 'AKPOUE ', 'BROU', '49 23 78 66', '', 'akpouebrou2017@gmail.com', 'akpouebrou', '1717e2f9', 4, 1, 82, 27, 2, 'OUI', '2019-08-01', '20:23:38', '', '0000-00-00', '00:00:00'),
+(243, '389 620 R', 'ALLA ', 'KOFFI ETIENNE', '07 88 06 53', '', 'a.kem1@hotmail.fr', 'a.kem1', 'Dieuestamour01*******', 4, 1, 82, 27, 2, 'OUI', '2019-08-01', '20:23:38', 'OUI', '2019-08-02', '12:34:07'),
+(244, '266 479 L', 'ALLOH ', 'BATAFOE JEAN WESLENE', '', '', '', 'allohbatafoe', '3ce06026', 4, 1, 82, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(245, '209 711 L', 'ASSI ', 'ASSEPO EUGENE', '05 70 14 49', '', 'assi_assepo@yahoo.fr', 'assi_assepo', '20cb95c2', 4, 1, 82, 27, 2, 'OUI', '2019-08-01', '20:23:38', '', '0000-00-00', '00:00:00'),
+(246, '131 277 S', 'ASSI ', 'BENIE JOSEPH', '05 52 27 22', '', 'jobenie@hotmail.com', 'jobenie', '947a8938', 4, 1, 82, 27, 2, 'OUI', '2019-08-01', '20:23:38', '', '0000-00-00', '00:00:00'),
+(247, '142 357 D', 'ASSI ', 'NÃ‰E ESSO ANNE MARIE HORTENSE', '07 94 27 84', '', 'uiba@aviso.ci', 'assiesso', '8cda8733', 4, 1, 82, 27, 2, 'OUI', '2019-08-01', '20:23:38', '', '0000-00-00', '00:00:00'),
+(248, '331 870 H', 'ASSOKO ', 'HERACLES MAYE', '07 68 76 24', '', 'assokoheracles@gmail.com', 'assokoheracles', 'As200574', 4, 1, 82, 27, 2, 'OUI', '2019-08-01', '20:23:38', 'OUI', '2019-08-02', '12:58:36'),
+(249, '138 984 P', 'AYIE', 'AYIE ALEXANDRE', '05 68 28 58', '', 'alexayie@gmail.com', 'alxd33', '62ba7400', 4, 1, 82, 27, 2, 'OUI', '2019-08-01', '20:23:38', '', '0000-00-00', '00:00:00'),
+(250, '501 211 U', 'BANGOURA ', 'NÃ‰E DIDIER DOMINIQUE', '', '', 'dominique.bangoura@gmail.com', 'dominique.bangoura', '2053c724', 4, 1, 82, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(251, '150 615 C', 'BEDOU', 'JEAN', '', '', '', 'bedoujean', '0c10b8ac', 4, 1, 82, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(252, '230 875 H', 'BILE', 'BOUAH MATHIEU', '', '', '', 'bilebouah', '626d9d80', 4, 1, 82, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(253, '115 066 J', 'BLEOU', 'DJEZOU MARTIN', '', '', 'bleoumartin@yahoo.fr', 'bleoumartin', 'ab09f337', 4, 1, 82, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(254, '239 565 F', 'BLESSY', 'JEAN-CHRYSOSTOME', '07 01 80 10', '', 'jcblessy@yahoo.fr', 'blessyjean', 'ec0d2562', 4, 1, 82, 27, 2, 'OUI', '2019-08-01', '20:23:38', '', '0000-00-00', '00:00:00'),
+(255, '151 400 F', 'BOGLER', 'GOUDJANOU HONORE ', '', '', '', 'boglerhonore', '28bb69f6', 4, 1, 82, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(256, '251 979 J', 'BOHOUSSOU ', 'LOUKOU DENIS', '07 94 50 29', '', 'denis.bohoussou@gmail.com', 'bohoussoudenis', 'cd132abc', 4, 1, 82, 27, 2, 'OUI', '2019-08-01', '20:25:29', '', '0000-00-00', '00:00:00'),
+(257, '421 505 K', 'BOKA', 'N\'TAHO MARIE MARGUERITE CECILE ELISABETH', '77 36 48 60', '', 'marie.boka.1@gmail.com', 'ntaho1', 'd45c53f8', 4, 1, 82, 27, 2, 'OUI', '2019-08-01', '20:23:38', 'OUI', '2019-12-24', '15:04:48'),
+(258, '200 167 N', 'BONY ', 'SERGE-ROLAND', '', '', '', 'bonysergeroland', '72c6c0f9', 4, 1, 82, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(259, '138 947 Z', 'BROU', 'KOUADIO SIMEON', '07 37 24 03', '', 'brousimeon@yahoo.fr', 'broukouadio', '675dc75c', 4, 1, 82, 27, 2, 'OUI', '2019-08-01', '20:23:38', '', '0000-00-00', '00:00:00'),
+(260, '242 841 F', 'CISSE', 'IBRAHIMA BACONGO', '', '', '', 'cissebacongo', 'fd44711d', 4, 1, 82, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(261, '278 643 U', 'BOFFOUE', 'MORO OLIVIER', '', '', '', 'boffoueolivier', 'df7a3548', 5, 12, 35, 17, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-05-19', '22:42:53'),
+(262, '301 101 E', 'CAPRI', 'ROGER ARMAND', '07 79 41 31', '', 'rogercapri2011@gmail.com', 'capriroger', '73b2c533', 4, 2, 49, 27, 2, 'OUI', '2019-08-05', '09:21:33', '', '0000-00-00', '00:00:00'),
+(263, '203 562 H', 'COULIBALY', 'DOTE', '05 83 18 54', '', 'dotecoulibaly@yahoo.com', 'coulibalydote', '8ea4c7a3', 4, 2, 49, 27, 2, 'OUI', '2019-08-04', '22:37:06', '', '0000-00-00', '00:00:00'),
+(264, '427 051 L', 'KONATE', 'FATI EPSE COULIBALY ', '46 90 92 79', '', 'fatikonate2000@yahoo.fr', 'fatikonate2000', 'yorokagne', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '08:26:28', 'OUI', '2020-06-27', '10:47:36'),
+(265, '364 959 P', 'DANHO', 'YAYO VINCENT', '', '', '', 'danhoyayo', 'cbd3f61b', 4, 2, 49, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(266, '316 662 D', 'DAO ', 'DAOUDA', '03 48 89 59', '', 'dahaux.daouda@gmail.com', 'dahaux.daouda', '3776939f', 4, 2, 49, 27, 2, 'OUI', '2019-08-04', '22:37:06', '', '0000-00-00', '00:00:00'),
+(267, '900 410 A', 'DJIEZION', 'GUELAYBE ENOSCH', '', '', '', 'djiezionenosch', 'f3091eba', 4, 2, 49, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(268, '404 054 Z', 'DOBE', ' ZAKA FRANCK-AIME', '41 88 56 34', '', 'dobefranck@yahoo.fr', 'dobefranck', '575bf967', 4, 2, 49, 27, 2, 'OUI', '2019-08-04', '22:37:06', '', '0000-00-00', '00:00:00'),
+(269, '404 053 Y', 'GBRATTO', 'WOLO SONIA-ENGELINE EPSE DOBE ', '', '', 'angelinedobe@gmail.com', 'angelinedobe', 'sangelinedobe21', 4, 2, 49, 27, 2, 'OUI', '2019-08-04', '22:37:06', 'OUI', '2019-09-10', '16:50:46'),
+(270, '307 230 Q', 'DOMORAUD', 'ZAYET MONIQUE A.', '07 15 20 70', '', 'deydomoraud@gmail.com', 'ndomoraud69', 'ma251107', 4, 2, 49, 27, 2, 'OUI', '2019-08-04', '22:37:06', 'OUI', '2020-07-15', '10:40:58'),
+(271, '390 439 D', 'DOUMBIA ', 'ABDOULAYE', '08 32 19 58', '', 'ayedou@yahoo.fr', 'ayedou', '5f997b08', 4, 2, 49, 27, 2, 'OUI', '2019-08-04', '22:37:06', '', '0000-00-00', '00:00:00'),
+(272, '166 189 W', 'FAMIAN', 'AMOA', ' 05 65 34 59', ' ', 'famimag@gmail.com', 'famianamoa', '5fbe76dc', 4, 2, 49, 27, 2, 'OUI', '2019-08-04', '22:37:06', '', '0000-00-00', '00:00:00'),
+(273, '089 488 W', 'FOADE', 'DENIS JOEL TONGNIVI', '', '', '', 'foadedenis', 'd94f6fbb', 4, 2, 49, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(274, '258 443 Q', 'FOFANA', 'NAMIZATA ESPE BINATE', ' ', ' ', 'namizatab@yahoo.fr', 'namizatab', 'bbbb829a', 4, 2, 49, 27, 2, 'OUI', '2019-08-04', '22:37:06', '', '0000-00-00', '00:00:00'),
+(275, '257 572 G', 'GALANDOU ', '  N\'CHO ACHI JERÃ”ME', ' ', ' ', '', 'galandoujerome', '3a68fc6d', 4, 2, 49, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(276, '366 853 F', 'GBAKOU', 'MONNET BENOIT PATRICK', ' 49 46 68 62', ' ', 'patrick.gbakou@gmail.com', 'patrick.gbakou', '64c3ef4e', 4, 2, 49, 27, 2, 'OUI', '2019-08-04', '22:37:06', '', '0000-00-00', '00:00:00'),
+(277, '128 014 K', 'GLITHO', 'PAULIN APOLLINAIRE', '', '', '', 'glithopaulin', '3aea7550', 4, 2, 49, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(278, '140 398 R', 'KEBE', 'SOUMAHILA', ' 05 62 65 24', ' ', 'soumaila.kebe@gmail.com', 'soumaila.kebe', '02afcd76', 4, 2, 49, 27, 2, 'OUI', '2019-08-04', '22:37:06', '', '0000-00-00', '00:00:00'),
+(279, '404 060 B', 'KEITA', 'ZAKARYA', ' 07 19 34 61', ' ', 'kzakarya@yahoo.fr', 'kzakarya', 'Alma19my81', 4, 2, 49, 27, 2, 'OUI', '2019-08-04', '22:37:06', 'OUI', '2020-06-28', '22:28:39'),
+(280, '328 313 B', 'KIMOU', 'ASSI JOSE CARLOS', ' 49 92 55 97', ' ', 'jkimouassi@yahoo.fr', 'jkimouassi', 'K!moU27@', 4, 2, 49, 27, 2, 'OUI', '2019-08-04', '22:37:06', 'OUI', '2019-08-07', '18:59:38'),
+(281, '209 720 Z', 'KIMOU', 'AYA MAURICE', ' 05 74 93 63', ' ', 'amkimou@yahoo.fr', 'amkimou', '35856ff5', 4, 2, 49, 27, 2, 'OUI', '2019-08-04', '22:37:06', '', '0000-00-00', '00:00:00'),
+(282, '149 240 T', 'KOFFI ', 'AKA', ' 54 06 42 98', ' ', 'k.antonio2@yahoo.fr', 'koffiaka', '0d88a139', 4, 2, 49, 27, 2, 'OUI', '2019-08-04', '22:37:06', 'OUI', '2019-08-13', '19:16:41'),
+(283, '294 590 V', 'KOFFI ', 'KONAN SIMEON', ' ', ' ', '', 'koffikonansimeon', 'ac6f20b1', 4, 2, 49, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(284, '900 411 B', 'KOFFI', 'KOUAKOU BONAVENTURE', '', '', '', 'koffibonaventure', '1ae855ee', 4, 2, 49, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(285, '300 206 S', 'KOFFI ', 'N\'GUESSAN JEREMIE', ' 07 06 73 88', ' ', 'njkoffi@gmail.com', 'koffijeremie', 'c6d11a33', 4, 2, 49, 28, 2, 'OUI', '2019-08-04', '22:37:06', '', '0000-00-00', '00:00:00'),
+(286, '241 628 Q', 'KOKO ', 'DJEI PARFAIT', ' 05 95 07 43', ' ', 'kokoparfait@aviso.ci', 'kokodp', 'fc24f73d', 4, 2, 49, 27, 2, 'OUI', '2019-08-04', '22:37:06', '', '0000-00-00', '00:00:00'),
+(287, '241 629 R', 'KONAN', 'N\'GUESSAN NARCISSE SIMON', ' 06 22 16 45', ' ', 'konannguessannarcisse@yahoo.fr', 'konannguessannarcisse', '62faead6', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '08:26:28', '', '0000-00-00', '00:00:00'),
+(288, '328 314 C', 'KONAN ', 'YAO SILVERE', ' 05 84 26 24', ' ', 'konansyl@yahoo.fr', 'konansyl', 'Miensah2207', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '08:26:28', 'OUI', '2020-06-26', '15:04:48'),
+(289, '258 335 K', 'BADINI ', 'HAOUA EPSE KONE', ' 08 18 89 94', ' ', 'konebadni@yahoo.fr', 'konebadini', '50a8eed0', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '08:26:28', '', '0000-00-00', '00:00:00'),
+(290, '301 110 A', 'KONE ', 'SALIF', ' 59 15 79 58', ' ', 'salifkon@yahoo.fr', 'salif.kone', '24siriki2ol', 3, 2, 49, 16, 1, 'OUI', '2019-08-06', '08:26:28', '', '0000-00-00', '00:00:00'),
+(291, '111 810 R', 'KONE ', 'TIEKOURA', ' ', ' ', '', 'konetiekoura', '4a15e947', 4, 2, 49, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(292, '361 929 E', 'KONIAN', 'KONIAN ALEXIS', ' 08 85 15 70', ' ', 'alexkonian@gmail.com', 'alexkonian', 'ca96988d', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '08:26:28', 'OUI', '2019-08-06', '16:34:50'),
+(293, '203 584 Y', 'KOUADIO ', 'BENIE MARCEL', ' 07 02 98 59', ' ', 'beniemarcel@yahoo.fr', 'beniemarcel', '2d2633ed', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '08:26:28', '', '0000-00-00', '00:00:00'),
+(294, '124 377 X', 'KOUADIO ', 'KONAN ARSENE', ' 05 95 97 91', ' ', 'arsenekk@yahoo.fr', 'arsenekk', '35c7d80d', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '08:26:28', '', '0000-00-00', '00:00:00'),
+(295, '290 905 D', 'KOUADIO ', 'KOTCHI JEROME', ' 09 57 69 98', ' ', 'jeromekouadiok@gmail.com', 'kouadiokotchi', '8614161d', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '08:26:28', '', '0000-00-00', '00:00:00'),
+(296, '331 873 Y', 'KOUAKOU ', 'KONAN AUGUSTE', ' ', ' ', 'augustekk@yahoo.fr', 'augustekk', '0d14294a', 4, 2, 49, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(297, '331 871 W', 'KOUAKOU ', 'KOUADIO CLEMENT', ' 07 06 57 22', ' ', 'kouakouclementk@gmail.com', 'kouakouclementk', 'yeshua2019', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '08:26:28', 'OUI', '2020-07-07', '21:32:46'),
+(298, '900 413 F', 'KOUAKOU', 'NOUAMAN ALBERT', '', '', '', 'kouakounouaman', '62da6cfd', 4, 2, 49, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(299, '404 068 F', 'KOUAME ', 'EUPHRASIE BEN-HOUASSA', ' 05 30 82 89', ' ', 'beneuphra@yahoo.fr', 'beneuphra', '68392d9b', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '08:26:28', 'OUI', '2020-07-13', '09:38:03'),
+(300, '131 611 R', 'KOUAMELAN', 'JACQUELINE', ' 07 61 43 29', ' ', 'jakouam@yahoo.fr', 'jakouam', 'c1a553f1', 4, 2, 49, 28, 2, 'OUI', '2019-08-06', '08:26:28', '', '0000-00-00', '00:00:00'),
+(301, '403 595 L', 'KOUAO', 'GUY SERGE', ' 77 43 41 02', ' ', 'kgs10ci@yahoo.fr', 'kgs10ci', 'M0nych0u', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '08:26:28', 'OUI', '2020-06-24', '23:14:45'),
+(302, '246 047 A', 'KOUASSI ', 'EUGENE', ' 47 94 87 05', ' ', 'eugene.kouassi@gmail.com', 'eugene_kouassi', 'b87f2de9', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '08:26:28', '', '0000-00-00', '00:00:00'),
+(303, '340 374 Y', 'KOUASSI ', 'KOMENAN', ' ', ' ', 'aupmgtcivoire@yahoo.fr', 'aupmgticivoire', '95da2a58', 4, 2, 49, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(304, '200 773 V', 'KOUASSI', 'N\'GUETTIA RENE', ' ', ' ', '', 'kouassinguetta', 'f2e8af18', 4, 2, 49, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(305, '397 822 Q', 'BOKOSSA ', 'MARIE-JOSE EPSE KOUASSI ', ' ', ' ', 'mariekouassi@gmail.com', 'mariekouassi', 'josejos1', 4, 2, 49, 27, 2, 'OUI', '2019-08-04', '22:37:06', 'OUI', '2019-08-05', '11:40:54'),
+(306, '203 579 J', 'KOUASSY ', 'OUSSOU', ' ', ' ', '', 'kouassyoussou', 'd97c8be6', 4, 2, 49, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(307, '209 722 P', 'KOULIBALY ', 'MAMADOU', ' 06 05 27 05', ' ', 'mamadou@koulibaly.net', 'koulibalymamadou', '7954020c', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '09:02:51', '', '0000-00-00', '00:00:00'),
+(308, '361088 F', 'KPATA', 'AKON ABOKON BERENGER', '', '', '', 'kpataberenger', 'a1bc181d', 4, 2, 49, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(309, '406 627 W', 'KRAMOH', 'YAO', '', '', '', 'kramohyao', 'ecf3a46c', 4, 2, 49, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(310, '', 'ADJE', 'NARCISSE', '', '', 'ndaadje@gmail.com', 'adjenarcissevpe', '19d24d07', 2, 17, 59, 34, 3, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(311, '', 'GOHO', 'LYDIE', '', '', 'lydiegoho@yahoo.fr', 'goholydievpe', '0c0b499a', 2, 17, 59, 34, 3, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(312, '', 'FOFANA', 'KADIDIATA', '', '', 'kahdyfofana@gmail.com', 'fofanakadidiatavpe', 'b89a22df', 2, 17, 59, 34, 3, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(313, '', 'THIOUM', 'AKISSI CLEMENTINE', '', '', 'thioum2000@gmail.com', 'thioumclementinevpe', '2d3ddabd', 2, 17, 59, 34, 3, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(315, '252 975 F', 'KOUA ', 'BROU JEAN CLAUDE', '03 28 52 41', '09 BP 2367 ABIDJAN 09', 'k_brou@hotmail.com', 'kouabroupresidence', 'KB08jc19!', 2, 13, 24, 33, 1, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(316, '202 182 U', 'GNANAGBE ', 'GOGOUA', ' 05 01 67 57 ', ' ', 'gnanagbegog@yahoo.fr', 'gnanagbegogoua', '05fb9bf4', 2, 4, 20, 32, 1, 'OUI', '2020-06-15', '14:01:00', 'OUI', '2020-06-15', '18:39:23'),
+(317, '319 287 H', 'LASM ', 'RAYMOND PAUL', ' ', ' ', 'essonomel61@yahoo.fr', 'lasmraymond', 'fb1b6d53', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '09:02:51', '', '0000-00-00', '00:00:00'),
+(318, '265 880 A', 'LAVRY', 'LAUBHOUET ABEL ', ' 45 70 12 93', ' ', 'lavryabel@yahoo.fr', 'lavrylaubhouet', 'ec6bdc71', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '09:02:51', '', '0000-00-00', '00:00:00'),
+(319, '253 573 D', 'MAHAMOUDOU', 'TRAORE', ' 05 05 66 47', ' ', 'tmaha01@yahoo.fr', 'tmaha01', '27185fe0', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '09:02:51', '', '0000-00-00', '00:00:00'),
+(320, '299 266 Q', 'MAHOP ', 'ERIC ALAIN', ' 06 02 82 13', ' ', 'ericmahop@yahoo.com', 'ericmahop', 'monsyge4316@', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '09:02:51', 'OUI', '2020-06-30', '16:23:19'),
+(321, '347 842 H', 'MALAN ', 'BEÃLA BENOIT', ' ', ' ', 'malanben@yahoo.fr', 'malanben', '94d85436', 4, 2, 49, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(322, '130 971 V', 'MAMA ', 'OUATTARA', ' ', ' ', 'mamacires@yahoo.fr', 'mamacires', 'f6140833', 4, 2, 49, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(323, '149 202 J', 'MELEU ', 'MATHIEU', ' ', ' ', '', 'meleumathieu', '734c8d73', 4, 2, 49, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(324, '132 103 N', 'MIAKA ', ' OURETO', ' ', ' ', 'gikeli@hotmail.com', 'gikeli', 'ab8542ae', 4, 2, 49, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(325, '900 415 G', 'MOBIO', 'FRANCOIS', '', '', '', 'mobiofrancois', '6aae071a', 4, 2, 49, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(326, '276 249 X', 'N\'DE ', 'ATSE HONORE PASCAL', ' 05 63 68 85', ' ', 'ndeatse@yahoo.fr', 'ndeatse', '9c686233', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '09:02:51', 'OUI', '2019-08-06', '16:45:19'),
+(327, '290 863 A', 'N\'DRI', 'KONAN LEON', ' 07 61 03 29', ' ', 'konanleond@yahoo.com', 'konanleon', '64041402', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '09:02:51', 'OUI', '2020-06-05', '15:09:03'),
+(328, '163 838 V', 'N\'GBO ', 'AKE GILBERT MARIE', ' ', ' ', 'akeapiyi@gmail.com', 'ngboa', 'bc2aae76', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '09:02:51', '', '0000-00-00', '00:00:00'),
+(329, '150 918 C', 'N\'GUESSAN ', 'TCHETCHE', ' 05 96 96 95', ' ', 'tt.nguessan@gmail.com', 't.nguessan', '7f455df5', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '09:02:51', '', '0000-00-00', '00:00:00'),
+(330, '209 718 T', 'N\'GUESSAN ', 'BI TAH', ' 05 85 38 35', ' ', 'nguessanbi@yahoo.fr', 'nguessanbi', '90f591a0', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '09:02:51', '', '0000-00-00', '00:00:00'),
+(331, '265 052 A', 'N\'GUESSAN', 'COFFIE FRANCIS JOSE', ' 08 89 91 50', ' ', 'coffiejosee@yahoo.fr', 'coffiejosee', '34fe46a0', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '09:02:51', '', '0000-00-00', '00:00:00');
+INSERT INTO `utilisateur` (`id_utilisateur`, `matricule_utilisateur`, `nom_utilisateur`, `prenom_utilisateur`, `tel_utilisateur`, `adresse_utilisateur`, `email_utilisateur`, `login_utilisateur`, `mot_passe_utilisateur`, `id_type_utilisateur`, `id_etablissement`, `id_departement`, `id_groupe_utilisateur`, `id_qualite_utilisateur`, `parametres_envoye`, `date_envoie`, `heure_envoie`, `connexion_reussie`, `date_derniere_connexion`, `heure_derniere_connexion`) VALUES
+(332, '404 074 V', 'N\'GUETTA', 'NÃ‰E AHOU-YAH GISELE ANVIRE', ' 08 38 93 08', ' ', 'anvire@yahoo.fr', 'anvire.gisele', '13e2a3bb', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '09:30:26', '', '0000-00-00', '00:00:00'),
+(333, '257 571 F', 'N\'ZUE ', 'FELIX FOFANA', ' 45 41 11 41', ' ', 'felix.nzue@gmail.com', 'felix.nzue', 'nzuewonder04', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '09:30:26', 'OUI', '2020-07-02', '21:02:59'),
+(334, '231 495 J', 'NANIE ', 'SILUE ADELE', ' 05 76 60 48', ' ', 'adnanie2006@yahoo.com', 'adnanie2006', 'a596694d', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '09:02:51', '', '0000-00-00', '00:00:00'),
+(335, '149 238 M', 'N\'GALADJO', 'BAMBA LAMBERT', ' 55 08 74 40', ' ', 'bamba.ngaladjo@gmail.com', 'bamba_ngaladjo', 'JSNl29D59dS&amp;T@T', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '09:02:51', 'OUI', '2019-08-06', '11:40:03'),
+(336, '203 570 M', 'NIAMKEY ', 'AMLAN MADELEINE', ' 05 67 76 47', ' ', 'niamkeyam@gmail.com', 'niamkeyyam', 'b5ecf07f', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '09:30:26', '', '0000-00-00', '00:00:00'),
+(337, '285 234 S', 'NOUHOUN', ' COULIBALY', ' ', ' ', '', 'nouhouncoulibaly', 'f4a11201', 4, 2, 49, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(338, '258 448 V', 'NUAMA', 'EKOU', ' 05 70 45 92', ' ', 'ekounuama@yahoo.fr', 'enuama', 'f528d5a7', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '09:30:26', '', '0000-00-00', '00:00:00'),
+(339, '120 730 D', 'OTROU', ' ALI HENRI', ' ', ' ', 'otrouh@yahoo.fr', 'otrouh', '90f591a0', 4, 2, 49, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(340, '150 640 z', 'OUATTARA', 'ABDOULAYE', '', '', '', 'ouattarabou', 'f83ad185', 4, 2, 49, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(342, '150 640 z', 'OUATTARA', 'ABDOULAYE', '', '', '', 'ouattarabou', 'f83ad185', 4, 2, 49, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(343, '149 398 N', 'OUEDRAOGO', 'MARIAM', ' 05 07 22 87', ' ', 'omariam54@yahoo.com', 'ouedraogomam', '3b499fe8', 4, 2, 49, 28, 2, 'OUI', '2019-08-06', '09:30:26', '', '0000-00-00', '00:00:00'),
+(344, '323 650 L', 'OUGUEHI', 'KUEBO PIERRE', ' 59 90 96 86', ' ', 'pierreouguehi@yahoo.fr', 'pierreouguehi', 'pierreouguehi1964', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '09:30:26', 'OUI', '2019-08-06', '09:55:54'),
+(345, '246 288 R', 'POKOU ', 'KOFFI', ' 05 04 69 60', ' ', 'koffi_pokou@yahoo.fr', 'pokoukoffi', 'fbaf27fb', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '09:30:26', '', '0000-00-00', '00:00:00'),
+(347, '230 948 J', 'ALLOU ', 'KOUAME RENE', '07 80 30 13', '', 'alloukouamerene@gmail.com', 'alloukouamerene', 'Allou2020', 4, 4, 21, 27, 2, 'OUI', '2020-06-25', '09:28:29', 'OUI', '2020-07-13', '08:30:03'),
+(348, '344 939 F', 'ABLI', 'JEAN UBERSON', '', '', 'johnhuberson@hotmail.com', 'ablijean', 'a0e50007', 5, 1, 82, 17, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-05-13', '22:19:42'),
+(349, '426 987 B', 'ADJOUMANI ', 'KOBENAN', '', '', 'adjkobenan@yahoo.fr', 'adjkobenan', 'eda6fd6a', 5, 4, 22, 17, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-03-09', '15:15:23'),
+(350, '278 646 X', 'DAGOU ', 'DENIS KOMENAN', '', '', 'dagou_denis@yahoo.fr', 'dagou_denis', '3dac6bf8', 5, 4, 23, 17, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-05-12', '16:50:21'),
+(351, '250 591 H', 'ABOUA ', 'ADON GUSTAVE', '', '', '', 'abouagustave', 'b8198e61', 5, 6, 78, 20, 1, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(355, '232 006 U', 'ABOUDRAMANE ', 'GBANE', '', '', 'abou5961@yahoo.fr', 'abou5961', '1ab00732', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-16', '19:41:42'),
+(356, '245 879 Q', 'ADAMA', 'SYLLA', '', '', 'sylla_adama1959@yahoo.fr', 'sylla2001', 'zoro1932', 3, 3, 48, 21, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2019-11-24', '10:22:26'),
+(357, '121 080 K', 'ADEGBINDIN', 'AKAMBI SALIOU', '', '', 'adegsal@yahoo.fr', 'adegsal', '6f543e2e', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(358, '266 613 A', 'ADIKO ', 'ASSAMOI VINCENT', '', '', 'vincent.adiko@univ-fhb.edu.ci', 'assamoivincent', '5ad87bd4', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-23', '09:45:13'),
+(359, '241 624 C', 'ADOHI', 'BIBI JEAN PIERRE', '05 48 17 83', '', 'pierreadohi@yahoo.fr', 'pierreadohi', 'bjpadhc61', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-02-04', '20:33:49'),
+(360, '501 900 C', 'AGBO', 'DJAMA DJOMAN ALFRED', '', '', 'djamaalfred@gmail.com', 'djamaalfred', 'ordinateur1', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-27', '14:17:12'),
+(361, '269 626 J', 'AHOUSSOU ', 'ANGE PRIVAT', '05 99 54 54', '', 'ange.ahoussou@hotmail.com', 'ange.ahoussou', '360df456', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-21', '22:35:10'),
+(362, '251 710 Q', 'AKONAN ', 'LUDOVIC', '', '', '', 'akonanludovic', 'a1e56456', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(363, '314 081 R', 'AKPA ', 'SAGNE JACQUES', '', '', 'sagnbest@yahoo.fr', 'sagnbest', 'e668b9d6', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-17', '16:13:05'),
+(364, '500 268 Y', 'AKPATA ', 'EDOUARD', '05 42 29 78', '', 'edouardakpata@yahoo.fr', 'edouardakpata', 'cavabien1', 4, 3, 48, 27, 2, 'OUI', '2020-06-17', '17:24:50', 'OUI', '2020-08-03', '10:31:02'),
+(365, '425 983 E', 'AKRE ', 'NÃ‰E KOUAKOU LEBE PRISCA MARIE-SANDRINE', '49 10 27 97', '', 'priscacoakre@yahoo.fr', 'priscacoakre', 'mariage2013', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-07', '11:42:05'),
+(366, '241 678 S', 'AMAN', 'ANGORA', '40 91 89 31', '', 'angora.aman@gmail.com', 'aman-angora', 'a74633dc', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-06', '12:05:53'),
+(367, '391 013 J', 'AMAN ', 'YANN AMAKOU AIME-DESIRE', '59 20 79 90', '', 'aman.yann@gmail.com', 'aman.yann', 'cames2017!!!', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2019-06-05', '20:22:59'),
+(368, '424 452 Q', 'AMOUIN ', 'NÃ‰E DJAKOURE AGRE KOUSSO SANDRINE', '', '', 'dask_kousso@yahoo.fr', 'dask_kousso', 'Raniil@ne7', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-15', '18:06:02'),
+(369, '273 272 K', 'ANDJI-YAPI ', 'YAO JONAS', '', '', 'jonasandji@yahoo.fr', 'jonasandji', '8ff86bd8', 4, 3, 48, 27, 2, 'OUI', '2020-07-03', '09:48:15', '', '0000-00-00', '00:00:00'),
+(370, '253 564 C', 'ANONGBA ', 'PATRICK NORBERT BLAISE', '08 67 57 23', '', 'anongba@yahoo.fr', 'patrick.anongba', '6056pm', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(371, '231 494 R', 'ASSA ', 'ACHY MATHIEU', '', '', 'mathieuassa@yahoo.fr', 'mathieuassa', 'mary1958', 4, 3, 48, 27, 2, 'OUI', '2019-07-01', '20:08:24', 'OUI', '2020-06-25', '21:17:20'),
+(372, '389 943 H', 'ASSAMOI ', 'ABE YAPO ERIC-MICHEL', '07 59 93 30', '', 'eric_michel_assamoi@yahoo.fr', 'eric-michel_assamoi', 'lindakarine', 4, 3, 48, 27, 2, 'OUI', '2020-06-20', '23:00:11', 'OUI', '2020-06-15', '21:14:01'),
+(373, '099 530 V', 'ASSAMOI ', 'ASSAMOI PAUL', '47 29 12 94', '', 'assamoipaul@yahoo.fr', 'assamoipaul', 'f0c6dbd8', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(374, '258 161 M', 'ASSI ', 'KOUAME MATHIAS', '01 11 10 08', '', 'askomath@yahoo.fr', 'askomath', 'becoueffin1', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-29', '19:57:46'),
+(375, '285 434 K', 'ASSOMA ', 'AMON BENJAMINE', '07 86 96 66', '', 'benassoma@yahoo.fr', 'benassoma', '27babe04', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-30', '14:45:39'),
+(376, '292 317 U', 'ASSOUMA ', 'DAGRI CYRILLE', '', '', 'dagri20022002@yahoo.fr', 'dagri20022002', '41a2fd18', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(377, '366 846 G', 'ATHEBA ', 'GRAH PATRICK', '', '', 'atheba.p@outiook.com', 'grahpatrick.atheba', '25d6e267', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(378, '403 925 N', 'BALLO', 'DAOUDA', '77 87 66 33', '', 'ballo.daouda@yahoo.fr', 'ballo.daouda', 'aede0b5b', 4, 3, 48, 27, 2, 'OUI', '2020-01-10', '15:01:31', 'OUI', '2020-08-19', '16:39:08'),
+(379, '232 134 Q', 'BALOU BI', ' TOTO JEROME', '', '', '', 'baloubitoto', '686b67cf', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(380, '426 400 T', 'BAMBA', 'ADAMA', '', '', 'adambamba_2000@yahoo.com', 'adambamba_2000', 'b070978@', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-20', '20:05:00'),
+(381, '241 615 B', 'BAMBA', 'EL HADJI SAWALIHO', '02 52 23 61', '', 'bamba_el_hadji@yahoo.fr', 'bambaelhadji', '7ddf7d7b', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(382, '345 952 D', 'BAMBA', 'GAOUSSOU', '', '', 'bamba@netcourrier.com', 'bambagaoussou', 'eeb18148', 4, 3, 48, 27, 2, 'OUI', '2020-06-08', '17:05:16', 'OUI', '2020-06-26', '00:42:00'),
+(383, '353 598 B', 'BAMBA', 'IBRAHIMA', '07 98 75 88', '', 'ibrahimbambino@yahoo.fr', 'ibrahimbambino', 'zegela37', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2019-07-25', '10:13:59'),
+(384, '500 525 S', 'BANY ', 'GUY EULOGE', '', '', 'bguyeuloge@gmail.com', 'bguyeuloge', 'A5DG678v', 4, 3, 48, 27, 2, 'OUI', '2019-05-28', '15:11:24', 'OUI', '2020-08-11', '08:53:54'),
+(385, '142 128 Y', 'BASSOLE', 'NÃ‰E EZONBIE KANTIENO CHRISTINE', '', '', '', 'ezonbiebassole', '575b53e7', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(386, '389 962 C', 'BEDE EPSE BAGAYOKO', ' AFFOUE LUCIE', '', '', 'belucie@yahoo.fr', 'belucie', 'beraca2018', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-09-08', '08:34:14'),
+(387, '500 267 P', 'BEDOU', 'MOUHAMADOU', '08 56 46 40', '', 'bedoumou1@yahoo.com', 'bedoumou1', 'gguene0987654321', 4, 3, 48, 27, 2, 'OUI', '2020-02-03', '13:56:02', 'OUI', '2020-06-10', '16:17:38'),
+(388, '500 427 Y', 'BIBILA', 'MAYAYA BISSEYOU YVON', '', '', 'bibilamayayabisseyou@yahoo.fr', 'bibilamayayabisseyou', '8abc670d', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-16', '13:40:50'),
+(389, '202 884 U', 'BOKA ', ' KOUADIO', '', '', 'bokak2@yahoo.fr', 'bokak2', 'b2178db2', 4, 3, 48, 27, 2, 'OUI', '2020-03-12', '18:01:44', 'OUI', '2020-06-12', '10:11:12'),
+(390, '200 105 R', 'BONGA', ' GRAH MESMIN', '', '', 'mesmin.bonga@univ-cocody.ci', 'mesmin.bonga', 'a8af37af', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(391, '200 197 D', 'BONNY', 'ROGER', '07 04 12 72', '', 'rbo_ny@yahoo.fr', 'rbo_ny', 'rbonny09_55', 4, 3, 48, 27, 2, 'OUI', '2019-11-21', '20:57:05', 'OUI', '2020-05-23', '17:27:23'),
+(392, '313 102 S', 'BOTI ', 'JEAN BRICE', '08 85 37 84', '', 'jeanbriceboti@gmail.com', 'boti0182002', '44c7c9be', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-22', '15:56:36'),
+(393, '361 769 V', 'BROU', 'YAPI SERGE', '49379544', '', 'lesaintbys@yahoo.fr', 'lesaintbys', 'a828401a', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-04', '20:34:07'),
+(394, '389 988 F', 'CISSE', 'LADJI', '47 09 36 61', '', 'ladjic@hotmail.com', 'ladjic', 'molami26', 4, 3, 48, 27, 2, 'OUI', '2019-06-27', '21:09:40', 'OUI', '2020-06-26', '15:55:47'),
+(395, '390 002 B', 'COULIBALY', 'NÃ‰E EHORA AMELAN GHISLAINE', '59 56 19 05', '', 'gehora@yahoo.fr', 'gehora', 'GinaKae2*', 4, 3, 48, 27, 2, 'OUI', '2020-06-08', '13:29:47', 'OUI', '2020-07-15', '09:19:20'),
+(396, '340 005 K', 'COULIBALY', 'SALIYA', '', '', 'saliya.coulibaly@gmail.com', 'saliya.coulibaly', 'aa371d0b', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(397, '373 176 F', 'COULIBALY', 'SIOMENAN', '02 65 90 03', '', 'bsiomenan@yahoo.fr', 'coulibalysiomenan', '79636853', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-07', '10:45:33'),
+(398, '107 714 Z', 'COULIBALY', 'YAYA', '', '', '', 'coulibalyaya', '65ed76a6', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(399, '313 478 A', 'DADE', 'JOEL MAXIME ERIC', '', '', 'joel.dade@yahoo.fr', 'joel.dade', '852c2a6a', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(400, '332 013 N', 'DALI', 'TEKPO PAUL AMEWE', '09 93 31 62', '', 'paultekpo@yahoo.fr', 'paultekpo', 'daltek19', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-30', '14:14:25'),
+(401, '149 846 F', 'DANHO', ' DOUBOU', '', '', '', 'danhodoubou', '09b7dff7', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(402, '269 636 L', 'DIABATE', 'DONOUROU', '01 41 64 30', '', 'ddonourou@yahoo.fr', 'ddonourou', '181e0e90', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(403, '203 923 T', 'DIABY', 'SEKOU', '07 37 23 55', '', 'sekoudiaby@yahoo.fr', 'sekoudiaby', 'sek5di6', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-29', '07:50:13'),
+(404, '226 506 Y', 'DIACO ', ' THOMAS JEAN PATRICE', '', '', 'thomas.dico@hotmail.com', 'thomas.dico', 'ffd1943a', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(405, '336 641 C', 'DIAMA', 'ARMAND', '08 33 87 42', '', 'diama41a@hotmail.com', 'diama41a', '978b6676', 4, 3, 48, 27, 2, 'OUI', '2019-07-16', '11:22:12', 'OUI', '2020-06-14', '21:10:30'),
+(406, '241 623 B', 'DIAWARA', 'ADAMA', '58 01 69 02', '', 'diawara_adama@yahoo.fr', 'diawaraadama', 'da69513f', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(407, '239 745 K', 'DIBY ', 'KADJO AMBROISE', '07 71 01 68', '', 'akdiby@gmail.com', 'dibyka', 'cd7413fc', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-03-17', '08:57:22'),
+(408, '326 458 B', 'DIOMANDE ', 'GBE GONDO DIDIER', '02 08 91 20', '', 'dggbe@yahoo.fr', 'dggbe', '5ca677f7', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-15', '21:09:46'),
+(409, '313 374 H', 'DJOMAN', 'AKA MAURICE', '49 30 46 66', '', 'djomanaka@yahoo.fr', 'djomanaka', 'Valerine2015', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-21', '23:41:37'),
+(410, '241 680 R', 'EHUI', 'NIAMKEY EBA BERNADETTE MARCELLINE  EPSE AVO BILE', '07 56 84 72', '', 'behuiavobile@yahoo.fr', 'behuiavobile', '4be@1960', 4, 3, 48, 27, 2, 'OUI', '2020-06-09', '14:49:09', 'OUI', '2020-08-02', '08:01:28'),
+(411, '322 438 T', 'ELLO ', 'AIME SERGE', '08 78 92 30', '', 'elloserge@gmail.com', 'elloserge', 'a5db38b4', 4, 3, 48, 27, 2, 'OUI', '2020-06-03', '15:32:02', 'OUI', '2020-06-18', '12:25:25'),
+(412, '332 041 S', 'ESSI ', 'MARC MARIE-MAURICE MELEDGE', '05 02 68 73', '', 'marc.essi@netcourrier.com', 'marc.essi', '5bb37d01', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-09-01', '13:29:43'),
+(413, '346 103 C', 'ESSY', 'KOUADIO FODJO', '', '', 'essykouadiofodjo@yahoo.fr', 'essykouadiofodjo', 'essy010778', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-04', '23:58:12'),
+(414, '339 995 T', 'FANTE', 'BAMBA', ' 02 12 99 09', ' ', 'fante_bamba1@yahoo.fr', 'fante_bamba', '49517852', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-15', '15:16:01'),
+(415, '269 630 S', 'FASSINOU', 'WANIGNON FERDINAND', ' ', ' ', 'faswaniferd@yahoo.fr', 'faswaniferd', 'e5034376', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-25', '18:20:21'),
+(416, '397 146 S', 'FOFANA', ' DAOUDA', ' ', ' ', 'fofanadaouda@yahoo.fr', 'fofanadaouda', 'Katia1979@@', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-05-19', '12:52:45'),
+(417, '239 366 P', 'FOFANA', 'SIAKA', ' ', ' ', 'fsiaka@hotmail.com', 'fsiaka', '3cc54a26', 3, 3, 48, 21, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-03', '11:31:05'),
+(418, '390 057 H', 'GBANE', 'AHMADOU', ' 49 96 23 24', ' ', 'ahmadougbane@yahoo.fr', 'ahmadougbane', '20Mahinda19', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-25', '14:45:52'),
+(419, '231 687 S', 'GBE ', 'NONDAI DIDIE', ' 67 63 70 91', ' ', 'nondaididier@gmail.com', 'gbdidier', '9424f422', 4, 3, 48, 27, 2, 'OUI', '2019-06-27', '21:19:34', 'OUI', '2019-07-08', '14:26:43'),
+(420, '372 926 W', 'GOGON ', 'BOGBE DOUO LOUIS HUBERSON', ' ', ' ', 'ghuberson@hotmail.com', 'ghuberson', '4738@GHK', 4, 3, 48, 27, 2, 'OUI', '2020-02-19', '15:17:31', 'OUI', '2020-08-11', '17:34:23'),
+(421, '396 310 H', 'GOULI BI ', 'IRIE MARC', ' ', ' ', 'marcgoulibi@gmail.com', 'goulibitra', '0000000i', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-27', '13:29:23'),
+(422, '340 376 S', 'GRAFOUTE ', 'MOUSSA', ' 47 65 60 34', ' ', 'gramouss@hotmail.com', 'gramouss', '4505gram', 4, 3, 48, 27, 2, 'OUI', '2019-06-25', '08:18:20', 'OUI', '2020-06-26', '15:49:29'),
+(423, '403 928 Z', 'KABRAN ', 'AKA FAUSTIN', ' 40 62 85 51', ' ', 'kabranakafaustin@yahoo.fr', 'kabranakafaustin', 'kabran1978', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-10', '12:55:32'),
+(424, '424 005 L', 'KACOU ', 'MODESTE HUBERSON AHIBA', ' ', ' ', 'modeste_kacou@yahoo.fr', 'modeste_kacou', 'nosrebuh83@', 4, 3, 48, 29, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-24', '08:44:57'),
+(425, '241 622 A', 'KAKOU EPSE YAO', 'RITA CAROLINA ANGORA', ' 05 85 79 53', ' ', 'ritakakouyao@yahoo.fr', 'ritakakouyao', 'a9d608ae', 4, 3, 48, 27, 2, 'OUI', '2020-01-23', '11:08:39', 'OUI', '2020-01-31', '09:27:25'),
+(426, '102 939 W', 'KANKO', ' COFFI', ' ', ' ', '', 'kankocoffi', 'd339f3b6', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(427, '403 932 M', 'KASSI', 'AMIAN BRISE BENJAMIN', ' 09 18 56 26', ' ', 'amiankassi@yahoo.fr', 'amiankassi', '7dd8ba81', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-25', '09:42:42'),
+(428, '205 138 A', 'KOBEA', 'TOKA ARSENE', ' ', ' ', 'kobeatoka@yahoo.fr', 'arsene.kobea', '5K6T1zpk', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-26', '11:47:25'),
+(429, '293 140 G', 'KOBENAN', 'SIGNO JOSEPH', ' 57 51 92 68', ' ', 'sindjoseph@gmail.com', 'sind_joseph', '5a731931', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(430, '164 207 E', 'KOBLAVI', 'NÃ‰E MANSILLA FREDERICA', ' 07 69 27 53', ' ', 'fmkoblavi@hotmail.com', 'fmkoblavi', 'vivant33', 4, 3, 48, 27, 2, 'OUI', '2019-07-16', '11:22:12', 'OUI', '2020-06-16', '15:10:36'),
+(431, '296 549 H', 'KOFFI ', 'AFFOUET MURIEL LAURE', ' 03 20 82 75', '', 'koffiam2017@gmail.com', 'koffiam2017', '59bd8f59', 4, 3, 48, 27, 2, 'OUI', '2020-07-06', '16:23:04', 'OUI', '2020-08-12', '11:41:40'),
+(432, '403 933 N', 'KOFFI ', 'KADJO AUGUSTIN', ' ', ' ', 'kadjoaugustinfr@yahoo.fr', 'kadjoaugustinfr', '3a5eb147', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-15', '16:54:22'),
+(433, '319 286 G', 'KOFFI ', 'KONAN ROGER', ' ', ' ', 'roger.koffi@univ-cocody.ci', 'roger.koffi', 'e7a39e63', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(434, '334 289 A', 'KOFFI ', 'KOUADIO FIRMIN', ' 01 47 45 16', ' ', 'kfirminkoffi@yahoo.fr', 'kfirminkoffi', 'ouessebas', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-02', '08:15:01'),
+(435, '231 491 N', 'KOFFI', 'NÃ‰E TCHALOVA GALINA NIKOLAEVNA', ' ', ' ', 'gal.tchalova@yahoo.fr', 'tchalovakoffi', '3ce58b18', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(436, '209 707 Z', 'KOFFI ', 'PHILIPPE', ' 09 87 07 80', ' ', 'koffiphilippetope53@gmail.com', 'koffiphilippetope', '4bc50bae', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-20', '12:23:15'),
+(437, '403 975 Y', 'KONAN ', 'KONAN ERIC', ' 09 13 44 56', ' ', 'konaneric@yahoo.fr', 'konaneric', 'yehoshua27', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-15', '15:42:14'),
+(438, '255 852 F', 'KONARE ', 'ABDOURAHAMANE  ELY', ' ', ' ', '', 'konareabdou', '59007dbd', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(439, '256 008 N', 'KONDRO K', ' KONAN HONORE', ' ', ' ', 'famienallomoh@yahoo.fr', 'famienallomoh', '958e6313', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(440, '131 864 P', 'KONE', 'ALI', ' 07 09 89 79', ' ', 'akati.klantcha@gmail.com', 'koneali_proffia', 'd795fa6c', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(441, '320 588 C', 'KONE ', 'MAWA', ' 09 09 90 81', ' ', 'kone_m2001@yahoo.fr', 'kone_m2001', 'marcelie', 4, 3, 48, 27, 2, 'OUI', '2020-06-30', '16:32:02', 'OUI', '2020-07-01', '18:34:18'),
+(442, '296 255 A', 'KONE ', 'SOLEYMANE', ' 03 48 65 88', ' ', 'konesol2003@yahoo.fr', 'konesol2003', '52e17f7c', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-31', '13:19:19'),
+(443, '201 702 L', 'KONE ', 'VAZOUMANA', ' ', ' ', 'konevazoum@yahoo.fr', 'konevazoum', 'a7228fa1', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(444, '265 973 A', 'KOUA', 'AKA ANTONIN', ' 07 61 28 29', ' ', 'antoninkoua@yahoo.fr', 'antoninkoua', '$botche67', 4, 3, 48, 27, 2, 'OUI', '2020-01-10', '15:01:31', 'OUI', '2020-08-03', '08:13:54'),
+(445, '336 636 X', 'KOUA ', 'KAMENAN BLAISE', ' ', ' ', 'kbkoua@yahoo.com', 'kouakb', 'Koua281269', 4, 3, 48, 27, 2, 'OUI', '2019-06-12', '16:23:16', 'OUI', '2020-09-07', '11:28:32'),
+(446, '164 229 B', 'KOUA ', 'OI KOUA', ' 02 03 54 76', ' ', 'kplatou.kkr@gmail.com', 'kouaoi.koua', '2c4de208', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-01', '12:18:02'),
+(447, '334 146 S', 'KOUACHI ', 'AGBE ARSENE', ' ', ' ', '', 'kouachiarsene', '5bafd63f', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(448, '226 838 U', 'KOUADIO ', 'KOUAME ABEL', ' ', ' ', 'kabelenoch77@gmail.com', 'kabelenoch77', 'e4489174', 4, 3, 48, 27, 2, 'OUI', '2020-06-12', '23:05:05', 'OUI', '2020-07-15', '02:46:51'),
+(449, '297 229 H', 'KOUADIO', 'KOUASSI YVES', ' 05 61 46 00', ' ', 'yves.kouadio@gmail.com', 'yves.kouadio', '41a866f9', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-16', '13:50:37'),
+(450, '335 718 G', 'KOUADIO ', 'LANDJI DIBERT', ' ', ' ', '', 'kouadiodibert', '81747e82', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(451, '296 550 E', 'KOUAME ', 'N\'DRI', ' 46 26 71 31', ' ', 'ezekmk@yahoo.fr', 'ezekmk', '282dc468', 4, 3, 48, 27, 2, 'OUI', '2020-06-04', '13:33:06', 'OUI', '2020-06-18', '01:36:31'),
+(452, '390 177 E', 'KOUASSI ', 'KOMENAN BENJAMIN', ' 07 63 82 46', ' ', 'nanminsi@yahoo.fr', 'benjamin.kouassi', 'anne-esther12', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-25', '07:33:08'),
+(453, '249 177 L', 'KOUASSI ', 'KOUAKOU LEONCE', ' 07903663', ' ', 'kouassi_kleonce@yahoo.fr', 'kouassi_kleonce', '8e3e51b5', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-09-07', '14:32:51'),
+(454, '149 087 S', 'KOUASSI', 'NÃ‰E GOFFRI MARIE-CHANTAL', ' 01403910', ' ', 'mckouassi1@yahoo.fr', 'mckouassi1', 'mcpoulet', 4, 3, 48, 27, 2, 'OUI', '2020-06-18', '21:20:26', 'OUI', '2020-06-19', '15:27:09'),
+(455, '203 585 Z', 'KOUASSI ', 'EDITH EPSE KWA KOFFI', ' ', ' ', 'edithkouassi77@yahoo.fr', 'edithkouassi77', '6a5f46de', 4, 3, 48, 27, 2, 'OUI', '2020-06-11', '08:32:35', 'OUI', '2020-06-15', '17:17:08'),
+(456, '340 004 J', 'KOUASSI ', 'AKOUA PHILOMENE EPSE YAO', ' 57 10 56 17', ' ', 'kouassiap@yahoo.fr', 'kouassiap', 'Ufhbyaophilomene', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-25', '13:39:03'),
+(457, '245 689 J', 'KPANGNI ', 'EMOLO BERNARD', ' ', ' ', 'bernardemolokp1@gmail.com', 'bernardemolokp1', 'Shemahia2015', 4, 3, 48, 27, 2, 'OUI', '2020-02-10', '13:38:48', 'OUI', '2020-07-08', '22:47:54'),
+(458, '244 475 A', 'KROU ', 'ADJO VIVIANE EPSE ADOHI', ' ', ' ', 'vkrou@yahoo.fr', 'viviane.krou', 'f49ad3ca', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(459, '', 'DOGO', 'DJEDJE ROGER', '', '', '', 'dogodjejde', '9e1da313', 3, 6, 78, 12, 3, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(460, '320 272 N', 'ATTIOUA ', 'KOFFI BARTHELEMY', '08 09 92 41', '', 'attioua@yahoo.fr', 'attioua', 'SNa73atti', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-17', '18:28:31'),
+(461, '313 634 W', 'LEH', 'DELI MATHURIN', ' 09396453', ' ', 'lehdeli@netcourrier.com', 'lehdeli', 'f49ad3ca', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(462, '290 706 M', 'MBOBIE ', 'FATTO', ' ', ' ', 'fatmbob@gmail.com', 'fatmbob', '7aef9613', 4, 3, 48, 27, 2, 'OUI', '2020-06-04', '13:37:20', '', '0000-00-00', '00:00:00'),
+(463, '200 012 E', 'MEMELEDJE ', 'AUGUSTIN', ' ', ' ', 'djelememe@yahoo.fr', 'djememe', 'memeledje', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-20', '09:39:15'),
+(464, '145 490 T', 'MONNEHAN ', 'GEORGES ALAIN', ' ', ' ', 'monnehan_alain@yahoo.fr', 'monnehan_alain', '6a965400', 3, 3, 48, 21, 1, 'OUI', '2020-06-23', '12:29:32', 'OUI', '2020-08-18', '12:01:34'),
+(465, '203 567 E', 'N\'GORAN', 'YAO', ' ', ' ', 'nygoran@gmail.com', 'nygoran', '1fd0d394', 4, 3, 48, 27, 2, 'OUI', '2020-06-23', '12:29:32', 'OUI', '2020-06-23', '12:47:33'),
+(466, '403 936 R', 'N\'GOUAN ', 'AKA JOSEPH', ' ', ' ', 'josephngouan@yahoo.fr', 'josephngouan', 'Njoska76', 4, 3, 48, 27, 2, 'OUI', '2019-06-20', '20:25:07', 'OUI', '2020-06-16', '16:16:07'),
+(467, '320 174 C', 'N\'GUESSAN ', 'ALEXANDRE', ' 08 70 07 56', ' ', 'nguessan.alexandre@yahoo.fr', 'nguessan.alexandre', '69e12093', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-19', '17:18:24'),
+(468, '278 644 V', 'N\'GUESSAN ', 'BOKA ROBERT', ' 51 08 36 32', ' ', 'nguessanbr@yahoo.fr', 'nguessanbr', 'a453259a', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-02', '12:29:39'),
+(469, '153 250 R', 'N\'KPOMIN', 'ADOPO', ' 05 62 45 85', ' ', 'adoponkp@gmail.com', 'nkpomina', 'ad453259nk', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-02-18', '09:57:16'),
+(470, '241 071 D', 'NIAMIEN', 'PAULIN MARIUS', ' 57 85 80 44', ' ', 'niamienfr@yahoo.fr', 'niamienpaulin', 'paulin1960', 4, 3, 48, 27, 2, 'OUI', '2020-06-11', '13:22:44', 'OUI', '2020-07-13', '18:33:37'),
+(471, '244 849 R', 'NIANGUI ', 'ABLE RAYMOND', ' 07 70 29 78', ' ', 'raymondable_n@yahoo.fr', 'ableraymond', 'able2ray', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-29', '14:08:02'),
+(472, '140 429 G', 'NYAMIEN', ' MESSOU NÂ’GUESSAN', ' ', ' ', '', 'nyamienmessou', '434dfdda', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(473, '203 929 H', 'OCHOU', 'ABE DELFIN', ' 05 96 08 30', ' ', 'ochou.delfin@gmail.com', 'ochou_delfin', 'oc20ab17de00', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-06', '13:41:07'),
+(474, '332 654 D', 'OKPEKON', 'ABOUA TIMOTHEE', ' 03 44 00 70', ' ', 'okpekon@yahoo.fr', 'okpekon', 'Brigitte_1975', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-01', '15:11:42'),
+(475, '304 337 C', 'ORI ', 'THEOPHILE ROCH', ' ', ' ', 'ori_theo@yahoo.fr', 'oriroch', '94a3476c', 4, 3, 48, 27, 2, 'OUI', '2019-06-25', '08:18:20', 'OUI', '2020-06-03', '16:40:23'),
+(476, '425 988 K', 'OUATTARA', 'KALEDIA PAUL HONORE', ' ', ' ', 'okph2000@yahoo.fr', 'okph2000', 'b53cb886', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(477, '285 233 Z', 'OUATTARA ', 'LASSINE', ' 77 37 65 41', ' ', 'ouatlassine@yahoo.fr', 'ouatlassine', '6684003d', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-18', '14:57:01'),
+(478, '390 263 L', 'OUATTARA ', 'YELAKAN JEAN-PAUL BERENGER', ' ', ' ', 'yelouattara@gmail.com', 'yelouattara', 'y32ouattar', 4, 3, 48, 27, 2, 'OUI', '2019-06-26', '12:27:18', 'OUI', '2020-08-19', '11:03:18'),
+(479, '270 222 J', 'OUFFOUET', 'KOFFI SEBASTIEN', ' 09 87 44 99', ' ', 'offoe@yahoo.fr', 'offoe', '57ec1e16', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(480, '208 556 Q', 'OUOYA', 'IROPLO CLARK', ' 05 30 61 55', ' ', 'iroplo.clark@gmail.com', 'clark.iroplo', 'iro419', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-14', '23:26:00'),
+(481, '234 474 X', 'OYETOLA', 'SAMUEL', ' 02 76 03 74', ' ', 'oyetolasamuel@yahoo.fr', 'oyetolasamuel', 'samuel01', 3, 3, 48, 21, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-03-16', '21:14:52'),
+(482, '500 090 E', 'RANDRIAMAMPIANINA ', ' NÃ‰ HARISOLO RAMIARANTSOA', ' ', ' ', 'rharisolo@yahoo.fr', 'rharisolo', '6e6177be', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(483, '361 094 V', 'SAGOU', 'SAGOU JEAN-PIERRE', ' ', ' ', 'jsagou@yahoo.fr', 'jsagou', '14101975', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-28', '11:45:06'),
+(484, '209 721 N', 'SAKO ', 'ABOUBAKAR', ' 44 40 77 97', ' ', 'okasabouone@yahoo.fr', 'okasabouone', '22mambaVERTufhb', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(485, '349 168 X', 'SAY', 'VENANCE MARTIAL', ' ', ' ', 'martialvs@gmail.com', 'martialvs', '8218e24f', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(486, '273 271 J', 'SEI', 'JOSEPH', ' ', ' ', 'seijoseph126@gmail.com', 'sei_joseph', 'jojosei', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-22', '09:21:49'),
+(487, '280 360 T', 'SERI', 'SERI CHARDIN', '48 87 21 12', '', 'seriserichardin@yahoo.fr', 'seriserichardin', '8582111f', 4, 3, 48, 27, 2, 'OUI', '2020-06-15', '15:19:01', 'OUI', '2020-06-18', '13:29:20'),
+(488, '500 705 P', 'SIDIBE', 'MODIBO', '40 35 56 33', '', 'sidibmo20@gmail.com', 'sidibmo20', 'e2db35c7', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-31', '08:16:22'),
+(489, '290 483 W', 'SISSOUMA ', 'DRISSA', '06 28 36 44', '', 'dsissouma@yahoo.fr', 'dsissouma', 'aboubacar', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-09-03', '10:40:20'),
+(490, '309 592 A', 'SORO ', 'PENETJILIGUE ADAMA', '04 98 90 15', '', 'adams.soro@gmail.com', 'adams.soro', 'bf761b21', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-10', '14:25:57'),
+(491, '275 395 H', 'TAHA', 'KANHOUE JEAN MARCEL', '', '', '', 'tahakanhoue', 'f3fa66c6', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(492, '209 716 R', 'TENON', 'ABODOU JULES', '07 85 65 32', '', 'jules.abodou@hotmail.fr', 'jules.tenon', '6a7ea182', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-15', '15:43:47'),
+(493, '374 461 E', 'TILLOUS', 'KESSEIN ERIC NICAISE', '03 00 93 79', '', 'tillouskessein@yahoo.fr', 'tillouskessein', '050911capbreton', 4, 3, 48, 27, 2, 'OUI', '2019-06-20', '16:52:21', 'OUI', '2020-09-03', '13:28:33'),
+(494, '273 251 N', 'TONZIBO ', 'ZANAHI FELIX', '02 77 39 02', '', 'tonzibz@yahoo.fr', 'tonzibz', 'sera@1980', 4, 3, 48, 27, 2, 'OUI', '2020-06-13', '14:25:02', 'OUI', '2020-06-17', '09:45:27'),
+(495, '397 427 L', 'TOUALY', 'ELISEE', '', '', 'elisee.toualy@gmail.com', 'elisee.toualy', 'openmind', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-11', '12:47:33'),
+(496, '424 501 J', 'TOURE', 'N\'DATCHOH EVELYNE', '', '', 'ndatchoheve@yahoo.fr', 'ndatchoheve', 'Ndatchoh@83', 4, 3, 48, 29, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-25', '12:56:07'),
+(497, '370 553 J', 'TRAORE', ' BRAHIMA', '', '', 'traore54@yahoo.fr', 'traore54', '201c0df9', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(498, '288 919 C', 'TRAORE ', 'DATCHE MARCELLIN', '', '', '', 'traoredatche', '8d7dfe10', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(499, '364 974 E', 'TRAORE ', 'DIAKARIDJA', '', '', 'diakaridja_traore@yahoo.fr', 'diakaridja_traore', 'd364974e', 4, 3, 48, 27, 2, 'OUI', '2019-07-23', '22:17:48', 'OUI', '2020-03-21', '14:55:53'),
+(500, '239 361 J', 'TROKOUREY', 'ALBERT', '40 20 47 98', '', 'trokourey@gmail.com', 'trokourey.albert', 'labochiphy0892', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-17', '10:19:10'),
+(501, '234 475 Y', 'TUE BI', 'BALO', '58 92 43 27', '', 'tuebb@yahoo.fr', 'tuebb', 'tbb0934', 4, 3, 48, 27, 2, 'OUI', '2019-07-12', '11:12:38', 'OUI', '2019-07-15', '15:18:29'),
+(502, '255 853 G', 'VAFI', 'DOUMBIA', '08 93 44 06', '', 'vafid@yahoo.fr', 'vafid', 'c4080935', 4, 3, 48, 27, 2, 'OUI', '2020-06-18', '21:26:59', 'OUI', '2020-06-19', '18:44:32'),
+(503, '390 344 M', 'YAO', 'MARCEL KONAN', '', '', 'yaomarcelkonan@yahoo.fr', 'yaomarcelkonan', 'fresnel12', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-09', '19:38:35'),
+(504, '290 484 X', 'YAPI ', 'ABE SIMON', '03 13 35 37', '', 'yapiabe@gmx.com', 'cmoiyapi', 'Escale225#', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(505, '390 346 P', 'YAPI ', 'ACAFOU THIERRY THIBAUT', '77 37 61 16', '', 'acafouth@yahoo.fr', 'acafouth', '9e16319a', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-13', '19:09:50'),
+(506, '334 151 X', 'YAPI', 'SACRE SILVERE', '', '', 'yapisacre@hotmail.com', 'yapisacre', '97f1c79a', 4, 3, 48, 27, 2, 'OUI', '2020-07-11', '07:03:48', '', '0000-00-00', '00:00:00'),
+(507, '231 685 Y', 'YAPO ', 'ABOUA JACQUES', '08 26 27 42', '', 'yapaboa@yahoo.fr', 'yapaboa', '8a18a159', 4, 3, 48, 27, 2, 'OUI', '2020-06-12', '20:25:18', 'OUI', '2020-06-17', '14:29:21'),
+(508, '203 572 B', 'YAPO ', 'CLAUDE', '', '', 'hiapoclode@yahoo.fr', 'hiapoclode', '30b5988d', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(509, '327 244 D', 'YAPO', 'KICHO DENIS', '49 79 04 19', '', 'yapokichodenis@yahoo.fr', 'denis.yapo', '15051971', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-29', '15:30:57'),
+(510, '312 431 J', 'YAPO', 'YAPI MARCELLIN', '02 86 89 02', '', 'yapimarcellin@yahoo.fr', 'yapimarcellin', '875085e4', 4, 3, 48, 27, 2, 'OUI', '2020-01-15', '10:56:11', 'OUI', '2020-08-18', '09:53:18'),
+(511, '324 818 S', 'YEO ', 'DOMEIN PÃ‚COME', '', '', '', 'yeodomein', '953e4c45', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(512, '246 294 F', 'YOBOUE', 'VERONIQUE AYA ', '03 96 83 34', '', 'yobouev@hotmail.com', 'yobouev', 'd18c0edd', 4, 3, 48, 27, 2, 'OUI', '2019-06-24', '20:25:50', 'OUI', '2020-09-03', '06:40:55'),
+(513, '391 249 K', 'YOROBA ', 'FIDELE', '07 04 85 62', '', 'yorofidele@gmail.com', 'yorofidele', 'deniseYF2000', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-15', '14:05:53'),
+(514, '338 343 K', 'ZAHIRI ', 'ERIC PASCAL GBOAGBLE', '54 11 29 07', '', 'zahiripascal@gmail.com', 'zahiripascal', 'othniel2010', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-21', '13:22:41'),
+(515, '365 055 H', 'ZAKA ', 'KOMENAN ZACHARIE', '', '', 'komzach@yahoo.fr', 'zakakomenan', 'christos07', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-16', '12:58:06'),
+(516, '500 513 W', 'ZOAKOUMA', ' ROGER SIMPLICE PEPIN', '', '', 'zralerus@hotmail.com', 'zralerus', '4927ca17', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(517, '425 990 R', 'ZRAN ', 'VANH ERIC-SIMON', '08 15 16 97', '', 'guyeliakimzran@gmail.com', 'e.zran', 'yvine2016', 4, 3, 48, 27, 2, 'OUI', '2020-06-14', '18:34:36', 'OUI', '2020-06-17', '23:01:34'),
+(518, '389 606 Q', 'ABOUA ', 'BENIE ROSE DANIELLE', '', '', 'abouabrd@yahoo.fr', 'abouabrd', '84647130', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-15', '14:47:14'),
+(519, '162 846 U', 'ABOUA ', 'LOUIS ROI NONDENOT', '08 55 49 07', '', 'aboualr@hotmail.com', 'aboualr', '84647130', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-13', '20:11:23'),
+(520, '455 946 W', 'ABOUO', 'N\'GUESSAN VERDIER', '', '', 'v.abouo@gmail.com', 'abouonguessan', 'annpivan!', 4, 5, 42, 27, 2, 'OUI', '2019-07-10', '19:16:12', 'OUI', '2020-08-03', '12:46:15'),
+(521, '320 273 P', 'ACAPOVI EPSE YAO', 'GÃ‰NÃ‰VIÃˆVE LYDIE', '02 00 17 89', '', 'acapovi_yao@yahoo.fr', 'acapovi_yao', '1c9cf639', 4, 5, 42, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-24', '14:31:18'),
+(522, '417 356 Y', 'ADEPO', 'YAPO PROSPER', '', '', 'adepoyapo1@gmail.com', 'adepoyapo1', '90c8f61f', 4, 5, 42, 27, 2, 'OUI', '2019-07-10', '19:16:12', 'OUI', '2020-03-31', '15:31:48'),
+(523, '344 899 G', 'ADJA ', 'AKRE MAURICE', '05 64 14 77', '', 'adjamaurice@yahoo.fr', 'adjamaurice', 'maurice2020', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-23', '21:50:31'),
+(524, '246 287 G', 'ADOM ', 'NIAMKEY JACQUES', '', '', 'adom_nija@yahoo.fr', 'adomjacques', '8ed803e1', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', '', '0000-00-00', '00:00:00'),
+(525, '278 642 T', 'ADOU', 'KOBENAN FIÃ‰NI JEAN-BAPTISTE', '06 30 39 23', '', 'adoukfj1@yahoo.fr', 'adoukfj', '5d9910cc', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', '', '0000-00-00', '00:00:00'),
+(526, '340 380 T', 'ADOU ', 'LYDIE MARIE DOMINIQUE', '07 67 13 09', '', 'essiganmd@gmail.com', 'essiganmd', 'ahou1970', 4, 5, 42, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-15', '16:54:59'),
+(527, '290 498 D', 'AHONZO ', 'NIAMKE LAMINE SÃ‰BASTIEN', '07 84 64 09', '', 'niamkes@yahoo.fr', 'niamkes', 'c98fb5b4', 5, 5, 42, 17, 1, 'OUI', '2020-02-20', '18:12:31', 'OUI', '2020-07-29', '07:23:40'),
+(528, '351 067 F', 'AHUA ', ' KOUASSI MAXIMIN', '', '', 'ahuamaximin@yahoo.fr', 'ahuamaximin', 'ea2e27c3', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', '', '0000-00-00', '00:00:00'),
+(529, '353 577 D', 'AHUI', 'MARIE LOUISE BERTHE', '01 12 85 24', '', 'louise_berthe@yahoo.com', 'louise_berthe', 'ab1m27l4', 4, 5, 42, 27, 2, 'OUI', '2020-03-23', '15:38:49', 'OUI', '2020-05-20', '13:25:04'),
+(530, '379 506 R', 'AKAKPO-AKUE ', ' MOEVI', '', '', 'joelakakpo1er@yahoo.fr', 'joelakakpo1er', 'UfrBio1357!', 4, 5, 42, 29, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-12', '13:35:14'),
+(531, '231 588 X', 'AKE', ' SEVERIN', '01 11 67 65', '', 'akeseverin08@yahoo.fr', 'severin.ake', 'GS8DTTPRSPRERaJeaJC', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-12', '11:19:54'),
+(532, '157 923 L', 'AKE-ASSI EPSE KOUASSI', 'ABLAN EMMA', '07 46 42 94', '', 'emmaaak@yahoo.fr', 'emmaaak', 'Danielle1', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-12', '16:02:40'),
+(533, '424 449 V', 'AKOA ', 'ESSOMA EDWIGE FLORE', '', '', 'edvicheur@yahoo.fr', 'akoaessoma', '03d3fe02', 4, 5, 42, 29, 2, 'OUI', '2019-06-17', '23:00:21', 'OUI', '2020-02-12', '15:38:59'),
+(534, '950 000 R', 'KOUAME', 'ADONIS', '', '', 'adonisdamien@yahoo.fr', 'kouameadonis', 'c20340cb', 5, 5, 42, 19, 3, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2019-09-08', '22:00:57'),
+(535, '900 500 A', 'YAO', 'POKOU EMMA', '', '', 'emmanuelle.y87@yahoo.com', 'emmayao', '43242cc3', 5, 4, 28, 19, 3, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(536, '345 006 D', 'AKPA ', 'ERIC ESSOH', '03 08 49 42', '', 'akpae@yahoo.fr', 'akpae', 'laekaKpanda9', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-15', '19:11:57'),
+(537, '354 537 W', 'AKPATOU', 'KOUAME BERTIN', '', '', 'bertinakpatou@yahoo.fr', 'bertinakpatou', 'kouagny02', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-08-25', '11:36:13'),
+(538, '306 550 Q', 'AKPESSE ', 'AKPA ALEXANDRE MOÃSE EUGÃˆNE', '', '', 'alexakpesse@yahoo.fr', 'alexakpesse', '54d7f876', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-15', '21:08:35'),
+(539, '365 468 L', 'AMANE ', 'DIDIER NARCISSE', '', '', 'amanedn@yahoo.fr', 'amanedn', 'didinA8', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-05-13', '06:50:33'),
+(541, '155 908 C', 'AMOIKON ', 'KOUAKOU CHUNIBOA ERNEST', '07 61 21 44', '', 'ekamoikon@hotmail.fr', 'amoicom', 'ec4a1099', 4, 5, 42, 27, 2, 'OUI', '2020-03-20', '11:47:37', 'OUI', '2020-07-01', '09:33:59'),
+(542, '353 597 S', 'AMONKAN ', 'KOUAO AUGUSTIN', '07 79 78 34', '', 'kouaocom@gmail.com', 'amonkankouao', '53049ea3', 4, 5, 42, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-05-28', '12:20:29'),
+(543, '336 642 D', 'ASSA', 'REBECCA RACHEL ABLAN EPSE YAO', '07 69 88 51', '', 'assa_rebecca@yahoo.fr', 'assa_rebecca', '336642D', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-05-23', '17:52:23'),
+(544, '389 624 H', 'AMARI ', 'LER-NOGN DADE GEORGES ELISEE', '', '', 'amariler@yahoo.fr', 'amariler', '3JCaldge', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-08-11', '15:06:45'),
+(545, '365 056 A', 'ASSAMOI', 'ALLAH ANTOINE', '02 05 85 75', '', 'assantoine@yahoo.fr', 'assantoine', '8e02d456', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-10', '19:44:53'),
+(546, '353 578 N', 'ASSANVO', ' BOMO JUSTINE', '07 78 67 55', '', 'bomoj@yahoo.com', 'bomoj', 'Univ1bomasj50#', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-15', '15:02:13'),
+(547, '426 303 V', 'ASSARE ', 'KOUASSI RUFIN', '', '', 'hrufinass@yahoo.fr', 'hrufinass', '32b3d78e', 4, 5, 42, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-23', '08:32:41'),
+(548, '258 456 M', 'ASSI ', 'BÃ‰SSÃ‰KON DÃ‰NIS', '05 89 24 30', '', 'assibessek@yahoo.fr', 'assibessek', 'sesostris', 4, 5, 42, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-17', '16:19:05'),
+(549, '402 811 K', 'ASSOHOU-LUTY ', 'AFFOUE CONSTANCE', '', '', 'constance.assohou@gmail.com', 'constance.assohou', '25c6d83b', 4, 5, 42, 29, 2, 'OUI', '2019-07-11', '09:27:43', '', '0000-00-00', '00:00:00'),
+(550, '426 069 V', 'ATOBLA ', 'KOUA', '', '', 'atobla@yahoo.fr', 'atobla', 'c4cf8cfa', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-11', '12:10:31'),
+(551, '389 639 Q', 'ATSE ', 'NÃ‰E ASSI KAUDJHIS CHIMENE CLOCHE-MIREILLE', '', '', 'kaudjhischimene@yahoo.fr', 'kaudjhischimene', 'CHR_isty2011', 4, 5, 42, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-14', '19:16:00'),
+(552, '206 084 Z', 'ATTA', ' NÃ‰E KASSI YOMALAN', '', '', 'yomalan_atta@yahoo.fr', 'yomalan_atta', 'kyt2009', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-15', '22:57:04'),
+(554, '326 983 J', 'ATTO', 'VIRGINIE', '', '', 'virginieatto@yahoo.fr', 'virginieatto', 'va3110', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-15', '23:16:33'),
+(555, '339 993 Z', 'ATTOUMBRE', ' JACQUES MARCEL', '', '', 'jacques.attoumbre@u-picardie.fr', 'jacques.attoumbre', '97ccb03e', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', '', '0000-00-00', '00:00:00'),
+(556, '203 991 Y', 'BA', 'ABDOULAYE', '09 77 22 99', '', 'abdouba3000@hotmail.com', 'badlaye2000', '345725e7', 5, 5, 42, 17, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-09', '01:01:03'),
+(557, '208 781 J', 'BADJO EPSE AHUI', 'PIERRETTE CELESTINE', '', '', '', 'badjopierrette', 'a40336f6', 4, 5, 42, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(558, '356 788 L', 'BAGRE ', 'ISSA', '08 00 89 01', '', 'bagrefreefr@yahoo.fr', 'bagrefreefr', 'Theoness5', 4, 5, 42, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-08', '15:49:58'),
+(559, '274 548 R', 'BAHI ', 'CALIXTE', '', '', 'bahi1calixte@yahoo.fr', 'bahicalixte', '16e8183a', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', '', '0000-00-00', '00:00:00'),
+(560, '389 642 K', 'BAMBA', 'MAMADOU', '', '', 'bambamamadouz@yahoo.fr', 'bambamamadouz', 'Gnamsso1zie', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-24', '12:45:18'),
+(561, '441 959 D', 'BASSA', 'KOUAKOU FIDELE', '', '', 'fidelebassa@ymail.com', 'bassakouakou', 'exnihilo', 4, 5, 42, 29, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-08', '10:48:23'),
+(562, '426 070 S', 'BEDIA ', 'AKE THEOPHILE', '', '', 'bediaaket@gmail.com', 'bediaaket', '1972', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-11', '14:14:44'),
+(563, '364 970 N', 'BEDIKOU', 'EHUIE MICAÃ‹L', '55 99 46 15', '', 'bemicael@yahoo.fr', 'bemicael', 'Mickydocky1975', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-28', '22:18:28'),
+(564, '354 226 E', 'BERTE', 'SIAKA', '07 85 99 42', '', 'bertesia@yahoo.fr', 'bertesia', 'Salikou_1929', 4, 5, 42, 27, 2, 'OUI', '2020-03-30', '10:29:16', 'OUI', '2020-06-02', '18:40:19'),
+(565, '312 430 V', 'BIDIE ', 'ALAIN DIT PHILIPPE', '01 21 26 34', '', 'alphbidie@yahoo.fr', 'alphbidie', '57373dfa', 4, 5, 42, 27, 2, 'OUI', '2019-10-14', '15:30:46', 'OUI', '2020-04-27', '11:49:55'),
+(566, '353 590 F', 'BITTY', 'ELOI ANDERSON', '03 48 88 94', '', 'andersonbitty@yahoo.fr', 'andersonbitty', 'sephbantou', 4, 5, 42, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-12', '13:36:24'),
+(567, '354 225 D', 'BLA ', 'KOUAKOU BRICE', '07 57 97 81', '', 'blabrice@yahoo.fr', 'blabrice', 'c4594fe9', 4, 5, 42, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-16', '15:51:52'),
+(568, '397 992 K', 'BLAHOUA', 'KASSI GEORGES', '', '', 'kassiblahoua@yahoo.fr', 'kassiblahoua', 'c4594fe9', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-24', '11:05:43'),
+(569, '336 637 Y', 'BOGA ', 'JEAN-PIERRE', '01 18 89 45', '', 'bogajeanpierre@yahoo.fr', 'bogajeanpierre', 'd4337084', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-09-06', '01:58:49'),
+(570, '424 460 U', 'BOLOU', 'GBOUHOURY ERIC-KEVIN', '', '', 'bgeric3@yahoo.fr', 'bgeric3', 'e7c6b023', 4, 5, 42, 29, 2, 'OUI', '2019-07-11', '09:27:43', '', '0000-00-00', '00:00:00'),
+(571, '278 790 U', 'BORAUD', 'Nâ€™TAKPÃ‰ KAMA MAXIME', '48 99 76 66', '', 'boraudn@hotmail.com', 'boraudn', 'bnkm1965', 4, 5, 42, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-13', '13:16:56'),
+(572, '389 655 Q', 'CAMARA', ' BRAHIMA', '', '', 'camara_ib@yahoo.fr', 'camara_ib', 'Camara_1973', 4, 5, 42, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-04', '17:31:40'),
+(573, '389 656 R', 'CAMARA', 'DJENEB', '', '', 'djenacam@hotmail.com', 'djenacam', 'e44a0380', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', '', '0000-00-00', '00:00:00'),
+(574, '249 398 S', 'CHATIGRE', 'KOUAMÃ‰ OLIVIER', '05 79 05 19', '', 'chatigko@yahoo.fr', 'chatigko', 'olivier2019', 5, 5, 42, 17, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-25', '10:34:28'),
+(575, '344 955 F', 'CHERIF', 'MAMADOU', '07 63 07 33', '', 'cherifmamadou@hotmail.com', 'cherifmamadou', 'Aidara@0212', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-07-15', '16:46:02'),
+(576, '266 627 G', 'COULIBALY ', 'ADAMA', '', '', '', 'coulibalyadama', '15e5de2d', 4, 5, 42, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(577, '284 935 Q', 'COULIBALY ', 'FOUNGOTIN DIT HAMIDOU', '07 19 90 71', '', 'cfoungh@yahoo.fr', 'cfoungh', 'fc3a05c8', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', '', '0000-00-00', '00:00:00'),
+(578, '344 443 E', 'COULIBALY ', 'FOUNZEGUE AMADOU', '05 75 58 64', '', 'founzegue@yahoo.fr', 'founzegue', 'coulfounz1960', 4, 5, 42, 27, 2, 'OUI', '2020-03-17', '14:52:35', 'OUI', '2020-05-15', '23:45:50'),
+(579, '389 716 D', 'COULIBALY', 'NEGNOROGO EPSE GUINDO', '', '', 'coulnegno1@yahoo.fr', 'coulnegno1', '312ea450', 4, 5, 42, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-24', '14:19:11'),
+(580, '389 668 V', 'COULIBALY', 'TENENA JEAN', '', '', 'couljeanvae@yahoo.fr', 'couljeanvae', 'Jtc!2012Juin', 4, 5, 42, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-07', '08:30:36'),
+(581, '156 116 J', 'Dâ€™ALMEIDA', 'MARIE ANNE KAYI', '08 44 04 31', '', 'dalmeidakmarianne@gmail.com', 'almeidamarianne', '30d01887', 5, 5, 42, 17, 1, 'OUI', '2019-07-11', '09:27:43', '', '0000-00-00', '00:00:00'),
+(582, '340 003 R', 'DIBI ', 'N\'DA HYPPOLITE', '07 86 63 34', '', 'n_dibihyppolite@yahoo.fr', 'n_dibihyppolite', '09835c49', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-07-29', '08:15:35'),
+(583, '150 262 J', 'DICK ', 'ACKA EMMANUEL', '08 44 04 31', '', 'dickoulaka@yahoo.fr', 'dickoulaka', 'Dick@aka2020', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-12', '12:59:30'),
+(584, '265 051 H', 'DJAMAN', 'ALLICO JOSEPH', '45 19 05 58', '', 'djamanj@yahoo.fr', 'djamanj', 'pico1999', 5, 5, 42, 17, 1, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-05-13', '17:13:51'),
+(585, '319 766 Q', 'DJYH ', 'BERNARD NAZAIRE', '01 99 72 30', '', 'djyhbn@gmail.com', 'djyhbn', 'housefish17', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-07-31', '04:46:20'),
+(586, '292 285 V', 'DOUE', 'GINETTE GLADIS', '07 58 27 29', '', 'gladysdoue@yahoo.com', 'gladysdoue', 'ha,ro99ld', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-07-16', '17:16:27'),
+(587, '351 069 R', 'DOUMBIA', ' IDRISSA', '', '', 'doumidriss2000@yahoo.fr', 'doumidriss2000', 'di010173', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2019-07-12', '15:57:51'),
+(588, '203 578 R', 'EGNANKOU ', 'WADJA MATHIEU', '07 76 92 02', '', 'wadjaegnankou@gmail.com', 'egnankouwadja', '196afd58', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', '', '0000-00-00', '00:00:00'),
+(589, '424 146 M', 'ETAOUA', 'NÃ‰E BONNY AYA CAROLE', '', '', 'bonnyayacarole@yahoo.fr', 'bonnyaya', '065d5a06', 4, 5, 42, 29, 2, 'OUI', '2019-07-11', '09:27:43', '', '0000-00-00', '00:00:00'),
+(590, '315 030 S', 'ETIEN ', 'DIBIÃ‰ THÃ‰ODORE', '', '', 'etiendibieth@gmail.com', 'etiendibieth', '1265d0e3', 4, 5, 42, 27, 2, 'OUI', '2019-12-07', '16:41:11', '', '0000-00-00', '00:00:00'),
+(591, '255 564 E', 'EZOUA', 'PIERRE', '', '', 'ezouap@yahoo.fr', 'ezouap', '76af42d7', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-04-14', '12:47:54'),
+(592, '338 357 R', 'FATOGOMA ', 'SORHO', ' 02 63 94 45', ' ', 'fsorho@gmail.com', 'fsorho', '79137dda', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-12', '21:56:22'),
+(593, '203 561 G', 'GLIN ', 'LÃ‰ON', ' 07 83 03 82', ' ', 'leon.glin@yahoo.fr', 'leon.glin', 'lino1956', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-16', '12:36:23'),
+(594, '144 990 X', 'GNANGBE ', ' FELIX', ' ', ' ', 'felix.gnangbe@univ-cocody.ci', 'felix.gnangbe', '3f4bb6b8', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', '', '0000-00-00', '00:00:00'),
+(595, '344 912 U', 'GONE BI ', 'ZORO BERTIN', '05 07 61 99', ' ', 'zorobertin@gmail.com', 'zorobertin', 'Vincennes@78', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-03-14', '17:43:13'),
+(596, '358 650 F', 'GONEDELE ', 'BI SERY ERNEST', ' 03 48 89 23', ' ', 'sgonedele@gmail.com', 'sgonedele', '802ebbe6', 4, 5, 42, 27, 2, 'OUI', '2020-03-04', '22:09:03', 'OUI', '2020-07-17', '07:41:18');
+INSERT INTO `utilisateur` (`id_utilisateur`, `matricule_utilisateur`, `nom_utilisateur`, `prenom_utilisateur`, `tel_utilisateur`, `adresse_utilisateur`, `email_utilisateur`, `login_utilisateur`, `mot_passe_utilisateur`, `id_type_utilisateur`, `id_etablissement`, `id_departement`, `id_groupe_utilisateur`, `id_qualite_utilisateur`, `parametres_envoye`, `date_envoie`, `heure_envoie`, `connexion_reussie`, `date_derniere_connexion`, `heure_derniere_connexion`) VALUES
+(597, '273 249 U', 'GOORE BI ', 'GOULI', ' 08 32 43 57', ' ', 'gouligoorebi@gmail.com', 'gouligoorebi', 'tognan1959', 5, 5, 42, 17, 1, 'OUI', '2019-10-03', '09:09:57', 'OUI', '2020-08-24', '17:17:56'),
+(598, '403 926 P', 'GOUALIE', 'GBLOSSI BERNADETTE', ' ', ' ', 'bettygoualie@yahoo.fr', 'bettygoualie', 'angebeni1025', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-08-04', '09:48:59'),
+(599, '315 032 Q', 'IPOU', ' IPOU JOSEPH', '07 54 60 39', ' ', 'ipoujoseph@yahoo.fr', 'joseph.ipou', 'd2f5d932', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', '', '0000-00-00', '00:00:00'),
+(600, '354 223 B', 'JOHNSON', 'FELICIA', ' ', ' ', 'felijohnson@yahoo.fr', 'felijohnson', '757cdc68', 4, 5, 42, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-25', '12:02:26'),
+(601, '203 851 B', 'LAVRY ', 'GRAH NAZAIRE', '05 58 71 97', ' ', 'lavrygrah@yahoo.fr', 'lavrygrah', 'bbb06c56', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-03-29', '22:10:26'),
+(602, '231 493 Q', 'LOLO ', 'OBOU MARCEL', ' 06 88 10 97', ' ', 'lolo.marcel@yahoo.fr', 'lolo.marcel', 'Lome1958#', 4, 5, 42, 27, 2, 'OUI', '2020-08-12', '12:13:12', 'OUI', '2020-08-27', '13:21:17'),
+(603, '101 177 Z', 'MANGUE ', ' N\'TAKPÃ‰ EMMANUEL JAURÃˆS', ' ', ' ', 'jauresmangue@gmail.com', 'jauresmangue', 'mediere7', 4, 5, 42, 27, 2, 'OUI', '2020-06-11', '20:12:14', 'OUI', '2020-07-07', '14:03:23'),
+(604, '355 240 Z', 'MEA ', 'ARSENE', ' 07 75 79 13', ' ', 'mearsene@gmx.fr', 'mearsene', 'mea1970', 4, 5, 42, 27, 2, 'OUI', '2019-05-28', '21:03:04', 'OUI', '2020-06-08', '20:20:32'),
+(605, '344 897 W', 'MEGNANOU', 'ROSE-MONDE', ' 03 35 72 80', ' ', 'megnanour@yahoo.fr', 'megnanourosemaonde', 'rose1971monde', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-08-30', '15:25:12'),
+(606, '364 971 B', 'MEITE ', 'ALASSANE', ' 08 83 98 50', ' ', 'almeite@yahoo.fr', 'almeite', '19167b47', 4, 5, 42, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-05-25', '11:41:39'),
+(607, '426 076 L', 'MIEZAN ', 'NÃ‰E N\'DA AMALAN SYLVIE', ' ', ' ', 'sylvienda@yahoo.fr', 'sylvienda', 'dc53199d', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-24', '12:06:11'),
+(608, '238 524 V', 'MOCKEY ', 'NÃ‰E DEIGNA VIVIANE PAULE ODETTE', ' ', ' ', 'deignaviviane@yahoo.com', 'vivianedeigna', 'dc53199d', 4, 5, 42, 28, 2, 'OUI', '2019-07-11', '09:27:43', '', '0000-00-00', '00:00:00'),
+(609, '397 998 Z', 'N\'DOUA ', 'ETILE RAPHAÃ‹L', '08 59 92 31', ' ', 'ndoua_et@yahoo.fr', 'ndouaetile', 'elite5791', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-08-27', '15:33:45'),
+(610, '231 518 Y', 'N\'DOUBA ', 'VALENTIN', ' 05 96 03 28', ' ', 'ndouval@hotmail.com', 'ndoubavalentin', '192a725a', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', '', '0000-00-00', '00:00:00'),
+(611, '396 610 E', 'N\'GORAN ', 'KOUA SERGE BERANGER', ' ', ' ', 'kouaberanger@yahoo.fr', 'kouaberanger', 'mayo2529', 4, 5, 42, 29, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2019-07-11', '12:25:49'),
+(612, '200 178 Z', 'N\'GORAN ', 'KOUAKOU ELIEZER', ' 03 48 88 83', ' ', 'eliezerngoran@yahoo.fr', 'eliezerngoran', 'b9c38235', 5, 5, 42, 17, 1, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-08-24', '17:40:14'),
+(613, '404 089 V', 'DIAKITE', 'NANA ROSE EPSE N\'GORAN ', ' ', ' ', 'diaknarose@yahoo.fr', 'diaknarose', 'e0a21593', 4, 5, 42, 29, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-18', '15:11:30'),
+(614, '203 577 G', 'N\'GUESSAN', 'KOUAKOU EDOUARD', ' 05 10 14 92', ' ', 'k_nguessan@yahoo.fr', 'nguessankouakouedouard', '42af54b4', 5, 5, 42, 17, 1, 'OUI', '2019-07-11', '09:27:43', '', '0000-00-00', '00:00:00'),
+(615, '270 662 T', 'N\'GUESSAN', 'YÃ‰VI DELPHINE', ' ', ' ', 'delphineyevi@yahoo.fr', 'delphineyevi', '222c2905', 4, 5, 42, 29, 2, 'OUI', '2019-07-11', '09:27:43', '', '0000-00-00', '00:00:00'),
+(616, '131 642 Y', 'N\'GUESSAN', 'KOFFI', ' 07 87 30 13', ' ', 'nguessankoffifr@yahoo.fr', 'nguessankoffifr', '8c7cfea9', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-06', '06:34:36'),
+(617, '301 093 Z', 'N\'GUESSAN ', 'AYA NICAISE EPSE OKOUBO', ' 05 04 14 03', ' ', 'nicaisayan@yahoo.fr', 'nicaya', 'JÃ©sus67a', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-08-18', '12:59:06'),
+(618, '245 603 L', 'N\'GUETTA', 'ASSANVO SIMON PIERRE', ' 08 97 08 73', ' ', 'nguettaewatty@yahoo.fr', 'nguettaewatty', '52b36ebc', 5, 5, 42, 17, 1, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-13', '16:55:44'),
+(619, '305 048 P', 'N\'NAN', 'OULO', ' 07 16 43 27', ' ', 'nanoulo@yahoo.fr', 'nanoulo', 'Evan1517', 4, 5, 42, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-05', '13:03:29'),
+(620, '395 035 L', 'N\'ZI', 'JEAN-CLAUDE', ' ', ' ', 'jcnzi2@yahoo.fr', 'jcnzi2', 'Jeanclaude2019$', 4, 5, 42, 29, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-26', '12:28:50'),
+(621, '345 003 A', 'N\'ZI', 'KONAN GERVAIS', ' 07 65 87 22', ' ', 'enzi_gervais@yahoo.fr', 'enzi_gervais', 'Broukan@1954@', 5, 5, 42, 17, 1, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-23', '22:33:10'),
+(622, '353 582 T', 'NENE ', 'BI SEMI ANTHELME', '05 06 89 86', ' ', 'nsemianthelme@yahoo.fr', 'nenebisemi', 'nene26121976', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-08-31', '08:24:13'),
+(623, '426 077 M', 'ODOUKPE ', ' KADIO SAINT GUILLAUME', ' ', ' ', 'sgodoukpe@yahoo.fr', 'sgodoukpe', 'euplectesafer10', 4, 5, 42, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-09-07', '15:16:20'),
+(624, '312 429 Y', 'N\'GORAN', 'SAN-WHOULY MAURICETTE EPSE OUALI', ' 07 40 57 05', ' ', 'ngoransw@yahoo.fr', 'ngoransw', '2c73bf04', 4, 5, 42, 27, 2, 'OUI', '2020-06-11', '15:09:49', 'OUI', '2020-06-11', '15:40:14'),
+(625, '327 241 A', 'OUATTARA', 'DJAKALIA', '02 03 47 98', ' ', 'xylopia2002@yahoo.fr', 'ouattaradjakalia', 'kokpingue', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-15', '15:01:30'),
+(626, '442 000 D', 'OUATTARA', 'GENEFOL', ' ', ' ', 'wattgene20@gmail.com', 'wattgene20', 'nargayoman0876', 4, 5, 42, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2019-06-24', '08:58:25'),
+(627, '344 911 T', 'OUATTARA', 'KARAMOKO', ' 07 70 39 72', ' ', 'ouattkara@yahoo.fr', 'ouattkara', 'Aicha1971', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-04-24', '11:07:25'),
+(628, '389 833 T', 'OUATTARA', 'GNENEQUIDOU HONORE', ' ', ' ', 'kidou12@yahoo.fr', 'kidou12', 'ion833gray575', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-07-14', '18:37:00'),
+(629, '357 235 A', 'OUATTARA', 'KARIM', ' ', ' ', 'kouattara@ymail.com', 'kouattara', '@Fissatou1', 4, 5, 42, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-19', '17:57:53'),
+(630, '369 447 K', 'OUATTARA', 'MAMADOU', ' 07641096', ' ', 'mamadou_ouatt@yahoo.fr', 'mamadou_ouatt', 'Madiara1954', 4, 5, 42, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-09', '17:05:30'),
+(631, '312 117 P', 'OUATTARA', 'NAHOUA ISSA', ' 05 19 72 63', ' ', 'issanahoua@yahoo.fr', 'issanahoua', '468fdab8', 4, 5, 42, 27, 2, 'OUI', '2020-06-08', '13:15:21', 'OUI', '2020-06-18', '09:54:31'),
+(632, '403 939 U', 'OUATTARA', 'NÃ‰E CISSE MARIAME', ' ', ' ', 'cissemariame@yahoo.fr', 'cissemariame', 'mamcis01', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-12', '16:59:44'),
+(633, '409 117 S', 'OUATTARA', 'SITAPHA', ' ', ' ', 'sitaphao@yahoo.fr', 'sitaphao', '07460346', 4, 5, 42, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-19', '15:18:08'),
+(634, '404 076 X', 'PAKORA', 'GILLES ALEX', ' ', ' ', 'pakoragillesalex@yahoo.fr', 'pakoragillesalex', 'fdb57e94', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-12', '18:34:41'),
+(635, '344 953 D', 'PITA', ' JUSTIN SIMON', ' 47 66 68 12', ' ', 'pita.wave.ci@gmail.com', 'pita.wave.ci', 'JSP_DIN_20', 4, 5, 42, 27, 2, 'OUI', '2020-06-11', '19:56:17', 'OUI', '2020-07-01', '09:45:31'),
+(636, '332 006 Y', 'SAKI', 'SUOMION JUSTIN', ' ', ' ', 'justsakis@yahoo.fr', 'justsakis', '462067b5', 4, 5, 42, 27, 2, 'OUI', '2020-05-20', '08:23:34', 'OUI', '2020-06-15', '15:05:58'),
+(637, '403 970 F', 'SANOGO', 'SOULEYMANE', ' ', ' ', 'sanogosousa@yahoo.fr', 'sanogosousa', '251e509d', 4, 5, 42, 27, 2, 'OUI', '2020-05-05', '16:54:18', 'OUI', '2020-08-06', '15:15:49'),
+(638, '273 273 L', 'SEA ', 'TÃ‰HI BERNARD', '02 58 77 47 ', ' ', 'seatehi@yahoo.fr', 'seatehi', 'ksogbe34', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-14', '13:44:34'),
+(639, '139 151 U', 'SERI', 'NÃ‰E KOUASSI BADAMA', '08 17 11 11', '', 'philoseri@hotmail.com', 'plioseri', 'db233742', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', '', '0000-00-00', '00:00:00'),
+(640, '389 848 J', 'SIDIBE', 'DAOUDA', '', '', 'daoudas74@yahoo.fr', 'daoudas74', 'Falana74', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-05-22', '16:25:39'),
+(641, '344 900 M', 'SILUE ', 'KIGBAFORI DIEUDONNE', '03 48 88 86', '', 'k_silue@yahoo.fr', 'k_silue', 'fd1c4591', 4, 5, 42, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-26', '01:09:05'),
+(642, '353 588 H', 'SOKOURI ', 'DIDIER PAULIN', '', '', 'didiersokouri@yahoo.fr', 'didiersokouri', 'bernadettekehi1935', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-05-25', '16:01:35'),
+(643, '259 099 L', 'SORO', 'YADE RÃ‰NÃ‰', '03 18 58 38', '', 'soroyade@yahoo.fr', 'soroyade', '264b79fa', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', '', '0000-00-00', '00:00:00'),
+(644, '320 276 J', 'SORO', 'DODIOMON', '09 58 65 45', '', 'dodiomons@yahoo.fr', 'dodiomons', '264b79fa', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', '', '0000-00-00', '00:00:00'),
+(645, '332 010 X', 'SORO', 'NÃ‰E OUATTARA FATOU SHCHERAZADE', '', '', 'scherazadefatou@yahoo.fr', 'scherazadefatou', '2b14d88f', 4, 5, 42, 27, 2, 'OUI', '2020-04-29', '12:04:15', 'OUI', '2020-06-25', '12:29:35'),
+(646, '417 335 K', 'SORO', 'SORONIKPOHO', '', '', 'soronik@yahoo.com', 'soronik', 'snick1993', 4, 5, 42, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-04-21', '00:21:49'),
+(647, '351 068 Q', 'SORO', 'TIANGA YAYA', '07 58 50 73', '', 'tiangaso@yahoo.fr', 'tiangaso', 'ethane18', 4, 5, 42, 27, 2, 'OUI', '2020-06-05', '21:47:42', 'OUI', '2020-06-16', '02:08:59'),
+(648, '281 084 L', 'SOULEMANE', 'OUATTARA', '', '', 'soulouat@yahoo.fr', 'soulouat', 'solt2020', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-07-23', '10:19:39'),
+(649, '241 630 N', 'TAHIRI', 'ANNICK YAMOUSSO', '', '', 'tayaman2@yahoo.fr', 'tayaman2', '13e23896', 4, 5, 42, 27, 2, 'OUI', '2020-05-22', '20:34:45', 'OUI', '2020-07-27', '11:32:37'),
+(650, '225 393 V', 'TAKO', 'NÃ‰MÃ‰ ANTOINE', '07 93 89 24', '', 'antoine.tako@gmail.com', 'a_tako98', 'tinin451', 5, 5, 42, 17, 1, 'OUI', '2020-02-17', '16:16:00', 'OUI', '2020-09-01', '12:50:08'),
+(651, '157 281 Z', 'TANO', 'YAO', '05 09 95 86', '', 'tanoy03@yahoo.fr', 'tanoy03', '97e8bf62', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', '', '0000-00-00', '00:00:00'),
+(652, '351 066 E', 'THES  Ã‰PSE SOUMAHORO ', 'PEHIE MARIE', '', '', 'merrythes@yahoo.fr', 'merrythes', 'Soujo,Meli@2', 4, 5, 42, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-02', '11:35:24'),
+(653, '361 095 W', 'TIAN BI', 'TAH YVES-NATHAN', '', '', 'tianbyth@yahoo.fr', 'tianbyth', 'YL1956=Yvonne', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-15', '15:42:20'),
+(654, '344 914 W', 'TIEBRE ', 'MARIE SOLANGE', '46 41 51 81', '', 'tiebrems@hotmail.com', 'tiebrems', 'b6006eac', 4, 5, 42, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-26', '12:17:52'),
+(655, '265 878 K', 'TIECOURA', 'KOUAKOU', '', '', 'tiecourakouakou@yahoo.fr', 'tiecourakouakou', '0f353aa9', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-08-25', '15:16:14'),
+(656, '417 351 T', 'TOVI ', 'WAHON MARIE-ODILE', '', '', 'marieodiletovi@yahoo.fr', 'marieodiletovi', 'jesuschrist', 4, 5, 42, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2019-06-17', '11:09:14'),
+(657, '403 995 M', 'TRA BI', ' BOLI FRANCIS', '', '', 'bolitbf@gmail.com', 'bolitbf', '928f5695', 4, 5, 42, 29, 2, 'OUI', '2019-07-11', '09:27:43', '', '0000-00-00', '00:00:00'),
+(658, '231 546 U', 'TRAORE', 'FLAVIEN', '08 89 82 94', '', 'traoreff@yahoo.fr', 'traoreff', 'Tf20122019', 5, 5, 42, 17, 1, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-09-07', '13:51:17'),
+(659, '290 499 E', 'TREBISSOU ', ' JOHNSON NOEL DAVID', '03 67 40 36', '', 'jonhsontrebissou@yahoo.fr', 'jonhsontrebissou', '22c6d2a5', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-02-17', '11:28:30'),
+(660, '156 081 K ', 'TURQUIN  ', 'LOUISE', '', '', 'lturquin@yahoo.fr', 'lturquin', '22c6d2a5', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', '', '0000-00-00', '00:00:00'),
+(661, '396 799 G', 'VROH BI ', 'TRA AIME', '', '', 'vrohbitra@gmail.com', 'vrohbitra', 'Yvescalvin2016', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-07-23', '16:45:14'),
+(662, '251 819 A', 'YAO ', 'DATTÃ‰ JACQUES', '05 30 53 64', '', 'yaodattejacques@yahoo.fr', 'dattej', 'dattej1234', 4, 5, 42, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-05-11', '20:14:09'),
+(663, '354 032 X', 'YAO', 'KOFFI MATHIAS', '08715880', '', 'yaomathias@gmail.com', 'yaokoffimathias', '66294566Aa', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-11', '08:09:09'),
+(664, '442 013 M', 'YAO ', 'KONAN', '', '', 'yao83konan@gmail.com', 'yao83konan', 'd74f9dcc', 4, 5, 42, 29, 2, 'OUI', '2019-07-11', '09:27:43', '', '0000-00-00', '00:00:00'),
+(665, '336 640 P', 'YAO ', 'KOUASSI PATRICK', '08 46 49 24', '', 'ykpatrick@yahoo.fr', 'ykpatrick', 'JosianeRoselyne1994', 4, 5, 42, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-16', '09:57:44'),
+(666, '332 008 A', 'YAO ', 'STANISLAS SILVAIN', '07 64 16 00', '', 'yaosilvain@yahoo.com', 'yaosilvain', 'akissible1', 4, 5, 42, 27, 2, 'OUI', '2019-12-23', '09:58:36', 'OUI', '2020-07-23', '21:16:15'),
+(667, '290 500 K', 'YAOKOKORE', ' BÃ‰IBRO KOUASSI HILAIRE', '07 63 42 65', '', 'hyaokokore@yahoo.fr', 'hyaokokore', 'c4c1141d', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', '', '0000-00-00', '00:00:00'),
+(668, '251 988 C', 'YAPI', 'AHOUA GRÃ‰GOIRE', '', '', 'yapiah@yahoo.fr', 'yapiah', '03d3fe02', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-22', '23:06:45'),
+(669, '320 282 H', 'YAPI', 'HOUPHOUET FÃ‰LIX', '48 49 44 52', '', 'felhouph@yahoo.fr', 'felhouph', '03d3fe02', 4, 5, 42, 23, 2, 'OUI', '2020-05-25', '19:13:40', '', '0000-00-00', '00:00:00'),
+(670, '303 665 L', 'YAPO ', 'ADOU FRANCIS', '08 75 66 96', '', 'fyapo67@gmail.com', 'fyapo', 'francis1967yapo', 4, 5, 42, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-18', '13:18:19'),
+(671, '320 595 T', 'YEO ', 'DODEHE', '', '', 'dodeheyeo@yahoo.fr', 'dodeheyeo', 'maheva2008', 4, 5, 42, 27, 2, 'OUI', '2019-06-29', '16:45:30', 'OUI', '2020-06-17', '15:49:21'),
+(672, '354 033 Y', 'ZAHOUI', 'OUGA STANISLAS', '05 38 56 39', '', 's.zahoui@gmail.com', 'zahouistanislas', 'zahoui1972@', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-26', '11:20:02'),
+(673, '320 279 V', 'ZANNOU-TCHOKO ', ' VIVIANE JOCELYNE', '', '', 'tchokojoyce@yahoo.fr', 'tchokojoyce', 'marietherese2005', 4, 5, 42, 27, 2, 'OUI', '2020-05-19', '12:55:14', 'OUI', '2020-05-31', '12:31:22'),
+(674, '244 473 G', 'ZIRIHI ', 'GUÃ‰DÃ‰ NOEL', '48 04 28 73', '', 'noel_zirihi@yahoo.fr', 'zirihiguede', 'd4f2ab75', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', '', '0000-00-00', '00:00:00'),
+(675, '306 638 L', 'ZOUE', 'LESSOY YVES THIERRY', '40 00 19 79', '', 'y.lessoy@yahoo.fr', 'y.lessoy', '1892e2aa', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-14', '17:53:46'),
+(676, '234 431 L', 'ZOUZOU ', 'MICHEL', '05 64 49 59', '', 'zouzoum2001@yahoo.fr', 'zouzoum2001', '2258@@', 5, 5, 42, 17, 1, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-07-23', '17:31:01'),
+(677, '281 082 J', 'KADJO ', 'BLAISE', ' 07 00 95 72', ' ', 'blaisekadjo1@hotmail.com', 'blaisekadjo1', 'choupette2001', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-26', '13:25:03'),
+(678, '417 328 U', 'KAMELAN ', 'TANOH MARIUS', '01 10 59 44', ' ', 'ktmarius@gmail.com', 'ktmarius', 'gnamiengnira', 4, 5, 42, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-15', '14:11:42'),
+(679, '253 570 N', 'KAROU ', 'TAGO GERMAIN', ' 01 05 09 92', ' ', 'agtkarou@yahoo.fr', 'agtkarou', '9e4dd885', 4, 5, 42, 27, 2, 'OUI', '2020-04-27', '21:29:49', 'OUI', '2020-04-28', '15:02:37'),
+(680, '354 224 C', 'KASSE', ' KOUADIO BENOIT', ' ', ' ', 'kassekb@gmail.com', 'benkadio', 'k150s300', 4, 5, 42, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-15', '16:14:33'),
+(681, '426 073 R', 'KASSI ', 'KOFFI FERNAND JEAN-MARTIAL', ' ', ' ', 'fernand2kassi@yahoo.fr', 'fernand2kassi', 'martial28061978martial', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-07-30', '11:14:51'),
+(682, '332 653 C', 'KASSI', 'N\'DJA JUSTIN KEVIN', ' 07 21 84 92', ' ', 'kassindja@yahoo.fr', 'kassindja', '498ddbca', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', '', '0000-00-00', '00:00:00'),
+(683, '241 617 D', 'KATI-COULIBALY', 'SÃ‰RAPHIN', ' 06 22 16 40', ' ', 'skaticoulibaly@gmail.com', 'katicoulibalys', 'Zana@22689', 4, 5, 42, 27, 2, 'OUI', '2020-04-27', '21:09:24', 'OUI', '2020-07-20', '09:52:08'),
+(684, '379 534 C', 'KIPRE', 'GUEYRAUD ROLLAND', ' ', ' ', 'kip_rolland@yahoo.fr', 'Kip_rolland', 'Eurd1995@', 4, 5, 42, 29, 2, 'OUI', '2020-02-13', '12:23:35', 'OUI', '2020-06-08', '15:54:13'),
+(685, '258 320 Y', 'KOFFI', 'KOUADIO ERNEST', ' 07 24 29 71', ' ', 'koffiernest@yahoo.com', 'koffiernest', 'zero7242971', 4, 5, 42, 27, 2, 'OUI', '2020-04-27', '21:04:21', 'OUI', '2020-06-19', '17:27:08'),
+(686, '332 007 Z', 'KOFFI', 'KOUAME MATHIAS', ' 07 85 43 71', ' ', 'djetoplus@yahoo.fr', 'djetoplus', 'bewanlo', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-07-15', '18:57:14'),
+(687, '404 062 Z', 'KOFFI', 'MARIE CHANTAL', ' ', ' ', 'marie.ckoffi@gmail.com', 'marie.ckoffi', 'Enseignement2014', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-07-30', '07:53:43'),
+(688, '228 037 W', 'ANOUMATACKY', 'AKESSE POKOU N\'GUESSAN MADJARA EPSE KOFFI', ' ', ' ', 'madjanoum@yahoo.fr', 'madjanoum', 'betcan20', 4, 5, 42, 29, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-15', '17:50:26'),
+(689, '391 351 H', 'KOFFI', 'TOUNGBO DJARY KOUASSI MICHEL', ' ', ' ', 'djaryss@yahoo.fr', 'djaryss', 'Enzymologie17', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-12', '17:51:22'),
+(690, '364 968 Q', 'KOMOE ', 'KOFFI', ' 08 00 74 78', ' ', 'komoek@yahoo.fr', 'comoekoffi', 'TANDA1', 4, 5, 42, 27, 2, 'OUI', '2019-07-09', '09:46:58', 'OUI', '2020-04-30', '10:23:01'),
+(691, '340 382 R', 'KONAN', 'AMOIN GEORGETTE', ' 03 48 89 21', ' ', 'georgette.konan@csrs.ci', 'konanamoingeorgette', 'AkpaYou$20043', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-08', '17:15:01'),
+(692, '344 898 F', 'KONAN ', 'BROU ANDRE', ' 05 40 97 50', ' ', 'akonanb@yahoo.fr', 'b_ak7', '09f58a64', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-05-29', '12:56:26'),
+(693, '404 065 U', 'KONE ', 'NAFERIMA', '07 01 21 37', ' ', 'konenaferima@yahoo.fr', 'konenaferima', 'jesuisbelle1871%%', 4, 5, 42, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-25', '07:40:55'),
+(694, '155 097 J', 'KONE EPSE COULIBALY', 'SALIMATA', ' ', ' ', '', 'konesalimata', 'e921abcc', 4, 5, 42, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(695, '364 969 R', 'KONKON', 'N\'DRI GILLES', ' ', ' ', 'konkongilles@yahoo.fr', 'konkongilles', '8e9925b5', 4, 5, 42, 27, 2, 'OUI', '2020-06-15', '10:05:16', '', '0000-00-00', '00:00:00'),
+(696, '396 437 M', 'KOUA ', 'AHOU YAH GISELE', ' ', ' ', 'kouayahgisele@yahoo.fr', 'kouayahgisele', 'Nathan@2014', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-10', '09:49:47'),
+(697, '253 580 H', 'KOUA', 'KOUAKOU HERVÃ‰', ' 04 18 18 06', ' ', 'hervkoua@yahoo.fr', 'hervkoua', '54e6e1f3', 4, 5, 42, 27, 2, 'OUI', '2020-06-10', '11:59:26', 'OUI', '2020-06-15', '21:56:05'),
+(698, '332 011 L', 'KOUADIO', 'AHOU IRENE', ' 07 25 05 11', ' ', 'irenekouadio@yahoo.fr', 'renekouadio', '6Benedictions8', 4, 5, 42, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-19', '19:25:09'),
+(699, '340 381 Q', 'KOUADIO ', 'KOUASSI', ' 47 90 82 75', ' ', 'attowoula@yahoo.fr', 'attowoula', '6a4ecc79', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-12', '14:56:11'),
+(700, '137 710 W', 'KOUADIO ', 'KOUASSI N\'GUETTIA VENANCE', ' 07 08 61 37', ' ', 'nguettiavenance@gmail.com', 'nguettiavenance', '6a4ecc79', 4, 5, 42, 29, 2, 'OUI', '2019-07-11', '09:27:43', '', '0000-00-00', '00:00:00'),
+(701, '441 987 J', 'KOUADIO ', 'NATIA JOSEPH', ' ', ' ', 'jonatia2006@yahoo.fr', 'jonatia2006', 'GKAO01125740', 4, 5, 42, 29, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-09-02', '09:07:56'),
+(702, '426 487 E', 'KOUADIO', 'NÃ‰E AGRE DON JOSETTE', ' ', ' ', 'agrejosette@yahoo.fr', 'agrejosette', 'jojo06ngandi09', 4, 5, 42, 27, 2, 'OUI', '2019-10-14', '11:42:41', 'OUI', '2020-06-18', '22:34:14'),
+(703, '164 305 G', 'KOUADIO ', 'NÃ‰E KOUASSI AMLAN ELISE', ' ', ' ', 'amlanlise06@yahoo.fr', 'amlanlise06', '7baec460', 4, 5, 42, 27, 2, 'OUI', '2019-07-10', '19:16:12', 'OUI', '2020-06-11', '10:56:19'),
+(704, '389 769 S', 'KOUADIO', 'YAO PROSPER', ' ', ' ', 'k_yao_pros@yahoo.fr', 'k_yao_pros', 'f12f0b67', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-12', '18:41:24'),
+(705, '281 080 U', 'KOUAKOU ', 'KOFFI', ' ', ' ', 'kouakoukoff@yahoo.fr', 'kouakoukoff', 'kwaquou69k', 5, 5, 42, 17, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-14', '11:55:03'),
+(706, '389 775 Q', 'KOUAKOU ', 'PRIVAT', ' ', ' ', 'Privatkouakou2004@gmail.com', 'Privatkouakou2004', 'merveille1975', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-04-08', '12:35:22'),
+(707, '389 780 J', 'KOUAME ', 'KONAN DIDIER', ' ', ' ', 'didykonan@yahoo.fr', 'didykonan', '07754603', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-07-30', '11:14:53'),
+(708, '101 174 W', 'KOUAME ', 'KOFFI GABOUET', '55 05 46 43', ' ', 'aboudoukoffi@rocketmail.com', 'kouamekoffigabouet', 'k85g1954', 5, 5, 42, 17, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-05-26', '10:44:14'),
+(709, '372 925 V', 'KOUAME ', 'KOUAKOU AUGUSTIN', '07 64 88 39', ' ', 'kkouamea@yahoo.com', 'kkouamea', 'c3f71e6c', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-22', '16:56:50'),
+(710, '424 698 X', 'KOUAME ', 'KRA FREDERIC', ' ', ' ', 'fredykouame@yahoo.fr', 'fredykouame', 'c3f71e6c', 4, 5, 42, 29, 2, 'OUI', '2019-07-11', '09:27:43', '', '0000-00-00', '00:00:00'),
+(711, '269 625 R', 'KOUAME ', 'N\'GUESSAN FRANÃ‡OIS', ' ', ' ', 'fnkouame@hotmail.com', 'fnkouame', 'c3f71e6c', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', '', '0000-00-00', '00:00:00'),
+(712, '355 506 H', 'ADIAFFI ', 'BERNARD', '49 13 62 74', '', 'adiaffi_be@yahoo.fr', 'adiaffi_be', '3db926d9', 4, 12, 35, 27, 2, 'OUI', '2020-06-10', '11:17:50', 'OUI', '2020-08-05', '17:29:45'),
+(713, '426 397 K', 'ADON ', 'GNANGUI CHRISTIAN RODRIGUE', '08 52 83 04', '', 'adonchristian@yahoo.fr', 'adonchristian', 'Dominique1984', 4, 12, 35, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-09', '13:24:05'),
+(714, '352 783 B', 'ADOPO ', 'KOUASSI LAURENT', '08 49 61 00', '', 'laurentadopo@gmail.com', 'l_adopo', 'isfak', 4, 12, 35, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-02', '18:53:17'),
+(715, '132 973 M', 'AGHUI ', 'N\'GUESSAN', '07 76 74 35', '', 'fossoujean@gmail.com', 'aghuinguessan', '94b860ce', 4, 12, 35, 27, 2, 'OUI', '2020-06-10', '14:48:42', 'OUI', '2020-06-20', '22:01:55'),
+(716, '353 586 X', 'AHOUSSI', 'KOUASSI ERNEST', '07 65 51 91', '', 'ahoussi@gmx.fr', 'ahoussi_kouassi', 'ernest@1976', 4, 12, 35, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-22', '17:31:41'),
+(717, '900 460 A', 'AKA', 'KOUAME', '', '', '', 'akakouame', '26913798', 4, 12, 35, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(718, '417 364 Y', 'AKASSIMADOU', 'EDJA FULGENCE', '', '', 'akassdjaful@yahoo.fr', 'akassdjaful', '843e3340', 4, 12, 35, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(719, '365 482 T', 'AKE ', 'GABRIEL ETIENNE', '07 73 47 26', '', 'ak_gabe@yahoo.fr', 'ak_gabe', '66623f57', 4, 12, 35, 27, 2, 'OUI', '2020-06-10', '22:06:21', 'OUI', '2020-07-19', '10:36:16'),
+(720, '391 002 Y', 'AKOBE ', 'APIE COLETTE', '05 50 50 40', '', 'Colette.akobe@hotmail.com', 'Colette.akobe', '6ea5a969', 4, 12, 35, 27, 2, 'OUI', '2020-06-19', '19:20:47', 'OUI', '2020-07-07', '13:15:58'),
+(721, '257 432 U', 'AKOTO', 'ODI FAUSTIN', '41 98 06 88', '', 'akoto_faustin2006@yahoo.fr', 'akobecolette', '19971', 4, 12, 35, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-22', '12:48:12'),
+(722, '426 511 D', 'AKPA ', 'YOU LUCETTE', '08 24 68 08', '', 'ylucetta@yahoo.fr', 'ylucette', 'd5ba4a15', 4, 12, 36, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(723, '332 040 D', 'ALLIALY ', 'MARC EPHREM', '09 70 42 83', '', 'allialy@hotmail.fr', 'allialy', 'Ephrem@1968', 4, 12, 35, 27, 2, 'OUI', '2020-06-04', '13:31:02', 'OUI', '2020-07-17', '20:35:23'),
+(724, '389 623 G', 'AMANI ', 'ETCHE MIREILLE ELISE', '07 47 52 47', '', 'etche28@yahoo.fr', 'etche28', 'Becedi28', 4, 12, 35, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-07', '15:46:00'),
+(725, '403 923 L', 'ASSALE ', 'FORI YAO PAUL', '78 87 52 36', '', 'foripaul@live.fr', 'foripaul', 'FORIpaulassa123', 5, 12, 35, 17, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-13', '23:04:34'),
+(726, '342 837 X', 'ASSANDE ', 'AKA ALEXANDRE', '07 39 83 97', '', 'alexandre_assande@yahoo.fr', 'alexandre_assande', 'f79ac431', 4, 12, 35, 27, 2, 'OUI', '2020-01-23', '14:37:16', 'OUI', '2020-08-18', '11:14:15'),
+(727, '397 592 J', 'ASSOMA ', 'TCHIMOU VINCENT', '89 70  70 34', '', 'assoma.vce@gmail.com', 'assoma.vce', 'Vassoma75', 4, 12, 36, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-11', '15:14:08'),
+(728, '', 'KOUA', 'Brou', '', '', '', 'kouaalldpt', 'b85917a7', 5, 11, 18, 19, 3, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-24', '12:11:44'),
+(729, '1A', 'KOUA', 'Brou', '', '', '', 'kouaigt', 'edbbe02c', 5, 4, 28, 19, 3, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2019-07-11', '17:41:54'),
+(730, '1B', 'KOUA', 'Brou', '', '', '', 'kouami', '0ad8ad2b', 5, 13, 24, 19, 3, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-17', '13:01:32'),
+(732, '2A', 'KOUADIO', 'Clement', '', '', '', 'kouadioclement', 'bdc1cbc6', 2, 17, 59, 34, 3, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(733, '389 641 J', 'BAKA', 'DERVING', '01 17 75 94', '', 'dervingb@gmail.com', 'derwingb', '076505bd', 4, 12, 35, 27, 2, 'OUI', '2019-06-18', '20:53:25', 'OUI', '2020-08-18', '17:14:26'),
+(734, '133 918 P', 'BIEMI ', 'JEAN ', '', '', '', 'biemijean', '003ef5c9', 4, 12, 35, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(735, '380 380 L', 'BLE EPSE KPAN', 'LOUAN ODILE', '08 89 25 30', '', 'louanfr2000@yahoo.fr', 'louanfr2000', 'victoireble', 4, 12, 35, 27, 2, 'OUI', '2019-12-03', '12:59:58', 'OUI', '2020-06-23', '12:57:10'),
+(736, '427 035 C', 'HIEN ', 'MARIE-PAULE ESPE BOIDI ', '07 22 92 36', '', 'mhienboidi@gmail.com', 'mhienboidi', '4f8f3d04', 4, 12, 35, 27, 2, 'OUI', '2020-06-11', '20:48:02', 'OUI', '2020-06-18', '15:20:12'),
+(737, '426 920 K', 'BOLOU BI', 'BOLOU EMILE', '59 51 08 38', '', 'emile.bolou@univ-fhb.edu.ci', 'emile.bolou', 'EleNa0610', 4, 12, 35, 27, 2, 'OUI', '2020-06-02', '20:38:11', 'OUI', '2020-09-08', '11:59:00'),
+(738, '373 664 Q', 'BONGOUA EPSE DEVISME', 'AFFI JEANNE', '58 41 13 04', '', 'bongoua_jeanne@yahoo.fr', 'bongoua_jeanne', 'df5f6503', 4, 12, 35, 27, 2, 'OUI', '2020-06-05', '21:25:20', 'OUI', '2020-07-09', '11:13:43'),
+(739, '424 959 u', 'BOUADOU ', 'OI BOUADOU FELIX', '07 20 39 54', '', 'felixbouadou@yahoo.fr', 'felixbouadou', 'cb13da61', 4, 12, 35, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(740, '417 044 K', 'BOYA', 'TOKPA KAKEU LIONEL-DIMITRI', '77 17 27 75', '', 'lionelboya2000@yahoo.fr', 'lionelboya', 'kakeu841121', 4, 12, 35, 27, 2, 'OUI', '2019-06-18', '20:53:25', 'OUI', '2020-07-30', '13:36:36'),
+(741, '273 250 Z', 'COULIBALY ', 'YACOUBA', '05 74 39 03', '', 'yacoulib@hotmail.fr', 'coulibayacouba', 'madou69', 4, 12, 35, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-12', '16:44:22'),
+(742, '417 376 U', 'DEH ', 'SERGE KOUAKOU', '07 14 13 94', '', 'deh.serge@yahoo.fr', 'deh.serge', 'c0ec767f', 4, 12, 35, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-12', '12:08:34'),
+(743, '501 901 Z', 'DEVISME ', 'OLIVIER GILBERT MARCEAU', '57 95 17 62', '', 'devismo@gmail.com', 'devismo', '03b60dc3', 4, 12, 35, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(744, '364 869 M', 'DIANGONE BI', 'TIZIE ERIC', '58 15 57 06', '', 'ericdiangone@gmail.com', 'diangonebitizie', 'jordana1071115', 4, 12, 35, 27, 2, 'OUI', '2019-11-28', '16:40:38', 'OUI', '2020-07-08', '11:20:32'),
+(745, '231 589 Y', 'DIGBEHI ', 'ZELI BRUNO', '09 35 67 39', '', 'brunodigbehi@gmail.com', 'digbehizeli', 'quincos977', 4, 12, 35, 27, 2, 'OUI', '2020-06-24', '20:17:35', 'OUI', '2020-07-07', '09:11:00'),
+(746, '301 098 E', 'DJAGOUA', 'ERIC M\'MOI VALERE', '42 12 78 78', '', 'vdjagoua@yahoo.fr', 'djagouaeric', 'professeurtitulaire2017', 4, 12, 35, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-28', '16:02:24'),
+(747, '900 461 B', 'DJE', 'BERNARD', '', '', '', 'djebernard', '9817d40f', 4, 12, 35, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(748, '157 673 H', 'DJRO ', 'SAGBROU CHERUBIN', '07 01 15 99', '', 'cdjro@yahoo.fr', 'cdjro', 'D5120sekrakra', 4, 12, 35, 27, 2, 'OUI', '2020-06-22', '14:54:10', 'OUI', '2020-09-05', '11:44:49'),
+(749, '426 404 K', 'DJROH ', 'SIMON PIERRE', '', '', 'djrohsp@gmail.com', 'djrohsp', 's1m0np1erre', 4, 12, 35, 27, 2, 'OUI', '2020-06-05', '19:51:59', 'OUI', '2020-08-10', '18:54:57'),
+(750, '332 012 M', 'DONGO ', 'KOUASSI', '07 64 85 83', '', 'kdongo8@gmail.com', 'kdongo8', 'Miguel72', 4, 12, 35, 27, 2, 'OUI', '2020-06-08', '13:49:08', 'OUI', '2020-07-09', '14:08:08'),
+(751, '404 055 S', 'EBA ', 'ANOWA EVRADE LARISSA', '49 00 36 00', '', 'ebaballiet@gmail.com', 'ebaballiet', '97575a50', 4, 12, 35, 27, 2, 'OUI', '2020-06-12', '17:13:16', 'OUI', '2020-06-30', '22:33:51'),
+(752, '244 474 H', 'EMERUWA ', 'EDJIKEME', '07 08 85 77', '', 'edjiksmat@yahoo.com', 'edjiksmat', '97575a50', 4, 12, 35, 27, 2, 'OUI', '2020-06-02', '21:04:33', 'OUI', '2020-08-30', '18:31:05'),
+(753, '306 572 A', 'ETTIEN ', 'DJETCHI JEAN BAPTISTE', '03 48 89 07', '', 'jb_ettien@yahoo.fr', 'ettiendjetchi', '014c8d4b', 5, 12, 35, 17, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-25', '13:41:59'),
+(754, '358 649 A', 'GALA BI ', 'TRAZIE JEREMIE', ' 09 21 21 31', ' ', 'gala_trazie@yahoo.fr', 'gala_trazie', 'GRACE1982divine', 4, 12, 35, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-15', '23:16:20'),
+(755, '900 466 G', 'GAYE', 'EMILE', '', '', '', 'gayeemile', '84f47d8a', 4, 12, 35, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(756, '420 247 A', 'GNANZOU ', 'ALLOU', ' 07 19 50 30', ' ', 'gnanzouallou@yahoo.fr', 'gnanzouallou', '17072002', 4, 12, 35, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-19', '20:31:11'),
+(757, '426 931 A', 'GUETY ', 'THIERRY PHILIPPE', ' 07 78 67 44', ' ', 'thierryguety@yahoo.fr', 'thierryguety', 'zransah44', 4, 12, 35, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-23', '11:43:11'),
+(758, '403 904 S', 'HOUENENOU', 'KOUADIO DENIS', ' ', ' ', 'hkdenis@yahoo.fr', 'hkdenis', '123456789', 4, 12, 36, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(759, '403 990 U', 'HOUSSOU ', 'N\'GUESSAN NESTOR', ' 58 83 46 11', ' ', 'nestor.houssou@gmail.com', 'nestor.houssou', 'Nes08021974tor', 4, 12, 35, 27, 2, 'OUI', '2019-06-18', '20:53:25', 'OUI', '2020-07-01', '11:27:53'),
+(760, '234 242 E', 'JOURDA ', 'JEAN PATRICE ROGER', ' 07 37 17 59', '', 'jourdapatrice@gmail.com', 'jourdapatrice', 'Le13062020', 4, 12, 35, 27, 2, 'OUI', '2020-06-13', '17:04:36', 'OUI', '2020-07-06', '14:05:01'),
+(761, '353 584 V', 'YOUAN TA ', 'MARC', '43 52 56 00', '', 'youanta@gmail.com', 'youanta', 'Jesusdieu2020*', 5, 12, 36, 17, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-09', '10:32:07'),
+(762, '379 536 E', 'YOBOUE', 'KOUADIO EMILE', '41 02 79 13', '', 'emileyoboue1@gmail.com', 'emileyoboue1', 'yoboue75activite', 4, 12, 35, 27, 2, 'OUI', '2020-05-09', '16:21:40', 'OUI', '2020-07-16', '11:20:59'),
+(763, '148 732 B', 'YEBOUA ', 'KABRAH', '', '', '', 'yebouakabrah', '66f2bfab', 4, 12, 35, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(764, '110 396 Z', 'YAO-KOUAME', 'ALBERT', '01 18 45 37', '', 'yaokouamealbert1@yahoo.fr', 'yaokouamealbert1', 'b95baff0', 3, 12, 35, 21, 1, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(765, '390 274 P', 'YAO', 'AHOU NOÃ‹LLIE Ã‰PSE RÃœTH ', '08 44 73 07', '', 'noellia@hotmail.de', 'noellia', 'Ju1n12UC', 4, 12, 36, 27, 2, 'OUI', '2020-06-11', '20:52:59', 'OUI', '2020-06-18', '12:05:02'),
+(766, '389 881 U', 'YAO ', 'N\'GORAN JEAN-PAUL', '07 49 01 27', '', 'dryao_ngoran@yahoo.fr', 'dryao_ngoran', 'esthertabitha', 4, 12, 35, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-23', '11:56:04'),
+(767, '365 480 D', 'YAO', 'KOFFI THEODORE', '05 00 01 07', '', 'yakoft@yahoo.fr', 'koffiyao', '8364508b', 4, 12, 35, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-10', '10:29:45'),
+(768, '426 623 M', 'YAO ', 'KOUADIO CYRILLE', '08 85 55 81', '', 'yaokcyrille@yahoo.fr', 'yaokcyrille', 'd47185f1', 4, 12, 35, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-22', '14:41:23'),
+(769, '303 664 K', 'WOGNIN ', 'AMA VALERIE IRMA', '07 90 49 62', '', 'ama_valerie@yahoo.fr', 'wogninama', 'AVEMARIA', 4, 12, 35, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-21', '14:08:14'),
+(770, '352 782 A', 'WANGO', 'TED-EDGARD', '07 42 91 88', '', 'tedwango10@gmail.com', 'tededgard', 'vickypaola', 4, 12, 35, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-11', '11:25:36'),
+(771, '389 802 D', 'TOURE  Ã‰PSE LOUKOU', 'NANTARIE', '', '', 'toure_nant@yahoo.fr', 'toure_nant', '68425965', 4, 12, 35, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(772, '3A', 'KOUA', 'Brou', '', '', 'kklements@yahoo.fr', 'kouacrimino', 'dd28f600', 5, 9, 46, 19, 3, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-12', '16:52:57'),
+(773, '4A', 'KOUA', 'Brou', '', '', 'kklements@yahoo.fr', 'kouabios', '5445d355', 5, 5, 42, 19, 3, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-13', '09:14:46'),
+(774, '5A', 'KOUA', 'Brou', '', '', 'princesamuelkouame@gmail.com', 'kouasjap', '00641c6d', 5, 1, 82, 19, 3, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2019-11-08', '15:53:53'),
+(775, '900 467 H', 'KADJO', 'ELLOH', '', '', '', 'kadjoelloh', '734b4f75', 4, 12, 35, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(776, '389 726 F', 'KASSI ', 'AHON JEAN-BAPTISTE', ' 07 36 20 70', ' ', 'ahonjb.kassi@curat-edu.org', 'ahonjb.kassiahonjb.kassi', 'Khassy77', 4, 12, 36, 27, 2, 'OUI', '2020-06-02', '21:56:37', 'OUI', '2020-07-13', '11:11:28'),
+(777, '426 331 Q', 'KEUMEAN', 'KEIBA NOEL', ' 07 21 17 83', ' ', 'douman2007@yahoo.fr', 'keumeank', 'KNK37kouando', 4, 12, 35, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-17', '13:32:51'),
+(778, '344 430 D', 'KOFFI ', 'YAO BLAISE', ' 07 27 17 13', ' ', 'yaomonie@yahoo.fr', 'yaomonie', 'Yohann_2013', 4, 12, 35, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-17', '22:53:21'),
+(779, '279 408 T', 'KONAN ', 'KONAN ERNEST', ' 77 85 35 66', ' ', 'conandernest@yahoo.fr', 'conandernest', '6a468af3', 4, 12, 35, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(780, '355 505 G', 'KONE', 'BRAHIMA', ' 06 54 61 89', ' ', 'kbrahima@hotmail.com', 'kbrahima', 'e6394f9f', 4, 12, 35, 27, 2, 'OUI', '2020-06-17', '17:16:05', 'OUI', '2020-06-22', '07:43:04'),
+(781, '290 493 Y', 'KOUADIO ', 'BOYOSSORO HELENE', ' ', ' ', 'sialouk@gmail.com', 'kbhel', 'ufhb@Curat1', 4, 12, 35, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-14', '13:50:33'),
+(782, '389 763 L', 'KOUADIO ', 'KOFFI PATRICE', ' 08 02 67 68', ' ', 'kkpatrice@hotmail.fr', 'k.koffipatrice', 'c691c65c', 4, 12, 35, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(783, '333 668 L', 'KOUADIO ', 'KONAN-KAN HIPPOLYTE', ' 44 62 74 00', ' ', 'hippolyte_kouadio@yahoo.fr', 'hippolyte_kouadio', '1b80f628', 4, 12, 35, 27, 2, 'OUI', '2020-06-18', '08:53:57', 'OUI', '2020-06-30', '09:54:29'),
+(784, '404 066 V', 'KOUADIO ', 'MAFFOUE JEANNE', ' 51 98 98 82', ' ', 'maffoue.kouadio@curat-edu.org', 'maffoue.kouadio', '26547927', 4, 12, 36, 27, 2, 'OUI', '2020-06-24', '20:14:57', 'OUI', '2020-07-10', '14:16:41'),
+(785, '313 375 A', 'KOUAKOU', 'CONAND HONORE', ' 05 64 93 97', ' ', 'honore_kouakou2@yahoo.fr', 'conanhonore', 'h-n-re2a', 4, 12, 35, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-03', '15:42:25'),
+(786, '403 966 X', 'KOUAKOU', 'YAO KOUMAN NESTOR', ' 08 37 80 21', ' ', 'nestkoya@yahoo.fr', 'nestkoya', 'geopedologue1', 4, 12, 35, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-05', '16:32:33'),
+(787, '338 866 G', 'KOUAME ', 'KAN JEAN', ' 77 37 80 79', ' ', 'jeankkan@yahoo.fr', 'jeankan05', 'le04082007', 5, 12, 36, 20, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-29', '10:44:26'),
+(788, '397 795 V', 'KOUAME', 'KASSI ALEXIS', ' 49 18 42 64', ' ', 'kassialexiskouame@yahoo.com', 'kkassialexis', '43ed39e8', 4, 12, 35, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-26', '10:58:14'),
+(789, '397 796 W', 'KOUAME ', 'KOFFI', ' 07 72 83 01', ' ', 'kahoueg@yahoo.fr', 'kahoueg', 'KKCur@t2020Â£', 4, 12, 35, 27, 2, 'OUI', '2020-06-10', '20:39:10', 'OUI', '2020-06-14', '21:58:53'),
+(790, '278 693 P', 'KOUAME ', 'KOFFI FERNAND', ' 42 13 05 05', ' ', 'fernand.kouame@curat-deu.org', 'fernand.kouame', 'f70aaacd', 4, 12, 36, 27, 2, 'OUI', '2020-08-11', '11:06:09', '', '0000-00-00', '00:00:00'),
+(791, '389 781 F', 'KOUAME ', 'LOUKOU NICOLAS', ' 07 11 23 37', ' ', 'moayek@gmail.com', 'kouamlounic76', 'c537c7d4', 5, 12, 35, 17, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-19', '14:18:12'),
+(792, '290 492 X', 'KOUAMELAN ', 'ALAIN NICAISE', ' 05 82 60 73', ' ', 'kouamelan02@gmail.com', 'kouamelanalain', 'kanclub', 5, 12, 35, 17, 1, 'OUI', '2020-06-10', '20:39:10', 'OUI', '2020-07-29', '10:39:21'),
+(793, '900 314 K', 'KRA', 'EMMANUEL', '', '', '', 'kraemmanuel', 'bb5f0869', 4, 12, 35, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(794, '356 789 M', 'MOBIO', 'ABAKA BRICE HERVE', ' 05 62 64 96', ' ', 'brice.mobio@curat-edu.org', 'brice.mobio', 'awomob77', 4, 12, 36, 27, 2, 'OUI', '2020-06-11', '22:35:28', 'OUI', '2020-08-09', '22:31:23'),
+(795, '265 054 C', 'MONDE', 'SYLVAIN', ' 08 76 75 77', ' ', 'atteson@gmail.com', 'mondesylvain', 'aa2e09bb', 5, 12, 35, 17, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-30', '11:19:31'),
+(796, '426 411 H', 'N\'GUESSAN ', 'BI VAMI HERMAN', ' 49 21 63 35', ' ', 'vami@outlook.com', 'vami', 'a135ed75', 4, 12, 35, 27, 2, 'OUI', '2020-06-17', '17:20:33', 'OUI', '2020-08-31', '21:20:16'),
+(797, '345 004 B', 'N\'GUESSAN', 'YAO ALEXIS', ' 07 83 79 75', ' ', 'alestouxis2017@gmail.com', 'alestouxis', '1a1f0e3d', 4, 12, 35, 27, 2, 'OUI', '2019-06-18', '20:53:25', 'OUI', '2020-06-16', '14:53:11'),
+(798, '357 236 B', 'N\'GUESSAN ', 'YAO MATHIEU', ' 08 16 87 76', ' ', 'nguessym@yahoo.fr', 'nguessym', '1a1f0e3d', 4, 12, 35, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(799, '276 234 G', 'OGA', 'YEÃ MARIE SOLANGE', ' 07 85 62 46', ' ', 'ogamariso@gmail.com', 'ogamariso', 'Yow&Tcha', 5, 12, 36, 17, 1, 'OUI', '2020-06-12', '17:34:00', 'OUI', '2020-08-02', '21:04:56'),
+(800, '276 248 W', 'OUATTARA ', 'ADAMA', ' 01 66 19 10', ' ', 'fortadams@yahoo.fr', 'ouattadam', 'fed4fa24', 4, 12, 36, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(801, '397 877 X', 'OUATTARA', 'SOULEYMANE', ' 07 94 09 21', ' ', 'ouatsoul@gmail.com', 'ouatsoul', 'sekongoz', 4, 12, 35, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-09', '14:21:36'),
+(802, '426 604 T', 'OULARE ', 'SEKOUBA', ' 07 72 88 50', ' ', 'oulare_sekouba@yahoo.fr', 'oulare_sekouba', 'mariame85', 4, 12, 35, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-16', '12:10:24'),
+(803, '500 335 B', 'SALEY', 'MAHAMAN BACHIR', ' 42 47 98 39', ' ', 'basaley@yahoo.fr', 'saleybachir', 'sally001', 4, 12, 36, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(804, '403 940 H', 'SERIFOU ', 'MAMERY ADAMA', '07 52 14 19', '', 'smadamsdedjen@yahoo.fr', 'smadamsdedjen', 'be10aeac', 4, 12, 35, 27, 2, 'OUI', '2020-06-02', '21:39:23', 'OUI', '2020-06-15', '14:53:47'),
+(805, '121 257 U', 'SOMBO', 'BOKO CELESTIN', '06 11 52 20', '', 'achouamou@gmail.com', 'somboboko', 'f933a670', 4, 12, 35, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(806, '389 855 H', 'SORO', 'GBOMBELE', '09 86 26 85', '', 'marc_soro@yahoo.fr', 'marc_soro', 'Ferel@17', 4, 12, 35, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-25', '00:06:36'),
+(807, '417 387 Q', 'SOROKOBY ', 'VANO MATHUNAISE', '05 70 36 77', '', 'sdvano@yahoo.fr', 'sdvano', 'Drouko@2019!', 4, 12, 36, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-09', '11:30:20'),
+(808, '365 481 S', 'TOURE', 'MAMADOU', '07 55 08 55', '', 'touremmd@yahoo.fr', 'touremmd', 'tmbs8370', 4, 12, 35, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-07', '13:23:17'),
+(809, '900 463 D', 'TOURE', 'SOUHALIO', '', '', '', 'touresouhalio', 'c75365ef', 4, 12, 35, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(810, '327 128 Z', 'GUEU ', 'DENIS', ' ', ' ', 'israelredemption@hotmail.com', 'israelredemption', '50bc6e40', 5, 9, 46, 17, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-04-09', '11:18:55'),
+(811, '365 070 L', 'ZADY', 'CASIMIR', '55 85 69 13', '', 'zadycasimir@yahoo.fr', 'zadycasimir', 'Hermann1997', 4, 9, 46, 27, 2, 'OUI', '2019-07-17', '15:32:50', 'OUI', '2020-01-21', '10:06:30'),
+(812, '398 116 V', 'YORO ', 'CYRILLE JULIEN SYLVAIN', '07 87 73 11', '', 'xyrhis@yahoo.fr', 'jcyrille.yoro', 'S24Y8gX13e', 4, 9, 46, 27, 2, 'OUI', '2020-01-24', '09:00:12', 'OUI', '2020-01-24', '09:44:15'),
+(813, '366 899 E', 'YOHOU', 'NALIALY MATHIEU', '45 01 52 21', '', 'nalialy-matieu@yahoo.fr', 'nalialymathieu', '46626a02', 4, 9, 46, 27, 2, 'OUI', '2019-07-17', '15:32:50', '', '0000-00-00', '00:00:00'),
+(814, '389 869 P', 'TOHOULI ', 'GAGBE DESIRE', '07 77 31 92', '', 'desiretohouli@yahoo.fr', 'desiretohouli', 'f1c779af', 4, 9, 46, 27, 2, 'OUI', '2020-01-24', '09:01:12', '', '0000-00-00', '00:00:00'),
+(815, '396 684 V', 'SAHI', 'SALIA RENE', ' 08 10 61 72', ' ', 'renesahi7@gmail.com', 'renesahi', '7777SSR7777', 4, 9, 46, 27, 2, 'OUI', '2019-07-18', '15:28:22', 'OUI', '2020-01-30', '09:49:01'),
+(816, '365 069 P', 'OKPO', 'NASSOUA ANTOINE', ' 05 35 38 75', ' ', 'nassoua.antoine@yahoo.fr', 'okponassoua', '837cd6c9', 4, 9, 46, 27, 2, 'OUI', '2019-07-17', '15:32:50', 'OUI', '2020-01-28', '17:09:29'),
+(817, '403 969 A', 'OKOU ', 'DJAGBRE ESAÃE', ' 02 28 10 83', ' ', 'esaieokou@gmail.com', 'esaieokou', '5ae6395f', 4, 9, 46, 27, 2, 'OUI', '2019-07-17', '15:32:50', 'OUI', '2020-01-21', '14:58:19'),
+(818, '276 255 M', 'N\'GUETTIA', 'KOUAKOU KRA MARTIN', ' 04 99 24 65', ' ', 'nguettiamartin@yahoo.fr', 'nguettiamartin', 'da19ee63', 4, 9, 46, 27, 2, 'OUI', '2019-07-17', '08:16:49', '', '0000-00-00', '00:00:00'),
+(819, '365 066 C', 'N\'GORAN ', 'KOKO LUCIE', ' 59 80 36 75', ' ', 'ngorankokolucie@yahoo.fr', 'ngorankokolucie', 'jeaneudes', 4, 9, 46, 27, 2, 'OUI', '2019-07-17', '08:16:49', 'OUI', '2020-01-28', '16:34:22'),
+(820, '403 968 H', 'KROUBO ', 'KAFE GUY CHRISTIAN', ' 09 33 45 14', ' ', 'christiankafe@yahoo.fr', 'christiankafe', '482c8515', 4, 9, 46, 27, 2, 'OUI', '2019-07-17', '08:16:49', 'OUI', '2020-01-20', '15:35:19'),
+(821, '426 460 W', 'KOUASSI ', 'KONAN JEAN-CLAUDE', ' 05 61 84 57', ' jeanclaudekkouassi@yahoo.fr', 'jeanclaudekouassi@gmail.com', 'jeanclaudekouassi', 'effaf6fd', 4, 9, 46, 27, 2, 'OUI', '2020-01-24', '09:00:12', '', '0000-00-00', '00:00:00'),
+(822, '389 786 C', 'KOUASSI ', 'KOFFI JUSTIN', ' 08 32 41 81', ' ', 'ange_prestige@gmail.com', 'justin_kkoffi', '5c9875a3', 4, 9, 46, 27, 2, 'OUI', '2019-07-17', '08:16:49', '', '0000-00-00', '00:00:00'),
+(823, '417 332 Q', 'KOUAME ', 'KOUAKOU JUSTIN', ' 48 91 61 56', ' ', 'katongba@yahoo.fr', 'katongba', 'f7fa44e2', 4, 9, 46, 27, 2, 'OUI', '2019-07-17', '07:15:46', '', '0000-00-00', '00:00:00'),
+(824, '426 937 G', 'KOUAKOU', 'KONAN ISIDORE', ' 03 06 51 79', ' ', 'konanisidore@gmail.com', 'konanisidore', '3102', 4, 9, 46, 27, 2, 'OUI', '2019-07-17', '07:15:46', 'OUI', '2020-06-24', '20:50:46'),
+(825, '389 727 G', 'KAZON ', 'DIESCIEU AUBIN SYLVERE', '48 92 96 82', ' ', 'diecieu_75@gmail.com', 'diecieu_75', '0e61e46c', 4, 9, 46, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(826, '290 866 D', 'GOBA ', 'BOLIGA ZEPHIRIN', ' 07 36 50 29', ' ', 'zephiringoba2006@yahoo.fr', 'zephiringoba2006', '38bbc355', 4, 9, 46, 27, 2, 'OUI', '2019-07-17', '07:15:46', '', '0000-00-00', '00:00:00'),
+(827, '338 334 A', 'GBAGBO ', 'MICHEL KOUDOU', ' 56 02 33 32', ' ', 'michelgbagbo@hotmail.com', 'michelgbagbo', '74841174', 4, 9, 46, 27, 2, 'OUI', '2019-07-17', '07:15:46', 'OUI', '2020-02-11', '12:17:42'),
+(828, '417 324 Q', 'DJATO', 'KOUASSI BLAISE', '09 67 43 35', '', 'djatokouassi@hotmail.com', 'djatokouassi', '738f4ac1', 4, 9, 46, 27, 2, 'OUI', '2019-07-16', '21:39:55', '', '0000-00-00', '00:00:00'),
+(829, '426 452 J', 'DEDOU ', ' ZOZO ALAIN', '08 90 10 60', '', 'alaindedou@gmail.com', 'alaindedou', 'cecilemazo', 4, 9, 46, 27, 2, 'OUI', '2019-07-16', '21:39:55', 'OUI', '2020-06-03', '13:44:16'),
+(830, '403 960 D', 'DANHOUE', 'GOGOUE JEAN CLAUDE', '07 60 32 90', '', 'danhouejeanclaude@gmail.com', 'danhouejeanclaude', '2a0f9934', 4, 9, 46, 27, 2, 'OUI', '2019-07-16', '21:39:55', 'OUI', '2020-03-02', '10:38:45'),
+(831, '389 675 L', 'DAKON', ' N\'DA JOSEPH', '87 03 48 42', '', 'dakonndajoseph@gmail.com', 'Dakon58', '7fb1375f', 4, 9, 46, 27, 2, 'OUI', '2019-07-16', '21:39:55', '', '0000-00-00', '00:00:00'),
+(832, '366 397 E', 'DAGBE ', 'AHODAN STEPHANE', '40 88 01 70', '', 'stephanedagbe@gmail.com', 'stephane.dagbe', '2d4d9616', 4, 9, 46, 27, 2, 'OUI', '2019-07-16', '21:39:55', '', '0000-00-00', '00:00:00'),
+(833, '389 672 R', 'CRIZOA', 'HERMANN', '05 80 71 80', '', 'hcrizoa@gmail.com', 'crizoa', 'criwoa1974', 4, 9, 46, 27, 2, 'OUI', '2019-07-18', '15:28:22', 'OUI', '2020-02-13', '17:04:01'),
+(834, '426 922 H', 'COULIBALY ', 'DOPPON ALI', '05 86 40 01', '', 'doppon.ali@gmail.com', 'coulibalydoppon', 'a707c742', 4, 9, 46, 27, 2, 'OUI', '2019-07-16', '21:39:55', 'OUI', '2020-03-17', '21:30:25'),
+(835, '305 089 H', 'CAPRI', 'NÃ‰E TRAORE MASSANDJE', '07 05 24 74', '', 'massandje.traore@free.fr', 'massandje.traore', '1a14540d', 4, 9, 46, 27, 2, 'OUI', '2019-07-16', '21:39:55', '', '0000-00-00', '00:00:00'),
+(836, '426 451 R', 'BOLOU ', 'YABIE GENEVIEVE', '72 46 35 91', '', 'mercygrace1995@yahoo.fr', 'yabiegeny', '4c7e5125', 4, 9, 46, 27, 2, 'OUI', '2019-07-16', '21:27:25', '', '0000-00-00', '00:00:00'),
+(837, '365 489 A', 'AGBADOU', 'NAKPON JOCELINE EPSE BOLI', '58 31 31 15', '', 'jocelineboli2013@gmail.com', 'jocelineboli2013', '145f53f4', 4, 9, 46, 27, 2, 'OUI', '2020-01-24', '09:00:12', 'OUI', '2020-01-28', '15:37:03'),
+(838, '365 490 F', 'BAZARE', 'NEBI RAYMOND', '57 80 14 13', '', 'nebibaz1@yahoo.fr', 'nebibaz1', 'c9cd0d16', 4, 9, 46, 27, 2, 'OUI', '2019-07-16', '21:27:25', '', '0000-00-00', '00:00:00'),
+(839, '403 958 F', 'BAMBA ', 'SEYDOU', '57 74 44 73', '', 'bamseydou@yahoo.fr', 'bamseydou', '96c5fb7e', 4, 9, 46, 27, 2, 'OUI', '2019-07-16', '21:27:25', '', '0000-00-00', '00:00:00'),
+(840, '427 019 L', 'BAMBA', 'MASSANDJEI', '07 69 73 19', '', 'bamba_mass@yahoo.fr', 'bamba_mass', '2607a459', 4, 9, 46, 27, 2, 'OUI', '2019-07-16', '21:27:25', 'OUI', '2020-01-30', '11:47:47'),
+(841, '349 399 X', 'BAMBA', 'LADJI', '01 08 40 14', '', 'ladjib@gmail.com', 'bambaladji', 'bamba1975', 4, 9, 46, 27, 2, 'OUI', '2019-07-16', '21:27:25', 'OUI', '2020-06-22', '18:15:08'),
+(842, '338 363 P', 'BAKAYOKO ', 'ISMAÃLA', '07 71 95 61', '', 'bakismael@yahoo.fr', 'bakismael', 'fatima', 4, 9, 46, 27, 2, 'OUI', '2019-07-16', '21:27:25', 'OUI', '2020-03-22', '21:28:08'),
+(843, '6A', 'KOUA', 'Brou', '', '', 'ndaadje@gmail.com', 'kouahist', 'b6bbceb7', 5, 4, 21, 19, 3, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-19', '11:08:04'),
+(844, '7A', 'KOUA', 'Brou', '', '', 'princesamuelkouame@gmail.com', 'kouaphilo', '96b24b29', 5, 4, 20, 19, 3, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-12', '14:50:37'),
+(845, '8A', 'KOUA', 'Brou', '', '', 'princesamuelkouame@gmail.com', 'kouassmt', '235052bf', 5, 3, 48, 19, 3, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-02-17', '16:07:35'),
+(846, '9A', 'KOUA', 'Brou', '', '', 'princesamuelkouame@gmail.com', 'kouasocio', '5e180262', 5, 4, 22, 19, 3, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2019-08-24', '23:25:01'),
+(847, '10A', 'KOUA', 'Brou', '', '', 'brou.koua@ufhb.edu.ci', 'koualetmod', 'fdade640', 5, 11, 16, 19, 3, 'OUI', '2020-06-05', '19:44:55', 'OUI', '2020-09-08', '14:39:28'),
+(848, '11A', 'KOUA', 'Brou', '', '', 'kklements@yahoo.fr', 'kouaanglais', 'fcd657f8', 5, 11, 14, 19, 3, 'OUI', '2019-12-13', '20:40:36', 'OUI', '2020-08-12', '14:46:00'),
+(849, '12A', 'KOUA', 'Brou', '', '', 'ndaadje@gmail.com', 'kouaseg', '69178918', 5, 2, 49, 19, 3, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-22', '15:01:02'),
+(850, '13A', 'KOUA', 'Brou', '', '', 'princesamuelkouame@gmail.com', 'kouastrm', '284d199c', 5, 12, 35, 19, 3, 'OUI', '2019-07-19', '21:03:47', 'OUI', '2020-09-08', '17:35:48'),
+(851, '14A', 'KOUA', 'Brou', '', '', 'alfredouanyou@gmail.com', 'kouaufrica', '221a40d9', 5, 10, 37, 19, 3, 'OUI', '2019-12-12', '13:32:27', 'OUI', '2020-07-13', '17:58:05');
+INSERT INTO `utilisateur` (`id_utilisateur`, `matricule_utilisateur`, `nom_utilisateur`, `prenom_utilisateur`, `tel_utilisateur`, `adresse_utilisateur`, `email_utilisateur`, `login_utilisateur`, `mot_passe_utilisateur`, `id_type_utilisateur`, `id_etablissement`, `id_departement`, `id_groupe_utilisateur`, `id_qualite_utilisateur`, `parametres_envoye`, `date_envoie`, `heure_envoie`, `connexion_reussie`, `date_derniere_connexion`, `heure_derniere_connexion`) VALUES
+(852, '15A', 'KOUA', 'Brou', '', '', 'princesamuelkouame@gmail.com', 'kouascelang', '87d07fed', 5, 11, 19, 19, 3, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-09-03', '16:06:16'),
+(853, '17A', 'KOUA', 'Brou', '', '', 'nda.adje@gmail.com', 'kouapsycho', '2d86a05a', 5, 4, 23, 19, 3, 'OUI', '2019-08-13', '11:21:15', 'OUI', '2020-09-03', '09:42:51'),
+(854, '16A', 'KOUA', 'Brou', '', '', 'princesamuelkouame@gmail.com', 'kouaisad', 'fd8b6b72', 5, 4, 31, 19, 3, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-09-03', '10:32:00'),
+(855, '136 809 W', 'AGOH', 'SERGE ANTOINE BIANSOIT YOBOUKOI', '', '', 'agohserge@aviso.ci', 'agohserge', '006e1c6b', 3, 6, 78, 16, 1, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(856, '353 585 W', 'DAYORO', ' ZOGUEHI ARNAUD KEVIN', '', '', 'dayorokevin@yahoo.fr', 'dayorokevin', '54a13423', 3, 4, 22, 16, 1, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(857, '147 058 A', 'ETTE EPSE KRE', 'EVELYNE ELIE', '', '', 'akrelyn@yahoo.fr', 'akrelyn', '91fadd1f', 3, 6, 78, 15, 1, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(858, '20C', 'KOUA', 'Brou', '', '', '', 'kouaespa', '5e7eb845', 5, 11, 15, 19, 3, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-22', '15:45:58'),
+(859, '403 956 V', 'ADIKO ', 'PATRICE', '', '', 'adicopatrice@yahoo.fr', 'adicopatrice', '71bd563f', 5, 11, 18, 17, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-05-13', '22:44:20'),
+(860, '258 441 N', 'AGNIMEL', 'SESS AUGUSTIN', '07 05 89 76', '', 'agnimel@gmx.net', 'agnimelsessaugustin', '57c54712', 4, 11, 18, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-01-31', '19:02:56'),
+(861, '426 047 P', 'BOUA', 'AHIBA ALPHONSE', '08 01 10 89', '', 'dralphonseboua@gmail.com', 'dralphonseboua', 'f20bdbdf', 4, 11, 18, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-09-03', '12:36:29'),
+(862, '364 977 H', 'DIABY', 'BRAHIMA', '48 78 55 12', '', 'diasylegypt@gmail.com', 'diabybrahima', '04b52c71', 4, 11, 18, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-05-16', '14:15:10'),
+(863, '502 280 F', 'SIGURD', 'JENNERJAHN', '', '', 'daad.cocody@yahoo.fr', 'sigurd', 'lu7iada7', 4, 11, 18, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-05-20', '20:16:57'),
+(864, '164 306 H', 'KOUAME ', 'KOUASSI', ' 07 65 69 18', ' ', 'bkkouame@yahoo.com', 'bkkouame', '35ad8b33', 4, 11, 18, 27, 2, 'OUI', '2020-05-11', '20:43:06', 'OUI', '2020-05-18', '10:42:10'),
+(865, '203 582 W', 'KOUASSI ', 'KOUAKOU AIME EMMANUEL', ' 08 52 80 43', ' ', 'draimekouassi@yahoo.fr', 'kouassiaime', 'carmen2001', 4, 11, 18, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-05-06', '18:57:03'),
+(866, '150 287 C', 'TRENOU ', 'YENDA DOVI LAURINDA', '02 37 48 68', '', 'trenouyenda@gmail.com', 'trenouyenda', 'eefc4dd3', 4, 11, 18, 27, 2, 'OUI', '2020-01-30', '13:24:12', 'OUI', '2020-01-30', '14:48:48'),
+(867, '203 922 S', 'YOUKPO', 'BOLI NICODEME', '07 44 72 44', '', 'nicodemeyoukpo@gmail.com', 'nicodemeyoukpo', '85cde647', 4, 11, 18, 27, 2, 'OUI', '2020-01-23', '08:51:56', '', '0000-00-00', '00:00:00'),
+(868, '163 670 Q', 'ZAHUI', 'BAHOURE THEODORE', '46 89 86 40', '', 'theodorezahui@gmail.com', 'zahuibahoure', '907c2cbd', 4, 11, 18, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-01-28', '12:22:44'),
+(869, '231 497 L', 'ZOH', ' LAMBERT', '48 80 88 81', '', 'lambertzoh@yahoo.fr', 'zohlambert', '850354be', 4, 11, 18, 27, 2, 'OUI', '2020-01-29', '13:12:07', 'OUI', '2020-06-02', '23:27:34'),
+(870, '296 260 K', 'JOHNSON', 'KOUASSI ZAMINA', ' 05 78 53 52', ' ', 'johnsonkouassi@yahoo.fr', 'johnsonkouassi', '109c9e65', 4, 11, 14, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(871, '30A', 'KOUA', 'Brou', '', '', 'angamankoffijeancyrille@gmail.com', 'kouaport', '5a3e9a00', 5, 11, 17, 19, 3, 'OUI', '2019-12-16', '15:22:17', 'OUI', '2020-07-17', '14:58:19'),
+(872, '335 512 J', 'DJANDUE BI', 'DROMBE', '57-56-41-16', '', 'bathestyd@yahoo.fr', 'bathestyd', '4f782765', 4, 11, 15, 27, 2, 'OUI', '2019-07-16', '15:32:55', 'OUI', '2020-08-20', '07:46:00'),
+(873, '30C', 'KOUA', 'Brou', '', '', 'kklements@yahoo.fr', 'kouabrouespa', '05303a11', 5, 11, 15, 19, 3, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-03-10', '18:53:04'),
+(874, '332 014 P', 'ADON ', 'KOUADIO PATRICK', '07 68 56 94', '', 'patrick_adon@yahoo.fr', 'patrick_adon', '*paradis*', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(875, '459 173 B', 'ADOU', 'KOFFI SEI', '', '', '', 'adoukoffisei', 'd4a0bed5', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(876, '426 242 X', 'AGOBE ', 'ABLAKPA JACOB', '47 68 93 65', '', 'jacobagobe@yahoo.fr', 'jacobagobe', '04ec6c92', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(877, '427 103 N', 'AHOU ', 'AKE ANICET ELVIS', '', '', 'ahou_akeanicet@yahoo.fr', 'ahou_akeanicet', 'f9f77905', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(878, '395 835 K', 'AHUI ', 'STEPHANE CONSTANT', '', '', 'ahuistephane@hotmail.de', 'ahuistephane', 'b2fd3905', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(879, '354 227 F', 'AMANI ', 'YAO CELESTIN', '03-39-29-59', '', 'amanicelestin@gmail.com', 'amaniyaocelestin', '73336224', 4, 4, 22, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-31', '17:29:46'),
+(880, '389 936 S', 'ANDOH ', 'AMOGNIMA ARMELLE TANIA', '08 04 30 00', '', 'amog_tania@yahoo.fr', 'amog_tania', 'f3af94be', 4, 4, 22, 27, 2, 'OUI', '2019-06-23', '21:31:09', '', '0000-00-00', '00:00:00'),
+(881, '292 231 W', 'ASSAMIN ', 'ASSAMIN AMEDEE', '', '', 'assaminamedee@yahoo.fr', 'assaminamedee', 'b69e6176', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(882, '285 230 A', 'ASSEMIAN ', 'MOSSOUMA EMMA', '07 81 86 92', '', 'assemianmossoumaemma@yahoo.fr', 'assemianmossouma', 'bd802e3f', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(883, '290 485 Y', 'BOA ', ' ASSEMIEN', '08 37 80 75', '', 'boaassemien@yahoo.fr', 'boaassemien', 'bce3b7d6', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(884, '426 244 Z', 'DAGO', 'MICHELE-ANGE', '78 17 22 29', '', 'angemichdago@gmail.com', 'angemichdago', 'cddd5beb', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(885, '456 593 N', 'DIARRA', 'KRIKOU AMADOU', '', '', '', 'diarrakrikouamadou', '54a13423', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(886, '296 258 M', 'DJEDJE ', ' N\'GUESSAN DANIEL', '05 89 92 75', '', 'djdjnd2000@yahoo.fr', 'djedjenguessandaniel', 'fdc7c7fe', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(887, '351 073 D', 'DOUMBIA ', 'MOHAMED', '07 89 15 38', '', 'doumess2003@yahoo.fr', 'doumess2003', '039eacd1', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(888, '390 034 S', 'DROH', 'DE BLOGANQUEAUX SOHO RUSTICOT', '07 87 04 57', '', 'droh_d@yahoo.fr', 'droh_d', '039e2c29', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(889, '234 541 S', 'EBAGNERIN ', 'AUGUSTE KACOU', '07 65 68 78', '', 'ebagnerinak@yahoo.fr', 'egnagnerinauguste', 'olomide4', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(890, '417 359 B', 'EBEN-EZER ', ' CESAR LEONCE KOFFI', '', '', 'ebenezercesar@yahoo.fr', 'ebenezercesar', 'de3b275a', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(891, '390 036 U', 'EGNANKOU ', 'ADOLIN PAUL', '09 76 40 01', '', 'adolinegnankou2010@yahoo.fr', 'adolinegnankou2010', '4dbd81ed', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(892, '456 615 T', 'ETTY', 'ASSAMOI ISIDORE', '', '', '', 'ettyassamoi', 'd3cba2f3', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(893, '258 442 P', 'GADOU', 'DAKOURI MATHIAS', ' 07 94 43 27', ' ', 'gadou_dakouri@yahoo.fr', 'gadoudakouri', 'Aklawli3949', 4, 4, 22, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2019-07-16', '13:16:37'),
+(894, '227 363 G', 'GALA BI', 'TIZIE EMMANUEL', ' 07 62 39 02', ' ', 'galatizie@gmail.com', 'gala_tizie', 'b1e63a31', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(895, '340 007 M', 'KABLAN ', 'N\'DA KANGA CLEOPATRE MARIE-STUART', ' 07 55 11 87', ' ', 'cleopatre.kablan@csrs.ci', 'cleopatre.kablan', '0d958154', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(896, '275 513 X', 'KARAMOKO', 'VASSEKO', ' 77 83 02 11', ' ', 'vasseko@yahoo.fr', 'vasseko', 'eaa8245f', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(897, '426 247 U', 'KOFFI', 'KOFFI GNAMIEN JEAN-CLAUDE', '57 29 59 06 ', ' ', 'nanankofie@yahoo.fr', 'nanankofie', 'dcfa583e', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(898, '248 379 D', 'KONE', 'LASSINA', '', '', '', 'konelassina', '44fa0ca3', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(899, '253 577 H', 'KONE', 'MARIATOU', ' 07 90 21 89', ' ', 'mariatoukone@yahoo.fr', 'konemariatou', '7bb249e4', 4, 4, 22, 24, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(900, '390 141 A', 'KOUADIO ', 'AMANI AUGUSTIN', '07 12 90 80', ' ', 'amaniaugustin@gmail.com', 'amaniaugustin', 'c5828b1c', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(901, '427 000 W', 'KOUADIO ', 'N\'GNANDA ANNE-MARIE', '07 77 40 68', ' ', 'ngnanda1974@gmail.com', 'kouadioanna', '8f4af1a8', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(902, '390 164 H', 'KOUAME ', 'GEORGES', ' 07 86 50 91', ' ', 'kouameg2@yahoo.fr', 'kouamege2', 'ff1adad1', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(903, '309 106 K', 'KOUTOU', ' N\'GUESSAN CLAUDE', ' 07 50 62 88', ' ', 'nkoutou1@yahoo.fr', 'koutounguessanclaude', '75a761b1', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(904, '353 580 D', 'LIDA ', 'DALI SERGE', ' 57 91 57 67', ' ', 'sergelida@aol.fr', 'segelida', '22f3a725', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(905, '390 202 Q', 'LOGNON ', 'SAGBO JEAN-LOUIS HIPPOLYTE', ' 47 63 00 55', ' ', 'lognon_jeanlouis@yahoo.fr', 'lognon_jeanlouis', 'SOCIOLOGIE78', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(906, '427 005 P', 'N\'CHOT ', 'APO JULIE', ' 07 39 93 04', ' ', 'julienchot@yahoo.fr', 'julienchot', '50b6d856', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(907, '397 974 Y', 'NIAMKE', 'JEAN-LOUIS', ' 07 26 70 84', ' ', 'jeanlouis_niamke@yahoo.fr', 'jeanlouis_niamke', 'a173b569', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(908, '426 251 Y', 'OKOU', 'KOUAKOU NORBERT', ' 07 28 58 77', ' ', 'norbert_okou@yahoo.fr', 'norbert_okou', '3b49367c', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(909, '398 711 H', 'SERY', 'ANNE LISE', '77 28 66 72', '', 'annerk21@yahoo.fr', 'annerk21', '0bbcfcc8', 4, 4, 22, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2019-07-08', '07:33:09'),
+(910, '290 870 M', 'SOKO ', 'CONSTANT', '07 28 68 16', '', 'sokoconstant@yahoo.com', 'sokoconstant', 'b8684d97', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(911, '426 252Z', 'SOUMAHORO', 'KANDO AMEDEE', '49 59 82 12', '', 'kandoamedeesoum@gmail.com', 'soumahorokando', '5c6c2f1a', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(912, '390 329 N', 'VONAN ', 'AMANGOUA PIERRE CLAVER', '07 94 58 18', '', 'vonan@ymail.com', 'vonan', 'VONAN.72', 4, 4, 22, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2019-07-10', '12:26:06'),
+(913, '279 506 M', 'YAO ', 'GNABELI ROCH', '08 18 85 96', '', 'roch.gnabeli@laasse-socio.org', 'yaognabeli', '7813b8d9', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(914, '361 093 U', 'DIBY ', 'NÃ‰E ESSE AYA MARIE CLEMENCE', '03 48 89 00', '', 'esse_clemence@yahoo.fr', 'esse_clemence', 'f7c6e7ba', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(915, '351 064 C', 'KAM ', 'OLEH', ' 07 88 34 88', ' ', 'olehfr@yahoo.fr', 'olehfr', '43c8844b', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(916, '364 992 Z', 'TRA', 'FULBERT', '07 25 50 44', '', 'fulberttra@yahoo.fr', 'trafulbert', 'ful72Ar7E5', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(917, '319 288 J', 'ADAMOU ', ' KOUAKOU DONGO DAVID', '', '', 'adamoukossia@yahoo.fr', 'admoukouakou', 'yawapogo', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '14:08:45', 'OUI', '2020-06-12', '12:33:32'),
+(918, '365 500 R', 'ADJOUMANI', 'AFFOUA MIA ELISE', '01 19 19 25', '', 'a.elise1@yahoo.fr', 'a.elise1', 'UNIVCOURS19', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '14:08:45', 'OUI', '2020-05-28', '16:40:13'),
+(919, '255 565 F', 'ADOM', 'N\'GUETTA MARIE-CLEMENCE', '07 46 19 44', '', 'adommc@yahoo.fr', 'adommc', 'cd2837c5', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '14:08:45', 'OUI', '2020-06-12', '15:51:53'),
+(920, '389 915 V', 'ADOU ', 'AMADOU OUATTARA', '08 20 25 81', '', 'adouamed@yahoo.fr', 'adouamed', 'angeeliesamuel', 4, 11, 16, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-19', '14:28:46'),
+(921, '417 338 W', 'AFFOUROUMOU', 'KOUASSI ANTOINE', '08 13 34 65', '', 'affouroumou@gmail.com', 'affouroumou', '7622de4e', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '14:16:50', 'OUI', '2020-06-19', '13:09:23'),
+(922, '248 908 Z', 'AGBE', 'KOUDOU JEAN-JACQUES', '01 81 82 77', '', 'papaagbej@yahoo.fr', 'papaagbej', 'nana', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '14:16:50', 'OUI', '2020-05-26', '15:08:15'),
+(923, '398 123 U', 'AGOUBLI', 'KWADJANE PAUL-HERVE JOACHIM', '08 34 75 58', '', 'agoublipaul2006@yahoo.fr', 'agoublipaul2006', 't@m@rinier01', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '14:16:50', 'OUI', '2020-06-05', '12:23:08'),
+(924, '389 917 X', 'AHOUAKAN ', 'BAHA ANICETTE CAROLE', '', '', 'ani3christ@yahoo.fr', 'ani3christ', 'carolle79', 4, 11, 16, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-17', '07:06:24'),
+(925, '389 919 H', 'AKA ', 'ADJE JUSTIN', '07 62 94 08', '', 'akaadjjustin@yahoo.fr', 'akaadjjustin', 'bbf25db1', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '14:36:32', 'OUI', '2020-06-25', '22:58:26'),
+(926, '403 922 K', 'ALADE ', 'JEAN JACQUES ANGOUA', '07 91 09 33', '', 'aladejj3@yahoo.fr', 'aladejj3', '29OCTOBRE1977DRJJ3', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '14:36:32', 'OUI', '2020-07-07', '11:25:21'),
+(927, '315 215 U', 'AMOUZOU', 'EMILE', '07 79 12 72', '', 'amouzouemile@gmail.com', 'amouzouemile', 'tehini19', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '14:36:32', 'OUI', '2020-06-15', '20:17:14'),
+(928, '332 655 E', 'ANGUI ', 'AIME', '05 04 63 05', '', 'saintang2001@yahoo.fr', 'anguiame', 'd50a5287', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '14:36:32', 'OUI', '2020-01-12', '20:18:49'),
+(929, '389 939 D', 'ANOH ', 'BROU DIDIER DE SAINT ARMAND', '05 82 55 04', '', 'anohbroudidier@yahoo.fr', 'anohbroudidier', '2016yass', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '14:36:32', 'OUI', '2020-07-27', '08:09:32'),
+(930, '390 120 H', 'ASSERE ', 'KONAN KOUAME RAYMOND', '07 58 43 29', '', 'assere2002@yahoo.fr', 'assere2002', 'benoit1935', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '14:36:32', 'OUI', '2020-06-13', '18:04:07'),
+(931, '170 757 N', 'ASSI ', 'DIANE VERONIQUE', '08 10 26 00', '', 'vd_assi@yahoo.fr', 'assidiane', 'padrepio', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '14:36:32', 'OUI', '2020-09-01', '14:16:22'),
+(932, '251 830 H', 'KAKOU ', 'ADJA ABOMAN BEATRICE EPSE ASSI', '07 73 77 66', '', 'kakouassibeatrice@gmail.com', 'kakouassibeatrice', '07737766', 4, 11, 16, 27, 2, 'OUI', '2019-10-13', '15:18:19', 'OUI', '2020-05-25', '10:51:15'),
+(933, '389 959 R', 'AYEMIEN', 'MIAN KOUADIO DANIEL GERARD', '08 68 60 97', '', 'ayemien@yahoo.fr', 'ayemien', 'C@dillac18855', 4, 11, 16, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-10', '09:09:30'),
+(934, 'MINISTRE 001', 'TOIKEUSSE ', 'Albert Mabri ', '', '', '', 'ministremabri', '20c5c371', 2, 17, 59, 37, 3, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(935, '239 755 M', 'BEDE', 'DAMIEN', '03 41 22 70', '', 'bedam_michel@yahoo.fr', 'bededamien', '9a644639', 4, 11, 16, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(936, '365 479 P', 'BERE', 'ANATOLE', '57 08 16 37', '', 'tyladbere@yahoo.com', 'bereanatole', 'cd9e7a9f', 4, 11, 16, 27, 2, 'OUI', '2020-02-13', '18:54:59', 'OUI', '2020-09-08', '22:12:48'),
+(937, '365 478 N', 'BOBO', 'ROSTAND SYLVANIUS', '07 42 42 41', '', 'rostandbobo@gmail.com', 'boborostand', 'Andrago_2018', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '14:46:37', 'OUI', '2020-05-27', '21:07:02'),
+(938, '319 767 R', 'BODO', ' BIDI CYPRIEN', '07 88 11 94', '', 'cyprienbodo@yahoo.fr', 'cyprienbodo', 'fou!coumou??', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '14:46:37', 'OUI', '2020-05-25', '21:28:07'),
+(939, '255 566 G', 'BOHUI ', ' DJEDJE HILAIRE', '07 85 31 09', '', 'hilairbohui@yahoo.fr', 'bohuidjedje', 'hilairbohui', 4, 11, 16, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-31', '14:04:17'),
+(940, '236 788 C', 'BOSSON', 'BRA', '45 92 73 03', '', 'jacksonbrakis@yahoo.fr', 'bossonbra', 'f204499a', 4, 11, 16, 27, 2, 'OUI', '2019-11-08', '15:18:11', 'OUI', '2020-05-23', '10:32:51'),
+(941, '426 921 G', 'BOUMY', 'KOUE KEVIN', '40 99 20 69', '', 'kouekevin2@yahoo.fr', 'kouekevin2', 'ce368d70', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '14:55:49', 'OUI', '2020-06-29', '18:29:47'),
+(942, '254 043 E', 'COULIBALY ', 'AROUNA', '05 92 55 09', '', 'coulibalyarouna06@gmail.com', 'coulibaly_arouna', 'mounikdo3x', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '15:07:57', 'OUI', '2020-05-30', '09:12:23'),
+(943, '280 371 J', 'COULIBALY ', 'MOUSSA', '07 60 98 96', '', 'cool_mouss70@yahoo.fr', 'cool_mouss70', '341d00e4', 4, 11, 16, 27, 2, 'OUI', '2020-05-26', '13:54:31', 'OUI', '2020-05-31', '16:22:37'),
+(944, '390 001 A', 'COULIBALY ', 'NAKPOHAPEDJA HERVE', '09 69 26 31', '', 'hervcoulibaly@gmail.com', 'hervecoulibaly', 'coulibaly@', 4, 11, 16, 27, 2, 'OUI', '2019-11-04', '21:57:34', 'OUI', '2020-05-25', '23:45:41'),
+(945, '364 989 E', 'COULIBALY ', 'NANOUROUGO', '07 72 95 07', '', 'coulyna@yahoo.fr', 'coulibalynanourougo', '2bf12609', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '15:07:57', 'OUI', '2020-08-03', '14:28:36'),
+(946, '247 970 R', 'DAKOURY', 'KOUDOU DAVID', '07 13 62 53', '', 'dakouryk@yahoo.fr', 'dakouryk', '03021940KKMY', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '15:07:57', 'OUI', '2020-07-15', '11:31:11'),
+(947, '501 210 F', 'DIAKITE', 'ISSIAKA', '', '', 'issiaka.diakite@univ-fhb.edu.ci', 'idkaba', 'Dimbokro@19641971', 4, 11, 16, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-05-26', '13:39:07'),
+(948, '301 108 M', 'DIANDUE BI ', 'KACOU PARFAIT', '54 30 69 62', '', 'diandueb@yahoo.fr', 'diandueb', 'cbb6d776', 4, 11, 16, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(949, '390 021 V', 'DIOMANDE ', 'MORY', '07 74 74 71', '', 'diomandemory2002@yahoo.fr', 'diomandemory2002', '7692dmaj', 4, 11, 16, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-30', '07:04:53'),
+(950, '457 054 V', 'DOBE', 'DAGO AUGUSTIN', '75 19 85 20', '', 'dobdag@outlook.fr', 'dobedagoaugustin', 'DOBE2804', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '15:24:08', 'OUI', '2020-06-03', '13:56:17'),
+(951, '456 609 N', 'DOUMBIA', 'ADAMA MOHAMED DJOFOLO', '42 47 96 66', '', 'doumdjofolo@yahoo.fr', 'doumbiaadama_mohamed', 'cf79d5ea', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '15:24:08', 'OUI', '2019-08-29', '12:11:39'),
+(952, '269 226 R', 'FOFANA', 'DAOUDA', '07 64 40 75', '', 'fofdaouda04@yahoo.fr', 'fofanadaouda', 'kebi2004', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '15:50:11', 'OUI', '2020-05-23', '23:05:54'),
+(953, '390 056 G', 'GBAKA', 'HONORE YORO', ' 57 05 13 68', ' ', 'gbakahonore38@gmail.com', 'gbakahonore38', 'b5e910c3', 4, 11, 16, 27, 2, 'OUI', '2020-03-16', '15:50:10', 'OUI', '2020-06-10', '18:56:16'),
+(954, '344 913 V', 'GBOUABLE ', 'EDWIGE', ' 40 53 67 96', ' ', 'gbouable@yahoo.fr', 'gbouable', '54803M07', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '15:50:11', 'OUI', '2020-07-04', '18:17:04'),
+(955, '245 404 D', 'GNATO ', 'SIA MODESTE', ' 05 79 88 52', ' ', 'gsiamodeste@yahoo.com', 'gnatosia', 'blaudga1966', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '16:09:25', 'OUI', '2020-05-24', '06:05:08'),
+(956, '390 063 F', 'GNIZAKO ', 'SYMPHORIEN TELESPHORE', ' 08 64 37 69', ' ', 'sgnizako@gmail.com', 'gnizakosymphorientelesphore', '54248353', 4, 11, 16, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-15', '11:15:01'),
+(957, '426 929 Q', 'GOORE BI ', 'LOROU ANDRE-MARIE', ' 08 17 22 26', ' ', 'gooreandremarie@yahoo.fr', 'gooreandremarie', 'TCHABIO62', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '16:09:25', 'OUI', '2020-05-22', '12:21:46'),
+(958, '278 186 B', 'GOUNOUGO', ' ABOUBAKAR', ' 08 56 65 70', ' ', 'degounougo@yahoo.fr', 'degounougo', '05031972,GA', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '16:09:25', 'OUI', '2020-09-01', '07:36:29'),
+(959, '244 260 W', 'HORO', 'LACINA MARTIN', '68 79 36 01', '', 'horo65lmar@yahoo.fr', 'horolacinamartin', '40489561kibe', 4, 11, 16, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-14', '17:31:11'),
+(960, '364 986 T', 'HOUMEGA', 'MUNSEU ALIDA', ' 05 95 80 59', ' ', 'houmega@yahoo.fr', 'houmegamunseu', 'linguistique', 4, 11, 16, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-09', '16:04:51'),
+(961, '228 923 T', 'KOFFI', 'LEON', ' 07 48 24 74', ' ', 'koffi122@yahoo.fr', 'koffi122', 'c7b31611', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '16:14:03', 'OUI', '2020-05-22', '15:56:49'),
+(962, '165 856 Z', 'KONAN', 'KOFFI', ' 07 00 99 95', ' ', 'konankoffipaul@yahoo.fr', 'konankoffi', '07009995', 4, 11, 16, 27, 2, 'OUI', '2020-03-13', '12:06:18', 'OUI', '2020-05-18', '17:01:43'),
+(963, '390 118 B', 'KONAN ', 'KOFFI FRANCOIS', ' 07 51 34 98', ' ', 'franoiskonan_ci@yahoo.fr', 'franoiskonan_ci', '33c12f37', 4, 11, 16, 27, 2, 'OUI', '2020-05-26', '13:54:31', 'OUI', '2020-06-03', '19:28:05'),
+(964, '390 478 L', 'KONAN ', 'RICHMOND ALAIN', ' 47 72 72 33', ' ', 'korial2000@yahoo.fr', 'korial2000', '16b71628', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '16:25:47', '', '0000-00-00', '00:00:00'),
+(965, '404 087 K', 'KOUADIO ', 'BROU DIGRY GNAMIEN ROSINE', ' ', ' ', 'rosinek777@yahoo.fr', 'rosinek777', '2348c5f8', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '16:39:17', 'OUI', '2020-03-09', '12:17:52'),
+(966, '320 278 U', 'KOUADIO ', 'KOBENAN N\'GUETTIA MARTIN', ' ', ' ', 'kobenanguett@yahoo.fr', 'kouadiokobenan', 'nguettiamartin1971', 4, 11, 16, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-03', '13:23:40'),
+(967, '346 337 D', 'KOUADIO ', 'KOUASSI KONIMI THEODORE', ' ', ' ', 'tkonimi@hotmail.com', 'tkonimi', '07774010', 4, 11, 16, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-25', '09:40:24'),
+(968, '254 877 F', 'KOUADIO ', 'MAFIANI N\'DA', ' ', ' ', 'gnamiankadjo@gmail.com', 'gnamiankadjo', '01632895', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '16:39:17', 'OUI', '2020-05-26', '22:18:16'),
+(969, '239 759 Z', 'KOUAKOU', 'JEAN-MARIE', '58 16 81 40 ', ' ', 'kouakoujmgaudouh@gmail.com', 'kouakoujeanmarie', 'cours2018', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '14:02:17', 'OUI', '2019-12-20', '16:53:42'),
+(970, '333 473 Z', 'KOUAKOU ', 'KONAN SERAPHIN', ' ', ' ', 'kouakoukseraphin@yahoo.fr', 'kouakoukseraphin', '05benedicte', 4, 11, 16, 27, 2, 'OUI', '2020-03-13', '12:23:05', 'OUI', '2020-06-27', '17:43:17'),
+(971, '426 938 R', 'KOUAME ', 'KOUAME APOLLINAIRE', ' ', ' ', 'apollinaire.kouame@yahoo.fr', 'apollinaire.kouame', 'docteur@', 4, 11, 16, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-30', '11:03:07'),
+(972, '314 246 A', 'KOUASSI ', 'AKISSI FLORENCE EPSE ABOUA', ' ', '', 'kouassiabflore@gmail.com', 'kakflorence', 'Ernest1947', 4, 11, 16, 27, 2, 'OUI', '2019-09-25', '15:11:38', 'OUI', '2020-06-09', '16:37:31'),
+(973, '157 263 E', 'KOUASSI ', 'KOUADIO MERMOZ', ' ', ' ', 'mermozkouassi@yahoo.fr', 'kouassikouadiomermoz', 'c3d2bc75', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '16:50:00', '', '0000-00-00', '00:00:00'),
+(974, '317 923 L', 'KOUASSI ', 'KOUAME BRICE', ' ', ' ', 'kbrice13@yahoo.fr', 'kouassikouamebrice', 'f5f0b112', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '16:50:00', '', '0000-00-00', '00:00:00'),
+(975, '312 432 K', 'LANGUI ', 'KONAN ROGER', ' ', ' ', 'langui_kr@yahoo.fr', 'languikonanroger', 'ef411c59', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '16:55:37', '', '0000-00-00', '00:00:00'),
+(976, '202 500 P', 'LARROUX', ' NÃ‰E N\'GUESSAN APPOLINA BEATRICE', ' ', ' ', 'nguessan.apollinab@sfr.fr', 'larrouxbeatrice', '73fb8bc7', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '16:55:37', '', '0000-00-00', '00:00:00'),
+(977, '278 749 E', 'LOBLI ', 'BOLI ARMAND', ' ', ' ', 'b.armand@yahoo.fr', 'lobliboli', 'ae9c83d1', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '17:44:05', '', '0000-00-00', '00:00:00'),
+(978, '460 422 S', 'M\'BESSO', 'ANICET MODESTE', '', '', 'mbessoanicet@yahoo.fr', 'mbessoanicet', 'Karolina85', 4, 11, 16, 27, 2, 'OUI', '2019-10-26', '15:11:01', 'OUI', '2020-05-27', '09:32:19'),
+(979, '163 018 S', 'MEITE', 'MEKE', ' ', ' ', 'meitekfr@yahoo.fr', 'meitemeke', 'football', 4, 11, 16, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-16', '17:47:12'),
+(980, '456 716 Y', 'MOUSSA', 'KEITA', '40 00 76 14', '', 'moussakeitaci@yahoo.fr', 'moussakeita', 'SiraNafi8791', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '17:44:05', 'OUI', '2020-06-05', '14:40:57'),
+(981, '315 654 C', 'N\'GATTA ', ' SEVERIN', ' ', ' ', 'ngataseverin@yahoo.fr', 'ngataseverin', 'kalousoukousoukou70', 4, 11, 16, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-05-28', '08:31:42'),
+(982, '333 474 S', 'N\'GORAN ', 'KOFFI DAVID', ' ', ' ', 'nkdavid2001@yahoo.fr', 'nkdavid', 'a69f8a62', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '20:12:02', 'OUI', '2020-05-30', '10:52:23'),
+(983, '354 539 G', 'N\'GUETTA', 'KESSE EDMOND', ' ', ' ', 'kesse.edmond@yahoo.fr', 'nguettakesse', 'MELCHI1144', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '20:12:02', 'OUI', '2020-08-03', '13:01:06'),
+(984, '501 082 P', 'OGAWIN ', ' KOKOU', ' ', ' ', 'ogawino@yahoo.fr', 'ogawinkokou', 'lauren1annemarie2', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '20:12:02', 'OUI', '2019-09-02', '11:29:16'),
+(985, '428 896 J', 'OLILO ', 'MARIE ANGELE', '09 67 44 09', ' ', 'olilo.angele@gmail.com', 'oliloangele', 'angibelle', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '20:12:02', 'OUI', '2020-05-22', '22:50:08'),
+(986, '365 486 X', 'OUATTARA', 'NÃ‰E KIGNAMAN-SORO YELLY KADY', ' ', ' ', 'yellykady@yahoo.fr', 'yellykady', 'Siguegnon', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '20:12:02', 'OUI', '2020-06-04', '15:12:07'),
+(987, '400 960 N', 'OUATTARA', 'SIRIKI', '49 37 98 10', '', 'ouattarasiriki9@gmail.com', 'ouattarasirki', 'sagnan', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '20:59:35', 'OUI', '2020-07-16', '18:18:06'),
+(988, '320 285 C', 'PAGNET', ' DOH CLEMENT', '07 48 10 97', ' ', 'pclems@yahoo.fr', 'pclems', '5a9aaf13', 4, 11, 16, 27, 2, 'OUI', '2020-03-04', '22:12:20', 'OUI', '2020-03-16', '11:18:41'),
+(989, '287 475 W', 'SEKA', ' APO PHILOMENE', ' ', ' ', 'apophilomeneseka@yahoo.fr', 'apophilomeneseka', 'philomene1', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '20:59:35', 'OUI', '2019-11-26', '08:23:29'),
+(990, '105 227 X', 'SIDIBE', 'VALY', '07 88 27 70', '', 'valysidibey@gmail.com', 'valysidibey', 'e5735a62', 4, 11, 16, 27, 2, 'OUI', '2020-02-12', '17:35:07', 'OUI', '2020-06-03', '23:50:35'),
+(991, '344 435W', 'SIONKOUWON', ' NESTOR', '', '', 'sionkouwonnestor@yahoo.fr', 'sionkouwonnestor', 'c33dfb7e', 4, 11, 16, 27, 2, 'OUI', '2019-10-23', '07:29:45', 'OUI', '2020-06-05', '11:49:44'),
+(992, '155 942 V', 'SORO', 'GABRIEL ', '', '', 'tiamadjo2017@yahoo.fr', 'sorogabriel', '6ebe23fe', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '21:20:32', '', '0000-00-00', '00:00:00'),
+(993, '361 091 S', 'SOUPE LOU ', 'TOUBOUE JACQUELINE', '78 58 55 52', '', 'soupe_lou@yahoo.fr', 'soupe_lou', '2012NS71E', 4, 11, 16, 27, 2, 'OUI', '2020-01-13', '22:58:51', 'OUI', '2020-06-14', '12:08:47'),
+(994, '309 101 N', 'SYLLA ', 'ABDOULAYE', '05 16 83 34', '', 'silaak@live.com', 'syllaabdoulaye', '6784a47c', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '21:20:32', '', '0000-00-00', '00:00:00'),
+(995, '320 286 D', 'THIEMELE', 'AIME', '', '', 'thiemaime2005@yahoo.fr', 'thiemaime2005', 'thiemahou', 4, 11, 16, 27, 2, 'OUI', '2020-01-10', '08:04:01', 'OUI', '2020-06-15', '16:47:06'),
+(996, '299 293 C', 'TIDOU', 'DJE CHRISTIAN RODRIGUE', '09 01 99 89', '', 'christian_tidou@yahoo.fr', 'christian_tidou', '27c89903', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '21:39:34', 'OUI', '2019-09-18', '15:52:54'),
+(997, '279 507 N', 'TOUOUI BI', 'IRIE ERNEST', '07 85 73 22', '', 'tououibi1@gmail.com', 'tououibi1', '786d467d', 4, 11, 16, 27, 2, 'OUI', '2020-06-16', '16:05:54', 'OUI', '2020-06-21', '22:08:30'),
+(998, '279 499 N', 'TRAORE ', 'FRANCOIS BRUNO', '', '', 'traorefrancoisbruno@yahoo.fr', 'traorefrancoisbruno', '4820tfb', 4, 11, 16, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-09-08', '13:15:57'),
+(999, '319 768 S', 'TRAORE ', 'KLOGNIMBAN DOMINIQUE', '58 00 09 99', '', 'kdominiquetraore@gmail.com', 'traoredk', '54803Y11', 4, 11, 16, 27, 2, 'OUI', '2020-01-20', '22:50:06', 'OUI', '2020-07-04', '18:01:36'),
+(1000, '456 043 Z', 'TRAORE', 'SOUMAILA', '06 88 56 46', '', 'soumaila1er@yahoo.fr', 'traoresoumaila', 'football1985', 4, 11, 16, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-09-08', '21:46:15'),
+(1001, '456 044 S', 'TRAORE', 'YAYA', '48 47 87 47', '', 'traoreyaya17@gmail.com', 'traoreyaya', 'soulamaniamabintou', 4, 11, 16, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-05-25', '22:38:12'),
+(1002, '320 169 P', 'TROH Ã‰PSE GUEYES', 'LEONTINE ', '07 82 61 25', '', 'ltgueyes@yahoo.fr', 'ltgueyes', 'a4b797c1', 4, 11, 16, 27, 2, 'OUI', '2020-03-13', '12:16:30', 'OUI', '2020-06-02', '19:49:18'),
+(1003, '170 139 B', 'VAHI ', 'YAGUE', '', '', 'youlavahi@yahoo.fr', 'vahiyague', 'b143cf41', 4, 11, 16, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-11', '06:13:30'),
+(1004, '236 966 W', 'YAO ', 'KOUADIO JEAN', '47 53 94 42', '', 'jemma05@hotmail.fr', 'yaokouadiojean', '30471560', 4, 11, 16, 27, 2, 'OUI', '2019-10-01', '10:51:15', 'OUI', '2020-06-03', '13:07:05'),
+(1005, '248 856 L', 'YAO ', 'N\'GUESSAN', '07 97 09 62', '', 'nguessan_yao2010@yahoo.fr', 'nguessan_yao2010', 'samuelisaac', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '22:06:10', 'OUI', '2020-07-25', '09:26:50'),
+(1006, '389 946 C', 'ASSANVO ', 'AMOIKON DYHIE', '08 12 82 67', '', 'dyhies@yahoo.fr', 'dyhies', '08128267', 4, 11, 19, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-09-06', '16:04:28'),
+(1007, '390 353 N', 'YAPO ', 'LUDOVIC MOUSSO', '09 07 79 87', '', 'yapoludovic77@gmail.com', 'yapoludovic', '2015YOHAN', 4, 11, 16, 27, 2, 'OUI', '2019-10-09', '12:20:17', 'OUI', '2020-06-17', '12:30:26'),
+(1008, '364 988 D', 'BEDJO ', 'AFANKOE YANNICK OLIVIER', '59 17 01 17', '', 'lordafankoe@yahoo.fr', 'afankoeyann', 'mariedivine', 4, 11, 16, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-06', '13:43:01'),
+(1009, '236 951 X', 'BLEDE', ' LOGBO', '08 17 21 50', '', 'bledelog@yahoo.fr', 'bloedelogbo', '55dce576', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '14:46:37', 'OUI', '2020-06-25', '23:06:10'),
+(1010, '316 815 P', 'KOUACOU ', 'GNACABI PRINCE ALBERT', ' ', ' ', 'kouacouprincealb@yahoo.fr', 'kouacougnacabi', 'princio', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '16:39:17', 'OUI', '2020-07-08', '16:12:06'),
+(1011, '364 867 B', 'SERIFOU ', 'BAKISSIA ADELAÃDE', '01 00 62 88', '', 'adelaidekiss2007@gmail.com', 'adelaidekiss2007', '226ffd23', 4, 11, 16, 27, 2, 'OUI', '2020-05-26', '13:54:31', 'OUI', '2020-06-06', '04:20:43'),
+(1012, '373 173 C', 'ATCHE ', 'DJEDOU', '02 58 22 39', '', 'djedhatcher@yahoo.fr', 'atchedjedou', '9754b9a2', 5, 11, 14, 17, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-05-13', '22:23:48'),
+(1013, '426 917 C', 'ANGOLI ', 'LATTE PAUL', '59-49-81-12', '', 'paul.angoli@gmail.com', 'paul.angoli', 'ebac04c9', 5, 11, 17, 17, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-03-10', '10:59:12'),
+(1014, '309 102 P', 'AKE  ', 'PATRICE JEAN JOACHIM CHRISTIAN', '08 09 77 21', '', 'apatrice@icloud.com', 'pakejean', 'simoneV1970', 4, 4, 20, 27, 2, 'OUI', '2019-05-28', '10:01:02', 'OUI', '2019-06-13', '17:41:22'),
+(1015, '389 967 H', 'BAMBA', 'BOUAKE', '07302123', '', 'bambabouake@yahoo.fr', 'bambabouake', 'c6034c22', 5, 4, 23, 17, 1, 'OUI', '2019-08-09', '17:08:20', '', '0000-00-00', '00:00:00'),
+(1016, '397 055 S', 'ASSOUANGA ', 'KOUAKOU LAURENT', '07 62 69 21', '', 'laureass@yahoo.fr', 'laureass', 'd77669d4', 4, 4, 21, 27, 2, 'OUI', '2020-06-20', '23:23:45', 'OUI', '2020-07-07', '15:07:15'),
+(1017, '426 991 F', 'ANGOUA ', 'ADJE SEVERIN', '', '', 'severinadje@yahoo.fr', 'severinadje', 'Adje1984', 4, 4, 21, 27, 2, 'OUI', '2020-06-20', '23:13:47', 'OUI', '2020-09-05', '16:30:24'),
+(1018, '301 107 C', 'ASSOUAN ', 'NÃ‰E THIA ALINE', '09-66-44-64', '', 'alinethia@yahoo.fr', 'alinethia', 'aboudekouassikro', 4, 4, 23, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-05-25', '15:37:00'),
+(1019, '163 892 L', 'BAMBA', 'ABDOULAYE', '02 29 43 42', '', 'abdoulbamb57@gmail.com', 'bambaabdoulaye', 'ab64c099', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '09:51:48', '', '0000-00-00', '00:00:00'),
+(1020, '353 579 P', 'BAMBA', 'ABDOULAYE', '07 86 05 19', '', 'bambaabdoulaye@yahoo.fr', 'bambaabdoulaye', 'abb232bb', 4, 4, 21, 27, 2, 'OUI', '2020-06-20', '23:30:36', 'OUI', '2020-07-26', '10:42:58'),
+(1021, '404 049 C', 'BANGA ', 'LOUIS PHILIPPE ARTHUR', '08 33 67 62', '', 'arthurbanga2004@yahoo.fr', 'arthurbanga2004', '9bfd02d1', 4, 4, 21, 27, 2, 'OUI', '2020-06-20', '23:30:36', 'OUI', '2020-07-12', '21:57:53'),
+(1022, '426 243 Y', 'BLEY ', 'HYACINTHE DIGBEUGBY', '07 26 92 26', '', 'Bley.hyacinthe@yahoo.fr', 'Bley.hyacinthe', '20204nao', 4, 4, 21, 27, 2, 'OUI', '2020-06-20', '23:38:22', 'OUI', '2020-07-21', '09:57:20'),
+(1023, '334 827 M', 'BOTEMA ', 'HUGUES MARCEL', '', '', 'botemahugues@yahoo.fr', 'botemahugues', 'b9672862', 4, 4, 21, 27, 2, 'OUI', '2020-06-21', '15:09:08', 'OUI', '2020-08-16', '11:16:46'),
+(1024, '357 232 F', 'CISSE ', 'CHIKOUNA', '48 66 38 73', '', 'cissechikouna@gmail.com', 'cissechikouna', 'MOMO2019', 4, 4, 21, 27, 2, 'OUI', '2020-06-21', '15:09:08', 'OUI', '2020-07-28', '22:03:19'),
+(1025, '364 990 B', 'COULIBALY ', 'NAVIGUE FELICIEN', '08 29 58 28', '', 'Felicien_cool2002@yahoo.fr', 'Felicien_cool2002', '02405899', 4, 4, 21, 27, 2, 'OUI', '2020-06-21', '15:09:08', 'OUI', '2020-07-07', '19:33:41'),
+(1026, '226 785 X', 'DAHOURA', 'LUCIEN', '05 75 26 65', '', 'Luciendahoura1954@yahoo.fr', 'Luciendahoura1954', '71e6df65', 4, 4, 21, 27, 2, 'OUI', '2020-06-21', '15:09:08', 'OUI', '2020-07-15', '00:23:51'),
+(1027, '357 237 C', 'HININ ', 'MOUSTAPHA NÃ‰E BROU CHO JULIE EUNICE', ' 01 44 16 35', ' ', 'broucho@yahoo.fr', 'hininbroujulie', 'c18a7937', 4, 4, 21, 27, 2, 'OUI', '2020-06-21', '15:09:08', '', '0000-00-00', '00:00:00'),
+(1028, '390 106 G', 'KOFFI ', 'LOUKOU BERNARD', ' 58 23 88 66', ' ', 'loukouben@yahoo.fr', 'loukouben', 'mariedavide', 4, 4, 21, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-14', '01:48:52'),
+(1029, '390 125 S', 'KONE ', 'DRISSA', ' 07 85 28 35', ' ', 'idrissbaraka@gmail.com', 'idrissbaraka', 'ccac6b58', 4, 4, 21, 27, 2, 'OUI', '2020-07-13', '10:37:04', 'OUI', '2020-08-03', '10:11:39'),
+(1030, '390 211 G', 'MEITE ', 'BEN SOUALIOUO', ' 07 65 69 71', ' ', 'soualioben@yahoo.fr', 'soualioben', 'c11b5894', 4, 4, 21, 27, 2, 'OUI', '2020-06-22', '10:07:54', 'OUI', '2020-07-26', '06:58:16'),
+(1031, '390 239 L', 'NOGBOU', 'M\'DOMOU ERIC', ' 07 29 26 07', ' ', 'uzielnogbou2010@gmail.com', 'uzielnogbou2010', 'fdaf31d6', 4, 4, 21, 27, 2, 'OUI', '2020-06-22', '10:31:16', 'OUI', '2020-08-28', '14:05:07'),
+(1032, '280 269 U', 'OUATTARA', 'KATIENEFFOOUA ADAMA', ' 57 54 69 38', ' ', 'katienefr@yahoo.fr', 'katienefr', 'a52874be', 4, 4, 21, 27, 2, 'OUI', '2020-06-22', '10:31:16', 'OUI', '2020-09-03', '21:12:17'),
+(1033, '390 289 P', 'SESS ', 'GNAGNE ANTOINE', '', '', 'sessgnagne@yahoo.fr', 'sessgnagne', '302d7681', 4, 4, 21, 27, 2, 'OUI', '2020-07-14', '15:22:14', 'OUI', '2020-08-11', '09:30:05'),
+(1034, '365 476 C', 'TANO ', 'KASSI PASCAL', '08 85 29 56', '', 'tanokassipascal@gmail.com', 'tanokassipascal', 'd072aa23', 4, 4, 21, 27, 2, 'OUI', '2020-06-22', '10:31:16', 'OUI', '2020-06-22', '10:56:43'),
+(1035, '306 328 M', 'TOURE', 'TIEGBE', '07 75 02 73', '', 'tiegbet@yahoo.fr', 'tiegbet', '91d30287', 4, 4, 21, 27, 2, 'OUI', '2020-06-22', '10:31:16', 'OUI', '2020-07-13', '12:29:58'),
+(1036, '365 473 H', 'TRAORE ', 'BAKARY', '07 75 57 75', '', 'tr.bakary76@gmail.com', 'tr.bakary76', 'Donikan2014', 4, 4, 21, 27, 2, 'OUI', '2020-06-25', '10:00:26', 'OUI', '2020-07-16', '05:20:51'),
+(1037, '251 984 Y', 'YAO', 'BI GNAGORAN', '07 00 12 82', '', 'yaobiernest@yahoo.fr', 'yaobiernest', 'b4a2ffba', 4, 4, 21, 27, 2, 'OUI', '2020-06-22', '13:48:54', '', '0000-00-00', '00:00:00'),
+(1038, '458 637 B', 'YATTE', 'GUILLAUME', '52 13 72 67', '', 'Yatjesus2000@yahoo.fr', 'Yatjesus2000', '86PRovie', 4, 4, 21, 27, 2, 'OUI', '2020-06-22', '13:48:54', 'OUI', '2020-07-23', '16:28:28'),
+(1039, '427 301 U', 'YEO ', 'VALY', '09 51 36 29', '', 'yeo.valy@yahoo.fr', 'yeo.valy', '2fc36fbd', 4, 4, 21, 27, 2, 'OUI', '2020-06-22', '13:48:54', 'OUI', '2020-07-14', '09:42:04'),
+(1040, '309 102 P', 'AKE  ', 'PATRICE JEAN JOACHIM CHRISTIAN', '', '', 'pakejean@yahoo.fr', 'pakejean', '05738e3a', 4, 4, 23, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1041, '458 176 D', 'BA', 'NENE', '01 88 37 38', '', 'satourou10@gmail.com', 'banene', 'c5e36786', 4, 4, 23, 27, 2, 'OUI', '2019-08-09', '17:08:20', '', '0000-00-00', '00:00:00'),
+(1042, '428 092 P', 'BONY ', ' KOFFI NESTOR', '', '', 'bonkones@yahoo.fr', 'bonkones', 'c6034c22', 4, 4, 23, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1043, '390 009 J', 'DABONE ', 'INOUSSA', '07514251', '', 'dabino2002@yahoo.fr', 'dabino2000', 'inoinodabo', 4, 4, 23, 27, 2, 'OUI', '2019-08-09', '17:08:20', 'OUI', '2019-11-03', '07:08:27'),
+(1044, '253 588 D', 'DAGO', 'AKRIBI  LOUISE-HORTENSE AMENAN  ESPE AKA', '', '', 'hortenseaka@yahoo.fr', 'hortenseaka', '63bacf94', 4, 4, 23, 27, 2, 'OUI', '2019-08-09', '17:08:20', '', '0000-00-00', '00:00:00'),
+(1045, '397 116 L', 'DJAHA ', 'KOFFI HENRI', '49471117', '', 'kosroe01@yahoo.fr', 'kosroe01', '3dac6bf8', 4, 4, 23, 27, 2, 'OUI', '2019-08-09', '17:08:20', '', '0000-00-00', '00:00:00'),
+(1046, '296 263 A', 'DJE BI', 'TCHAN GUILLAUME', '09056989', '', 'dje_bitchan@yahoo.fr', 'dje_bitchan', '74a86c2b', 4, 4, 23, 27, 2, 'OUI', '2019-08-09', '17:08:20', '', '0000-00-00', '00:00:00'),
+(1047, '253 572 C', 'DOGBO', 'BAÃ EMILE', '05315928', '', 'dogbobai@yahoo.fr', 'dogbobai', '2a20c29f', 4, 4, 23, 27, 2, 'OUI', '2019-08-09', '17:08:20', '', '0000-00-00', '00:00:00'),
+(1048, '426 994 A', 'DOGBO', 'MATHIEU ARISTIDE', '78660569', '', 'dogbomath@gmail.com', 'dogbomath', '21f81925', 4, 4, 23, 27, 2, 'OUI', '2019-08-09', '17:08:20', '', '0000-00-00', '00:00:00'),
+(1049, '278 697 K', 'GOUBO', 'AKA RENE', ' 41976130', ' ', 'akagoubo@yahoo.com', 'gouboren', '2ead9124', 4, 4, 23, 27, 2, 'OUI', '2019-08-09', '17:08:20', '', '0000-00-00', '00:00:00'),
+(1050, '230 747 Q', 'TOURE', 'YA EVELINE', '', '', '', 'toureyaevelyne', '2ead9124', 4, 4, 23, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1051, '361 096 X', 'KADJO ', 'AKA', ' 05218707', ' ', 'akakadjo1@gmail.com', 'kadjoaka', 'picool', 4, 4, 23, 27, 2, 'OUI', '2019-08-09', '17:08:20', 'OUI', '2019-08-23', '11:30:09'),
+(1052, '137 153 L', 'KONAN ', 'KOUASSI ', ' 07 08 52 65', ' ', 'konanernest2007@yahoo.fr', 'konan_kouassi', '96846c64', 4, 4, 23, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1053, '403 965 W', 'KONE ', 'NÃ‰E YEO LOKOTIANWA SALI', ' ', ' ', 'sylokotianwa@gmail.com', 'konelokotianwa', 'nangbele', 4, 4, 23, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1054, '417 362 W', 'KOUADIO ', 'KOUADIO ANTOINE', ' ', ' ', 'akouadiok11@yahoo.fr', 'akouadiok11', 'AWinner07blessedMan', 4, 4, 23, 27, 2, 'OUI', '2019-08-09', '17:08:20', 'OUI', '2019-08-19', '09:32:41'),
+(1055, '307 812 U', 'KOUAKOU ', 'OSSEÃ', ' 07509266', ' ', 'osseik@yahoo.fr', 'osseik', 'j701kk99', 4, 4, 23, 27, 2, 'OUI', '2019-08-09', '17:08:20', 'OUI', '2019-08-12', '07:24:37'),
+(1056, '205 357 M', 'AHOUO ', 'LEON RAYMOND', '', '', 'ahouo2002@yahoo.fr', 'ahouo2002', '05738e3a', 5, 4, 20, 17, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2019-09-22', '19:45:14'),
+(1057, '390 166 B', 'KOUAME ', 'KONAN SIMON', ' ', ' ', 'kouamesimon@ymail.com', 'kouamesimon', '3fa01b8d', 4, 4, 23, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1058, '353 581 S', 'KOUAME', ' KOUAKOU FELICIEN', ' ', ' ', 'laman_kfelic@yahoo.fr', 'laman_kfelic', '8754d039', 4, 4, 23, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1059, '296 264 B', 'KOUASSI ', 'N\'GORAN EDOUARD', ' 47531681', ' ', 'kouassine@yahoo.fr', 'kouassine', '219140a8', 4, 4, 23, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1060, '234 426 P', 'LABAT  EPSE CACOU', 'MARIE CHANTAL ADIOUA', ' ', ' ', 'cacou@aviso.ci', 'cacou', '8754d039', 4, 4, 23, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1061, '427 003 M', 'LOBA', 'SAGA BERNARD', ' ', ' ', 'bernardloba@yahoo.fr', 'bernardloba', 'cbc8043c', 4, 4, 23, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1062, '163 704 F', 'MÂ’BRA ', ' KONAN FRANCOIS', ' ', ' ', 'mbrafrancois@yahoo.fr', 'mbrafrancois', '91c87a82', 4, 4, 23, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1063, '390 515 Z', 'MEITE ', 'AMADOU', ' ', ' ', 'meite.chronopsy@yahoo.fr', 'meite.chronopsy', '23da2074', 4, 4, 23, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1064, '427 006 Q', 'N\'DIAMOI', 'TANOH', ' ', ' ', 'ndiamoi@yahoo.fr', 'ndiamoi', '0a852b5e', 4, 4, 23, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1065, '290 869 Q', 'N\'DOUBA ', 'BOROBA FRANCOIS', ' ', ' ', 'nguelefow@gmail.com', 'fndouba', 'professeurtitulaire1', 3, 4, 23, 15, 1, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1066, '365 067 D', 'N\'DRI ', 'YAO EUGENE', ' ', ' ', 'ndry_eugene@hotmail.com', 'ndry_eugene', '098190c3', 4, 4, 23, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1067, '132 625 Q', 'NEA', 'NEA KIPRE', ' ', ' ', 'neakipre@hotmail.com', 'neakipre', 'df63ce0f', 4, 4, 23, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1068, '203 560 K', 'N\'GBALA ', ' AHOGNI', ' ', ' ', '', 'ngbalaahogni', 'a6dd95a1', 4, 4, 23, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1069, '246 290 P', 'N\'GUESSAN ', 'ASSANDE GILBERT', ' ', ' ', 'nguessanassande19@gmail.com', 'nguessanassande19', 'c538fcf1', 4, 4, 23, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1070, '459 228 J', 'KOUASSI', 'AFFOUE MELISSA EPSE N\'ZI', '', '', '', 'kouassiaffouemelissa', 'de7e8324', 4, 4, 23, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1071, '164 590 S', 'OUATTARA ', 'TIEMOKO RAPHAEL', ' ', ' ', '', 'ouattaratiemokor', '634ec668', 4, 4, 23, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1072, '462 370 P', 'TRA BI', 'TRA ISIDORE', '', '', '', 'trabitraisidore', 'f9d2cd45', 4, 4, 23, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1073, '155 994 J', 'TRAORE', ' LACINA', '', '', 'lacinatraoresynov@yahoo.fr', 'lacinatraoresynov', '9b526f96', 4, 4, 23, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1074, '239 415 Z', 'YAO', 'NÃ‰E ACKAH MATHILDE EBLOUMI', '07976601', '', 'yamathilde@yahoo.fr', 'yamathilde', '055da01f', 4, 4, 23, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1075, '275 211 G', 'YAO', 'RENE YAO', '42424718', '', 'yryt01@yahoo.fr', 'yryt01', '70a3a8e5', 4, 4, 23, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1076, '290 862 H', 'YAPI ', ' LAWRENCE SOPHIE SOLANGE', '', '', 'lawrys@hotmail.fr', 'lawrys', '62bcb347', 4, 4, 23, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1077, '390 358 T', 'YEO ', ' ELISABETH', '', '', 'yeollisa@yahoo.fr', 'yeollisa', 'bf6ad8e0', 4, 4, 23, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1078, '327 126 P', 'AKROBOU', 'AGBA EZECHIEL', '08-66-23-78', '', 'ezekielakrobou@gmail.com', 'akrobouagba', 'divina2000', 4, 11, 15, 27, 2, 'OUI', '2019-07-09', '21:35:13', 'OUI', '2020-06-13', '20:07:25'),
+(1079, '403 924 M', 'ASSEMIEN ', 'VIVIANE', '', '', 'assemienviviane@yahoo.fr', 'assemienviviane', 'Wav17467', 4, 11, 15, 27, 2, 'OUI', '2019-07-09', '21:35:13', 'OUI', '2020-08-18', '12:04:06'),
+(1080, '155 869 C', 'DIABY', 'IBRAHIMA', '07-86-52-87', '', 'diabyibrahimkalil225@gmail.com', 'diabyibrahimkalil225', 'ee593835', 4, 11, 15, 27, 2, 'OUI', '2019-07-09', '21:35:13', 'OUI', '2020-06-13', '01:04:19'),
+(1081, '500 100 M', 'EGUINO EPSE YEO', 'GARCIA MARIA JOSE', '07-99-31-69', '', 'mjegui@hotmail.com', 'eguinogarcia', 'Bolognaitalia', 4, 11, 15, 27, 2, 'OUI', '2019-07-23', '22:12:11', 'OUI', '2020-09-08', '13:55:57'),
+(1082, '396 345 G', 'KANGA', 'AKISSI AGNES DANIELLE', ' ', ' ', 'kangaagnes@yahoo.fr', 'kangaagnes', 'e3b80644', 4, 11, 15, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-13', '01:02:05'),
+(1083, '426 504 P', 'KONE', 'TENON', ' 77-10-09-40', ' ', 'kontnon@gmail.com', 'tnonkone', '2991923f', 4, 11, 15, 27, 2, 'OUI', '2019-07-09', '21:35:13', 'OUI', '2020-09-02', '21:37:29'),
+(1084, '138 538 X', 'KOUAKOU EPSE YOUGOUBARE', 'MARIE THERESE', ' ', ' ', 'yamenan1@yahoo.fr', 'yougbaremarie', '1efddea9', 4, 11, 15, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1085, '417 365 Z', 'KOUAME', 'N\'GUESSAN ESTELLE', ' ', ' ', 'kouamestelle12@gmail.com', 'kouamestelle12', 'ff0e136d', 4, 11, 15, 27, 2, 'OUI', '2020-06-09', '19:18:22', 'OUI', '2020-06-15', '19:39:38'),
+(1086, '396 508 D', 'KOUAME ', 'N\'GUESSAN GERMAIN', ' ', ' ', 'kouamegermain1@hotmail.fr', 'kouamegermain', '304f63be', 4, 11, 15, 27, 2, 'OUI', '2019-08-05', '13:07:00', 'OUI', '2020-07-04', '22:25:09'),
+(1087, '426 249 E', 'LALEKOU ', 'KOUAKOU LAURENT', ' ', ' ', 'lmoyerlk@yahoo.fr', 'lmoyerlk', 'tagracesurmoi', 4, 11, 15, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-21', '21:55:40'),
+(1090, '208 655 T', 'SAGNE', 'BRAFFOU SERAPHIN', ' ', ' ', 'sagnebraff@gmail.com', 'sagneseraphin', 'jesuschrist', 4, 11, 15, 27, 2, 'OUI', '2019-07-27', '13:48:34', 'OUI', '2020-06-14', '10:35:58'),
+(1091, '312 435 N', 'TANO', 'AFFOUA ALBERTINE', '', '', 'albertine.tano@yahoo.es', 'albertine.tano', '319a2c69', 4, 11, 15, 27, 2, 'OUI', '2019-08-05', '13:07:00', 'OUI', '2020-06-12', '08:51:51'),
+(1092, '278 084 G', 'TANON ', ' NÃ‰E LORA MICHELLE', '05-73-31-24', '', 'tanonlora@yahoo.fr', 'tanonlora', 'villalora123456789', 4, 11, 15, 27, 2, 'OUI', '2019-07-09', '21:35:13', 'OUI', '2019-08-06', '10:35:53'),
+(1094, '364 973 D', 'YAO', 'JEAN ARSENE', '', '', 'jeanarsene.yao@yahoo.es', 'jeanyao', 'Jeany@o22', 4, 11, 15, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-13', '20:32:36'),
+(1095, '274 544 D', 'YAO', 'KOFFI ', '', '', 'yaofirmin@hotmail.com', 'yaokoffi', 'plenaluna99', 4, 11, 15, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-10', '13:19:20'),
+(1097, '390 222 B', 'YAPO ', 'ADON CHIBROU ROSINE FLORENCE Ã‰PSE N\'CHOBY', '09-68-21-31', '', 'yaporosine@gmail.com', 'yaporosine', '7473florence', 4, 11, 15, 27, 2, 'OUI', '2019-07-09', '21:35:13', 'OUI', '2020-09-01', '17:14:56'),
+(1098, '364 987 U', 'ATTA ', 'KOUAME FRANCOIS', '07 90 69 32 ', '', 'atta.k@iugb.org', 'atkouame2000', 'atta6cov', 4, 11, 14, 27, 2, 'OUI', '2019-09-21', '11:17:30', 'OUI', '2020-01-24', '21:03:27'),
+(1099, '460 487 U', 'BOGNI', 'OBOUE JEAN ARISTIDE', '', '', '', 'bogniobouejean', 'f5a7a50e', 4, 11, 14, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1100, '203 566 D', 'BOUABRE', 'THEODORE', '01 91 82 84', '', 'tbouabre@yahoo.fr', 'bouabretheodore', 'd2fe73d8', 4, 11, 14, 27, 2, 'OUI', '2019-09-21', '11:17:30', '', '0000-00-00', '00:00:00'),
+(1101, '135 454 Q', 'CAUMMAUET ', 'Ã‰PSE KOUAME REINE EULALIE', '01 52 41 36', '', 'caummaueth_kouamer@yahoo.fr', 'caummaueteulalie', 'e50b014c', 4, 11, 14, 29, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1102, '127 959 S', 'COULIBALY ', 'OUMAR', '03 60 00 93', '', 'bocoulibaly@gmail.com', 'coulibalyoumar', '', 4, 11, 14, 27, 2, 'OUI', '2019-09-21', '11:17:30', 'OUI', '2019-10-09', '09:36:57'),
+(1103, '240 333 K', 'DAGO', ' AMANE CLEMENT', '', '', '', 'dagoclement', '43220b69', 4, 11, 14, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1104, '149 750 S', 'DIARASSOUBA ', 'SIDIKY', '08 39 83 44', '', 'sidiara@yahoo.fr', 'sidiara', '9ea07382', 4, 11, 14, 27, 2, 'OUI', '2019-09-21', '11:17:30', '', '0000-00-00', '00:00:00'),
+(1105, '339 996 U', 'DRO ', 'GONDO AURÃ‰LIEN', '05 78 90 25', '', 'droari@yahoo.fr', 'drogondo', '63a4b3d4', 4, 11, 14, 27, 2, 'OUI', '2019-09-21', '11:17:30', 'OUI', '2020-03-17', '21:04:43'),
+(1106, '365 477 D', 'ETTIEN', 'YAPO', '05 97 26 62', '', 'ettienyapo046@gmail.com', 'ettienyapo', 'Arrahconnection', 4, 11, 14, 27, 2, 'OUI', '2019-09-21', '11:17:30', 'OUI', '2020-08-08', '19:39:26'),
+(1107, '500 499 H', 'JOHNSON', 'ADEBOYE ADEGOKE', ' 01 47 89 08', ' ', 'jadeboye@yahoo.fr', 'johnsonadeboye', 'Ekundayo', 4, 11, 14, 27, 2, 'OUI', '2019-09-21', '11:17:30', 'OUI', '2020-03-10', '09:32:16'),
+(1108, '208 767 T', 'KABLAN ', 'KOUAME', ' ', ' ', 'k_kablan@yahoo.com', 'k_kablan', '5181aeab', 4, 11, 14, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00');
+INSERT INTO `utilisateur` (`id_utilisateur`, `matricule_utilisateur`, `nom_utilisateur`, `prenom_utilisateur`, `tel_utilisateur`, `adresse_utilisateur`, `email_utilisateur`, `login_utilisateur`, `mot_passe_utilisateur`, `id_type_utilisateur`, `id_etablissement`, `id_departement`, `id_groupe_utilisateur`, `id_qualite_utilisateur`, `parametres_envoye`, `date_envoie`, `heure_envoie`, `connexion_reussie`, `date_derniere_connexion`, `heure_derniere_connexion`) VALUES
+(1109, '164 070 B', 'KEITA', 'FATOUMATA', ' 05 06 48 22', ' ', 'asfatoukeita@yahoo.fr', 'keitafatoumata', '00970831', 4, 11, 14, 27, 2, 'OUI', '2019-09-21', '11:17:30', '', '0000-00-00', '00:00:00'),
+(1110, '266 086 W', 'KLOHINLWELE', 'KONE', '07 76 89 59', ' ', 'nielfang@yahoo.fr', 'klohinlwelekone', '97728319', 4, 11, 15, 27, 2, 'OUI', '2019-09-21', '11:38:12', 'OUI', '2020-06-26', '14:01:04'),
+(1111, '277 929 A', 'KOMENAN', 'CASIMIR', ' 07 22 20 74', ' ', 'casimirkomenan@yahoo.fr', 'casimirkomenan', 'cazkom1', 4, 11, 14, 27, 2, 'OUI', '2019-09-21', '11:01:04', 'OUI', '2020-06-26', '01:33:18'),
+(1113, '232 650 R', 'KONE ', 'BOUBACAR', ' ', ' ', 'koneboubakar39@yahoo.com', 'koneboubacar', '907a75dd', 4, 11, 14, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1114, '313 770 J', 'KONE ', 'MINATA', ' ', ' ', 'koneminata1@yahoo.fr', 'koneminata1', 'minata2019', 4, 11, 14, 27, 2, 'OUI', '2019-09-21', '11:38:12', 'OUI', '2019-09-25', '08:41:06'),
+(1115, '257 696 D', 'KOUA ', 'MEA', ' ', ' ', 'kouamea2000@gmail.com', 'kouamea', '5cfae88d', 4, 11, 14, 27, 2, 'OUI', '2019-09-21', '11:38:12', 'OUI', '2020-06-11', '22:11:58'),
+(1116, '351 070 N', 'KOUADIO ', 'KOUASSI HONORE', ' ', ' ', 'honkk99@gmail.com', 'kouadiokouassihonore', 'c91689b1', 4, 11, 14, 27, 2, 'OUI', '2019-09-21', '11:38:12', '', '0000-00-00', '00:00:00'),
+(1117, '241 523 X', 'KOUAKOU', 'KOFFI JULES', ' ', ' ', 'kjuleskoffi@yahoo.fr', 'kjuleskoffi', 'd1ff39d7', 4, 11, 14, 27, 2, 'OUI', '2019-12-17', '16:18:24', 'OUI', '2020-08-03', '18:35:20'),
+(1118, '253 565 D', 'KOUAKOU ', 'KOFFI MAMADOU', ' ', ' ', 'kofmadou@yahoo.fr', 'kofmadou', '095131de', 4, 11, 14, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1119, '303 663 J', 'KOUASSI ', 'ROLAND RAOUL', ' ', ' ', 'rrkouassi@gmail.com', 'kouassirolandraoul', 'jupxug-zavJoq-guvga3', 4, 11, 14, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2019-09-18', '11:45:36'),
+(1120, '097 728 V', 'KOUASSI', 'YAO JEROME', ' ', ' ', 'jrmekouassi@yahoo.fr', 'kouassiyaojerome', '4b0a9863', 4, 11, 14, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1121, '290 864 B', 'LOUIS ', 'OBOU', ' ', ' ', 'louisohermas@gmail.com', 'louisobou', 'a43ea1b2', 4, 11, 14, 27, 2, 'OUI', '2019-09-21', '12:08:59', 'OUI', '2020-06-23', '12:14:56'),
+(1122, '307 813 V', 'N\'GUESSAN', 'KOUADIO GERMAIN', ' ', ' ', 'nguessankouadiogermain@gmail.com', 'nguessankouadiogermain', 'estrella1', 4, 11, 14, 27, 2, 'OUI', '2019-09-21', '12:08:59', 'OUI', '2020-03-02', '11:32:55'),
+(1123, '117 962 K', 'NIANGADOU ', 'MAMADOU', ' ', ' ', 'niangadma@yahoo.fr', 'niangadma', 'a3aa0345', 4, 11, 14, 27, 2, 'OUI', '2019-09-21', '12:08:59', '', '0000-00-00', '00:00:00'),
+(1124, '339 994 S', 'SOUMAHORO', 'SINDOU', '', '', 'soumahorosindou67@yahoo.fr', 's_soumahoro', '156087a8', 4, 11, 14, 27, 2, 'OUI', '2019-09-21', '12:08:59', 'OUI', '2020-08-15', '12:38:15'),
+(1125, '344 860 L', 'TESAN ', 'TRA-LOU MONIQUE', '', '', 'kelinan.tesan@free.fr', 'kelinan.tesan', 'ffb210c9', 4, 11, 14, 27, 2, 'OUI', '2019-09-21', '12:08:59', '', '0000-00-00', '00:00:00'),
+(1126, '417 337 M', 'TOURE', 'YSSOUF', '', '', 'yssoufsikensi@yahoo.fr', 'yssoufsikensi', 'djeneba7482', 4, 11, 14, 27, 2, 'OUI', '2019-10-09', '07:53:36', 'OUI', '2020-08-17', '21:33:49'),
+(1127, '331 898 S', 'TRA BI', 'GOH THEODORE', '', '', 'zozanbgoh@gmail.com', 'trabigoh', 'df2210ba', 4, 11, 14, 27, 2, 'OUI', '2019-09-21', '12:08:59', '', '0000-00-00', '00:00:00'),
+(1128, '166 160 C', 'YAO', 'AFFOUE HELENE', '', '', 'yaohelene@hotmail.com', 'yaoaffouehelene', 'e6c1fedd', 4, 11, 14, 27, 2, 'OUI', '2019-09-21', '12:08:59', 'OUI', '2020-01-27', '14:57:27'),
+(1129, '390 162 F', 'KOUAME ', 'AMALAN ELLIANE PRUDENCE', ' 05-75-05-95', ' ', 'prudencekouame@rocketmail.com', 'prudencekouame', '625d9b1c', 4, 11, 15, 27, 2, 'OUI', '2019-07-09', '21:35:13', 'OUI', '2020-06-16', '11:08:03'),
+(1130, '389 998 H', 'COULIBALY ', 'KOUMIA SOIHAMIN SOPHIE', '09-50-71-71', '', 'koumiasophie@yahoo.fr', 'koumiasophie', 'sophie-1976', 4, 11, 15, 27, 2, 'OUI', '2019-07-23', '22:12:11', 'OUI', '2020-09-07', '11:53:38'),
+(1131, '426 464 N', 'YAPI ', 'KOUASSI MICHEL', '', '', 'miguelyapik2@yahoo.fr', 'miguelyapik2', 'amaniahouesther', 4, 11, 15, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-01-30', '09:53:45'),
+(1132, '104 041 X', 'KOUASSI', 'JEROME', ' ', ' ', 'jrmekouassi@yahoo.fr', 'jeromekouassi2009', 'e2765f62', 4, 11, 14, 27, 2, 'OUI', '2019-09-21', '11:38:12', '', '0000-00-00', '00:00:00'),
+(1133, '456 703 C', 'KUMON', 'ANOUGBA SIMPLICE-DELORD', '87-99-47-45/03-06-31-62', '', 'simplicedelord@yahoo.fr', 'kumonanougba', 'y0400408s', 4, 11, 15, 27, 2, 'OUI', '2019-07-09', '21:35:13', 'OUI', '2020-07-02', '06:01:18'),
+(1134, '225 395 X', 'KPLI ', 'YAO KOUADIO JEAN FRANCOIS', ' ', ' ', 'kplijfk@yahoo.fr', 'kpliyaojean', 'kpkoua59', 4, 11, 14, 27, 2, 'OUI', '2019-09-21', '11:38:12', 'OUI', '2020-01-15', '12:04:27'),
+(1135, '145 310 D', 'SILUE ', 'SASSONGO JACQUES', '', '', 'sassongosiluejp@gmail.com', 'sjsilue', 'sjcourses', 4, 11, 14, 27, 2, 'OUI', '2019-09-21', '12:08:59', 'OUI', '2020-06-25', '14:15:53'),
+(1136, '426 098 K', 'N\'DRIN ', 'OZOUKOUO LEA', ' ', ' ', 'nasselea@yahoo.fr', 'nasselea', 'a86f7e5f', 4, 11, 15, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-27', '09:03:07'),
+(1137, '390 066 A', 'GBASSI ', 'AYAH JULIETTE  EPSE GONDO', ' 02 27 83 50', ' ', 'juliegbassi@yahoo.fr', 'gondojuliette', '551500ce', 4, 11, 14, 27, 2, 'OUI', '2019-09-21', '11:17:30', 'OUI', '2020-06-15', '00:31:48'),
+(1138, '459 076 D', 'TIA', 'DANIEL', '', '', 'tiadaniel@yahoo.fr', 'tiadaniel', '5a217a5b', 4, 11, 14, 27, 2, 'OUI', '2019-09-21', '12:08:59', 'OUI', '2020-06-25', '08:00:50'),
+(1139, '290 867 E', 'DJIMAN', 'KASIMI OLAREWAJU', '05 74 51 52', '', 'djiko02@yahoo.fr', 'djimankasimi', 'djiman', 4, 11, 14, 27, 2, 'OUI', '2019-09-21', '11:17:30', 'OUI', '2020-07-12', '23:15:17'),
+(1140, '274 545 E', 'EKOU', 'TANO WILLIAMS JACOB', '07-99-50-00', '', 'ekouwa@yahoo.com', 'ekoutanowilliams', 'cavani2018', 4, 11, 15, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-01', '17:02:04'),
+(1141, '426 502 M', 'BINI ', 'YAO OSSEI JACOB', '07 77 94 53', '', 'derbini1@hotmail.com', 'derbini1', '57c54712', 4, 11, 18, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1142, '364 963 B', 'DJATTI EPSE GUINAN', 'YAO KRA RODOLPHE', '01 05 09 87', '', 'rodjatti@yahoo.fr', 'rodjatti', '04b52c71', 4, 11, 18, 29, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1143, '200 122 H', 'LIDA ', 'KOUASSI MOISE', ' ', ' ', '', 'lidakouassimoise', 'b9375383', 4, 11, 18, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1144, '324 899 U', 'TOURE', 'PATRICE', '07 29 62 48', '', 'herrtoure@gmail.com', 'tourepatrice', '1cbf9dc3', 4, 11, 18, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-05-06', '11:27:51'),
+(1145, '276 209 Y', 'TRAORE', 'MOUSTAPHA', '07 37 33 41', '', 'traoremoust@yahoo.fr', 'traoremoustapha', '940303f0', 4, 11, 18, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-05', '10:24:47'),
+(1146, '318 149 M', 'BROU-ANGORAN', 'ADJOUA ANASTHASIE', '06-16-21-58', '', 'angorana@yahoo.fr', 'brouangoranadjoua', 'jesusmylord19', 4, 11, 17, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-30', '15:49:41'),
+(1147, '239 513 T', 'KOFFI ', 'TOUGBO', ' 08-40-12-01', '', 'koffitub@hotmail.com', 'koffitougbo', 'oyinasouba123', 4, 11, 17, 27, 2, 'OUI', '2020-06-12', '23:08:38', 'OUI', '2020-06-30', '15:57:52'),
+(1148, '424 626 N', 'AMANI', 'NÃ‰E ALLABA ANGELE SEBASTIENNE', '03 29 82 01', '', 'amanyallaba@gmail.com', 'amanysebastienne', 'CHERCHEURE2016', 4, 11, 16, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-30', '12:54:58'),
+(1150, '269 635 K', 'BEHI', 'DABGISSO PASCAL', '07 95 34 55', '', 'behidagbisso@gmail.com', 'behidagbissopascal', '9a43583b', 4, 11, 25, 29, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1151, '401 125 J', 'AKA', 'PANCRACE', '', '', '', 'akapancrace', '2812074f', 4, 4, 20, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1152, '426 989 M', 'AKPA', 'GNAGNE ALPHONSE', '57 44 55 91', '', 'alphonseakpa@yahoo.fr', 'apkagnagne', '46f285a3', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '10:22:11', '', '0000-00-00', '00:00:00'),
+(1153, '231 500 B', 'ASSAMOI ', 'YAO BERTIN', '07 08 45 08', '', 'bertinyassamoi@yahoo.com', 'assamoibertin', 'fa513904', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '09:51:48', 'OUI', '2020-07-03', '13:09:30'),
+(1154, '391 052 Z', 'ASSEU ', 'MAFA GEORGES', '08 48 80 59', '', 'amageo12@yahoo.fr', 'asseumafageorges', '8f7191b2', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '09:51:48', '', '0000-00-00', '00:00:00'),
+(1155, '246 289 J', 'AVONI', ' KOBLAN AXEL', '', '', '', 'avonikoblanaxel', 'b2ffd092', 4, 4, 20, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1156, '456 567 T', 'BAMBA', 'SOUALO', '07 97 01 29', '', 'bsoualo@yahoo.fr', 'bambasoualo', 'ab64c099', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '10:22:11', 'OUI', '2019-06-21', '11:19:11'),
+(1157, '456 570 A', 'BEUGRE', 'FRANCK VIVIANE', '47 35 42 68', '', 'vbeugre@yahoo.fr', 'beugrefranckviviane', 'b523aefd', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '11:13:28', '', '0000-00-00', '00:00:00'),
+(1158, '389 972 E', 'BEUGRE', 'GRAHON MARIE THERESE SIDONIE', '01 61 18 81', '', 'beugresidonie@yahoo.fr', 'beugregrahonsidonie', '44ee1ab8', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '11:13:28', '', '0000-00-00', '00:00:00'),
+(1159, '099 782 W', 'BIAKA ', ' ZASSELI IGNACE', '07 26 32 38', '', 'biakazasseli@yahoo.fr', 'biakazasseli', '3eccca26', 4, 4, 20, 27, 2, 'OUI', '2019-05-28', '13:54:17', '', '0000-00-00', '00:00:00'),
+(1160, '397 081 M', 'BODO ', 'ALATHE MIREILLE', '07 40 05 27', '', 'bodomireille@gmail.com', 'misalathe', '47d0b207', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '09:51:48', '', '0000-00-00', '00:00:00'),
+(1161, '366 849 K', 'CAMARA', 'ISSOUF', '08 00 24 66', '', 'kameleny@gmail.com', 'camys1', '72d45f38', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '09:51:48', '', '0000-00-00', '00:00:00'),
+(1162, '456 585 N', 'COULIBALY', 'TOHOTANGA', '49 61 77 86', '', 'klotanag@yahoo.fr', 'coulibalytohotanga', '9cbf3b33', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '11:13:28', 'OUI', '2020-04-15', '21:34:35'),
+(1163, '390 010 E', 'DAGAUD', ' EMERY RAOUL LOBA', '48 61 06 13', '', 'raouldagaud@yahoo.fr', 'Dagaud7', 'd45cc9d4', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '09:51:48', '', '0000-00-00', '00:00:00'),
+(1164, '123 700 F', 'DIBY', ' KOUADIO AUGUSTIN', 'O1 54 06 26 ', '', 'dibiaugustin@yahoo.fr', 'dibykouadioaugustin', '6871c8f5', 4, 4, 20, 27, 2, 'OUI', '2019-05-28', '13:54:17', '', '0000-00-00', '00:00:00'),
+(1165, '255 697 C', 'DION ', 'YODE SIMPLICE', '01 04 56 71', '', 'simplicediony@yahoo.fr', 'simplicediony', '8f9fd959', 4, 4, 20, 27, 2, 'OUI', '2019-05-28', '10:01:02', '', '0000-00-00', '00:00:00'),
+(1166, '390 028 C', 'DON ', 'ANOMAN NATHALIE', '49 16 04 06 ', '', 'nathalieake@yahoo.fr', 'nathalieake', '211ff2da', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '09:51:48', '', '0000-00-00', '00:00:00'),
+(1167, '353 589 A', 'DOUMBIA', 'FATIMA BRIGITTE', '02 06 36 49', '', 'fatimadoumbia@aol.fr', 'fatidoum', 'dfab127f', 4, 4, 20, 27, 2, 'OUI', '2019-05-28', '10:01:02', '', '0000-00-00', '00:00:00'),
+(1168, '364 976 G', 'ECHENE ', 'AMANZOULE OLIVIER PATRICE', '01 42 06 75', '', 'echeneaop@yahoo.fr', 'echene_amanzoule', 'c4bdcf8c', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '11:13:28', '', '0000-00-00', '00:00:00'),
+(1169, '270 374 S', 'EZOUA', ' CABLANAZANN THIERRY ARMAND', 'O7 O7 63 24', '', 'ezcath@yahoo.fr', 'ezoua_cablanazann_thierry', 'faa58b21', 4, 4, 20, 27, 2, 'OUI', '2019-05-28', '13:54:17', '', '0000-00-00', '00:00:00'),
+(1170, '425 999 N', 'EZOUAH ', 'LEON KOFFI', '49 80 36 60', '', 'ezoleon@gmail.com', 'ezoleon', 'b92a751f', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '11:13:28', 'OUI', '2019-06-21', '14:59:22'),
+(1171, '352 780 L', 'GAHE EPSE GOHOUN', 'ROSINE CINTHIA', ' 07 57 82 27', ' ', 'cgrosii@yahoo.fr', 'cgrossii', '4bd74389', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '09:51:48', '', '0000-00-00', '00:00:00'),
+(1172, '151 316 V', 'GBOCHO', 'AKISSI MICHEL', ' 08 95 28 63', ' ', 'gbochoyoko@aviso.ci', 'gbochoyoko', '60aedbf0', 4, 4, 20, 27, 2, 'OUI', '2019-05-28', '13:54:17', '', '0000-00-00', '00:00:00'),
+(1173, '417 342 S', 'GNAHOUA', 'ARNAUD-OLIVIER', ' 08 39 18 09', ' ', 'olivier.gnahoua@yahoo.fr', 'olivier.gnahoua', 'ae80c5a4', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '11:13:28', '', '0000-00-00', '00:00:00'),
+(1174, '390 072 G', 'GUEBO', ' JOSUE YOROBA', ' 02 50 39 55', ' ', 'jguebo@yahoo.fr', 'jguebo', '390072G777', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '09:51:48', 'OUI', '2019-06-13', '10:02:39'),
+(1175, '390 074 A', 'GUEU ', 'GBLEU FRANCIS', ' 47 97 47 88', ' ', 'fgueu2@gmail.com', 'docteur_gueu', 'kiravi2020@z', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '11:13:28', 'OUI', '2019-06-13', '12:34:45'),
+(1176, '390 079 P', 'JUDITH ', 'GBOUHONON NAOUNOU', '02 28 75 26', ' ', 'jnaounou@yahoo.fr', 'jnaounou', 'fecd22e1', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '11:29:05', '', '0000-00-00', '00:00:00'),
+(1177, '344 941 H', 'KABRAN ', 'YAH MARIE-THERESE', ' 07 65 28 68', ' ', 'markya122003@yahoo.fr', 'markya122003', '4505ee22', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '09:51:48', '', '0000-00-00', '00:00:00'),
+(1178, '290 487 S', 'KOFFI ', 'JEAN-HONORE', ' 48 20 20 50', ' ', 'jhkoffi@gmail.com', 'mathulejf', 'mathusalemlejuif', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '09:51:48', 'OUI', '2019-06-14', '00:39:42'),
+(1179, '365 470 J', 'DIALLO', 'MOUSSA MAMADOU', '09 41 17 44', '', 'diallomma@yahoo.fr', 'diallomma', '8337da23', 4, 11, 19, 29, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-02', '19:23:39'),
+(1180, '390 134 T', 'KONIN ', 'ALLA MARCELLIN', ' 59 17 64 48 ', ' ', 'kroumarcellin@yahoo.fr', 'kroumarcellin', 'Alice3', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '09:51:48', 'OUI', '2019-11-27', '11:13:57'),
+(1181, '354 535 U', 'KOUABLAN ', 'AHISSI THOMAS DAQUIN', ' 07 58 07 76', ' ', 'tomadakin@yahoo.fr', 'tomadakin', 'ae4ebbd3', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '09:51:48', 'OUI', '2020-01-12', '13:37:07'),
+(1182, '389 762 K', 'KOUADIO ', 'KOFFI DECAIRD', ' 07 72 18 30', ' ', 'decaired@yahoo.fr', 'decairdk', 'philosophie', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '10:19:23', '', '0000-00-00', '00:00:00'),
+(1183, '283 498 S', 'KOUAKOU ', 'GUY', ' 08 40 28 83', ' ', 'kguymaup@yahoo.fr', 'kguymaup', 'f7305bf3', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '10:19:23', '', '0000-00-00', '00:00:00'),
+(1184, '283 497 R', 'KOUAME', 'N\'DRI SOLANGE', ' 07 01 12 36', ' ', 'mariolange@yahoo.fr', 'mariesolange', '4d9ba0df', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '10:19:23', '', '0000-00-00', '00:00:00'),
+(1185, '290 489 C', 'KOUASSI ', 'KPA YAO RAOUL', ' 01 61 87 17', ' ', 'rulerfr@yahoo.fr', 'kouassi_kpa_raoul', '2f3fa676', 4, 4, 20, 27, 2, 'OUI', '2019-05-28', '10:01:02', 'OUI', '2019-06-05', '00:10:09'),
+(1186, '397 318 E', 'KOUASSI', 'SEKA GEORGES', ' 07 03 52 60', ' ', 'kosege69@yahoo.fr', 'ckjorge39', 'Georges7', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '10:19:23', 'OUI', '2019-07-11', '13:11:37'),
+(1187, '424 990 Q', 'GONDO ', 'BLEU GILDAS', ' 09 97 29 75', ' ', 'bleugondo@yahoo.fr', 'bleugondo', 'melapleu', 4, 11, 19, 29, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-18', '20:53:10'),
+(1188, '385 027 J', 'GOPROU ', 'DJAKI CARLOS', ' 07 52 39 54', ' ', 'carlos.goprou@gmail.com', 'carlos.goprou', 'carlos1970', 4, 11, 25, 29, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-02', '15:18:53'),
+(1189, '364 972 C', 'KOUASSI EPSE', 'EZOUA TAKI ROSELINE', ' 58 48 20 47', ' ', 'roselinetaki@yahoo.fr', 'roselinetaki', 'e8c67c1c', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '10:19:23', '', '0000-00-00', '00:00:00'),
+(1190, '461 878 G', 'KONATE', 'YAYA', '', '', 'konatyay60@yahoo.fr', 'konateyaya', 'ASSIYA2015', 4, 11, 19, 27, 2, 'OUI', '2019-12-04', '21:44:30', 'OUI', '2020-08-30', '15:15:15'),
+(1191, '336 645 G', 'KOUMAN', 'KOBENAN MAXIME', ' 07 88 20 27', ' ', 'koumanphilo@yahoo.fr', 'koumanphilo', '7b5a326f', 4, 4, 20, 27, 2, 'OUI', '2019-05-28', '10:01:02', '', '0000-00-00', '00:00:00'),
+(1192, '390 521 X', 'N\'GORAN ', 'DESNOCES', ' 07 56 44 91', ' ', 'ndesnoces@yahoo.fr', 'ndesnoces', 'fb00d3a4', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '10:19:23', '', '0000-00-00', '00:00:00'),
+(1193, '152 099 Z', 'N\'GUESSAN ', 'DEPRY ANTOINE', ' 05 66 80 27', ' ', 'nguessandep@yahoo.fr', 'nguessan_depry_antoine', 'b94f4dc2', 4, 4, 20, 27, 2, 'OUI', '2019-05-28', '13:54:17', '', '0000-00-00', '00:00:00'),
+(1194, '390 238 K', 'NIANGORAN', 'ADJO APOLLINE', ' 07 64 91 18', ' ', 'niangoranapolline@yahoo.com', 'niangoranapolline', '6bac8ea4', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '10:19:23', '', '0000-00-00', '00:00:00'),
+(1195, '303 359 Z', 'KOUAME', 'YAO EMMANUEL', ' ', ' ', 'kouameo@hotmail.com', 'kouameo', '48742904', 4, 11, 19, 27, 2, 'OUI', '2020-02-20', '11:41:14', 'OUI', '2020-02-24', '12:13:56'),
+(1196, '338 447 C', 'OBOUMOU', 'IBRAHIM', ' 55 52 94 69', ' ', 'ioboumou@yahoo.fr', 'oboumou_ibrahim', '55529469ob', 4, 4, 20, 27, 2, 'OUI', '2019-05-28', '10:01:02', 'OUI', '2019-06-13', '18:23:18'),
+(1197, '426 057 R', 'N\'GUESSAN ', 'KOUASSI AKPAN DESIRE', ' ', ' ', 'dezakpan@gmail.com', 'dezakpan', 'israel07', 4, 11, 19, 27, 2, 'OUI', '2020-02-24', '16:08:27', 'OUI', '2020-05-21', '00:31:35'),
+(1198, '268 284 K', 'SAHA', 'MICHEL', '07 31 05 97', '', 'tuambli67@gmail.com', 'sahamichel', '8b5f3933', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '11:29:05', '', '0000-00-00', '00:00:00'),
+(1199, '344 942 A', 'SAKALOU ', ' BLEDE', ' 77 11 83 91', ' ', 'sakoollegende@yahoo.fr', 'mathurinsakool', 'a64f8d22', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '10:19:23', '', '0000-00-00', '00:00:00'),
+(1200, '427 026 B', 'NIAMIEN', ' N\'DA-TANOA CHRISTIANE', ' ', ' ', 'niamien.christiane@gmail.com', 'niamien.christiane', 'victoire', 4, 11, 19, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-05-18', '17:49:35'),
+(1201, '462 369 J', 'SANOGO', 'ASSANE', '', '', '', 'sanogo-assane', 'fffa4dfb', 4, 4, 20, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1202, '396 696 Z', 'SEA', 'SOUHAN MONHUET YVES', ' 05 47 11 00', ' ', 'seasouhanmyves@gmail.com', 'seasouhanmyves', 'dd86cbfa', 4, 11, 19, 27, 2, 'OUI', '2020-05-19', '12:49:44', 'OUI', '2020-05-21', '14:56:25'),
+(1203, '165 007 S', 'TAYORO ', 'GBOTTA', '09 17 70 72', '', 'tayorogbotta@yahoo.fr', 'gbottacab', 'a3c073d3', 4, 4, 20, 27, 2, 'OUI', '2019-05-28', '10:01:02', '', '0000-00-00', '00:00:00'),
+(1204, '396 710 A', 'SIB', ' SIE JUSTIN', '', '', 'sibsijustin@yahoo.fr', 'sibsijustin', '03692280', 4, 11, 19, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-25', '19:40:39'),
+(1205, '203 375 M', 'VOHO', 'SAHI ALPHONSE', '', '', '', 'vohosahi', '8970c986', 4, 4, 20, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1206, '467 352 E', 'YAO', 'KONAN JEAN-MARC GUILLAUME', '77 05 64 33', '', 'jeanmarcyao019@gmail.com', 'yao_konan_guillaume', '46e2db35', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '11:29:05', '', '0000-00-00', '00:00:00'),
+(1207, '365 472 G', 'YAO', 'KOUAME', '05 05 20 08', '', 'yameboyomin@gmail.com', 'yao.kouame21', 'c6b8649c', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '10:19:23', '', '0000-00-00', '00:00:00'),
+(1208, '390 354 P', 'YAPO', 'SEVERIN', '58 75 28 19', '', 'yapson7@yahoo.fr', 'yapson7', 'Salomon1', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '10:19:23', 'OUI', '2019-06-13', '10:46:59'),
+(1209, '241 414 S', 'YEO ', 'SALIF', '05 17 60 83', '', 'yeosalif@gmail.com', 'yeosalif', 'bf6ad8e0', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '10:19:23', '', '0000-00-00', '00:00:00'),
+(1210, '327 242 B', 'ABOA ', 'ABIA ALAIN LAURENT', '', '', 'aboaalainlaurent@yahoo.fr', 'aboaabiaalain', 'edwige1975', 3, 11, 25, 15, 1, 'OUI', '2019-07-03', '18:43:10', 'OUI', '2020-05-29', '18:35:08'),
+(1211, '239 413 X', 'AHOUA', 'FIRMIN', '07 02 62 53', '', 'fahoua2003@yahoo.fr', 'fahoua2003', 'ahoua2018', 4, 11, 19, 27, 2, 'OUI', '2020-05-21', '15:47:28', 'OUI', '2020-06-15', '17:21:13'),
+(1212, '133 016 A', 'AMON EPSE GRAH', ' TANOH YVETTE', '', '', 'yvetteamontanoh_grah@yahoo.fr', 'yvetteamontanoh_grah', 'd0d785bc', 4, 11, 25, 29, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1213, '247 453 F', 'AKE ', 'DJALIAH FLORENCE AWOMON ', '87 28 42 93   ', '', 'florenceawomon@yahoo.fr', 'florenceawomon', 'EMMANUEL1969', 4, 4, 28, 29, 2, 'OUI', '2019-12-23', '14:32:03', 'OUI', '2020-06-09', '12:34:30'),
+(1214, '366 624 H', 'AYEMON ', 'SEKA FERNAND', '09 71 51 50', '', 'ayesek77@gmail.com', 'ayesek77', '5e315ca9', 4, 4, 28, 27, 2, 'OUI', '2019-12-23', '14:32:03', 'OUI', '2020-06-08', '22:30:56'),
+(1215, '295 313 T', 'BAKARY', 'NAMBAHIGUE MATHIEU', '05 93 52 57', '', 'nambahiguebakas@yahoo.fr', 'nambahiguebakas', 'af61c95a', 4, 4, 28, 29, 2, 'OUI', '2019-12-23', '14:32:03', '', '0000-00-00', '00:00:00'),
+(1216, '427 137 F', 'BROU ', 'KAMENAN MARCEL', '07 21 81 33', '', 'kamenan1ermarcel@ymail.com', 'kamenan1ermarcel', '51ce4611', 4, 4, 28, 27, 2, 'OUI', '2019-12-23', '14:32:03', 'OUI', '2020-06-13', '01:15:12'),
+(1217, '162 429 S', 'COULIBALY', 'AMADOU', '05 50 65 74', '', 'madougbon@yahoo.fr', 'madougbon', '355f04a9', 4, 4, 28, 27, 2, 'OUI', '2019-12-23', '14:32:03', 'OUI', '2020-01-05', '18:25:37'),
+(1218, '270 170  S', 'COULIBALY ', 'YAYA', '47 06 46 11', '', 'coulyay@yahoo.fr', 'coulyay', '86fa77d0', 4, 4, 28, 27, 2, 'OUI', '2019-12-23', '14:32:03', '', '0000-00-00', '00:00:00'),
+(1219, '396 165 U', 'DAKOURI', 'GUISSA DESMOS FRANCIS', '49 50 59 97', '', 'ddakouriguissa@yahoo.fr', 'ddakouriguissa', 'victoire12', 4, 4, 28, 27, 2, 'OUI', '2019-12-23', '15:12:19', 'OUI', '2020-06-23', '12:19:55'),
+(1220, '396 198W', 'DIHOUEGBEU ', 'DEAGAI PARFAITE', '77 40 68 89', '', 'parfaitedeagai@yahoo.com', 'parfaitedeagai', '20f584f6', 4, 4, 28, 27, 2, 'OUI', '2019-12-23', '15:12:19', 'OUI', '2020-06-24', '17:20:06'),
+(1221, '303 666 M', 'GOGBE ', 'TERE', ' ', ' ', 'gogbetere@yahoo.fr', 'gogbetere', 'beni2016', 4, 4, 28, 27, 2, 'OUI', '2019-12-23', '15:12:19', 'OUI', '2020-07-01', '17:15:42'),
+(1222, '403 930 X', 'KAKOU ', 'GOLLY MATHIEU', ' 07 66 54 49', ' ', 'gollymathieu75@yahoo.fr', 'gollymathieu75', 'bc389258', 4, 4, 28, 27, 2, 'OUI', '2019-12-23', '16:57:16', '', '0000-00-00', '00:00:00'),
+(1223, '403 931 L', 'KANGA', 'KONAN VICTORIEN', ' 07 75 81 45', ' ', 'konanvicky07@gmail.com', 'konanvicky07', '78a55bf7', 4, 4, 28, 27, 2, 'OUI', '2019-12-23', '16:57:16', '', '0000-00-00', '00:00:00'),
+(1224, '398 203 M', 'BEUSEIZE', 'ANDRE-MARIE', '03 11 11 73', '', 'beuseizenzrama1@yahoo.fr', 'beuseizeandre', '9416ee89', 4, 11, 19, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-06', '16:50:48'),
+(1225, '404 061 Y', 'KOBENAN', 'APPOH CHARLES BOR', '08 63 11 39', ' ', 'appohcharlesbor@yahoo.fr', 'appohcharlesbor', 'kobenan1974', 4, 4, 28, 27, 2, 'OUI', '2019-12-23', '16:57:16', 'OUI', '2020-06-17', '13:12:39'),
+(1226, '249 712 L', 'KOUADIO', 'AMOIN N\'GOH FLORENTINE BRIGITTE', '07 04 57 37', ' ', 'kbrigitte@gmail.com', 'kbrigitte', '1b58aef9', 4, 4, 28, 28, 2, 'OUI', '2020-01-08', '23:05:20', '', '0000-00-00', '00:00:00'),
+(1227, '427 239 V', 'MOUSSOH', 'ANDRE ARMAND', ' 08 03 29 02', ' ', 'moussoandre2009@yahoo.fr', 'moussoandre2009', 'f13b8daa', 4, 4, 28, 27, 2, 'OUI', '2019-12-30', '14:07:54', '', '0000-00-00', '00:00:00'),
+(1228, '426 919 N', 'BLI BI ', ' TRAZIE SERGE', '08 42 06 83', '', 'sbli@u-paris10.fr', 'blibitrazie', '23fb47e2', 4, 11, 19, 27, 2, 'OUI', '2019-08-28', '14:46:37', '', '0000-00-00', '00:00:00'),
+(1229, '106 588 T', 'SANOGO', 'SOUNGALO', ' ', ' ', '', 'sanogosoungalo', '9040b793', 4, 4, 28, 29, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1230, '390 308 S', 'SYLLA', 'DAOUDA', '48 92 90 71', '', 'zyllahdah@yahoo.fr', 'zyllahdah', '1918Mita$', 4, 4, 28, 27, 2, 'OUI', '2019-12-31', '11:07:02', 'OUI', '2020-06-18', '10:59:03'),
+(1231, '354 219 P', 'TRAORE ', 'PORNA IDRISS', '48 14 52 34', '', 'traore.pornaidriss@yahoo.fr', 'traore.pornaidriss', '17823d75', 4, 4, 28, 27, 2, 'OUI', '2019-12-31', '11:28:37', '', '0000-00-00', '00:00:00'),
+(1232, '395 953 Z', 'TUO', 'PEGA', '09 22 42 45', '', 'pega12007@yahoo.fr', 'pega12007', 'pga170580', 4, 4, 28, 27, 2, 'OUI', '2019-12-31', '11:28:37', 'OUI', '2020-06-19', '11:20:16'),
+(1233, '442 753 F', 'YEO', 'LANZENI', '08 53 87 41 ', '', 'yeolanzen@gmail.com', 'yeolanzen', '6e8765bb', 4, 4, 28, 29, 2, 'OUI', '2019-12-31', '11:28:37', 'OUI', '2020-06-27', '09:14:31'),
+(1234, '403 952 Z', 'YMBA', 'MAÃMOUNA', '57 71 40 35', '', 'maimouna_ymba@yahoo.fr', 'maimouna_ymba', 'd538a676', 4, 4, 28, 27, 2, 'OUI', '2019-12-31', '11:28:37', 'OUI', '2020-06-09', '13:31:59'),
+(1235, '292 491 L', 'YOBOUE ', 'KOUADIO BERNARD', '07 97 27 30', '', 'yobouekb@gmail.com', 'yobouekb', 'e90f39f2', 4, 4, 28, 29, 2, 'OUI', '2019-12-31', '11:28:37', '', '0000-00-00', '00:00:00'),
+(1236, '163 269 J', 'BONI EPSE GATTA', 'TANOA MARIE CHANTAL', '07-92-21-89', '', 'gattachantal@yahoo.fr', 'bonigattamarie', '52c571d7', 4, 11, 15, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-10', '13:55:39'),
+(1237, '203 506 A', 'BOSSO EPSE YAPI', 'ABO ODILE', '05 83 47 48', '', 'odileyapi2010@gmail.com', 'bossoaboodile', 'd6691957', 4, 11, 25, 28, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1238, '389 924 W', 'AKAFFOU ', 'YAO SATURNIN DAVY', '05-01-56-52', '', 'akaffouyaosaturnindavy@gmail.com', 'saturnindavy', 'caroline', 4, 4, 31, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-04', '08:23:15'),
+(1239, '426 990 J', 'AKPE ', 'YAPO HERMANN', '47-37-15-40', '', 'akpermann@gmail.com', 'akpermann', '2b10a123', 4, 4, 31, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-25', '09:42:13'),
+(1240, '320 277 K', 'AMALAMAN', 'KOUTOUA', '07-52-43-41', '', 'akoutoua1@yahoo.fr', 'akoutoua', 'marie2006', 4, 4, 31, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-16', '14:51:55'),
+(1241, '152 179 D', 'BLIBOLO ', 'AUGUSTE DIDIER', '01-51-80-30', '', 'bliboloa@yahoo.fr', 'bliboloa57', '2ecompteyahoo', 4, 4, 31, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-03-13', '10:02:11'),
+(1242, '121 411 F', 'BOUTOU', 'GNAZEBO THERESE EPSE N\'DIAYE', '07 09 74 81', '', 'ndiayeboutou@yahoo.fr', 'ndiayeboutou', '5ab32b4b', 4, 11, 27, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1243, '457 012 K', 'DAHO', 'VARTINEL', '08-27-75-83/06-91-60-87', '', 'wolyelisee@gmail.com', 'dahovartinel', '85ba6be6', 4, 11, 15, 27, 2, 'OUI', '2019-07-30', '20:38:24', 'OUI', '2020-08-29', '21:18:57'),
+(1244, '244 843 B', 'DAINGUY ', 'MARIE CLAUDE PASCAL AYE', '', '', 'dmcbenie@yahoo.fr', 'dmcbenie', '471ffffb', 4, 11, 27, 28, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1245, '230 606 L', 'DIALLO', 'ASSITA GENEVIEVE MARIE CELINE', '09 11 19 00', '', 'diallo@yahoo.fr', 'dialloassitaceline', '75dd8e6a', 4, 11, 25, 28, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1246, '231 498 V', 'DIDIA', 'YABA CELESTINE', '07-94-45-75', '', 'yabadidia@yahoo.fr', 'yabadidia', '04b52c71', 4, 11, 15, 27, 2, 'OUI', '2020-02-12', '10:11:54', 'OUI', '2020-07-08', '23:46:57'),
+(1247, '456 601 E', 'DIOMANDE', 'ZINIE ELLA', '47-79-40-20', '', 'zinusdio@yahoo.fr', 'zinusdio', 'zinus123', 4, 11, 15, 27, 2, 'OUI', '2019-07-09', '21:35:13', 'OUI', '2020-01-30', '10:12:01'),
+(1248, '426 926 D', 'DJE', 'ANA MARIA', 'Â 07-45-33-02', '', 'djeanamaria@yahoo.fr', 'djeanamaria', 'gloria14', 4, 11, 15, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-09-08', '22:42:05'),
+(1249, '426 246 T', 'DODO', 'JEAN-CLAUDE', '', '', 'jeanclaude.dodo@gmail.com', 'jeanclaude.dodo', 'tresor', 4, 11, 19, 27, 2, 'OUI', '2020-06-02', '21:35:01', 'OUI', '2020-07-24', '14:43:54'),
+(1250, '396 264 F', 'FAMOUSSA', ' COULIBALY', ' ', ' ', 'famehci@yahoo.fr', 'famehci', 'ed2058c8', 4, 11, 27, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1251, '241 813 S', 'GBAKA EPSE DIBLE', 'DANIELLE', ' 07 08 25 32', ' ', 'danybeaute@yahoo.fr', 'gbakadanielle', 'c3893378', 4, 11, 27, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1252, '426 928 P', 'GNAGBEU', 'LAWA PRIVAT', ' 57 69 66 91', ' ', 'lgnagbeu@yahoo.fr', 'lgnagbeu', '68d3e4dd', 4, 11, 19, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-02', '15:58:29'),
+(1253, '365 471 F', 'KAKOU', 'FOBA ANTOINE', ' 01 15 08 31', ' ', 'kakoufoba@gmail.com', 'kakoufobaantoine', 'e9deb862', 4, 11, 16, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-05-24', '19:58:11'),
+(1254, '239 445 F', 'KIPRE ', 'BLE FRANCOIS', ' 41 28 84 18', ' ', 'Blekipre2006@yahoo.fr', 'kipreblefrancois', 'b49a8252', 4, 11, 16, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1255, '357 234 H', 'KONATE', 'AHMADOU SIENDOU', ' 05 23 45 33', ' ', 'siendouk@gmail.com', 'siendouk', 'siendouufhb', 4, 11, 14, 27, 2, 'OUI', '2019-09-21', '11:17:30', 'OUI', '2020-03-04', '09:00:37'),
+(1256, '426 031 F', 'KONE ', 'KIYOFON ANTOINE', ' ', ' ', 'kiyof15@gmail.com', 'kiyof15', 'd91b9f5f', 4, 11, 14, 27, 2, 'OUI', '2019-09-21', '11:17:30', 'OUI', '2020-09-08', '14:26:12'),
+(1257, '338 341 R', 'KOSSONOU ', ' KOUABENA THEODORE', ' ', ' ', 'coskoth@yahoo.fr', 'kossonoukouabena', '7d7d9add', 4, 11, 19, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-24', '14:40:05'),
+(1258, '426 935 E', 'KOUACOU ', 'N\'GORAN JACQUES', ' ', ' ', 'ngoranjack@gmail.com', 'ngoranjack', '474b9ce6', 4, 11, 19, 27, 2, 'OUI', '2020-02-24', '16:08:27', 'OUI', '2020-06-15', '21:32:49'),
+(1259, '373 178 R', 'KOUADIO ', 'PIERRE ADOU KOUAKOU', ' 07 77 72 93', ' ', 'pierreadou.pa@gmail.com', 'pierreadou.pa', '917599a4', 4, 11, 19, 27, 2, 'OUI', '2020-05-14', '17:04:58', 'OUI', '2020-05-22', '16:05:17'),
+(1260, '341 786 B', 'KOUAME ', 'NÃ‰E SARKISOVA VLADA JURIEVNA', ' 05 70 58 26', ' ', 'vladasarkisova@gmail.com', 'kouamesarkisova', '220637', 4, 11, 16, 27, 2, 'OUI', '2019-12-02', '15:11:09', 'OUI', '2020-09-08', '12:58:36'),
+(1261, '327 246 F', 'KRA ', 'KOUAKOU APPOH ENOC', ' ', ' ', 'kranoc@yahoo.fr', 'kranoc', '4850303a', 4, 11, 19, 27, 2, 'OUI', '2020-02-19', '11:21:51', 'OUI', '2020-06-24', '15:34:50'),
+(1262, '352 781 H', 'BOUABRE ', 'GNOKA MODESTE', '04-16-63-75', '', 'Salomon_desty@yahoo.fr', 'salomonabraham77', 'SAGESSE2019', 4, 4, 31, 27, 2, 'OUI', '2019-07-13', '18:48:43', 'OUI', '2020-07-31', '15:38:14'),
+(1263, '389 984 T', 'BROU', 'AHOSSI NICOLAS', '07-63-24-64', '', 'brouahossi@yahoo.fr', 'brouahossi', 'keren@2019', 4, 4, 31, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-09-07', '23:26:07'),
+(1264, '320 176 E', 'COULIBALY ', 'DJAKALIDJA', '02-17-74-86', '', 'couldjack@yahoo.fr', 'coulibaly_djakalidja', 'a5440f13', 4, 4, 31, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-08', '23:57:54'),
+(1265, '389 696 A', 'EHOUMA ', 'KOFFI LUDOVIC', '05-78-71-87', '', 'monchal17@yahoo.fr', 'monchal17', '7737GH01', 4, 4, 31, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-07', '08:50:52'),
+(1266, '390 039 F', 'EHUI ', 'PRISCA JUSTINE EPSE ANEY', '05-8392-59', '', 'ehuiprisca@yahoo.fr', 'ehuiprisca', 'ehui2040', 4, 4, 31, 27, 2, 'OUI', '2020-01-07', '20:19:14', 'OUI', '2020-02-13', '11:48:45'),
+(1267, '390 213 A', 'MENSAH ', 'KOUASSI RUFIN', ' 53 53 45 80', ' ', 'rufin.wodi1@yahoo.com', 'rufin.wodi1', '4e16ab97', 4, 11, 19, 27, 2, 'OUI', '2020-05-29', '08:05:31', 'OUI', '2020-08-30', '20:01:08'),
+(1268, '320 173 B', 'GOH ', ' DENIS', ' ', ' ', '', 'gohdenis', 'da16b223', 4, 4, 31, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1269, '456 715 X', 'MOLOU', 'KOUASSI ANGE ARISTIDE', '58 46 89 00', '', 'molplaykouassi@yahoo.fr', 'molplaykouassi', 'heureux2018', 4, 11, 19, 27, 2, 'OUI', '2020-02-22', '08:36:50', 'OUI', '2020-03-12', '19:08:52'),
+(1270, '284 824 R', 'KABORE', 'NÃ‰E KIENON TIMPOKO HELENE', ' 01-44-09-32', ' ', 'tkienon@gmail.com', 'tkienon', '1626', 4, 4, 31, 27, 2, 'OUI', '2019-07-30', '20:38:24', 'OUI', '2019-09-16', '15:06:24'),
+(1271, '390 104 E', 'KOFFI', 'KOUAKOU SYLVAIN', ' 40-13-76-00', ' ', 'kkkk.sylvain@yahoo.fr', 'kkkk.sylvain', '28531ccc', 4, 4, 31, 27, 2, 'OUI', '2020-06-29', '12:27:38', 'OUI', '2020-06-29', '21:54:34'),
+(1272, '340 377 T', 'KOUA', 'N\'DA LAZARE', ' 02-11-74-88', ' ', 'koualazare@yahoo.fr', 'koualazare', 'ewesetomo', 4, 4, 31, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-01-27', '16:29:14'),
+(1273, '390 147 G', 'KOUADIO ', 'KOUAKOU JEROME', ' 48-31-93-86', ' ', 'kouadiojeromek2016@gmail.com', 'kouadiojeromek', 'd0f38d83', 4, 4, 31, 27, 2, 'OUI', '2019-06-24', '10:28:52', 'OUI', '2020-06-26', '19:42:11'),
+(1274, '364 991 Y', 'KOUAME ', 'ATTA', ' 03-03-25-18', ' ', 'kouametty@yahoo.fr', 'kouame_atta', '9ac3105a', 4, 4, 31, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-06', '09:22:59'),
+(1275, '390 178 P', 'KOUASSI ', 'KOUAKOU FIRMIN', ' 07-71-90-15', ' ', 'kouafirk@gmail.com', 'firk04', '07719015@BEDSAH', 4, 4, 31, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-17', '07:35:31'),
+(1276, '338 342 J', 'KOUASSI ', 'KOUAKOU SIMEON', ' 01-53-30-95', ' ', 'kksimeon@yahoo.fr', 'kksimeon', 'KKS2019', 4, 4, 31, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-29', '12:29:33'),
+(1277, '390 194 Y', 'KPATTA ', 'N\'CHO JEROME', ' 01-76-67-57', ' ', 'j_kpatta@yahoo.fr', 'kpattajerome', '01766757', 4, 4, 31, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-22', '12:27:11'),
+(1278, '390 230 P', 'N\'GORAN ', 'KOUAKOU GERARD', ' 01-51-80-30', ' ', 'ngorangerard@gmail.com', 'gerad_k', '6b0cca92', 4, 4, 31, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-09', '05:40:05'),
+(1279, '426 250 B', 'N\'GUESSAN ', 'KOUAME HENDERSONN', ' 59-49-24-74', ' ', 'henderco80@yahoo.fr', 'henderco80', 'de187821', 4, 4, 31, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-22', '11:51:34'),
+(1280, '389 834 U', 'OUATTARA ', 'SYNA', ' ', ' ', 'ouattara.syna@inetap.org', 'ouattara.syna', '97a71ab6', 4, 4, 31, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1281, '426 254 T', 'YAO ', 'N\'GUESSAN LOUIS-FRANCK', '58-89-65-53', '', 'franckyao701@gmail.com', 'franckyao701', 'ac6363b1', 4, 4, 31, 27, 2, 'OUI', '2019-07-02', '20:34:48', 'OUI', '2020-07-13', '13:06:24'),
+(1282, '403 941 W', 'YAPO', 'LUCAS DELMAS', '48-92-98-29', '', 'yaludel76@gmail.com', 'yaludel76', 'genevieve01', 4, 4, 31, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-30', '12:18:35'),
+(1283, '296 259 N', 'YORO ', 'BLE MARCEL', '05-46-33-90', '', 'Yoroble94@yahoo.fr', 'blemarcelyoro', 'c8206d98', 4, 4, 31, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-17', '18:08:40'),
+(1284, '165 440 C', 'SANGARE ', ' ABY', ' ', ' ', 'atougbi@yahoo.fr', 'sangareaby', 'f1c0e664', 4, 11, 19, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1285, '397 879 H', 'SAGANOGO ', 'BRAHIMAN', ' ', ' ', 'sbrahiman@hotmail.com', 'sbrahiman', '23dcd5eb', 4, 11, 15, 27, 2, 'OUI', '2019-11-25', '22:12:59', 'OUI', '2020-06-17', '00:26:46'),
+(1286, '390 312 D', 'TAPE', 'JEAN-MARTIAL', '', '', 'jeanmartialtap@yahoo.fr', 'jeanmartialtap', '05087877', 4, 11, 19, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-05-25', '12:28:38'),
+(1287, '152 075 Y', 'VISA Ã‰PSE AHOUNAN', 'TOR  MARIE MERCE', '', '', 'mercevisa.tor@gmail.com', 'merce_visa', 'a6e2e3d1', 4, 11, 15, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-09', '09:34:18'),
+(1288, '234 425 N', 'YAO', 'N\'GUETTA', '', '', 'yaonguetta@yahoo.fr', 'yaonguetta', 'd65ce0b9', 4, 11, 15, 27, 2, 'OUI', '2020-06-24', '09:19:24', 'OUI', '2020-07-20', '14:01:40'),
+(1289, '390 888 G', 'YEO ', ' KANABEIN OUMAR', '', '', 'cotedivoirerenouveau@gmail.com', 'yeokanabein', '61032cce', 4, 11, 19, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-09-07', '15:32:27'),
+(1290, '426 060 Y', 'YOUANT', 'YVES MARCEL', '', '', 'yvesyouant@gmail.com', 'yvesyouant', 'shimteytrinite', 4, 11, 19, 27, 2, 'OUI', '2020-06-05', '22:59:18', 'OUI', '2020-06-08', '18:09:57'),
+(1292, '373 849 J', 'OYOUROU', 'BENSON COBRI', ' 53 36 63 26', ' ', 'bencob2005@gmail.com', 'bencob2005', 'hadassa33', 4, 11, 27, 27, 2, 'OUI', '2020-03-11', '15:14:41', 'OUI', '2020-09-03', '21:35:53'),
+(1293, '236 938 S', 'OUINDE EPSE YEO', 'EDMONDE FRANCINE', ' ', ' ', 'yeoedmonde@gmail.com', 'ouindeedmonde', 'senessou62', 4, 11, 27, 28, 2, 'OUI', '2019-08-28', '20:59:35', 'OUI', '2020-05-30', '16:18:41'),
+(1294, '344 436 X', 'TAI ', 'HIRIGO IGNACE', '05 77 21 07', '', 'ignacetai@yahoo.fr', 'ignacetai', '4aa78ed2', 4, 11, 16, 27, 2, 'OUI', '2020-06-23', '14:36:32', 'OUI', '2020-06-25', '15:27:12'),
+(1295, '255 750 U', 'TRA BI', 'SEMI JEAN PIERRE', '', '', 'bisemijeanpierretra@yahoo.fr', 'trabisemijeanpierre', 'OBED2018', 4, 11, 14, 27, 2, 'OUI', '2019-09-21', '12:08:59', 'OUI', '2020-03-13', '20:45:13'),
+(1296, '248 996 H', 'WAGGA Ã‰PSE OUREGA', 'SOUAHON HELENE ', '', '', 'lowagel@yahoo.fr', 'waggahelene', 'c8c64cda', 4, 11, 27, 28, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1297, '265 932 Z', 'N\'DINDIN ', 'ASSIEHUE CLAUDE', ' ', ' ', 'nassclaude@yahoo.fr', 'nassclaude', '3313f8b9', 5, 8, 47, 17, 1, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1298, '951 001 A', 'DJOKOUEHI', 'CHARLES ANTOINE', '07 71 09 93', '', 'cadjok@gmail.com', 'cadjok', 'djokson8', 5, 11, 18, 19, 3, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-09-03', '12:33:53'),
+(1299, '951 001 B', 'KAHA ', 'KAIME', '48 90 99 18', '', 'aimekaha@gmail.com', 'aimekaha', 'wqhe92', 5, 11, 18, 19, 3, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1300, '951 001 C', 'KOFFI', 'DAMO JUNIOR VIANNEY', '47 86 70 16', '', 'damokoffi@yahoo.fr', 'damokoffi', 'BISHOP87', 5, 11, 16, 19, 3, 'OUI', '2019-08-28', '16:14:03', 'OUI', '2020-06-23', '15:12:02'),
+(1301, '951 001 D', 'LATTRO', 'TITE', '06 24 23 54', '', 'latite@ymail.com', 'latite', 'LTpossible3', 5, 11, 16, 19, 3, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-26', '19:22:43'),
+(1302, '951 001 E', 'BAMBA', 'DOCHIEMIN MATHIEU', '40 16 86 14', '', 'dochienme@gmail.com', 'dochienme', 'd1dd1d7b', 5, 11, 15, 19, 3, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-05-16', '09:09:39'),
+(1303, '951 001 F', 'COULIBALY', 'YACOUBA', '07 22 49 66', '', 'chigata2002@gmail.com', 'chigata2002', 'corane', 5, 11, 15, 19, 3, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2019-12-13', '12:30:55'),
+(1304, '951 001 G', 'BAYOKO', 'ABOU SAMPHA', '', '', 'samphabayoko@yahoo.fr', 'samphabayoko', 'fantabayoko2016', 3, 11, 15, 13, 3, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1305, '700 519 Y', 'DILY', 'OUMOU', '4103 74 64', '', 'dilyoumou4@gmail.com', 'dilyoumou', 'e0df1887', 3, 4, 20, 13, 3, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2019-10-15', '12:57:13'),
+(1306, '951 001 H', 'ALLOU', 'ALLOU SERGE YANNICK', '', '', 'allousy@yahoo.fr', 'allousy1', 'amelie1984', 5, 11, 19, 19, 3, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-26', '16:12:25'),
+(1307, '951 001 J', 'LOUA', 'KOUASSI CYRILLE', '08 85 99 42', '', 'cyrillelk@gmail.com', 'cyrillelk1', 'proflkc1', 5, 11, 19, 19, 3, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-09-04', '10:50:55'),
+(1308, '389 916 W', 'ADOU ', 'GNANGORAN ALIDA THERESE', '07 65 69 25', '', 'agathe_n77@yahoo.fr', 'agathe_n77', '1a479f80', 4, 4, 86, 27, 2, 'OUI', '2020-06-05', '21:54:27', 'OUI', '2020-06-08', '15:07:58'),
+(1309, '241 621 H', 'ALLA', 'DELLA ANDRE', '07 78 44 67', '', 'gnalladella@gmail.com', 'alla_della', '8ae53fc4', 4, 4, 86, 27, 2, 'OUI', '2019-12-23', '14:32:03', 'OUI', '2019-07-03', '10:49:56'),
+(1310, '365 485 W', 'ATTA ', 'KOUACOU JEAN-MARIE', '07 98 43 92', '', 'jeanmarie_kouac@yahoo.fr', 'jeanmarie_kouac', '6a193764', 4, 4, 28, 27, 2, 'OUI', '2019-12-23', '14:32:03', '', '0000-00-00', '00:00:00'),
+(1311, '456 568 C', 'BAMBA', 'YAYA', '05 69 54 13', '', 'yaya_bamba@ymail.com', 'bambayaya', '670356cc', 4, 4, 28, 27, 2, 'OUI', '2019-12-23', '14:32:03', 'OUI', '2020-06-25', '12:05:05'),
+(1312, '503 141 Y', 'BONI', 'LAURENCE', '07 58 83 99', '', 'laurenceboni@yahoo.fr', 'bonilaurence', 'dc12b9ff', 4, 4, 28, 27, 2, 'OUI', '2019-12-23', '14:32:03', 'OUI', '2020-06-02', '12:02:24'),
+(1313, '389 980 B', 'BOSSON', 'EBY JOSEPH', '07 54 21 25', '', 'ebybosson@yahoo.fr', 'ebybosson', '0df20ebd', 4, 4, 28, 27, 2, 'OUI', '2019-12-23', '14:32:03', '', '0000-00-00', '00:00:00'),
+(1314, '389 652 M', 'BRENOUM ', 'KOUAKOU DAVID', '58 10 15 10', '', 'kbrenoum@yahoo.com', 'kbrenoum', 'c86dedf7', 4, 4, 28, 27, 2, 'OUI', '2020-06-04', '16:41:24', 'OUI', '2020-06-23', '14:15:02'),
+(1315, '456 582 K', 'COULIBALY ', 'ABOUBAKAR', '07 46 85 46', '', 'abou_c@yahoo.fr', 'coulibalyaboubakar', 'f091fe1e', 4, 4, 28, 27, 2, 'OUI', '2019-12-23', '14:32:03', 'OUI', '2020-06-08', '15:26:02'),
+(1316, '389 667 L', 'COULIBALY ', 'SIDIKI YOUSSOUF', '40 91 90 77', '', 'sidik_coul@yahoo.fr', 'sidik_coul', '9f7c22e5', 4, 4, 28, 27, 2, 'OUI', '2019-12-23', '14:32:03', 'OUI', '2020-06-25', '12:28:01'),
+(1317, '427 148 S', 'DANGUI', 'NADI PAUL', '09 49 50 85', '', 'danguinadi@yahoo.fr', 'danguinadi', '518bf558', 4, 4, 86, 27, 2, 'OUI', '2019-12-23', '15:12:19', 'OUI', '2020-06-16', '08:36:51'),
+(1318, '239 414 Y', 'DEMBELE', 'OUSMANE', '05 75 29 58', '', 'dembele.ousmane99@yahoo.fr', 'dembele.ousmane99', '613280d1', 4, 4, 86, 27, 2, 'OUI', '2019-12-23', '15:12:19', '', '0000-00-00', '00:00:00'),
+(1319, '390 016 Y', 'DIABAGATE', 'ABOU', '07 90 32 02', '', 'aboudiaba76@yahoo.fr', 'aboudiaba76', 'abou76diabagate', 4, 4, 86, 27, 2, 'OUI', '2020-05-10', '13:41:36', 'OUI', '2020-06-09', '17:04:48'),
+(1320, '344 909 J', 'DIBI', 'AGOH PAULINE  EPSE KANGAH', '07 05 90 34', '', 'line237@yahoo.com', 'line237', '@Jedha4everT', 4, 4, 86, 27, 2, 'OUI', '2019-12-23', '15:12:19', 'OUI', '2020-01-09', '22:07:49'),
+(1321, '358 648 H', 'DIBY ', 'KOUAKOU MARTIN', '84 88 63 2', '', 'dibi_martin@yahoo.fr', 'dibikouakou', '933810c3', 4, 4, 86, 27, 2, 'OUI', '2019-12-23', '15:12:19', 'OUI', '2020-07-06', '10:15:10'),
+(1322, '157 764 C', 'DIECKET ', 'MOÃSE ANTOINE', '06 30 59 60', '', 'dckt2002@yahoo.fr', 'diecketmoise', 'fc036dc1', 4, 4, 86, 27, 2, 'OUI', '2019-12-23', '15:12:19', '', '0000-00-00', '00:00:00'),
+(1323, '159 123 U', 'ESSAN', 'KODIA VALENTIN', '07 43 07 05', '', 'essankv@yahoo.fr', 'essankv', '8e859eca', 4, 4, 86, 27, 2, 'OUI', '2019-12-23', '15:12:19', '', '0000-00-00', '00:00:00'),
+(1324, '436 090 R', 'EVIAR', 'OHOMON BERNARD', '58 63 70 74', '', 'bernardeviar@gmail.com', 'ohomonbernardeviar', 'ayaeliane', 4, 4, 86, 27, 2, 'OUI', '2019-12-23', '15:12:19', 'OUI', '2020-06-17', '10:08:35'),
+(1325, '291 840 C', 'ESSO ', 'LASME JEAN-CHARLES EMMANUEL', '78 70 11 90  ', '', 'docteuressoemmanuel@gmail.com', 'docteuressoemmanuel', '877bfef0', 4, 4, 86, 27, 2, 'OUI', '2019-12-23', '15:12:19', '', '0000-00-00', '00:00:00'),
+(1326, '249 166 R', 'GNAMBA', 'YAO AKE JEAN-BAPTISTE', ' 48 71 79 60', ' ', 'gnambajb@yahoo.fr', 'gnambajd', 'bf2a8195', 4, 4, 86, 27, 2, 'OUI', '2019-12-23', '15:12:19', '', '0000-00-00', '00:00:00'),
+(1327, '426 998 N', 'GOZE', 'THOMAS', ' 07 45 89 77', ' ', 'dadeagoze@gmail.com', 'dadeagoze', '5064', 4, 4, 86, 27, 2, 'OUI', '2019-12-23', '15:12:19', 'OUI', '2020-06-27', '12:15:03'),
+(1328, '285 232 Y', 'KABLAN', 'N\'GUESSAN HASSY JOSEPH', ' 07 61 45 32', ' ', 'kablanjoseph@yahoo.fr', 'kablanjoseph', '576ca275', 4, 4, 86, 27, 2, 'OUI', '2019-12-23', '16:57:16', '', '0000-00-00', '00:00:00'),
+(1329, '459 198 D', 'KABRAN', 'GNANKON ESTELLE GISELE', '48 80 51 79', '', 'estellekabtran@gmail.com', 'estellekabtran', 'a0a045a9', 4, 4, 15, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1330, '257 478 J', 'KAMAGATE', 'SANALIOU', '07 96 31 15', ' ', 'ksanaliou@yahoo.fr', 'ksanaliou', '9afe552e', 4, 4, 28, 27, 2, 'OUI', '2019-12-23', '16:57:16', 'OUI', '2020-08-02', '16:31:25'),
+(1331, '351 074 E', 'KAMBIRE', 'BEBE', ' 05 46 70 97', ' ', 'bekambire@yahoo.fr', 'kambire_bebe', 'bekambireigt2019', 4, 4, 28, 27, 2, 'OUI', '2019-12-23', '16:57:16', 'OUI', '2020-06-09', '10:52:26'),
+(1332, '951 003 A', 'DIARRASSOUBA', 'ADAMA', '', '', 'adama.diarrassouba083@gmail.com', 'adama.diarrassouba083', '479a9fe1', 3, 4, 23, 12, 3, 'OUI', '2020-06-15', '16:00:52', 'OUI', '2020-06-16', '14:12:20'),
+(1333, '327 124 M', 'KANGAH', 'ARMAND', ' 07 41 65 31', ' ', 'a_kangah@yahoo.fr', 'a_kangah', '2005k', 4, 4, 86, 27, 2, 'OUI', '2020-06-15', '22:35:45', 'OUI', '2020-06-17', '15:59:08'),
+(1334, '340 373 X', 'KASSI ', 'IRENE', '47 08 23 82', ' ', 'irenekassi@yahoo.fr', 'irenekassi', 'irene1973djodjo', 4, 4, 86, 27, 2, 'OUI', '2019-12-23', '16:57:16', 'OUI', '2020-05-13', '12:43:26'),
+(1335, '344 910 E', 'KOFFI', 'ADJOBA MARTHE', ' 01 35 63 97', ' ', 'koffiamarthe@yahoo.fr', 'koffiamarthe', '187590b8', 4, 4, 86, 27, 2, 'OUI', '2019-12-23', '16:57:16', '', '0000-00-00', '00:00:00'),
+(1336, '356 787 B', 'KOUASSI', 'AMENAN MICHELLINE EPSE KOFFI ', ' 07 51 52 38', ' ', 'kofmiche@hotmail.fr', 'kofmiche', 'g099m792', 4, 4, 28, 27, 2, 'OUI', '2019-12-30', '13:41:07', 'OUI', '2020-01-02', '16:38:23'),
+(1337, '351 075 F', 'KONAN ', 'KOUADIO EUGENE', ' 07 33 65 98', ' ', 'enzokkeugene@yahoo.fr', 'enzokkeugene', 'Lucmoise2', 4, 4, 28, 27, 2, 'OUI', '2019-12-30', '13:04:48', 'OUI', '2020-04-26', '18:03:43'),
+(1338, '390 119 C', 'KONAN ', 'KOUAME PASCAL', ' 07 47 94 33', ' ', 'konan_76@yahoo.fr', 'konan_76', 'd4617db2', 4, 4, 28, 27, 2, 'OUI', '2019-12-30', '13:04:48', '', '0000-00-00', '00:00:00'),
+(1339, '390 128 D', 'KONE ', 'MOUSSA', ' 09 84 76 71', ' ', 'moussakci@yahoo.fr', 'moussakci', 'mkone1969', 4, 4, 28, 27, 2, 'OUI', '2019-12-30', '13:04:48', 'OUI', '2020-08-19', '13:44:59'),
+(1340, '390 139 G', 'KOUADIO', 'ADOU FRANCOIS', '57 50 92 77', ' ', 'adoufrancois@yahoo.fr', 'adoufrancois', '8e6ccc10', 4, 4, 28, 27, 2, 'OUI', '2019-12-30', '13:04:48', '', '0000-00-00', '00:00:00'),
+(1341, '390 156 H', 'KOUAKOU ', 'AYA LOUISE', ' 07 80 87 35', ' ', 'ayamoho@yahoo.fr', 'ayamoho', '0acf8361', 4, 4, 28, 27, 2, 'OUI', '2019-12-30', '13:04:48', '', '0000-00-00', '00:00:00'),
+(1342, '427 211 R', 'KOUAKOU ', 'N\'GORAN NORBERT', ' 03 79 03 43', ' ', 'kn39gorannorbert@yahoo.fr', 'kouankou_ngorannorb', 'a58b968f', 4, 4, 28, 27, 2, 'OUI', '2019-12-30', '13:41:07', 'OUI', '2020-09-03', '10:15:41'),
+(1343, '390 180 E', 'KOUASSI', 'N\'GUESSAN GILBERT', '05 77 52 94', ' ', 'gilbertini2006@yahoo.fr', 'gilbertini2006', '6d72dc83', 4, 4, 28, 27, 2, 'OUI', '2019-12-30', '13:41:07', 'OUI', '2020-05-18', '12:03:24'),
+(1344, '427 001 K', 'KOUASSI ', 'PATRICK JUVET', ' 07 36 00 46', ' ', 'kpatrickjuvet@yahoo.fr', 'kpatrickjuvet', '1976djisso', 4, 4, 28, 27, 2, 'OUI', '2019-12-30', '13:41:07', 'OUI', '2020-06-30', '15:37:47'),
+(1345, '335 067 X', 'KOUASSI ', 'YAO FREDERIC', ' 08 84 84 52', ' ', 'houphouetfredy@gmail.com', 'houphouetfredy', 'ad0229a4', 4, 4, 28, 27, 2, 'OUI', '2020-01-08', '23:05:20', 'OUI', '2020-07-10', '22:20:38'),
+(1346, '390 188 A', 'KOUKOUGNON  ', 'WILFRIED GAUTIER', ' 41 33 68 14', ' ', 'koukougnon74@yahoo.fr', 'koukougnon74', 'RACHEL042006', 4, 4, 28, 27, 2, 'OUI', '2020-04-23', '15:48:21', 'OUI', '2020-06-25', '11:22:13'),
+(1347, '427 002 L', 'KOULAÃ ', 'ARMAND', '58 96 95 24', ' ', 'armandekoulai82@gmail.com', 'koulai.armand', 'Kelassa2013', 4, 4, 28, 27, 2, 'OUI', '2019-12-30', '13:41:07', 'OUI', '2020-07-14', '13:16:16'),
+(1348, '390 026 S', 'KOULAI', 'EDITH EPSE DJEDJE', ' 07 04 26 82', ' ', 'koulaidjedje@gmail.com', 'koulaidjedje', 'Eden2015', 4, 4, 28, 27, 2, 'OUI', '2020-06-08', '14:21:11', 'OUI', '2020-06-08', '17:01:22'),
+(1349, '344 940 L', 'ALLANGBA', 'YEBOUE', '', '', 'dr.allangba.yeboue@gmail.com', 'dr.allangba.yeboue', 'yeboue02', 4, 10, 90, 27, 2, 'OUI', '2020-07-11', '21:39:14', 'OUI', '2020-07-12', '19:33:07'),
+(1350, '348 940 Y', 'ATCHOUA ', 'N\'GUESSAN JULIEN', '07 13 81 81', '', 'n_atchoua@yahoo.fr', 'n_atchoua', '9e784793', 4, 10, 90, 27, 2, 'OUI', '2020-01-02', '16:03:53', 'OUI', '2020-07-10', '17:00:42'),
+(1351, '266 679 U', 'ATTADE', 'KOUAKOU FAUSTIN', '02 55 11 06', '', 'saydess@yahoo.fr', 'attadekouakou', 'f5711dd0', 4, 10, 37, 27, 2, 'OUI', '2020-01-02', '11:25:43', 'OUI', '2020-08-18', '13:20:09'),
+(1352, '146 432 M', 'BARRO', 'IDRISSA', '', '', '', 'barroidrissa', '0703f8eb', 4, 10, 88, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1353, '251 989 D', 'BLE', 'RAOUL ASSALE GERMAIN', '07 84 42 83', '', 'bleraoulgermain@yahoo.fr', 'bleraoulgermain', '90202263', 4, 10, 89, 27, 2, 'OUI', '2020-07-07', '20:49:14', '', '0000-00-00', '00:00:00'),
+(1354, '348 941 M', 'BOGUI', 'MAOMRA JEAN-JACQUES', '07 35 23 95', '', 'boguim@yahoo.fr', 'boguim', '4373907d', 4, 10, 90, 27, 2, 'OUI', '2020-01-02', '16:03:53', 'OUI', '2020-07-07', '15:35:15'),
+(1356, '206 921 U', 'BOLY ', 'LADE DESIRE', '', '', '', 'bolyladedesire', '1bd617aa', 4, 10, 89, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1357, '502 340 J', 'DEGNY', 'YESSOH PIERRE-MARIUS', '03 86 86 95', '', 'degnymarius@yahoo.fr', 'degnymarius', 'd03868695', 4, 10, 88, 27, 2, 'OUI', '2020-01-01', '22:49:01', 'OUI', '2020-07-30', '08:52:20'),
+(1358, '361 893 T', 'DIASSE', 'ALAIN REGIS', '06 46 53 52', '', 'alaindiasse@yahoo.fr', 'alaindiasse', '5291c228', 4, 10, 89, 27, 2, 'OUI', '2020-01-02', '16:03:53', '', '0000-00-00', '00:00:00'),
+(1359, '399 304 K', 'DJAH ', 'NÃ‰E KOFFI OKON MARGUERITE', '', '', 'djahmargurite@yahoo.fr', 'djahmarguerite', '322ceaea', 4, 10, 89, 27, 2, 'OUI', '2020-07-08', '12:13:05', '', '0000-00-00', '00:00:00'),
+(1360, '229 768 Y', 'DJEDJESS', 'ATCHORY ALBERT', '07 64 10 46', '', 'aldjedjes@yahoo.fr', 'aldjedjes', '2020', 4, 10, 37, 27, 2, 'OUI', '2020-07-09', '17:54:34', 'OUI', '2020-07-24', '13:35:42'),
+(1361, '236 768 P', 'DJOKE ', 'BODJE THEOPHILE', '09 91 90 52', '', 'jauchaybaujay@gmail.com', 'jauchaybaujay', 'e5d1d11f', 4, 10, 37, 27, 2, 'OUI', '2020-07-14', '16:50:43', 'OUI', '2020-07-20', '16:33:41'),
+(1362, '361 897 X', 'DRAME ', 'ABIBATA', '', '', 'drameo2015@gmail.com', 'drameo2015', '46c4d79d', 4, 10, 89, 28, 2, 'OUI', '2020-07-13', '10:38:43', 'OUI', '2020-07-15', '10:10:42');
+INSERT INTO `utilisateur` (`id_utilisateur`, `matricule_utilisateur`, `nom_utilisateur`, `prenom_utilisateur`, `tel_utilisateur`, `adresse_utilisateur`, `email_utilisateur`, `login_utilisateur`, `mot_passe_utilisateur`, `id_type_utilisateur`, `id_etablissement`, `id_departement`, `id_groupe_utilisateur`, `id_qualite_utilisateur`, `parametres_envoye`, `date_envoie`, `heure_envoie`, `connexion_reussie`, `date_derniere_connexion`, `heure_derniere_connexion`) VALUES
+(1363, '258 215 K', 'FAYET', 'TCHEOUHIN FAUSTIN', '01 00 43 85', '', 'faustinfahet@gmail.com', 'fayetfaustin', 'eb7013c8', 4, 10, 37, 27, 2, 'OUI', '2020-01-02', '11:25:43', 'OUI', '2020-07-10', '12:44:00'),
+(1364, '334 152 Y', 'TIEFFI', ' HASSAN GUY ROGER', '', '', 'thgrfr@yahoo.fr', 'thgrfr', 'Nguessangertrude1975', 4, 4, 33, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1365, '160 808 R', 'KRA ', 'YAO', ' 07 98 42 12', ' ', 'yaodamoth@gmail.com', 'krayao', '31a4baa4', 4, 4, 28, 27, 2, 'OUI', '2019-12-30', '13:41:07', '', '0000-00-00', '00:00:00'),
+(1366, '390 197 T', 'KRA ', 'KOUADIO EUGENE', ' 07 87 00 97', ' ', 'krakeugene@yahoo.fr', 'krakeugene', 'Novembre@1971', 4, 4, 28, 27, 2, 'OUI', '2019-12-30', '13:41:07', 'OUI', '2019-12-30', '22:48:43'),
+(1367, '354 228 Q', 'LOBA', 'AKOU DON FRANCK VALERY', '07 39 63 67', ' ', 'valo226@yahoo.com', 'valo226', '3aa1b377', 4, 4, 28, 27, 2, 'OUI', '2019-12-30', '13:41:07', 'OUI', '2020-06-25', '12:45:07'),
+(1368, '389 810 G', 'MEMEL ', 'FREDERIC ARMEL', '48 82 54 94', ' ', 'mfredericarmel@yahoo.fr', 'mfredericarmel', '1706IGT', 4, 4, 28, 27, 2, 'OUI', '2019-12-30', '14:07:54', 'OUI', '2020-06-10', '12:14:06'),
+(1369, '327 123 L', 'NASSA', 'DABIE DESIRE AXEL', ' 09 04 58 12', ' ', 'dabienassa@gmail.com', 'dabienassa', '4a09d8f3', 4, 4, 28, 27, 2, 'OUI', '2020-04-28', '11:06:15', 'OUI', '2020-05-04', '13:15:21'),
+(1370, '327 125 N', 'N\'DAHOULE', 'YAO REMI', '07 91 84 49', ' ', 'ndahouley@yahoo.fr', 'ndahouley', 'de620589', 4, 4, 28, 27, 2, 'OUI', '2019-12-30', '14:07:54', '', '0000-00-00', '00:00:00'),
+(1371, '107 227 Z', 'N\'GOTTA ', 'N\'GUESSAN', '49 33 98 68', ' ', 'ngottanguessan@gmail.com', 'ngottanguessan', '225486f7', 4, 4, 28, 27, 2, 'OUI', '2019-12-30', '14:07:54', '', '0000-00-00', '00:00:00'),
+(1372, '364 978 J', 'N\'GUESSAN', 'ATSE ALEXIS BERNARD', '01 35 70 69', ' ', 'atsalexis1@yahoo.fr', 'atsalexis1', '01077976ATSE', 4, 4, 28, 27, 2, 'OUI', '2020-06-16', '16:01:57', 'OUI', '2020-07-06', '16:42:30'),
+(1373, '390 234 F', 'N\'GUESSAN ', 'KOUASSI FULGENCE', '07 21 31 04', ' ', 'dr.nkful8@yahoo.fr', 'dr.nkful8', 'sieanwoudjoue19', 4, 4, 28, 27, 2, 'OUI', '2019-12-30', '14:07:54', 'OUI', '2020-07-07', '09:16:14'),
+(1374, '456 730 A', 'NIAMKE', 'GNANKE MATHIEU', '58 14 07 95', '', 'mathieuniamke23@gmail.com', 'niamkeygnake', '730c93af', 4, 4, 28, 27, 2, 'OUI', '2019-12-30', '14:07:54', 'OUI', '2020-08-26', '17:06:58'),
+(1375, '390 261 J', 'OUATTARA', 'SEYDOU', '08 22 04 70', ' ', 'oseydou39@yahoo.com', 'docteurseydou', 'coursigtufhb', 4, 4, 28, 27, 2, 'OUI', '2019-12-31', '11:07:02', 'OUI', '2020-07-09', '16:18:03'),
+(1376, '273 276 P', 'SERHAN', 'NASSER', '07 56 44 84', '', 'serhano2000@hotmail.com', 'serhano2000', 'NASSER1015', 4, 4, 28, 27, 2, 'OUI', '2019-12-31', '11:07:02', 'OUI', '2020-01-10', '15:36:19'),
+(1377, '456 758 J', 'SYLLA', 'YAYA', '08 13 68 65', '', 'syllayaya5336@gmail.com', 'syllayaya5336', '02f23b02', 4, 4, 28, 27, 2, 'OUI', '2019-12-31', '11:07:02', 'OUI', '2020-06-27', '11:35:16'),
+(1378, '130 261 D', 'TAPE ', 'BIDI JEAN', '05 68 30 89', '', 'bidijean@yahoo.fr', 'bidijean', 't5363', 4, 4, 28, 27, 2, 'OUI', '2020-06-16', '16:01:57', 'OUI', '2020-06-24', '10:16:35'),
+(1379, '351 076 G', 'TIA', 'LAZARE', '59 93 53 01', '', 'apex_ic@yahoo.fr', 'apex_ic', '80855e26', 4, 4, 28, 27, 2, 'OUI', '2019-12-31', '11:07:02', 'OUI', '2020-01-01', '20:19:26'),
+(1380, '315 029 V', 'TOURE', 'MAMOUTOU', '08 28 06 00', '', 'tourema@yahoo.fr', 'tourema', '2323', 5, 4, 86, 20, 1, 'OUI', '2019-12-31', '11:07:02', 'OUI', '2020-05-23', '18:07:41'),
+(1381, '234 629 A', 'TOURE', 'TIYEGBO AUGUSTIN', '01 28 68 87', '', 'touretiyegbo@gmail.com', 'touretiyegbo', '4f54ad55', 4, 4, 28, 27, 2, 'OUI', '2019-12-31', '11:07:02', '', '0000-00-00', '00:00:00'),
+(1382, '389 874 C', 'WADJA', 'JEAN-BERENGER', '04 24 42 10', '', 'jwadja@yahoo.fr', 'jwadja', 'angeleba2602', 4, 4, 28, 27, 2, 'OUI', '2019-12-31', '11:28:37', 'OUI', '2020-07-08', '22:37:19'),
+(1383, '345 670 W', 'YAO', 'BELI DIDIER', '07 06 34 42', '', 'belididier07@yahoo.fr', 'belididier07', 'meiramira', 4, 4, 28, 27, 2, 'OUI', '2019-12-31', '11:28:37', 'OUI', '2020-07-09', '17:32:31'),
+(1384, '390 343 L', 'YAO', 'KOUASSI AIME', '07 42 06 06', '', 'aimeyaokouassi@gmail.com', 'aimeyaokouassi', '390343L', 4, 4, 28, 27, 2, 'OUI', '2019-12-31', '11:28:37', 'OUI', '2020-01-07', '08:14:05'),
+(1385, '427 296 P', 'SERI ', 'ZOHONON SYLVIE CELINE EPSE YAPI', '48 03 73 65', '', 'yapicel@yahoo.fr', 'yapicel', 'be6622c2', 4, 4, 28, 27, 2, 'OUI', '2019-12-31', '11:07:02', 'OUI', '2020-06-25', '13:14:44'),
+(1386, '951 009 A', 'FOFANA', 'ISSOUF', '', '', 'fofetude@yahoo.fr', 'fofetude', '05060634', 3, 11, 18, 13, 3, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-24', '12:59:53'),
+(1387, '951 020 B', 'ALLA', 'HERMANN', '', '', 'allhermn3@yahoo.fr', 'allhermann', 'cf5389dc', 3, 4, 21, 13, 3, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1388, '358 537 A', 'YEO', 'SOUNGARI', '08 79 83 86', '', 'ysoungari@yahoo.fr', 'ysoungari', 'nandialayeo1937', 4, 4, 34, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1389, '389 844 E', 'SEHI BI', 'TRA JAMAL', ' 07 72 18 22', ' ', 'bijamal@yahoo.fr', 'bijamal', 'gongyo2019', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1390, '361 405 A', 'GNONZION ', 'CELESTIN', '58 69 32 70', ' ', 'gnonzion@yahoo.fr', 'gnonzion', 'gnoce248', 4, 10, 89, 27, 2, 'OUI', '2020-01-02', '16:03:53', 'OUI', '2020-01-02', '16:24:25'),
+(1391, '365 469 M', 'GOA', 'KACOU', ' ', ' ', 'goakacou@yahoo.com', 'goakacou', '83894505', 4, 10, 89, 27, 2, 'OUI', '2020-01-02', '16:03:53', 'OUI', '2020-07-12', '08:59:35'),
+(1392, '458 762 Q', 'TOPE', 'BEUGRE NIZIE MICHELLE-CARINE EPSE GUEU', '40 00 65 35', '', 'michelletope@yahoo.fr', 'michelletope', 'b904f026', 4, 10, 89, 27, 2, 'OUI', '2020-01-02', '16:03:53', 'OUI', '2020-07-13', '10:50:39'),
+(1393, '253 612 C', 'HIEN', 'SIE', '07 77 22 79', ' ', 'hiensie2002@yahoo.fr', 'hiensie2002', '3f56cf61', 4, 10, 37, 27, 2, 'OUI', '2020-07-11', '21:43:32', '', '0000-00-00', '00:00:00'),
+(1394, '351 072 C', 'IBITOWA ', 'PHILIPPE', '07 61 57 90', ' ', 'philippeibito@yahoo.fr', 'philippeibito', '7bcb8a18', 4, 10, 89, 27, 2, 'OUI', '2020-01-02', '16:03:53', 'OUI', '2020-01-06', '11:01:11'),
+(1395, '230 715 G', 'KADJA', 'NAMBO PASCAL', ' ', ' ', 'kakanananpas@yahoo.fr', 'kakanananpas', 'a655012d', 4, 10, 89, 27, 2, 'OUI', '2020-01-02', '16:03:53', '', '0000-00-00', '00:00:00'),
+(1397, '385 080 U', 'KONE ', 'BASSEMORY', '08 13 45 95', ' ', 'konebassemory@gmail.com', 'konebassemory', '0b986ba7', 4, 10, 89, 27, 2, 'OUI', '2020-01-02', '16:03:53', 'OUI', '2020-07-07', '15:44:25'),
+(1398, '271 041 D', 'KONE ', 'DONIKPO', ' ', ' ', 'donikpo@yahoo.fr', 'donikpo', 'fbb9586a', 4, 10, 88, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1399, '268 112 E', 'KOUAKOU ', 'KOUADIO ANTOINE', '04 18 21 18', ' ', 'antoinekouakou68@gmail.com', 'antoinekouakou68', 'd358a0ac', 4, 10, 89, 27, 2, 'OUI', '2020-01-02', '16:03:53', 'OUI', '2020-01-03', '12:58:12'),
+(1400, '251 739 R', 'KOUAKOU', 'OI KOUAKOU BENOIT', '09 61 01 25', ' ', 'benkouakouoi@gmail.com', 'benkouakouoi', '3aa07a7f', 4, 10, 89, 27, 2, 'OUI', '2020-07-09', '17:54:34', '', '0000-00-00', '00:00:00'),
+(1401, '458 466 G', 'KOUAME', 'YAO FRANCIS', '06 17 88 42', '', 'Kouameyaofrancis56@gmail.com', 'kouameyaofrancis', '75431ef6', 4, 10, 37, 27, 2, 'OUI', '2020-07-09', '18:04:12', 'OUI', '2020-07-15', '11:37:30'),
+(1402, '203 285 C', 'KOUASSI', 'NÃ‰E BANA SOGO JEANNE', '58 39 58 80', ' mamie.bana@gmail.com ', 'mamie.bana@gmail.com', 'mamie.bana', 'c22fc30a', 4, 10, 88, 27, 2, 'OUI', '2020-07-09', '18:42:28', 'OUI', '2020-07-15', '18:52:20'),
+(1403, '286 957 Y', 'KOUROUMA ', 'KASSOUM', '07 12 24 07', ' ', 'Kassoum77@yahoo.fr', 'kouroumakassoum', '302metro095', 4, 10, 37, 27, 2, 'OUI', '2020-01-02', '11:25:43', 'OUI', '2020-07-20', '16:28:14'),
+(1404, '301 094 S', 'NANGA ', 'NÃ‰E ADJAFFI ANGELINE', ' 05 03 80 17', ' ', 'adiaffi61@yahoo.fr', 'adiaffi61', '0820973f', 3, 10, 89, 16, 1, 'OUI', '2020-01-02', '16:19:17', '', '0000-00-00', '00:00:00'),
+(1405, '426 067 K', 'N\'DRI ', 'YAO', ' 08-81-24-07', ' ', 'ndri_y@yahoo.fr', 'ndri_y', '5ec5e60a', 4, 10, 88, 27, 2, 'OUI', '2020-07-09', '18:42:28', 'OUI', '2020-07-16', '11:02:17'),
+(1406, '234 318 A', 'N\'GORAN ', 'OUSSOU JUSTIN', ' ', ' ', '', 'ngoranjustin', '1344275f', 4, 10, 89, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1407, '428 897 K', 'OSSEY', 'YAPI LAMBERT', '07 82 74 67', ' ', 'yossez13@gmail.com', 'yossez13', 'ae6e8586', 4, 10, 88, 27, 2, 'OUI', '2020-07-09', '18:27:54', '', '0000-00-00', '00:00:00'),
+(1408, '360 405 M', 'TANO', 'KOUAKOU PIERRE', '08 80 85 59', '', 'tanopierretano@yahoo.fr', 'tanokouakoupierre', '451ec5cb', 4, 10, 88, 27, 2, 'OUI', '2020-01-02', '11:28:51', 'OUI', '2020-09-03', '08:07:44'),
+(1409, '266 686 C', 'TAYORO ', 'GNEWA GERARD', '', '', 'tayorog@gmail.com', 'tayorog', '7af9ade8', 4, 10, 88, 27, 2, 'OUI', '2020-07-09', '18:42:28', 'OUI', '2020-07-16', '18:00:00'),
+(1410, '287 838 S', 'TCHERE ', 'NÃ‰E YAVO IPHIGENIE MARIE-LAURE', '07 31 56 53', '', 'tchere.yml@gmail.com', 'tchere.yml', '477c5e2f', 4, 10, 89, 27, 2, 'OUI', '2020-07-08', '12:21:27', '', '0000-00-00', '00:00:00'),
+(1411, '236 639 E', 'TOA', 'AGNINI JULES EVARISTE', '01 29 21 40', '', 'julestoa@gmail.com', 'julestoa', '011674f7', 4, 10, 89, 27, 2, 'OUI', '2020-01-02', '16:03:53', 'OUI', '2020-07-17', '09:22:42'),
+(1412, '344 915 X', 'YAO', 'KOFFI CELESTIN', '47 63 16 96', '', 'mrkoffiyao@hotmail.com', 'mrkoffiyao', '4178da2c', 4, 10, 37, 27, 2, 'OUI', '2020-01-02', '11:25:43', '', '0000-00-00', '00:00:00'),
+(1413, '364 993 S', 'YAO ', 'KOUAME GERARD', '40 47 76 06', '', 'yaogerard2003@yahoo.fr', 'yaogerard2003', 'YegoManseh02042010', 4, 10, 37, 27, 2, 'OUI', '2020-07-09', '18:27:54', 'OUI', '2020-07-17', '10:24:27'),
+(1414, '404 080 Y', 'YAPI ', 'YAPO ELIAN ESTEL', '89 81 37 80', '', 'elianyapi@gmail.com', 'elianyapi', '858d1a1f', 4, 10, 37, 27, 2, 'OUI', '2020-07-14', '16:52:16', 'OUI', '2020-07-20', '16:31:28'),
+(1415, '279 102 Q', 'KAMATE', 'BANHOUMAN', ' 01 98 06 88', ' ', 'banhouman@yahoo.fr', 'banhouman', 'cmkamate2020', 4, 10, 88, 27, 2, 'OUI', '2020-07-11', '07:30:05', 'OUI', '2020-07-16', '22:45:14'),
+(1416, '234 428 Z', 'ADJA', 'BROKOUNE SOUMAYE  VINCENT', '', '', '', 'adjabrokoune', '8952c493', 4, 2, 49, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1417, '234 688 E', 'AHOUNOUD', 'BENIE', '07 07 82 19', '', 'ahounoud@gmail.com', 'ahounoud', '58678326', 4, 2, 49, 27, 2, 'OUI', '2019-08-04', '21:38:05', '', '0000-00-00', '00:00:00'),
+(1418, '327 243 C', 'AHOURE', 'ALBAN ALPHONSE EMMANUEL', '05 77 32 60', '', 'ahourea@yahoo.fr', 'ahourea', '1d4d91ed', 4, 2, 49, 27, 2, 'OUI', '2019-08-04', '21:38:05', '', '0000-00-00', '00:00:00'),
+(1419, '344 428 F', 'AKA ', 'BROU EMMANUEL', '47 21 79 41', '', 'e.aka-brou@hotmail.fr', 'e.aka-brou', '884a1820', 4, 2, 49, 27, 2, 'OUI', '2019-08-04', '21:38:05', '', '0000-00-00', '00:00:00'),
+(1420, '255 275 L', 'AKOUDJOU ', 'ALAIN-YVES', '03 59 24 84', '', 'akoudjou.alainyves@yahoo.fr', 'akoudjou.alainyves', 'Capote123@', 4, 2, 49, 27, 2, 'OUI', '2019-08-04', '21:38:05', 'OUI', '2019-08-04', '22:22:38'),
+(1421, '398 560 N', 'AKPA ', 'GOBOU SIE JACQUES', '07 11 80 12', '', 'akpa_jacques@yahoo.fr', 'akpa_jacques', 'Nolann2011', 4, 2, 49, 27, 2, 'OUI', '2019-08-04', '21:38:05', 'OUI', '2020-06-24', '18:26:37'),
+(1422, '404 045 Y', 'ALIMATOU', 'CISSE EPSE KEITA', '07 71 09 67', '', 'alimacis@yahoo.fr', 'alimacis', 'keiboseg', 4, 2, 49, 27, 2, 'OUI', '2019-08-04', '21:38:05', 'OUI', '2019-08-13', '10:50:30'),
+(1423, '203 921 Z', 'ALLA ', 'KOUA', '07 01 33 37', '', 'alla_koua2@yahoo.fr', 'alla_koua2', '08027f84', 4, 2, 49, 27, 2, 'OUI', '2019-08-04', '21:38:05', '', '0000-00-00', '00:00:00'),
+(1424, '456 553 V', 'AMIN', 'ARIANE MANUELA', '42-45-72-55', '', 'ariane102002@gmail.com', 'aminariane', 'Pauldavid06', 4, 2, 49, 27, 2, 'OUI', '2019-08-04', '22:45:25', 'OUI', '2020-06-22', '12:38:59'),
+(1425, '404 047 S', 'ASSANDE ', 'KOFFI PAUL', '07 65 54 78', '', 'assande2000@yahoo.fr', 'assande2000', '480caabc', 4, 2, 49, 27, 2, 'OUI', '2019-08-04', '21:38:05', '', '0000-00-00', '00:00:00'),
+(1426, '456 566 S', 'BAMBA', 'MOUSTAPHA', '87-67-03-03', '', 'barnba_moustapha@hotmail.com', 'bambamoustapha', '8b46ac0c', 4, 2, 49, 27, 2, 'OUI', '2019-08-04', '22:45:25', '', '0000-00-00', '00:00:00'),
+(1427, '266 077 C', 'BANDAMA ', 'N\'DRI NICOLAS', '05 87 18 06', '', 'nicolasbandama@yahoo.fr', 'nicolasbandama', 'd74bf67f', 4, 2, 49, 28, 2, 'OUI', '2019-08-04', '21:38:05', '', '0000-00-00', '00:00:00'),
+(1428, '390 407 E', 'BEKE ', 'TITE EHUITCHE', '09 66 11 29', '', 'beketite@yahoo.fr', 'beketite', 'Ehuitche130477', 4, 2, 49, 27, 2, 'OUI', '2019-08-04', '21:38:05', 'OUI', '2019-08-06', '13:56:02'),
+(1429, '249 169 U', 'BINDE', 'ABOH CONSTANCE', '', '', 'bindeaboh@yahoo.fr', 'bindeaboh', '43088b91', 4, 2, 49, 27, 2, 'OUI', '2019-08-04', '21:38:05', '', '0000-00-00', '00:00:00'),
+(1430, '354 229 R', 'BROU ', 'BOSSON JEAN MARCELIN', '08 89 25 99', '', 'jmbosson@yahoo.fr', 'jmbosson', 'f9fbb25e', 4, 2, 49, 27, 2, 'OUI', '2019-08-04', '22:37:06', '', '0000-00-00', '00:00:00'),
+(1431, '456 616 U', 'FOFANA', 'ADON CESAR', '49-49-10-75', '', 'cesarfof@yahoo.fr', 'fofanaadoncesar', 'Andon2010', 4, 2, 49, 27, 2, 'OUI', '2019-08-04', '22:45:25', 'OUI', '2020-02-16', '17:38:58'),
+(1432, '456 623 T', 'GBONGUE', 'KANGA FLORENT', '47-28-20-72', '', 'florent.gbongue@gmail.com', 'gbonguekanga', '8e875772', 4, 2, 49, 27, 2, 'OUI', '2019-08-04', '22:45:25', 'OUI', '2020-06-28', '11:18:33'),
+(1433, '456 633 V', 'GRAFOUTE', 'AMORO', '88-36-00-14', '', 'gralaoda@hotmail.com', 'grafouteamoro', 'Am@201911', 4, 2, 49, 27, 2, 'OUI', '2019-08-04', '22:45:25', 'OUI', '2020-06-25', '16:02:07'),
+(1434, '347 707 K', 'SANGARE', 'TCHETIEN EPSE KONE', '09 26 14 32', '', 'sangaretchetien@hotmail.com', 'sangaretchetien', '353f0856', 4, 2, 49, 27, 2, 'OUI', '2019-08-07', '19:30:09', '', '0000-00-00', '00:00:00'),
+(1435, '231 520 W', 'OUATTARA', 'IBRAHIMA', ' 07 61 59 67', ' ', 'ouattaraiba@yahoo.fr', 'ibaouattara', '0de32847', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '09:30:26', '', '0000-00-00', '00:00:00'),
+(1436, '149 243 J', 'SECA', 'ASSABA PAUL', ' 07 65 94 07', ' ', 'apseca_gpe@yahoo.fr', 'apseca', 'ea9d6cd3', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '09:30:26', '', '0000-00-00', '00:00:00'),
+(1437, '365 488 H', 'SESS', 'ANNA AGNEÃ  Ã‰PSE ADIABOUAH ', '01 02 57 93', '', 'asess@hotmail.fr', 'asess', 'Ange1979', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '09:30:26', 'OUI', '2020-06-26', '23:17:35'),
+(1438, '428 116 K', 'KADY', 'MARIE-DANIELLE EPSE SORHO-BODY', '41 89 41 92', '', 'kmd.body@gmail.com', 'kmd.body', 'mada2809', 4, 2, 49, 27, 2, 'OUI', '2019-08-04', '22:37:06', 'OUI', '2020-08-25', '13:23:44'),
+(1439, '417 371 X', 'SORO', 'GNOUDANFOLY AMADOU', '07 19 75 45', '', 'gamasoro@gmail.com', 'gamasoro', 'Amadoug75', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '09:30:26', 'OUI', '2020-09-01', '12:52:53'),
+(1440, '121 258 D', 'SOW ', 'TIERNO OUMAR', '05 07 21 17', '', 'tosow@yahoo.fr', 'tosow', 'tierno19071946', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '17:25:11', 'OUI', '2019-08-06', '18:17:46'),
+(1441, '265 053 B', 'SYLLA', 'KALILOU ', '49 21 05 45', '', 'kalilou.sylla@yahoo.fr', 'kalilou.sylla', '00c1f877', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '17:25:11', '', '0000-00-00', '00:00:00'),
+(1443, '331 872 X', 'TANO ', 'ADJEGNY PAULIN', '05 64 02 99', '', 'paulintano@gmail.com', 'tano.paulin', 'f120f0f4', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '17:25:11', '', '0000-00-00', '00:00:00'),
+(1444, '255 568 J', 'TIACOH ', 'ANGAHAN KOUASSI', '07 08 29 54', '', 'tiacoh_angahan@yahoo.fr', 'tiacoh_angahan', '5d4f0649', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '17:25:11', '', '0000-00-00', '00:00:00'),
+(1445, '331 874 Z', 'TIEHI', 'TITO NESTOR', '01 02 73 40', '', 'tiehitito@yahoo.fr', 'tiehitito', 'ee467940', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '17:25:11', '', '0000-00-00', '00:00:00'),
+(1446, '155 738 G', 'TRA BI ', 'BOLATI ERNEST', '05 85 15 57', '', 'bolatiernest@gmail.com', 'bolatiernest', '436cc122', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '17:25:11', 'OUI', '2019-08-07', '11:37:15'),
+(1447, '239 446 G', 'VANGAH', 'KOUASSI HUBERT', '07 69 01 53', '', 'vangahk@gmail.com', 'hubert.vangah', 'ba3c2fa9', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '17:25:11', '', '0000-00-00', '00:00:00'),
+(1448, '331 876 T', 'WAPOH', 'HILAIRE', '58 66 01 57', '', 'wapohhilaire2000@yahoo.fr', 'wapohhilaire2000', '673b1a0a', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '17:25:11', '', '0000-00-00', '00:00:00'),
+(1449, '331 875 S', 'WAUTABOUNA ', 'OUATTARA', '03 90 03 06', '', 'wauta123@gmail.com', 'wautabouna', 'Wauta0809JMJ', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '17:25:11', 'OUI', '2019-08-09', '15:08:40'),
+(1450, '328 312 A', 'YAPO ', 'YOMIN VIRGINIE', '08 49 81 73', '', 'vyapo@hotmail.com', 'vyapo', '3ff2bf2d', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '17:25:11', '', '0000-00-00', '00:00:00'),
+(1451, '347 841 G', 'YEO ', 'NAHOUA', '08 24 06 75', '', 'nahouayeo@hotmail.com', 'nahouayeo', 'b09b84f2', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '17:25:11', '', '0000-00-00', '00:00:00'),
+(1452, '357 231 E', 'YEO', 'YAYA', '07 97 19 49', '', 'pyayayeo@yahoo.fr', 'pyayayeo', '858b0e97', 4, 2, 49, 28, 2, 'OUI', '2019-08-06', '17:25:11', '', '0000-00-00', '00:00:00'),
+(1453, '279 993 D', 'YOLI BI ', 'SANI MARTIN', '', '', 'yolisani@yahoo.fr', 'yolisani', 'f43caa1a', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '17:25:11', '', '0000-00-00', '00:00:00'),
+(1454, '280 138 H', 'ZAKO ', 'LOBE CHRISTOPHE', '05 55 57 75', '', 'cz.lobe17@gmail.com', 'cz.lobe', '42234d3e', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '17:25:11', '', '0000-00-00', '00:00:00'),
+(1455, '203 569 Q', 'ZOUNGRANA', ' PLACIDE', '03 69 87 57', '', 'plzoungrana@yahoo.fr', 'plzoungrana', 'a638785f', 4, 2, 49, 27, 2, 'OUI', '2019-08-06', '17:25:11', '', '0000-00-00', '00:00:00'),
+(1456, '458 750 Y', 'BANH', 'DAOUDA', '01-32-29-81', '', 'banhdaouda2010@gmail.com', 'banhdaouda', '212c884c', 4, 2, 49, 27, 2, 'OUI', '2019-08-04', '22:45:25', '', '0000-00-00', '00:00:00'),
+(1457, '456 587 Q', 'DAGOU', 'DAGOU HERMANN-WENCESLAS', '07-10-12-10', '', 'ddhgeek@gmail.com', 'dagoudagou', '7c80fb84', 4, 2, 49, 27, 2, 'OUI', '2019-08-04', '22:45:25', 'OUI', '2020-07-25', '09:38:10'),
+(1458, '457 041 Y', 'GAHE', 'ZIMY SAMUEL YANNICK', '78-27-98-34', '', 'sygahe@hotmail.fr', 'gahezimysamuel', 'sygahe05031985', 4, 2, 49, 27, 2, 'OUI', '2019-08-04', '22:45:25', 'OUI', '2019-08-04', '23:59:51'),
+(1459, '952 002 D', 'BAMBA', 'DOCHIENME MATHIEU', '07 84 90 67', '', 'dochienme@gmail.com', 'bamba_dochienme', '0a886516', 4, 11, 15, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-28', '09:43:32'),
+(1460, '316 335 V', 'ADEKPATE ', 'ALAIN ALBERT', '01 17 20 78', '', 'alainadekpate@gmail.com', 'alainadekpate', 'ROSAahu70', 4, 11, 19, 27, 2, 'OUI', '2020-06-16', '15:27:26', 'OUI', '2020-07-01', '13:47:29'),
+(1461, '403 956 V', 'ADICO ', 'PATRICE', '07 78 91 99', '', 'adicopatrice@yahoo.fr', 'adicopatrice1', '16b469fe', 4, 11, 18, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-26', '16:03:32'),
+(1462, '952 001 A', 'ALLOU', 'ALLOU SERGE YANNICK', '07 89 99 63', '', 'allousy@yahoo.fr', 'allousy', 'f962cb92', 4, 11, 19, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1463, '472 757 h', 'ANDREDOU', 'ASSOUAN PIERRE', '07 32 78 88', '', 'pierreandredou@yahoo.fr', 'pierreandredou', 'houlda2020', 4, 11, 19, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-27', '18:00:51'),
+(1464, '426 917 C', 'ANGOLI ', 'LATTE PAUL', '59-49-81-12', '', 'paul.angoli@gmail.com', 'paul.angoli1', 'jeanmarc2', 4, 11, 17, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-30', '16:00:43'),
+(1465, '373 173 C', 'ATCHE ', 'DJEDOU', '02 58 22 39', '', 'djedhatcher@gmail.com', 'djedhatcher', 'f98e9d9d', 4, 11, 14, 27, 2, 'OUI', '2019-09-21', '11:17:30', 'OUI', '2020-01-27', '13:14:49'),
+(1466, '109 672 R', 'AYÃŠWA', 'NOEL KOUASSI', '09 14 63 36', '', 'ayewanoel@gmail.com', 'ayewanoel', '4d5fa63c', 4, 11, 19, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1467, '225 736 A', 'BAI', 'VIERGE EPSE LASM', '41 31 55 58', '', 'viergebai@yahoo.fr', 'viergebai', '7d6bc5b4', 4, 11, 14, 27, 2, 'OUI', '2019-09-21', '12:18:44', 'OUI', '2020-02-28', '14:22:28'),
+(1468, '141 355 A', 'BAROAN ', ' NÃ‰E TAPE TINA GENEVIEVE', '07 76 92 07', '', 'tapetinagenevieve@yahoo.fr', 'tapetinagenevieve', '50471ef6', 4, 11, 16, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1469, '346 405 B', 'BAYOKO', 'ABOU SAMPHA', '01 46 41 28', '', 'samphabayoko@yahoo.fr', 'samphabayoko1', 'fantabayoko2016', 4, 11, 15, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-09-04', '11:23:39'),
+(1470, '255 664 J', 'KOUAKOU ', 'KONAN MATHIAS', ' 08 99 12 79', ' ', 'makonankouakou@yahoo.fr', 'makonankouakou', 'b0613ce7', 4, 13, 24, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-02', '15:00:35'),
+(1471, '336 644 F', 'KRA ', 'KOUASSI ABOUTOU SEVERIN', ' 07 75 79 13', ' ', 'kra_severin@yahoo.fr', 'kra_severin', '3bd81901', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-05', '15:20:43'),
+(1472, '143 356 D', 'KONAN', 'KONAN NORBERT', '', '', 'konannobert@yahoo.fr', 'konannorbert', '6886e262', 3, 5, 42, 12, 3, 'OUI', '2019-07-11', '09:27:43', '', '0000-00-00', '00:00:00'),
+(1473, '344 439 A', 'YANGA', 'KOUASSI KOUASSI SERGE', '', '', 'sergey@aims.ac.za', 'sergey', 'molpa215', 5, 13, 24, 17, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-01', '20:47:22'),
+(1474, '337 029 T', 'KONE', 'ZANA', '41 04 11 48', '', 'zanakone134@yahoo.fr', 'kone_zana', 'wolof@78oke', 5, 3, 48, 19, 3, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-12', '12:14:52'),
+(1475, '233 293 Z', 'BOKA', 'KOUASSI PASCAL', '07 06 80 88', '', 'bokakouassipascal@yahoo.fr', 'bokakouassipascal', '8c085d26', 4, 11, 15, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-05-29', '11:25:06'),
+(1476, '952 004 B', 'BROU', 'ADJOUA ELISABETH EPSE YAPOGA', '', '', 'brouelisabeth62@yahoo.fr', 'brouelisabeth62', 'esdras12', 4, 11, 15, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-31', '11:17:11'),
+(1477, '400 631 G', 'CAMARA', 'HAMAMATA', '05 35 17 67', '', 'hamamatacamara@gmail.com', 'hamamatacamara', '05351767', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '14:55:49', 'OUI', '2020-05-26', '16:02:41'),
+(1478, '952 004 F', 'COULIBALY', 'YACOUBA', '07 22 49 66', '', 'chigata2002@gmail.com', 'chigata2002', '45ac29e8', 4, 11, 15, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-18', '10:22:04'),
+(1479, '952 004 E', 'CISSE', 'MOUSTAPHA', '08 09 36 09', '', 'moustaphcisse93@yahoo.fr', 'moustaphcisse93', 'nourajunior', 4, 11, 19, 27, 2, 'OUI', '2019-12-04', '21:44:30', 'OUI', '2020-08-28', '14:55:42'),
+(1480, '952 005 F', 'DOUMBIA', 'SOUMAILA', '48 05 54 54', '', 'familledoumbia@yahoo.fr', 'familledoumbia', '7b4fee49', 4, 11, 19, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1481, '952 005 E', 'DOSSO', 'TIEMOKO', '08 59 50 48', '', 'tiemokodosso@rocketmail.com', 'tiemokodosso', '08595048', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '15:24:08', 'OUI', '2020-05-24', '18:13:06'),
+(1482, '479 615 A', 'DIABY', 'AISSATA', '05 97 63 68', '', 'daichat2011@yahoo.fr', 'daichat2011', 'alkursiy170', 4, 11, 16, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-02', '12:39:26'),
+(1483, '952 005 A', 'DEDE', 'THO TERENCE', '09 19 65 09', '', 'terencedede@gmail.com', 'terencedede', 'dodbdte', 4, 11, 16, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-01', '11:14:57'),
+(1484, '456 660 L', 'KONE', 'MAÃMOUNA COURA', '75 17 36 82', '', 'mounabb2005@yahoo.fr', 'mounabb2005', 'docteur2019', 4, 5, 42, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-09-03', '12:59:29'),
+(1486, '952 005 H', 'EKRA', 'GNANKON CHRISTOPHE RICHARD', '', '', 'rickyekra@gmail.com', 'rickyekra', 'nina1987', 4, 11, 16, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-05-26', '22:12:48'),
+(1487, '952 005 G', 'EHUI ', 'JEAN MARIUS', '', '', 'ehuijeanmarius@gmail.com', 'ehuijeanmarius', 'ehuijean1986', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '15:24:08', 'OUI', '2020-08-18', '23:27:18'),
+(1488, '952 005 I', 'EZEKIEL', 'SAMUEL ADEWOLA', '07 76 26 56', '', 'ade7nissi@gmail.com', 'ade7nissi', 'adewola16', 4, 11, 16, 27, 2, 'OUI', '2019-06-18', '19:06:05', 'OUI', '2020-05-29', '17:08:41'),
+(1489, '952 005 M', 'GNESSOTE', 'DAGO MICHEL', '08 03 70 40', '', 'gnedami@yahoo.fr', 'gnedami', 'ELISCHAMMA', 4, 11, 16, 27, 2, 'OUI', '2019-09-06', '23:13:19', 'OUI', '2020-06-03', '14:02:53'),
+(1490, '164 323 Z', 'GOUDA', 'GNAORE VICTOR', ' 07-48-91-95', ' ', 'gnaoregouda@gmail.com', 'gnaoregouda', '5b84cdaa', 4, 11, 15, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1491, '479 452 F', 'KAHA', 'AIME', '48 90 99 18', '', 'aimekaha@gmail.com', 'aimekaha1', 'zahe93', 4, 11, 18, 27, 2, 'OUI', '2020-01-21', '16:00:41', 'OUI', '2020-06-19', '10:55:27'),
+(1492, '326 822 Q', 'KANE', 'METOU', '07 91 67 57', '', 'kanemetou79@gmail.com', 'kanemetou', '28fa12', 4, 11, 16, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-24', '07:58:06'),
+(1494, '233 478 A', 'KEITA', 'YACOUBA', '07647541', '', 'keitaraissa19@gmail.com', 'keitaraissa', 'k85dg1963', 4, 11, 15, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-28', '22:26:42'),
+(1495, '952 006 C', 'KONE', 'MAMADOU', '08707897', '', 'mkkadile@gmail.com', 'mkkadile', '1d6a48ce', 4, 11, 18, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-01-31', '07:22:19'),
+(1496, '952 006 A', 'KISSY', 'CEDRIC MARSHALL', '', '', 'cmkissy@yahoo.fr', 'cmkissy', 'Iceman88', 4, 11, 16, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-14', '12:25:07'),
+(1497, '952 006 B', 'KOFFI', 'DAMO JUNIOR YIANNEY', '47 86 70 16', '', 'damokoffi@yahoo.fr', 'damokoffi1', '8acf9f4f', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '16:14:03', 'OUI', '2020-05-20', '09:11:49'),
+(1498, '952 006 D', 'KOUASSI', 'KOUASSI BENJAMIN', '47 11 19 33', '', 'kouassibenjamin@hotmail.fr', 'kouassibenjamin', '1991benj', 4, 11, 18, 27, 2, 'OUI', '2020-01-28', '15:12:20', 'OUI', '2020-07-29', '21:53:42'),
+(1499, '952 006 E', 'KOUYE', 'FRANCK WILSON GERIEL', '08 23 22 90', '', 'kouyefranck@gmail.com', 'kouyefranck', '3c989961', 4, 11, 15, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-12', '09:54:45'),
+(1500, '952 006 H', 'LATTRO', 'TITE', '06 24 23 54', '', 'latite@ymail.com', 'latite1', 'LTpossible3', 4, 11, 16, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-09-02', '17:54:17'),
+(1501, '952 006 G', 'LOUA', 'KOUASSI CYRILLE', '08 85 99 42', '', 'cyrillelk@gmail.com', 'cyrillelk', '2da7a4ce', 4, 11, 16, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1502, '242 840 J', 'ADOU ', 'KABLAN JEROME', '07 07 91 91', '', 'jkadou@hotmail.com', 'jkadou', 'b0fccda8', 4, 13, 24, 27, 2, 'OUI', '2019-06-01', '15:30:29', '', '0000-00-00', '00:00:00'),
+(1503, '320 596 U', 'AKEKE ', 'ERIC DAGO', '08 17 57 80', '', 'ericdago@yahoo.fr', 'ericdago', '689a747a', 4, 13, 24, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2019-08-14', '12:18:57'),
+(1504, '265 055 D', 'BAILLY', 'BALE', '07 09 85 84', '', 'baillybale@hotmail.com', 'baillybale', '', 4, 13, 24, 27, 2, 'OUI', '2019-08-06', '16:22:41', 'OUI', '2020-06-15', '19:46:17'),
+(1505, '283 496 Q', 'CODJIA ', 'ADOLPHE', '05 98 23 20', '', 'ad_wolf2000@yahoo.fr', 'ad_wolf2000', '0f8d606a', 4, 13, 24, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-15', '20:22:54'),
+(1506, '364 868 L', 'COULIBALY ', 'BAKARY', '02 69 69 58', '', 'coulibaly_bakaryfr@yahoo.fr', 'coulibaly_bakaryfr', 'lorraine2016', 4, 13, 24, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-24', '16:25:26'),
+(1507, '346 124 Y', 'COULIBALY', 'PIE', '40 35 12 90', '', 'foussenico14@yahoo.fr', 'foussenico14', '785887fe', 4, 13, 24, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-26', '14:34:05'),
+(1508, '158 851 D', 'DEMBELE ', 'MARIAM', '07 80 42 90', '', 'cdemble@yahoo.fr', 'cdemble', '19591993', 4, 13, 24, 27, 2, 'OUI', '2019-08-01', '15:28:51', 'OUI', '2019-08-02', '14:15:40'),
+(1509, '456 909 B', 'DIABAGATE', 'AMADOU', '67 95 42 16', '', 'ahmadou.diabagate@gmail.com', 'ahmadou.diabagate', 'Firdouss456', 4, 13, 24, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-02-26', '19:37:26'),
+(1510, '123 978 Z', 'DIALLO', 'BOUBACAR', '07 52 19 50', '', 'diallobacar@gmail.com', 'diallobacar', '688a729d', 4, 13, 24, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1511, '344 437 Y', 'DIARRASSOUBA ', 'SIRIKY', '01 21 93 16', '', 'dsiriky@yahoo.com', 'dsiriky', 'dsir0169', 4, 13, 24, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-22', '22:31:01'),
+(1512, '312 434 M', 'DJUE ', 'N\'DRI ROGER', '02 23 04 13', '', 'djuendri@yahoo.fr', 'djuendri', 'f98038e6', 4, 13, 24, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-20', '13:19:16'),
+(1513, '307 815 X', 'ELOUAFLIN', 'ABOUO', '07 35 79 95', '', 'elabouo@yahoo.fr', 'elabouo', 'Aurel2006', 4, 13, 24, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-21', '09:28:39'),
+(1514, '500 337 D', 'FEUTO', 'JUSTIN', ' 05 61 29 47', ' ', 'justfeuto@yahoo.fr', 'justfeuto', 'hfg300768', 4, 13, 24, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-02', '15:26:51'),
+(1515, '123 253 S', 'FOFANA', 'IBRAHIM', ' 05 69 39 41', ' ', 'fofana_ib_math_ab@yahoo.fr', 'fofana_ib', '94751cc3', 4, 13, 24, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2019-09-26', '17:59:19'),
+(1516, '301 106 B', 'GONDO', 'YAKE', ' 07 78 39 71', ' ', 'godyake@yahoo.fr', 'godyake', '1cfcc78e', 4, 13, 24, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1517, '164 300 P', 'KANGNI', 'KINVI', ' 07 83 93 99', ' ', 'kangnikinvi@yahoo.fr', 'kangnikinvi', '7ad0432d', 4, 13, 24, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-01-10', '19:45:47'),
+(1518, '301 095 T', 'SIAKA', 'KONE', '05 01 69 75', '', 'siakakone21@yahoo.com', 'siakakone21', '40e94cb0', 4, 13, 24, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1519, '149 070 L', 'KOUA', 'KONIN', ' 01 99 72 35', ' ', 'ehiamba53@gmail.com', 'ehiamba53', '3f49063c', 4, 13, 24, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1520, '255 997 Z', 'KOUROUMA', 'MOUSSA', ' 05 70 09 19', ' ', 'mkouroumafr@yahoo.fr', 'mkouroumafr', 'Kankan', 4, 13, 24, 27, 2, 'OUI', '2019-07-12', '22:02:27', 'OUI', '2020-09-01', '12:16:40'),
+(1521, '398 026 W', 'ABDOU ', 'MAÃGA', '48 39 20 20', '', 'maiga.abdou@gmail.com', 'maiga.abdou', '31a5f3a8', 4, 13, 24, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2019-07-09', '08:24:47'),
+(1522, '234 514 P', 'NINDJIN ', 'AKA FULGENCE', '05 17 89 15', ' ', 'nindjinaka_fulgence@hotmail.com', 'nindjinaka_fulgence', '44684c5b', 4, 13, 24, 23, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1523, '150 976 E', 'N\'ZOUKOUDI', 'BERNARD', '05 82 10 52', ' ', 'nzoukoudi@yahoo.fr', 'nzoukoudi', 'e59f284a', 4, 13, 24, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2019-12-18', '09:57:18'),
+(1524, '332 009 B', 'SAMASSI', 'LASSANA', '09 12 09 47', ' ', 'samassilassana@yahoo.fr', 'samassilassana', 'sammamll2', 4, 13, 24, 27, 2, 'OUI', '2020-06-10', '12:08:58', 'OUI', '2020-06-16', '09:55:56'),
+(1525, '501 081 N', 'SAWADOGO ', 'AMADOU', '57 89 40 74', ' ', 'amadou.sawadogo@gmail.com', 'amadou.sawadogo', 'anifa2019', 4, 13, 24, 27, 2, 'OUI', '2019-08-06', '16:22:41', 'OUI', '2020-06-24', '16:30:50'),
+(1526, '265 638 J', 'SORO', 'ETIENNE TENA', '07 42 59 76', '', 'soroet21@yahoo.fr', 'soroet21', '6cd65e18', 4, 13, 24, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1527, '249 395 P', 'SYLLA ', 'MOUSSA', '08 49 74 75', '', 'ba_mouss@yahoo.fr', 'ba_moussa', '0512Ssss', 4, 13, 24, 23, 2, 'OUI', '2020-06-12', '14:49:57', 'OUI', '2020-06-21', '23:23:14'),
+(1528, '241 625 D', 'TANOE', 'FRANCOIS EMMANUEL', '07 09 80 04', '', 'aziz_marie@yahoo.fr', 'tanoefrancois', '1022a8f0', 4, 13, 24, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1529, '344 438 H', 'TOURE', 'IBRAHIMA', '07 51 15 87 ', '', 'toureibt@yahoo.fr', 'toureibt', 'loui---si', 4, 13, 24, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-18', '11:34:47'),
+(1530, '137 612 Q', 'TOURE', 'MOUSTAPHA ALMAMY', '01 00 71 10', '', 'tam@arc-ingenierie.com', 'toure_moustapha', 'Pa55word', 4, 13, 24, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-01-04', '20:18:40'),
+(1531, '335 522 S', 'TUO', 'PAUL DAVID', '07 54 98 35', '', 'tuodavidpaul@yahoo.fr', 'tuodavidpaul', 'love1975', 4, 13, 24, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-01', '18:38:07'),
+(1532, '296 262 H', 'TRAORE ', 'SIAKA', '04 95 95 44', '', 'akaistraore@yahoo.fr', 'akaistraore', '861b7745', 4, 13, 24, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1533, '309 103 Q', 'YODE ', 'FABRICE ARMEL EVRARD', '08 33 16 43', '', 'yafevrard@yahoo.fr', 'yafevrard', 'jael2015', 4, 13, 24, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-22', '20:52:49'),
+(1534, '389 891 W', 'ZOKAGOA ', 'JEAN-MARIE', '07 36 59 20', '', 'zokagoa@yahoo.fr', 'zokagoa', 'Jhonna77', 4, 13, 24, 27, 2, 'OUI', '2019-06-06', '04:30:59', 'OUI', '2020-01-06', '12:49:34'),
+(1535, '239 364 M', 'MELEDJE', 'DJEDJRO FRANCISCO FREDERIC', ' 06 49 11 85', ' ', 'dmeledje@gmail.com', 'dmeledje', 'emidi2019', 4, 1, 82, 27, 2, 'OUI', '2019-08-02', '08:47:03', '', '0000-00-00', '00:00:00'),
+(1536, '346 691 H', 'ANINI', 'LARISSA EPSE AZIEMAN', '', '', 'akoualarissaani@gmail.com', 'akoualarissa', '29ca551b', 3, 1, 82, 12, 3, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1537, '952 200 B', 'KABLAN', 'ALPHONSE', '', '', 'amoakabla@gmail.com', 'amoakablan', '9bba39d7', 3, 1, 82, 13, 3, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1538, '952 200 C', 'KONE', 'MAMADOU', '', '', 'tm_kone@yahoo.fr', 'tm_kone', 'sagittaire', 4, 2, 49, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-02', '15:06:04'),
+(1540, '952 200 E', 'N\'DA', 'EBA AMOAN EDWIGE', '', '', 'edwigeeba@yahoo.fr', 'edwigeeba', '2005ed1', 4, 2, 49, 27, 2, 'OUI', '2019-08-08', '08:53:54', '', '0000-00-00', '00:00:00'),
+(1541, '474 857 Y', 'COULIBALY', 'SIONFOU SEYDOU', '09 89 98 43', '', 'coulsionfseyd@yahoo.fr', 'coulsionfseyd', 'thabibata', 4, 2, 49, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-10', '18:00:26'),
+(1542, '952 200 F', 'KRAMO', 'KOUAKOU GERMAIN', '', '', 'germainkramo@gmail.com', 'germainkramo', 'bonjour1982', 4, 2, 49, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-26', '13:49:49'),
+(1543, '952 200 G', 'TUO', 'DONANFRA HUBERT', '', '', 'tuo.hubert@yahoo.fr', 'tuo.hubert', 'ff160b3d', 4, 2, 49, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-02', '01:40:36'),
+(1544, '257 501 A', 'EMIDI ', 'KOUASSI', '', '', 'emidik@gmail.com', 'emidikouassi', 'K0u4551', 4, 1, 82, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1545, '129 599 U', 'YAO ', 'N\'GORAN BAZIN', '07939496', '', 'yaobazingoran@yahoo.fr', 'yaobazingoran', '4f2833ef', 4, 4, 23, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1546, '426 987 B', 'ADJOUMANI ', 'KOBENAN', '59 82 52 31', '', 'adjkobenan@yahoo.fr', 'adjkobenan1', '40875242', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1547, '426 988 L', 'AHUIE ', 'ASSIAN AGNES CHANTAL', '07 47 62 07', '', 'chantalahuie@gmail.com', 'chantydesire', 'ange2chrys', 4, 4, 22, 27, 2, 'OUI', '2019-08-19', '12:06:56', 'OUI', '2019-10-14', '12:01:03'),
+(1548, '389 963 D', 'BAH ', ' MAHIER JULES-MICHEL', '07 18 58 74', '', 'bahmahier@yahoo.fr', 'bahmahier', '8151ea46', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1549, '442 433 P', 'BINI ', 'KOFFI ROLAND', '47 91 66 56', '', 'binirol@yahoo.fr', 'binirol', '73edf567', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1550, '389 983 S', 'BOUAKI', 'KOUADIO BAYA', '07 33 01 51', '', 'bouaki_kb@outlook.com', 'bouaki_kb', 'c0b79deb', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1551, '442 443 Z', 'BROU', 'FELIX-RICHARD', '07 37 75 90', '', 'brouf_richard@yahoo.fr', 'brouf_richard', 'cc5da5bd', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1552, '088 921 N', 'DEDY ', 'SERI FAUSTIN', '01 82 79 79', '', 'seridedy@yahoo.fr', 'seridedy', '4f14c9ea', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1553, '426 995 B', 'DOGBO ', 'TORO CONSTANT', '57 23 97 98', '', 'dogbo2012@gmail.com', 'dogbo2012', '5b830b9c', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1554, '403 927 Q', 'HOUEDIN ', 'BARNABE COSSI', ' 07 40 88 81', ' ', 'houedin@yahooFr', 'houedin', 'b8a9be20', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1555, '313 533 R', 'BAH', 'KOULAI JOELLE EPSE OSSAIN', '41 02 99 21', '', 'joelle_bb@yahoo.fr', 'joelle_bb', 'marielvira', 5, 13, 24, 19, 3, 'OUI', '2020-01-23', '10:19:09', 'OUI', '2020-07-02', '15:54:01'),
+(1556, '403 929 S', 'KACOU', ' FATO PATRICE', '47 53 14 80', ' ', 'kacoufato@yahoo.fr', 'kacoufato', '6e966c18', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1557, '426 350 F', 'KAMBE', 'KAMBE YVES', ' 77 39 02 49', ' ', 'kambekves@yahoo.fr', 'kambekves', '356ae349', 4, 4, 22, 29, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2019-06-11', '10:49:17'),
+(1558, '358 642 T', 'KOFFI ', 'AFFOUE PHILOMENE', ' 08 19 27 80', ' ', 'affouephilomenekoffi@yahoo.fr', 'affouephilomenekoffi', '02888590', 4, 4, 22, 29, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1559, '390 124 Z', 'KONE ', 'DRISSA', ' 06 52 99 79', ' ', 'drissa.kone@hotmail.fr', 'drissa.kone', 'ccac6b58', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1560, '404 067 W', 'KOUAME', 'CLEMENT KOUADIO', ' 47 28 13 84', ' ', 'kouameclementk@yahoo.fr', 'kouameclementk', 'ad958d23', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1561, '442 645 B', 'MAMANLAN ', 'KASSI BRUNO', ' 07 00 84 42', ' ', 'kassibruno@yahoo.fr', 'kassibruno', '91fa6843', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1562, '427 004 N', 'M\'BRA ', 'KOUAKOU', ' 07 45 14 89', ' ', 'mbrakouakou@yahoo.fr', 'mbrakouakou', '9c4a8ee1', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1563, '403 934 P', 'MEITE ', 'YOUSSOUF', ' 57 35 76 57', ' ', 'meiteyoussouf@yahoo.fr', 'meiteyoussouf', 'souleymane460', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1564, '403 935 Q', 'MORO', 'MORO DOMINIQUE', ' 07 55 79 10', ' ', 'dominiquemorromorro@yahoo.fr', 'dominiquemorromorro', '47aa11be', 4, 4, 22, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2019-08-19', '10:48:17'),
+(1565, '390 219 Q', 'MOUROUFIE', 'KOUASSI KOUMAN VINCENT', '09 40 59 55', ' ', 'vincentkouassikouman@gmail.com', 'vincentkouassikouman', 'f11de64d', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1566, '427 870 S', 'N\'DIA', 'ANON FELIX', '53152160', ' ', 'felixndianon@yahoo.fr', 'felixndianon', '9b531521', 4, 4, 22, 27, 2, 'OUI', '2019-08-19', '11:15:55', 'OUI', '2019-09-06', '23:33:38'),
+(1567, '390 226 F', 'N\'DOLY ', 'ADOUOBO CHRISTOPHE', ' 07 38 77 71', ' ', 'ndolychristophe@yahoo.fr', 'ndolychristophe', '58580973', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1568, '164 208 P', 'OGNI', 'KANGA BENOIT', '58 17 12 13', ' ', 'benoitkanga@yahoo.fr', 'benoitkanga', '7535d2d5', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1569, '390 248 V', 'OUANTCHI ', 'HONORE', '07 58 00 48', ' ', 'ouantchihonore@yahoo.fr', 'ouantchihonore', 'bd70b918', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1570, '359 391 R', 'OUATTARA', 'KALILOU', ' 07 36 96 21', ' ', 'ouattara_kalilou@yahoo.fr', 'ouattara_kalilou', '5a3b993a', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1571, '385 113 M', 'OURAGA ', 'BASSERI JEAN-CLAUDE', '59 26 49 13', ' ', 'basseri90@yahoo.fr', 'basseri90', '19b56fc6', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1572, '404 082 N', 'YOUL ', 'FELIX', '07 10 57 79', '', 'yfelix2002@yahoo.fr', 'yfelix2002', '313e201c', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1573, '364 975 F', 'ZAMBLE BI ', 'ZOU AMBROISE', '07 36 29 91', '', 'bizouambroisezamble@gmail.com', 'bizouambroisezamble', '059e640c', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1574, '427 304 X', 'ZRIGA', 'KREPKA DORCAS JUNIOR', '58 89 13 14', '', 'dorcaszriga@yahoo.fr', 'dorcaszriga', '9952351e', 4, 4, 22, 27, 2, 'OUI', '2019-12-31', '11:28:37', '', '0000-00-00', '00:00:00'),
+(1575, '389 950 L', 'ASSI', 'ASSI RAOUL', '05-01-56-52', '', 'assiraoul2@gmail.com', 'assiraoul', '4e955232', 4, 4, 31, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-05-26', '15:05:41'),
+(1576, '427 135 D', 'ASSOUGBA ', 'KABRAN BEYA BRIGITTE EPSE BOUAKI ', '47 34 16 3 3', '', 'kabranbeya@outlook.fr', 'kabranbeya', 'Odaya2012', 4, 4, 22, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1577, '427 622 M', 'BOKO ', 'ADJOUA N\'GROMA NADEGE EPSE KOIADIA ', ' 87 88 77 41 ', ' ', 'juchriel@yahoo.fr', 'juchriel', '87f85e48', 4, 4, 22, 27, 2, 'OUI', '2019-08-19', '11:12:51', 'OUI', '2019-09-16', '05:49:23'),
+(1578, '239 206 Q', 'KOUASSI ', 'AKA LOUIS', ' 56050229', ' ', 'kouassiakalouis@yahoo.com', 'kouassiakalouis', 'ed941fd5', 4, 4, 34, 28, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1579, '353 587 Y', 'KANGA ', ' KOUAKOU BRUNO', ' ', ' ', 'kangabruner@yahoo.com', 'kangabruner', '7aee801c', 4, 4, 33, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1580, '232 128 S', 'KPLI', 'NÃ‰E TOURE SALIMATOU', ' ', ' ', 'kplimariesarah@yahoo.com', 'kplimariesarah', '7a0c2e1d', 4, 4, 33, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1581, '252 981 W', 'KACOU', ' KASSI', ' ', ' ', 'kacoukassi56@gmail.com', 'kacoukassi56', '6a23f109', 4, 4, 33, 29, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1582, '137 154 M', 'AKOSSI ', 'NÃ‰E M\'VONGO MARGUERITE', '', '', '', 'akossimarg', '15ee5150', 4, 4, 33, 29, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1583, '245 559 P', 'BLAISE ', 'N\'GUETTA KABLAN', '05 04 03 54', '', 'bnguettak@yahoo.fr', 'bnguettak', '9899308b', 4, 4, 23, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1584, '390 225 E', 'N\'DEDE ', 'BOSOMA FLORENCE', ' 08 04 92 45', ' ', 'florencendede@yahoo.fr', 'florencendede', 'f930e394', 4, 4, 34, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1585, '162 527 L', 'ETTIEN ', 'ASSOA', '07 98 25 32', '', 'etasher@hotmail.com', 'etasher', '83cc998c', 4, 4, 34, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1586, '205 784 A', 'ANON ', 'N\'GUESSAN', '05 96 94 20', '', 'anon05_nguessan@yahoo.com', 'anon05_guessan', 'e616d4e9', 4, 4, 34, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1587, '278 277 V', 'ANDIH ', 'KACOU FIRMIN RANDOS', '', '', 'andihrandos@yahoo.fr', 'andihrandos', 'b14973eb', 4, 4, 32, 29, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1588, '160 924 U', 'SOUMAHORO', ' LACINA', '', '', 'soumahcabnonr@yahoo.fr', 'soumahcabnonr', '0a65fdb1', 4, 4, 32, 29, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1589, '203 575 E', 'LOUKOU', ' BROU', ' ', ' ', 'lookbrou@yahoo.fr', 'loukoubrou', 'd442db4e', 4, 4, 32, 29, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1590, '396 434 J', 'KONGO ', ' KASSI HERVE', ' ', ' ', 'kongoherve@gmail.com', 'kongoherve', 'fa8315a8', 4, 4, 32, 29, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1592, '133 088 K', 'ADAMA', 'CISSE', '', '', 'adamacisset@yahoo.com', 'adamacisse', 'a4d91627', 4, 4, 32, 29, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1593, '131 822 D', 'BOGUHE', ' LEKPATO JOACHIM', '', '', 'heliosarchi@hotmail.fr', 'joachimboguhe', '9616b7ad', 4, 4, 32, 29, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1594, '265 127 S', 'ALLOU ', ' MANIZAN', '', '', 'manizan@yahoo.fr', 'manizan', '09213016', 4, 4, 32, 29, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1595, '200 175 N', 'AKA ', 'KOUADIO AKOU', '', '', 'akakouadioci@yahoo.fr', 'akakouadio', '1438607b', 4, 4, 32, 29, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1596, '472 833 N', 'YAO', 'N\'DA KOUAKOU CYRILLE DE PAUL', '08 65 65 53', '', 'cyrilledepaulyao@yahoo.fr', 'cyrilledepaulyao', 'assistant2019', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '14:27:26', 'OUI', '2020-08-24', '10:11:23'),
+(1597, '952 601 B', 'YEO', 'SEGNENEGUETENIN NATENIN', '08 53 08 47', '', 'nateninyeo@gmail.com', 'nateninyeo', 'chigata', 4, 11, 16, 27, 2, 'OUI', '2019-09-09', '10:24:05', 'OUI', '2020-05-23', '00:43:14'),
+(1598, '952 603 C', 'YAO', 'ADJOUA N\'GUESSAN ALICE', '59 95 44 42', '', 'ngyaoalice@yahoo.fr', 'ngyaoalice', 'Candela11', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '22:06:10', 'OUI', '2020-06-08', '16:32:47'),
+(1599, '503 907 Z', 'VAHOU', 'KAKOU MARCEL', '07 91 77 07', '', 'mvahou@outlook.com', 'mvahou', '71c32806', 4, 11, 19, 27, 2, 'OUI', '2020-06-04', '13:39:03', 'OUI', '2020-07-24', '15:59:20'),
+(1600, '474 952 X', 'MESSOU', 'YAO CHARLES', '09 90 86 26', '', 'messoucharles@gmail.com', 'messoucharles', 'sandrine1', 4, 11, 16, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-07', '23:27:52'),
+(1601, '292 364 B', 'N\'DRI', 'N\'GUESSAN ANATOLE', '57 13 22 53', '', 'nguessananatolendri@yahoo.fr', 'nguessananatolendri', '7beniansou7ab', 4, 11, 15, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-11', '11:36:31'),
+(1602, '472 817 N', 'N\'GUESSAN', 'AFFOUE CECILE', '08 37 90 95', '', 'nguessanaffouececile@gmail.com', 'nguessanaffouececile', 'ed5938df', 4, 11, 19, 27, 2, 'OUI', '2020-05-18', '19:03:08', 'OUI', '2020-09-04', '12:34:15'),
+(1604, '314 258 N', 'SINGO', 'DOUO GENEVIEVE', '87 55 77 45', '', 'singogenevieve@yahoo.fr', 'singogenevieve', 'prunelle31', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '21:20:32', 'OUI', '2020-06-22', '11:46:04'),
+(1605, '343 524 W', 'TA', 'BI GOHI JONAS', '48 34 15 84', '', 'tabitintin5@gmail.com', 'tabitintin5', '120ce60a', 4, 11, 16, 27, 2, 'OUI', '2020-06-19', '21:48:35', 'OUI', '2020-06-23', '17:58:28'),
+(1606, '952 601 F', 'TANO', 'ANGUOUA JEAN JACQUES', '47 49 61 08', '', 'angouatano@gmail.com', 'angouatano', 'Yannis2013', 4, 11, 19, 27, 2, 'OUI', '2019-12-04', '21:44:30', 'OUI', '2020-08-30', '08:48:58'),
+(1607, '952 601 E', 'TIE', 'TRA BI RAOUL FABRICE', '87 63 73 29', '', 'raoultie@gmail.com', 'raoultie', 'raoultie7', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '21:50:37', 'OUI', '2020-08-10', '04:14:06'),
+(1608, '253 593 S', 'ANOH ', 'KOUASSI PAUL', '08 03 90 40', '', 'anohpaul@yahoo.fr', 'anohpaul1', '19d4e2fe', 4, 4, 86, 27, 2, 'OUI', '2019-12-23', '14:32:03', 'OUI', '2020-04-24', '14:15:19'),
+(1609, '472 770 J', 'DANGUI', 'YAH NADIA ELEONORE', '77 37 72 88', '', 'nadiadangui@gmail.com', 'nadiadangui', 'josemaria2019', 4, 10, 37, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-24', '11:07:31'),
+(1610, '441 996 K', 'KOUASSI ', 'WA YAO ROLAND', ' 43 64 81 40', ' ', 'kwaroland@yahoo.fr', 'kwaroland', 'KWA_cir83', 4, 5, 42, 29, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-05-15', '12:00:17'),
+(1611, '396 520 U', 'KOUASSI ', 'AKOSSOUA FAUSTINE', ' ', ' ', 'akossouafifi@yahoo.fr', 'akossouafifi', '220bd7ef', 4, 5, 42, 29, 2, 'OUI', '2019-07-11', '09:27:43', '', '0000-00-00', '00:00:00'),
+(1612, '252 975 F', 'KOUA ', 'BROU JEAN CLAUDE', '03 28 52 41', '09 BP 2367 ABIDJAN 09', 'k_brou@hotmail.com', 'kouabrou1', 'KB08jc19!', 5, 13, 24, 17, 1, 'OUI', '2020-03-24', '17:35:31', 'OUI', '2020-09-02', '11:19:24'),
+(1613, '343 863 A', 'FOA', 'BIE OLIVIER', '', '', 'foabieolivier@yahoo.fr', 'foabieolivier', 'foa1982', 3, 4, 21, 13, 3, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2019-11-20', '12:23:45'),
+(1614, '273 248 T', 'KONE ', 'DAOUDA', ' 02 38 77 14', ' ', 'daoudakone2013@gmail.com', 'daoudakone2013', 'f0755a18', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', '', '0000-00-00', '00:00:00'),
+(1615, '234 227 X', 'KOUASSI ', 'KOUASSI PHILIPPE', ' 05 03 40 39', ' ', 'kouassiphill01@gmail.com', 'kouassiphill01', 'cfd6511a', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-15', '13:59:48'),
+(1616, '277 860 R', 'BIEGO', 'GODI HENRI MARIUS ADIELOU', '07 01 88 36', '', 'biegoh3@yahoo.fr', 'biegoh3', 'efa91993', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-07-08', '11:01:39'),
+(1617, '952 620 E', 'ADJE', 'N\'DA NARCISSE', '', '', 'ndaadje@gmail.com', 'narcissegeo', '760384ca', 5, 4, 86, 19, 3, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2019-05-28', '13:15:35'),
+(1619, '426 490 M', 'KOUASSI ', 'KONAN', '', ' ', 'kouassikonan@yahoo.fr', 'kouassikonan', '17aout77', 4, 5, 42, 28, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-16', '16:53:34'),
+(1620, '202 228 R', 'KOUASSI ', 'NÃ‰E ATTA N\'DA WAMALAH', ' 07 70 21 55', ' ', 'germaineatta@gmail.com', 'germaineatta', 'fin2021', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', '', '0000-00-00', '00:00:00'),
+(1621, '354 230 N', 'TOURE ', 'AWA', '07029080', '', 'estoumarie@yahoo.fr', 'estoumarie', 'doctorat30', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-16', '07:50:33'),
+(1622, '410 944 T', 'KOUASSI ', 'KOUAKOU SERGE', ' ', ' ', 'ksergeci@yahoo.fr', 'ksergeci', 'Toxicology59', 4, 5, 42, 27, 2, 'OUI', '2019-06-01', '08:38:26', 'OUI', '2020-05-28', '13:11:00');
+INSERT INTO `utilisateur` (`id_utilisateur`, `matricule_utilisateur`, `nom_utilisateur`, `prenom_utilisateur`, `tel_utilisateur`, `adresse_utilisateur`, `email_utilisateur`, `login_utilisateur`, `mot_passe_utilisateur`, `id_type_utilisateur`, `id_etablissement`, `id_departement`, `id_groupe_utilisateur`, `id_qualite_utilisateur`, `parametres_envoye`, `date_envoie`, `heure_envoie`, `connexion_reussie`, `date_derniere_connexion`, `heure_derniere_connexion`) VALUES
+(1623, '320 280 K', 'KOUASSI ', 'DIT ABOU BAKARI', '01 34 92 40', ' ', 'abou_kouassi@yahoo.fr', 'abou_kouassi', 'cb9c14e1', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-13', '17:00:24'),
+(1624, '246 377 R', 'KOUAME ', 'DESIRE', ' 07 76 53 83', ' ', 'kouamedes@yahoo.fr', 'kouamedes', '1448882b', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', '', '0000-00-00', '00:00:00'),
+(1625, '404 063 S', 'KONAN', 'YAO ARISTIDE', ' ', ' ', 'ariskoya@yahoo.fr', 'ariskoya', 'koyamen01', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-09', '13:51:33'),
+(1626, '952 300 A1', 'FOFANA', 'KADIDIATA', '', '', 'kahdyfofana@gmail.com', 'fofanakady', '366e4e98', 2, 17, 54, 1, 3, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2019-07-17', '12:09:03'),
+(1627, '952 300 A2', 'THIOUM', 'AKISSI CLEMENTINE', '', '', 'thioum2000@gmail.com', 'clementinevpe', '24a1aa5e', 2, 17, 54, 1, 3, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2019-07-22', '09:00:46'),
+(1628, '952 005 C', 'DJOKOUEHI', 'CHARLES ANTOINE', '', '', 'cadjok@gmail.com', 'djokouehicharles', 'djokson4', 4, 11, 18, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-09-09', '12:03:46'),
+(1629, '952 300 A3', 'MONSAN', 'VINCENT', '', '', 'vmonsan@yahoo.fr', 'monsanmi', '60d3f0ac', 5, 13, 24, 19, 3, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-09-02', '11:16:55'),
+(1630, '336 643 E', 'KOUASSI ', 'KONAN EDOUARD', ' 07 71 91 08', ' ', 'kouasedward@yahoo.fr', 'kouasedward', 'olrochpa', 4, 5, 42, 27, 2, 'OUI', '2019-06-17', '23:00:21', 'OUI', '2019-06-18', '12:16:38'),
+(1631, '284 656 G', 'KRA ', 'ADOU KOFFI MATHIEU', ' 08 39 33 31', ' ', 'mattykra@yahoo.fr', 'mattykra', '62f1287c', 4, 5, 42, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-18', '12:00:33'),
+(1632, '306 551 D', 'KONE ', 'INZA', ' 03 48 88 85', ' ', 'inza.kone@gmail.com', 'inza.kone', 'e1b433bd', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', '', '0000-00-00', '00:00:00'),
+(1633, '700 607 I', 'KABLAN', 'ALPHONSE AMOA', '', '', 'amoakablan@gmail.com', 'amoakablan', '5a67b4d7', 5, 1, 82, 19, 3, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1634, '952 300 A4', 'N\'GUESSAN', 'JEAN DAVID', '', '', 'nguess100jd@yahoo.fr', 'nguessanbios', 'biochimie', 5, 5, 42, 19, 3, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-09-04', '13:15:14'),
+(1635, '952 300 A5', 'KOUAKOU', 'KOFFI RENE', '', '', 'renekoffirk@gmail.com', 'renekoffirk', 'Attache2Admin', 5, 1, 82, 19, 3, 'OUI', '2019-12-18', '16:02:10', 'OUI', '2020-01-14', '12:20:51'),
+(1636, '345 675 P', 'KOUASSI', 'KOUADIO SIMPLICE', '41 03 96 97', '', 'kkskouassi@gmail.com', 'kkskouassi', 'gracedivine', 5, 5, 42, 19, 3, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-09-08', '10:37:10'),
+(1637, '354 536 V', 'BOMISSO', 'EDSON LEZIN', '', '', 'lebomisso@yahoo.fr', 'lebomisso1', 'c6b6584c', 4, 5, 42, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-27', '15:19:17'),
+(1638, '320 284 B', 'ASSANVO ', 'MIAN NEWSON KASSY MATHIEU', '77 92 75 45', '', 'nekamam@yahoo.fr', 'nekamam', 'henriette1979', 4, 4, 21, 27, 2, 'OUI', '2020-06-20', '23:23:45', 'OUI', '2020-08-10', '09:39:19'),
+(1639, '225 392 U', 'BAMOUAN ', 'BOYALA JEAN PIERRE', '46 17 44 00', '', 'bamouanjp@yahoo.fr', 'bamouanjp', '5cb7f0ef', 4, 4, 21, 27, 2, 'OUI', '2020-06-20', '23:30:36', 'OUI', '2020-07-07', '03:05:53'),
+(1640, '204 460 Q', 'BIOT EPSE KOUAO', 'BERNADINE ANGELE AYMONDE', '01 23 01 08', '', 'bernadine_biot@yahoo.fr', 'bernadine_biot', '6f780beb', 4, 4, 21, 27, 2, 'OUI', '2020-06-21', '15:09:08', 'OUI', '2020-06-21', '17:35:27'),
+(1641, '338 446 B', 'DIABATE', 'ALASSANE', '05 62 05 24', '', 'Diabatealassane2008@yahoo.fr', 'Diabatealassane2008', '0af813cc', 4, 4, 21, 27, 2, 'OUI', '2020-06-21', '15:09:08', 'OUI', '2020-07-07', '21:48:46'),
+(1642, '131 304 W', 'KOFFI ', 'BROU AMOIN MARTINE', ' 08 64 33 49', ' ', 'jeannekof2@gmail.com', 'jeannekof', '294bc829', 4, 4, 21, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1643, '340 378 C', 'KONIN ', 'SEVERIN', ' 07 75 44 23', ' ', 'konsev@gmail.com', 'konsev', 'a1fd9473', 4, 4, 21, 27, 2, 'OUI', '2020-06-11', '19:43:18', 'OUI', '2020-06-23', '14:52:32'),
+(1644, '156 201 G', 'KOUAME ', 'AKA', ' 05 20 25  45', ' ', 'Kouameaka2003@yahoo.fr', 'kouameaka2003', 'cac4ddce', 4, 4, 21, 27, 2, 'OUI', '2020-07-22', '10:47:49', '', '0000-00-00', '00:00:00'),
+(1645, '231 519 Z', 'KOUASSI ', 'YAO', ' 09 99  00 16', ' ', 'drkouassiyao@hotmail.com', 'drkouassiyao', '0a98ee7e', 4, 4, 21, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1646, '303 667 N', 'LODUGNON', 'NÃ‰E KALOU HIRIEY EVELYNE LILIANE DESIREE', ' 03 58 91 10', ' ', 'evkalodugnon@gmail.com', 'evkalodugnon', 'a56cd78b', 4, 4, 21, 27, 2, 'OUI', '2020-06-22', '10:07:54', 'OUI', '2020-07-03', '12:27:47'),
+(1647, '340 379 D', 'MEIGNAN ', 'GOUEDAN RICHARD', ' 01 73 56 72', ' ', 'richardmeignan@yahoo.fr', 'richardmeignan', 'meign1971', 4, 4, 21, 27, 2, 'OUI', '2020-06-22', '10:07:54', 'OUI', '2020-07-13', '14:05:03'),
+(1648, '338 344 L', 'N\'GUESSAN ', 'MAHOMED BOUBACARD', ' 07 81 43 49', ' ', 'drnguessanmaho@yahoo.fr', 'drnguessanmaho', '64029466', 4, 4, 21, 27, 2, 'OUI', '2020-06-22', '10:31:16', 'OUI', '2020-07-20', '18:44:39'),
+(1649, '390 251 Q', 'OUATTARA ', 'BRAHIMA', '55 04 69 97', ' ', 'kanfolo@yahoo.fr', 'kanfolo', '0aa1c87b', 4, 4, 21, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1650, '339 992 Y', 'SAVADOGO ', 'BOUKARY MATHIAS', ' 02 02 48 68', ' ', 'savadogomathias@yahoo.fr', 'savadogomathias', 'DuGu29', 4, 4, 21, 27, 2, 'OUI', '2020-06-25', '16:36:05', 'OUI', '2020-07-16', '19:31:02'),
+(1651, '286 109 F', 'SOHI ', 'BLESSON FLORENT', '77 19 42 85', '', 'sohiblessonflorent@yahoo.com', 'sohiblessonflorent', '0ec73154', 4, 4, 21, 27, 2, 'OUI', '2020-06-22', '10:31:16', 'OUI', '2020-08-03', '09:23:48'),
+(1652, '069 930 F', 'TCHERO ', 'ZOKOU JOACHIM', '07 30 43 21', '', 'tcheroj@yahoo.fr', 'tcheroj', 'e20dde72', 4, 4, 21, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1653, '290 486 Z', 'YAO', 'KOUASSI BERTIN', '02 01 12 92', '', 'yaobertink0166@yahoo.fr', 'yaobertink0166', 'f68d4e43', 4, 4, 21, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1654, '316 814 N', 'YAPI', 'YAPI ANDRE DOMINIQUE', '07 68 14 98', '', 'andryapi@yahoo.fr', 'andryapi', 'Winin1290', 4, 4, 21, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-22', '14:19:58'),
+(1655, '243 126 T', 'AKA ', 'TIOMAN ', '', '', 'aka_tioman@yahoo.fr', 'aka_tioma1', 'a372724d', 4, 3, 48, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1656, '326 505 T', 'BAHINO', 'DAGAUD JULIEN EYMARD', '07 79 06 13', '', 'julienbahino@gmail.com', 'julienbahino', '28c832a2', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-09-01', '18:17:37'),
+(1657, '458 887 X', 'COULIBALY', 'SOULEYMANE', '', '', 'souleydestras@yahoo.fr', 'souleydestras', 'Ocoo75aib', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-31', '12:49:48'),
+(1658, '456 032 N', 'KOFFI', 'APHOUET AURELIE', '', '', 'koffiaphouet@yahoo.fr', 'koffiaphouet', 'alpha98321omega', 4, 3, 48, 27, 2, 'OUI', '2019-07-17', '12:15:47', 'OUI', '2020-06-26', '12:44:48'),
+(1659, '456 034 Q', 'KOUADIO', 'KOUAKOU', '', '', 'kk.kouadio@yahoo.fr', 'kk.kouadio', '40b0a3af', 4, 3, 48, 27, 2, 'OUI', '2019-09-30', '16:25:30', 'OUI', '2020-06-18', '11:09:58'),
+(1660, '156 078 F', 'SECKA ', 'OBODJI DESIRE CHRISTOPHE ', ' 07 55 40 46', ' ', 'obodjisecka56@gmail.com', 'obodjisecka56', 'fdaf8b77', 4, 4, 21, 27, 2, 'OUI', '2020-06-22', '10:31:16', '', '0000-00-00', '00:00:00'),
+(1661, '363 256 M', 'DIARRASSOUBA', 'ADAMA', '', '', 'adama.diarrassouba083@gmail.com', 'adama.diarrassouba083', '78f186f7', 3, 4, 21, 12, 3, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1662, '456 008 G', 'AMBEU', 'N\'TA CHRISTELLE MELISSA EPSE LOKO', '', '', 'chris_meliss@yahoo.fr', 'ambeuchristelle', 'Amours123', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-13', '10:41:30'),
+(1663, '278 643 U', 'BOFFOUE', 'MORO OLIVIER', '42 03 12 12', '', 'oboffoue@yahoo.fr', 'oboffoue', 'df7a3548', 4, 12, 35, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1664, '402 345 F', 'COULIBALY', 'ADAMA', '07 76 29 52', '', 'cooladok57@gmail.com', 'cooladok57', 'dokatiene', 4, 12, 35, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-12', '18:22:09'),
+(1665, '455 869 H', 'DANHUMAH', 'JEAN HOMIAN', '07 52 92 38', '', 'danumahjean@yahoo.fr', 'danumahjean', 'Yeshua20', 4, 12, 35, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-14', '14:04:13'),
+(1666, '460 559 K', 'GAHI', 'ZEGBE NARCISSE', '74 45 48 89', '', 'gahi_z@yahoo.fr', 'gahi-z', 'Mariej29@', 4, 12, 35, 27, 2, 'OUI', '2020-06-08', '13:33:11', 'OUI', '2020-06-16', '00:21:35'),
+(1667, '455 883 Q', 'IRIE BI', 'TraziÃ© Jean-GaÃ«l', '09 63 00 69', '', 'tchambyy5@gmail.com', 'tchambyy5', 'gaelo8300', 4, 12, 35, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-30', '19:02:17'),
+(1668, '424 961 N', 'JOLISSAINT ', 'OBRE SERY PAUL', ' 07 46 76 82', ' ', 'jopolfr@live.fr', 'jopolfr', 'musique0', 4, 12, 35, 29, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-05', '07:05:35'),
+(1669, '455 884 R', 'KABLAN', 'Malan Ketecha Armand', '08 30 90 85 ', '', 'kablan.malan@yahoo.fr', 'kablan.malan', 'Malanben_225', 4, 12, 36, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-01', '14:10:39'),
+(1670, '500 002 A', 'KOUADIO ', 'FOSSOU JEAN-LUC', '09 00 45 46', '', 'fossoujean@gmail.com', 'fossoujean', 'yemima@1', 4, 12, 35, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-08-29', '12:21:27'),
+(1671, '455 904 V', 'KRA', 'AKOUA CLARISSE', '07 57 24 17', '', 'clariskra@yahoo.fr', 'clariskra', '65197874', 4, 12, 35, 27, 2, 'OUI', '2019-06-18', '20:53:25', 'OUI', '2020-07-21', '15:05:51'),
+(1672, '455 919 T', 'SORO', 'DONISSONGOU DIMITRI', '08 46 42 43', '', 'dimitri.soro@gmail.com', 'dimitri.soro', 'Nathan2017$oro', 4, 12, 35, 27, 2, 'OUI', '2019-06-18', '20:57:22', 'OUI', '2020-09-09', '09:13:37'),
+(1673, '458 728 N', 'TIEMELE', 'JACQUES-ANDRE', '07 14 08 30', '', 'jatiemele@yahoo.fr', 'jatiemele', 'Curat2020*', 4, 12, 36, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-13', '21:29:38'),
+(1674, '305 925 T', 'TRAORE', 'ABOU', '07 27 83 48', '', 'bouareta@yahoo.fr', 'bouare', 'djeneb@mere', 4, 12, 35, 27, 2, 'OUI', '2019-06-18', '20:53:25', 'OUI', '2020-08-06', '23:23:00'),
+(1675, '359 202 U', 'NIAMKEY', 'KADIO HILAIRE', '58 14 94 27', '', 'niamkehilaire@gmail.com', 'niamkehilaire', 'c16b5ef7', 4, 12, 35, 27, 2, 'OUI', '2020-06-13', '16:53:40', 'OUI', '2020-06-14', '12:09:44'),
+(1676, '441 993 Q', 'KOUASSI ', 'KAN MODESTE', ' ', ' ', 'kanmodestekouassi@gmail.com', 'kanmodestekouassi', '585bd9f1', 4, 5, 42, 29, 2, 'OUI', '2020-06-11', '20:05:50', 'OUI', '2020-07-02', '16:45:24'),
+(1677, '400 911 Z', 'LOZO', 'ROMEO N\'GUESSAN', '08 95 31 14', '', 'lozoromeo85@yahoo.fr', 'lozoromeo85', 'zolo1985', 4, 5, 42, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-07-05', '17:02:38'),
+(1678, '953 002 A', 'BODJI', 'IRIDJE MARCELLE', '07 58 83 88', '', 'bodjimarc@yahoo.fr', 'bodjimarc', 'Angelique1977', 4, 5, 42, 27, 2, 'OUI', '2019-05-28', '22:15:33', 'OUI', '2020-07-27', '19:56:29'),
+(1679, '456 580 V', 'CISSE', 'ABDOULAYE', '07 14 22 36', '', 'abdoulayeciss@rocketmail.com', 'abdoulayeciss', '040b1a4c', 4, 5, 42, 27, 2, 'OUI', '2019-05-28', '22:15:33', '', '0000-00-00', '00:00:00'),
+(1680, '456 000 B', 'GBALOU', 'KACOU LUC', '89 82 51 87', '', 'kakouluc1@gmail.com', 'kakouluc1', '385790e6', 4, 5, 42, 27, 2, 'OUI', '2019-05-28', '22:15:33', 'OUI', '2020-07-31', '13:42:29'),
+(1681, '455 967 T', 'IRIE', 'BI JEAN SEVERIN', '88 36 05 34', '', 'ijeanseverin@yahoo.fr', 'ijeanseverin', '27n1980a', 4, 5, 42, 27, 2, 'OUI', '2019-05-28', '22:15:33', 'OUI', '2020-06-29', '15:50:08'),
+(1682, '952 601 L', 'N\'DRIN', 'APALA JULIEN', '', '', 'lecorrige@yahoo.fr', 'ndrinapalajulien', 'july2019july', 4, 13, 24, 27, 2, 'OUI', '2019-05-29', '12:14:31', 'OUI', '2020-06-24', '12:17:18'),
+(1683, '953 001 A', 'SAMAGASSI', 'SOULEYMANE', '', '', 'samagassisouley@gmail.com', 'samagassisouleymane', '821509', 4, 13, 24, 27, 2, 'OUI', '2019-05-29', '12:14:31', 'OUI', '2020-06-25', '08:20:51'),
+(1684, '085 386 K', 'GBAYORO', 'ZEREGBE ALPHONSE', ' 05 96 94 20', ' ', 'alphonse.gbayoro@hotmail.com', 'alphonse.gbayoro', '8fcd577c', 4, 4, 34, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1685, '097 088 Q', 'ZINSOU', 'EDME MICHEL YAMBODE', '05 00  15 61', '', 'zinsoue@hotmail.com', 'zinsouedme', '95f6a1f4', 4, 4, 34, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1686, '315 031 PA', 'ADOU', 'YAO CONSTANT', '', '', 'adouyaocy@gmail.com', 'adouyaoc', 'koss3111', 5, 5, 42, 19, 3, 'OUI', '2019-06-03', '13:59:22', 'OUI', '2020-07-07', '12:11:17'),
+(1687, '952 601 J', 'AMOUZOU', 'GILDAS YAOVI', '', '', 'gildasamouzou2@gmail.com', 'gildasamouzou2', 'AmzGi26@', 4, 13, 24, 27, 2, 'OUI', '2019-06-07', '15:31:54', 'OUI', '2020-08-21', '13:30:36'),
+(1688, '952 601 K', 'KONE', 'BAKARY', '', '', 'dohirimin@gmail.com', 'konebakary', 'ae5c9176', 4, 13, 24, 27, 2, 'OUI', '2019-06-11', '16:18:07', 'OUI', '2020-01-03', '18:37:44'),
+(1689, '205 357 M', 'AHOUO ', 'LEON RAYMOND', '07 08 31 73', '', 'ahouo2002@yahoo.fr', 'ahouoleon', '5f1a2c5d', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '09:51:48', '', '0000-00-00', '00:00:00'),
+(1690, '961 500 B', 'GNAMIEN', 'KASSI MAGLOIRE', '88 03 33 33', '', 'gnamienmagloire@yahoo.com', 'gnamienmagloire', 'b2b546a2', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '11:13:28', '', '0000-00-00', '00:00:00'),
+(1691, '277 909 P', 'GONDO', 'TOBOKOUE DANIEL', '07 32 25 05', '', 'gondotobokou@yahoo.fr', 'gondotobokou', '8ba52ee1', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '11:13:28', '', '0000-00-00', '00:00:00'),
+(1692, '357 011 V', 'KOUASSI', 'N\'GUESSAN JONAS', '09 44 93 23', '', 'knguessanjo@gmail.com', 'knguessanjo', 'Silence45', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '11:13:28', 'OUI', '2019-06-13', '15:17:27'),
+(1693, '961 500 C', 'N\'DOUA', 'KOUASSI CLEMENT', '09 77 47 73', '', 'clemkouassi@yahoo.fr', 'clemkouassi', 'c5fa620d', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '11:13:28', '', '0000-00-00', '00:00:00'),
+(1694, '961 500 A', 'NANOU', 'MAMBOH BRUNO MATHIEU', '09 47 43 65', '', 'nanoumamboh@yahoo.fr', 'nanoumamboh', '86e4cb77', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '11:29:05', '', '0000-00-00', '00:00:00'),
+(1695, '961 500 D', 'SORO', 'TORNA', '78 72 79 88', '', 'tornasoro@yahoo.ca', 'tornasoro', 'JesusChrist17228691TSYOS', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '11:29:05', 'OUI', '2019-11-01', '23:17:13'),
+(1696, '456 765 H', 'TIENE', 'BABOUA', '07 76 39 78', '', 'babtiene@gmail.com', 'babtiene', '2.rachidasara.', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '11:29:05', 'OUI', '2019-11-11', '10:48:02'),
+(1697, '400 526 X', 'YAO', 'KOUADIO', '47 45 25 25', '', 'koadioida@yahoo.fr', 'koadioida', '05813166ida', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '11:29:05', 'OUI', '2019-08-14', '13:15:20'),
+(1698, '346 617 E', 'YEO', 'ZIE SEYDOU', '07 71 66 89', '', 'yzseydou@gmail.com', 'yzseydou', '36543d5a', 4, 4, 20, 27, 2, 'OUI', '2019-06-13', '11:29:05', '', '0000-00-00', '00:00:00'),
+(1699, '952 621 NR', 'ANGOUA', 'ELIACHIE LARISSA E.', '47 31 04 84', '', 'eleachye@yahoo.fr', 'eleachye', 'paulie84', 4, 12, 35, 27, 2, 'OUI', '2019-06-18', '20:53:25', 'OUI', '2020-06-16', '00:01:27'),
+(1700, '952 520 NR', 'DJEYA', 'KOUAME LEGER', '07 56 42 39', '', 'djeyabli@gmail.com', 'djeyabli', 'dkl472917', 4, 12, 35, 27, 2, 'OUI', '2019-06-18', '20:53:25', 'OUI', '2020-08-31', '09:14:08'),
+(1701, '952 623 NR', 'KOUAO', 'ASSIE FRANCOIS A.', '48 69 73 63', '', 'kouaof@gmail.com', 'kouaof', 'Pierreyvan2012', 4, 12, 35, 27, 2, 'OUI', '2019-06-18', '20:53:25', 'OUI', '2020-08-06', '08:51:18'),
+(1702, '474 903 X', 'OUATTARA', 'ISMAEL BEN', '41 63 09 04', '', 'geologueben@hotmail.fr', 'geologueben', 'beno@15', 4, 12, 35, 27, 2, 'OUI', '2020-06-22', '21:27:01', 'OUI', '2020-07-24', '09:26:54'),
+(1703, '474 832 P', 'TRAORE', 'BRAHIMAN', '08 61 54 62', '', 'traorebrahiman@yahoo.fr', 'traorebrahiman', 'Ouattara05', 4, 12, 35, 27, 2, 'OUI', '2019-06-18', '20:53:25', 'OUI', '2020-09-08', '06:42:45'),
+(1704, '458 504 P', 'KOUASSI', 'AMENAN EVELYNE', '', '', 'kouevelyna@gmail.com', 'kouevelyna', 'leachate', 4, 12, 35, 27, 2, 'OUI', '2019-11-20', '13:36:02', 'OUI', '2020-06-15', '22:32:25'),
+(1705, '400 549 N', 'AGNERO', 'AKPA MARCEL', '07 46 07 77', '', 'agnromar@yahoo.fr', 'agnromar', 'youlil3086', 4, 3, 48, 27, 2, 'OUI', '2019-06-20', '21:24:06', 'OUI', '2020-08-20', '17:29:43'),
+(1706, '401 138 X', 'ALLOU', 'N\'GUADI BLAISE', '08 57 50 96', '', 'allounguadi@yahoo.fr', 'allounguadi', 'allou1985', 4, 3, 48, 27, 2, 'OUI', '2019-06-20', '21:24:06', 'OUI', '2020-08-18', '12:33:47'),
+(1707, '953 610 A', 'APPIA', 'FOFFIE THIERY AUGUSTE', '09 67 52 34', '', 'thieryappia@yahoo.com', 'thieryappia', 'samuel19', 4, 3, 48, 27, 2, 'OUI', '2019-06-20', '21:24:06', 'OUI', '2020-07-01', '15:06:21'),
+(1708, '952 627 NR', 'CAMARA', 'TCHAMBAGA ETIENNE', '', '', 'tchambaga01@yahoo.fr', 'tchambaga01', 'Sanata1983issa@', 4, 3, 48, 27, 2, 'OUI', '2019-06-20', '21:24:06', 'OUI', '2020-07-29', '11:44:58'),
+(1709, '952 629 NR', 'DIABY', 'ABOUBACAR', '', '', 'diabya13@gmail.com', 'diabya13', 'Alexandrine1988', 4, 3, 48, 27, 2, 'OUI', '2019-07-10', '10:13:18', 'OUI', '2020-09-03', '22:29:05'),
+(1710, '952 630 NR', 'GNAMBA', 'CORNEIL QUAND MEME', '', '', 'gnambacorneil@gmail.com', 'gnambacorneil', 'Succestine1gam', 4, 3, 48, 27, 2, 'OUI', '2019-06-20', '21:24:06', 'OUI', '2020-06-11', '11:52:55'),
+(1711, '248 823 B', 'KONATE', 'ISSA', '', '', 'k_issa66@yahoo.fr', 'k_issa66', '875e964c', 4, 3, 48, 27, 2, 'OUI', '2020-05-19', '23:05:48', 'OUI', '2020-06-14', '19:42:36'),
+(1712, '952 631 NR', 'LOBOUE', 'MOULIA HERMIONE', '', '', 'mouliahermione.loboue@gmail.com', 'mouliahermione.loboue', 'Joel1954', 4, 3, 48, 27, 2, 'OUI', '2020-02-12', '16:47:07', 'OUI', '2020-08-06', '08:14:09'),
+(1713, '472 741 H', 'SANGARE', 'NAMINATA', '01 28 59 03', '', 'naminatha79@yahoo.fr', 'naminatha79', '30f0358e', 4, 3, 48, 27, 2, 'OUI', '2020-01-10', '15:07:16', 'OUI', '2020-07-07', '11:08:36'),
+(1714, '952 626 NR', 'TAPIGUE', 'NANKENG SERGE', '', '', 'sergent.35@gmail.com', 'sergent.35', 'alex3592', 4, 3, 48, 27, 2, 'OUI', '2019-06-20', '21:24:06', 'OUI', '2020-06-09', '18:18:06'),
+(1715, '456 028 S', 'GOULIZAN-BI', 'SEVERIN DRI', '', '', 'goulizan2000@yahoo.fr', 'goulizan2000', 'orliakeren3', 4, 3, 48, 27, 2, 'OUI', '2019-06-20', '21:26:33', 'OUI', '2020-06-16', '19:32:14'),
+(1716, '367 226 B', 'ASSOU', 'ARTHUR OSCAR', '', '', 'assou2005@gmail.com', 'assou2005', 'maryeth2003', 3, 12, 35, 12, 3, 'OUI', '2019-06-22', '09:25:32', 'OUI', '2020-07-06', '15:22:30'),
+(1717, '952 700 NR', 'ANDO', 'AMALAMAN FRANCK SEVERIN', '01 67 27 78', '', 'franck.ando@hotmail.com', 'franck.ando', 'paulyvan2015', 4, 4, 23, 27, 2, 'OUI', '2019-08-09', '17:08:20', 'OUI', '2019-12-02', '13:37:53'),
+(1718, '952 701 NR', 'DJAKO', 'LOGON ALBERT THIERRY', '08 52 57 42', '', 'djakologon@yahoo.fr', 'djakologon', 'c2e1ab66', 4, 4, 23, 27, 2, 'OUI', '2019-06-23', '21:31:09', '', '0000-00-00', '00:00:00'),
+(1719, '952 702 NR', 'KANGA', 'ADOUAKOUA AKA BRICE', '58 98 74 09', '', 'brice.kanga@yahoo.fr', 'brice.kanga', 'foufou80', 4, 4, 23, 27, 2, 'OUI', '2019-06-23', '21:31:09', 'OUI', '2019-06-28', '08:07:53'),
+(1720, '952 703 NR', 'TOURE', 'KINANYA DONATIEN', '07 15 61 67', '', 'tourekinanaya@gmail.com', 'tourekinanaya', 'a8bec9b2', 4, 4, 23, 27, 2, 'OUI', '2019-06-23', '21:31:09', '', '0000-00-00', '00:00:00'),
+(1721, '952 704 NR', 'TOVI', 'N\'GUESSAN PIERRE', '88 45 74 59', '', 'nptovi@yahoo.fr', 'nptovi', 'Tovi819506304678', 4, 4, 23, 27, 2, 'OUI', '2019-06-23', '21:31:09', 'OUI', '2019-06-25', '11:06:47'),
+(1722, '952 705 NR', 'AMANI', 'AHOU FLORENTINE', '09 03 89 18', '', 'amanifloflo1984@yahoo.fr', 'amanifloflo1984', 'a4750884f', 4, 4, 31, 27, 2, 'OUI', '2019-06-23', '22:04:43', 'OUI', '2020-08-27', '15:22:48'),
+(1723, '952 706 NR', 'AMICHIA', 'AFFIBE WORIA EPSE DIARRASSOUBA', '57 84 07 57', '', 'amich_woria@live.fr', 'amich_woria', 'riwo2506', 4, 4, 31, 27, 2, 'OUI', '2019-07-03', '10:56:07', 'OUI', '2020-04-09', '11:18:17'),
+(1724, '479 434 V', 'DIOMANDE ', 'MOUSSA', '59 81 58 79', '', 'mdiomande92@yahoo.fr', 'mdiomande92', 'master123', 4, 4, 31, 27, 2, 'OUI', '2019-06-23', '22:04:43', 'OUI', '2020-06-26', '19:41:19'),
+(1725, '456 617  V', 'KONE', 'SIATTA EPSE FOFANA', '07 62 21 79', '', 'ksia85@yahoo.fr', 'ksia85', 'Azizanissa', 4, 4, 31, 27, 2, 'OUI', '2019-06-23', '22:04:43', 'OUI', '2019-10-21', '08:32:43'),
+(1726, '952 708 NR', 'TOURE', 'GNININ AICHA', '59 95 46 92', '', 't.aichadesline@yahoo.fr', 't.aichadesline', 'maimouna', 4, 4, 31, 27, 2, 'OUI', '2019-06-23', '22:04:43', 'OUI', '2020-07-05', '06:29:59'),
+(1727, '952 709 NR', 'COMOE', 'YAHA ESTHER COLOMBE EPSE COFFIE', '', '', 'colombecomoe@hotmail.fr', 'colombecomoe', '960b09ab', 4, 4, 22, 27, 2, 'OUI', '2019-06-24', '09:39:30', 'OUI', '2019-06-25', '10:04:38'),
+(1728, '952 710 NR', 'EKRA', 'EBA MARIE CHANTAL EPSE NIAMBE', '', '', 'cniambe@transcoclsg.org', 'cniambe', 'a36a990e', 4, 4, 22, 27, 2, 'OUI', '2019-06-24', '09:39:30', '', '0000-00-00', '00:00:00'),
+(1729, '952 711 NR', 'KOFFI', 'DADIE PAUL', '49 79 16 60', '', 'dadiepaulkoffi@gmail.com', 'dadiepaulkoffi', 'A01072017', 4, 4, 22, 27, 2, 'OUI', '2019-06-24', '09:39:30', 'OUI', '2019-06-24', '18:42:31'),
+(1730, '952 712 NR', 'KONE', 'ABOULAYE', '58 35 39 49', '', 'kauneyabou@gmail.com', 'kauneyabou', 'f7332d65', 4, 4, 22, 27, 2, 'OUI', '2019-06-24', '09:39:30', 'OUI', '2019-08-03', '12:17:42'),
+(1731, '952 713 NR', 'KONE', 'GNENEFOLO', '09 61 74 39', '', 'josouekone@yahoo.fr', 'josouekone', '7011db08', 4, 4, 22, 27, 2, 'OUI', '2019-06-24', '09:39:30', '', '0000-00-00', '00:00:00'),
+(1732, '952 714 NR', 'N\'GORAN', 'EKIAN NOEL', '09 23 93 70', '', 'noelekian@yahoo.fr', 'noelekian', 'seth1984', 4, 4, 22, 27, 2, 'OUI', '2019-06-24', '09:39:30', 'OUI', '2019-07-03', '11:21:40'),
+(1733, '952 715 NR', 'SORO', 'FOUNDIENGUY CAROLINE EPSE M\'BRAH', '', '', 'foundienguy@gmail.com', 'foundienguy', '69ad97d8', 4, 4, 22, 27, 2, 'OUI', '2019-06-24', '09:39:30', '', '0000-00-00', '00:00:00'),
+(1734, '952 716 NR', 'TIE', 'GOUIN BEDICTE EDWIGE', '07 77 83 04', '', 'tiebenedicte@yahoo.fr', 'tiebenedicte', '5fe20342', 4, 4, 22, 27, 2, 'OUI', '2019-06-24', '09:39:30', 'OUI', '2019-06-28', '15:04:39'),
+(1735, '952 718 NR', 'TIEPOHO', 'DOHANEMON ALAIN', '08 96 93 80', '', 'alaintiepoho1@yahoo.fr', 'alaintiepoho1', '1984alain', 4, 4, 22, 27, 2, 'OUI', '2019-07-03', '17:41:55', 'OUI', '2019-07-30', '16:02:54'),
+(1736, '952 719 NR', 'ZOUHON', 'LOU NAZIE MICHELLE', '07 89 45 68', '', 'zouhon2017@gmail.com', 'zouhon2017', 'nazie', 4, 4, 22, 27, 2, 'OUI', '2019-06-24', '09:39:30', 'OUI', '2019-06-25', '11:20:48'),
+(1737, '952 725 NR', 'ASSANI', 'ADJAGBE', '07 97 81 89', '', 'assaniadjagbe@yahoo.fr', 'assaniadjagbe', 'yassine11', 4, 4, 21, 27, 2, 'OUI', '2019-06-25', '13:07:19', 'OUI', '2020-08-30', '16:38:01'),
+(1738, '476 564 U', 'AYEMOU', 'KADJOMOU FERDINAND', '49 24 56 75', '', 'Fekaye1986@yahoo.fr', 'Fekaye1986', '02akf0486', 4, 4, 21, 27, 2, 'OUI', '2020-06-20', '23:23:45', 'OUI', '2020-07-13', '17:30:45'),
+(1739, '475 879 F', 'KOFFI', 'KOUABLAN', '07 35  5626', '', 'kof_kouablan@yahoo.fr', 'kof_kouablan', 'lael2020', 4, 4, 21, 27, 2, 'OUI', '2019-06-25', '13:07:19', 'OUI', '2020-08-09', '01:25:57'),
+(1740, '401 818 Z', 'N\'GUESSAN', 'KONAN PARFAIT', '59 90 60 01', '', 'parfaitnguessan77@gmail.com', 'parfaitnguessan77', 'medieviste', 4, 4, 21, 27, 2, 'OUI', '2020-06-22', '10:31:16', 'OUI', '2020-08-01', '20:10:41'),
+(1741, '475 318 C', 'N\'DA', 'KOUADIO CHRISTOPHE', '09 97 30 43', '', 'christndak@yahoo.com', 'christndak', 'Christnda1984', 4, 4, 86, 27, 2, 'OUI', '2019-12-30', '14:07:54', 'OUI', '2020-06-24', '22:48:24'),
+(1742, '475 320 A', 'N\'DOLI', 'STEPHANE DESIRE ECKOU', '07 29 02 67', '', 'ndolistephanedesire7@gmail.com', 'ndolistephanedesire7', 'yanis2015', 4, 4, 86, 27, 2, 'OUI', '2019-12-30', '14:07:54', 'OUI', '2020-05-27', '13:15:11'),
+(1743, '257 492 Z', 'OUATTARA', 'DRISSA', '08 69 33 70', '', 'legsondriss@yahoo.fr', 'legsondriss', '7f2ebe9c', 4, 4, 86, 27, 2, 'OUI', '2019-12-31', '11:07:02', '', '0000-00-00', '00:00:00'),
+(1744, '274 081 Z', 'SOGBOU', 'BADJO JULIENNE', '07 66 35 27', '', 'atioryjulienne@gmail.com', 'atioryjulienne', 'jjma2311', 4, 4, 86, 27, 2, 'OUI', '2019-12-31', '11:07:02', 'OUI', '2020-06-09', '10:06:56'),
+(1745, '475 330 C', 'YAO', 'AFFOUA MARIE ROSE', '07 66 58 21', '', 'marielois@live.fr', 'marielois', '7513c42b', 4, 4, 86, 27, 2, 'OUI', '2019-06-28', '19:12:07', '', '0000-00-00', '00:00:00'),
+(1746, '474 356 H', 'YAO', 'KOFFI BERTRAND', '08 65 39 41', '', 'yao_bertrand@yahoo.FR', 'yao_bertrand', '9daf9b11', 4, 4, 86, 27, 2, 'OUI', '2019-12-31', '11:28:37', 'OUI', '2019-07-01', '12:19:15'),
+(1747, '475 316 S', 'MAI', 'GILLES HAROLD WILFRIED', '08 47 89 39', '', 'mgillesharold@gmail.com', 'mgillesharold', 'wilfried08', 4, 4, 86, 27, 2, 'OUI', '2019-06-28', '19:12:07', 'OUI', '2020-03-01', '21:02:25'),
+(1748, '475 317 T', 'MEL', 'MELEDJE MELAINE', '67 03 71 24', '', 'melomail4@gmail.com', 'melomail4', 'armelmilane', 4, 4, 86, 27, 2, 'OUI', '2019-12-30', '14:07:54', 'OUI', '2020-01-03', '08:04:53'),
+(1749, '474 311 U', 'KOUADIO', 'N\'DRI ERNEST', '07 50 29 96', '', 'ernestkouadio.ci2012@yahoo.fr', 'ernestkouadio.ci2012', '42caa6da', 4, 4, 86, 27, 2, 'OUI', '2019-12-30', '13:04:48', '', '0000-00-00', '00:00:00'),
+(1750, '474 307 H', 'KONE', 'MAMADOU', '07 13 47 23', '', 'mkkmamadou@gmail.com', 'mkkmamadou', 'ferekouo2104', 4, 4, 86, 27, 2, 'OUI', '2019-12-30', '13:04:48', 'OUI', '2020-09-04', '21:42:43'),
+(1751, '162 853 T', 'KONE', 'BAKARY', '59 55 61 45', '', 'konesidick@yahoo.fr', 'konesidick', 'e3600536', 4, 4, 86, 27, 2, 'OUI', '2020-01-08', '23:05:20', 'OUI', '2020-06-16', '09:47:44'),
+(1752, '952 730 NR', 'KONAN', 'HONOREE GIHSLAINE EPSE KOUAME', '07 91 88 81', '', 'kouame_honoree@yahoo.fr', 'kouame_honoree', 'assistant2019', 4, 4, 86, 27, 2, 'OUI', '2019-12-23', '16:57:16', 'OUI', '2020-06-05', '15:26:22'),
+(1753, '231 498 V', 'DIDIA', 'YABA CELESTINE', '07-94-45-75', '', 'yabadidia@yahoo.fr', 'didiayaba', '5f283cc0', 5, 11, 15, 17, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-05-24', '16:55:41'),
+(1754, '911 000 Y', 'BABA', 'KABORE', '', '', 'babakabore17@gmail.com', 'babakabore17', 'MsalaH_2', 4, 11, 15, 27, 2, 'OUI', '2019-12-08', '16:59:39', 'OUI', '2020-09-06', '10:13:32'),
+(1755, '456 870 F', 'KPANDJI', 'ISIDORE KOUADIO', 'O7 16 83 89', '', 'kpandji_2010@yahoo.fr', 'kpandji_2010', 'progressGOD72', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-15', '23:16:19'),
+(1756, '456 896 N', 'KOUADIO', 'KOUAKOU PIERRE', '07 98 05 01', '', 'kpierrekouadio74@gmail.com', 'kpierrekouadio74', 'b3ad6feb', 4, 5, 42, 27, 2, 'OUI', '2019-08-19', '19:14:26', 'OUI', '2020-06-15', '18:20:28'),
+(1757, '456 672 C', 'KOUADIO', 'YAO JEAN-CLOVIS', '08 05 08 92', '', 'jeanclovis08@gmail.com', 'jeanclovis08', 'joliclovis1012', 4, 5, 42, 27, 2, 'OUI', '2019-07-10', '19:16:12', 'OUI', '2020-06-17', '17:58:40'),
+(1758, '456 007 W', 'KOUAME', 'N\'ZEBO DESIRE', '07 32 07 36', '', 'k_nzebo@yahoo.fr', 'k_nzebo', '07320736', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-11', '13:02:00'),
+(1759, '456 698 F', 'KOUE', 'BI TIH MATHIEU', '57 28 15 24', '', 'matikouebi@gmail.com', 'matikouebi', 'd3ebf997', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-15', '17:04:10'),
+(1760, '456 700 M', 'KPAN', 'WOKAPEU BLAISE', '78 18 40 98', '', 'kpanblaise@gmail.com', 'kpanblaise', 'joelariel20114', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-09-03', '11:18:04'),
+(1761, '456 008 F', 'KRABI', 'EKOUA REGINA', '78 96 82 32', '', 'krabiregina@gmail.com', 'krabiregina', 'e73d67aa', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-08', '19:28:50'),
+(1762, '455 977 V', 'M\'BO', 'KACOU ANTOINE ALBAN', '07 31 63 07', '', 'kacoumbo@yahoo.fr', 'kacoumbo', 'albankacou1010', 4, 5, 42, 29, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-08-21', '16:37:02'),
+(1763, '455 980 V', 'OUATTARA', 'HADJA DJENEBA', '', '', 'ohadjadjeneba@gmail.com', 'ohadjadjeneba', '5428faf6', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-10', '11:59:44'),
+(1764, '456 017 P', 'SORO', 'BRAHIMA', '87 86 08 13', '', 'esdrasoro12@gmail.com', 'esdrasoro12', '635c11d8', 4, 5, 42, 27, 2, 'OUI', '2020-04-24', '13:16:43', 'OUI', '2020-06-24', '14:01:26'),
+(1765, '455 989 S', 'TUO', 'SEYDOU', '08 69 97 56', '', 'tuoseydou4@yahoo.fr', 'tuoseydou4', 'Fotamanan82TS', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-08-04', '17:28:55'),
+(1766, '456 009 G', 'VANIE', 'LOUYOUNAN LINDA PATRICIA EPSE LEABO', '08 13 05 99', '', 'lindaleabo@hotmail.fr', 'lindaleabo', 'EcM_PV_78', 4, 5, 42, 27, 2, 'OUI', '2019-07-11', '09:27:43', 'OUI', '2020-06-30', '16:38:51'),
+(1767, '952 355 DA', 'KOUA', 'Brou', '', '', 'princesamuelkouame@gmail.com', 'kouageo', 'a611ddd9', 5, 4, 86, 19, 3, 'OUI', '2019-07-11', '21:23:10', 'OUI', '2020-08-12', '17:00:47'),
+(1768, '952 610 B', 'BLESSON', 'DOUOHOU DANIELLE', '08 01 47 97', '', 'danyblesson@yahoo.fr', 'danyblesson', 'Maman1960', 4, 9, 46, 27, 2, 'OUI', '2019-07-16', '21:27:25', 'OUI', '2020-02-27', '18:40:50'),
+(1769, '396 276 B', 'GAULITHY ', 'KONAN GEORGES', ' 07 71 19 75', ' ', 'konangeorges@yahoo.fr', 'konangeorges', 'Milaneisrael1980', 4, 9, 46, 27, 2, 'OUI', '2019-07-17', '07:15:46', 'OUI', '2020-07-08', '07:31:48'),
+(1770, '327 128 Z', 'GUEU ', 'DENIS', ' 05 97 68 51', ' ', 'gueudenis@outlook.fr', 'gueudenis', '975beeab', 4, 9, 46, 27, 2, 'OUI', '2019-07-18', '15:28:22', 'OUI', '2020-02-25', '16:02:23'),
+(1771, '503 100 C', 'KOUADIO', 'WAH', '07 76 79 44', '', 'diowah@yahoo.fr', 'diowah', 'c79557f3', 4, 9, 46, 27, 2, 'OUI', '2019-07-17', '07:15:46', 'OUI', '2020-02-12', '13:03:22'),
+(1772, '952 722 NR', 'KOUAME', 'N\'GUESSAN EDWIGE MARINA GHISLAINE', '08 25 10 35', '', 'ghislainekouame@yahoo.fr', 'ghislainekouame', '7K1N1E83', 4, 9, 46, 27, 2, 'OUI', '2019-07-17', '07:15:46', 'OUI', '2020-03-19', '14:40:23'),
+(1773, '417 347 X', 'KOUAME ', 'BI GOORE ROLAND', ' ', ' ', 'gooreroland@yahoo.fr', 'gooreroland', '46050947', 4, 9, 46, 27, 2, 'OUI', '2019-07-17', '08:16:49', '', '0000-00-00', '00:00:00'),
+(1774, '460 593 W', 'OUATTARA', 'ABOU', '09 11 52 84', '', 'watsonabou@gmail.com', 'watsonabou', 'b957c437', 4, 9, 46, 27, 2, 'OUI', '2019-07-17', '15:32:50', 'OUI', '2020-01-15', '21:32:36'),
+(1775, '952 723 NR', 'SISSOKO', 'MARIAM DITE DIARAFA', '07 21 39 04', '', 'diaraph05@gmail.com', 'diaraph05', '2520450a', 4, 9, 46, 27, 2, 'OUI', '2019-07-17', '15:32:50', 'OUI', '2020-01-28', '19:15:12'),
+(1776, '952 358 NR', 'TRAORE', 'DIDIATA', '07 74 21 44', '', 'traore80@live.fr', 'traore80', 'didi1810', 4, 9, 46, 27, 2, 'OUI', '2019-07-17', '16:33:35', 'OUI', '2020-02-11', '06:56:57'),
+(1777, '952 721 NR', 'DOUMBIA', 'NABI YOULA', '', '', 'nabiyouladoumbia@gmail.com', 'nabiyouladoumbia', 'Lucky019', 4, 9, 46, 27, 2, 'OUI', '2019-07-18', '15:28:22', 'OUI', '2020-04-19', '10:30:31'),
+(1778, '700 143 M', 'BOLIGA', 'DANON JEAN CLAUDE', '41 02 85 67', '', 'jc.boliga@gmail.com', 'jc.boliga', 'e2edad15', 5, 9, 46, 19, 3, 'OUI', '2019-07-18', '19:56:27', 'OUI', '2020-07-15', '11:57:30'),
+(1779, '203 928 G', 'SORO', 'DRISSA', '', '', 'sdrissa_irma@yahoo.fr', 'sdrissa', 'lucuniversite20', 4, 16, 45, 29, 2, 'OUI', '2020-02-21', '08:23:26', 'OUI', '2020-07-13', '10:58:14'),
+(1780, '123 687 N', 'ARRA ', 'JOSEPH', '', '', '', 'arrajoseph', 'e9333e36', 4, 16, 45, 29, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1782, '126 335 P', 'COULIBALY ', 'MISSA', '', '', 'coziemissa@yahoo.fr', 'coziemissa', 'a18cec7f', 4, 16, 45, 29, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1783, '252 982 X', 'KONE', 'TIEMOMAN', ' ', ' ', '', 'konetiomoman', 'f27dd5da', 5, 16, 45, 17, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-05-03', '09:20:22'),
+(1784, '231 684 X', 'LOGON ', 'THEOPHILE BLANCHARD', ' ', ' ', 'logontheoph@yahoo.fr', 'logontheoph', 'f1f49e95', 4, 16, 45, 29, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1785, '233 598 T', 'OUATTARA ', 'SOMA', ' 08 94 34 73', ' ', 'soma.ouattara@gmail.com', 'soma.ouattara', 'augswatt123', 4, 16, 45, 29, 2, 'OUI', '2020-02-25', '13:44:07', 'OUI', '2020-03-04', '19:58:07'),
+(1786, '150 057 G', 'OUEHI', 'GOUANOU DENIS', ' ', ' ', '', 'ouehigouanou', '5c3cb095', 4, 16, 45, 29, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1787, '245 691 C', 'SERI', 'DJEBI EMMANUEL', '', '', '', 'seridjebi', 'f2b63d88', 4, 16, 45, 29, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1788, '255 865 C', 'TRAORE ', 'ISSA', '', '', 'traore_ufrmi@yahoo.fr', 'traoreissa', '5d9b4112', 4, 16, 45, 29, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1791, '900 001 AD', 'KOUA', 'BROU', '', '', '', 'kouacurat', '1ccee2fd', 5, 12, 36, 19, 3, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-23', '13:27:31'),
+(1792, '249 454 J', 'INWOLEY', 'KOKOU ANDRE', ' ', ' ', 'andre.inwoley@gmail.com', 'inwoleyandrevpe', '25c7a5bc', 5, 7, 51, 17, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-05-03', '18:04:51'),
+(1793, '922 000 M', 'KLO', 'FAGAMA', '', '', 'fagama_k@yahoo.fr', 'fagama_k', 'ea064c36', 4, 11, 15, 27, 2, 'OUI', '2019-07-23', '22:12:11', '', '0000-00-00', '00:00:00'),
+(1794, '234 656 D', 'NIAGNE', 'MELEDJ LAURENT', '07 67 55 89', '', 'nmeledj@yahoo.fr', 'nmeledj', '420209a9', 4, 11, 15, 27, 2, 'OUI', '2020-01-15', '11:39:23', 'OUI', '2020-06-15', '00:33:46'),
+(1795, '365 293 D', 'SAKOUM', 'BONZALLE HERVE', '77 88 81 35', '', 'sakoumb@yahoo.fr', 'sakoumb', 'shannon2018', 4, 11, 15, 28, 2, 'OUI', '2019-07-23', '22:12:11', 'OUI', '2019-07-24', '08:49:57'),
+(1796, '382 874 V', 'KOUASSI', 'AMENAN VALERIE EPSE KONIN', '48-08-92-10', '', 'valeriekonin@gmail.com', 'valeriekonin', 'drkouassikonin', 4, 11, 15, 27, 2, 'OUI', '2019-07-24', '09:48:15', 'OUI', '2019-08-05', '14:41:40'),
+(1797, '920 001 A', 'KONAN', 'KOUASSI JOSEPH', '47 92 95 35', '', 'konandebeoumi@gmail.com', 'konandebeoumi@', '7f222430', 4, 11, 15, 27, 2, 'OUI', '2019-07-24', '09:48:15', '', '0000-00-00', '00:00:00'),
+(1798, '361 299 A', 'SEKRE', 'GODJE ALPHONSE', '02-67-45-68', '', 'sekre_alphonse@yahoo.fr', 'sekre_alphonse', '7f222430', 4, 11, 15, 27, 2, 'OUI', '2019-07-24', '09:48:15', '', '0000-00-00', '00:00:00'),
+(1799, '953 319 NR', 'BOLOU BI', 'BOLOU ANTOINE', '', '', 'bolouantoine2@gmail.com', 'bolouantoine2', 'fcc928b9', 4, 5, 42, 27, 2, 'OUI', '2019-07-24', '12:01:59', 'OUI', '2020-07-30', '11:12:42'),
+(1800, '953 325 NR', 'N\'GUESSAN', 'PATRICK HENRI', '', '', 'nphenri@yahoo.fr', 'nphenri', 'dfe12487', 4, 5, 42, 29, 2, 'OUI', '2019-07-24', '12:01:59', 'OUI', '2020-07-06', '13:25:10'),
+(1801, '953 317 NR', 'BAMBA', 'ABOU', '', '', 'binobino2@yahoo.fr', 'binobino2', '1981', 4, 5, 42, 27, 2, 'OUI', '2019-07-24', '17:48:11', 'OUI', '2020-06-10', '08:22:59'),
+(1802, '953 318 NR', 'BENIE', 'COMOE KOFFI DONATIEN', '', '', 'dona.comoe@yahoo.fr', 'dona.comoe', 'f27e5384', 4, 5, 42, 27, 2, 'OUI', '2019-07-24', '17:48:11', 'OUI', '2020-06-11', '18:47:08'),
+(1803, '269 987 D', 'DAGNOGO', 'OLEFONGO', '', '', 'olefongo@yahoo.fr', 'olefongo', '0273d73o', 4, 5, 42, 27, 2, 'OUI', '2019-07-24', '17:48:11', 'OUI', '2020-06-29', '22:37:33'),
+(1804, '473 046 V', 'DROH', 'GERMAIN', '', '', 'drohge7@yahoo.fr', 'drohge7', 'Mireille77', 4, 5, 42, 27, 2, 'OUI', '2020-04-24', '13:16:43', 'OUI', '2020-07-18', '15:34:43'),
+(1805, '953 321 NR', 'EHON', 'AYAWOVI FAFADZI CHARLOTTE EPSE DAKOURI', '', '', 'falotte5@hotmail.fr', 'falotte5', 'd13d279d', 4, 5, 42, 27, 2, 'OUI', '2019-07-24', '17:48:11', 'OUI', '2020-06-13', '18:11:50'),
+(1806, '953 322 NR', 'MEVANLY', 'OUATTARA', '', '', 'mev.ouatt777@gmail.com', 'mev.ouatt777', '9e4009de', 4, 5, 42, 27, 2, 'OUI', '2019-07-24', '17:48:11', '', '0000-00-00', '00:00:00'),
+(1807, '473 541 S', 'N\'GUESSAN', 'ANNY ESTELLE', '', '', 'annyestellen@yahoo.fr', 'annyestellen', 'yaoolivier', 4, 5, 42, 27, 2, 'OUI', '2020-04-29', '12:34:10', 'OUI', '2020-07-17', '07:58:39'),
+(1808, '953 323 NR', 'NIAMKETCHI', 'BEKOUNOUDJO GILLES LEONCE', '', '', 'nbgleo@gmail.com', 'nbgleo', '213b161e', 4, 5, 42, 27, 2, 'OUI', '2019-07-24', '17:48:11', 'OUI', '2019-07-25', '17:15:41'),
+(1809, '953 324 NR', 'YAO', 'WILFRIED KEVIN', '', '', 'yaowilfried22@gmail.com', 'yaowilfried22', 'Kevin1986', 4, 5, 42, 27, 2, 'OUI', '2020-02-18', '09:00:22', 'OUI', '2020-07-24', '15:01:28'),
+(1810, '232 021 J', 'YOUAN', 'GOUANDA PASCAL', '', '', 'yogopas@yahoo.fr', 'unatebci', 'PASkally63', 4, 5, 42, 27, 2, 'OUI', '2019-10-17', '19:51:10', 'OUI', '2020-05-28', '21:11:27'),
+(1811, '401 244 H', 'BOGUHE', 'GNONLEBA FRANCK DIT HERVIS', '', '', 'fboguh@yahoo.fr', 'fboguh', 'fdcb458d', 4, 5, 42, 29, 2, 'OUI', '2020-06-10', '11:51:31', 'OUI', '2020-06-10', '16:38:56'),
+(1812, '953 326 NR', 'YIAN', 'GOUVE CLAVER', '', '', 'yiangouv1@gmail.com', 'yiangouv1', 'ff521432', 4, 5, 42, 29, 2, 'OUI', '2019-07-24', '17:48:11', '', '0000-00-00', '00:00:00'),
+(1813, '356 789 M', 'MOBIO', 'ABAKA BRICE HERVE', ' 05 62 64 96', ' ', 'brice.mobio@curat-edu.org', 'mobiobriceRP', 'awomob77', 5, 12, 36, 17, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-04-23', '16:08:06'),
+(1814, '953 320 AUF', 'DJAHI', 'GEORGRES', '49 27 27 24', '', 'djahiggesb@yahoo.fr', 'djahiggesb', '771965', 5, 2, 49, 19, 3, 'OUI', '2019-08-01', '10:42:02', 'OUI', '2019-08-05', '14:25:42'),
+(1815, '389 308 V', 'DAKOURI ', 'JEAN-CLAUDE', '07 06 62 82', '', 'dakourijc@yahoo.fr', 'dakourijc', '8d0654ab', 4, 1, 82, 27, 2, 'OUI', '2019-08-01', '20:29:40', '', '0000-00-00', '00:00:00'),
+(1816, '290 865 C', 'DASSE ', 'FRANCINE ORPHEE', '07 53 29 57', '', 'francine.amadou@gmail.com', 'francine.amadou', '82d7edd7', 4, 1, 82, 27, 2, 'OUI', '2019-08-01', '23:16:59', '', '0000-00-00', '00:00:00'),
+(1817, '143 158 F', 'DIARRA', 'ABOUBACAR SYDICK', '05 40 94 56', '', 'asdiarra84@yahoo.fr', 'asdiarra84', '3364d076', 4, 1, 82, 27, 2, 'OUI', '2019-08-01', '23:16:59', '', '0000-00-00', '00:00:00'),
+(1818, '397 654 F', 'DIOMANDE ', 'SOULEYMANE', '08 81 22 36', '', 'habibdiomede@yahoo.fr', 'habibdiomede', '2fe48c04', 4, 1, 82, 27, 2, 'OUI', '2019-08-01', '23:16:59', 'OUI', '2019-09-24', '21:48:55'),
+(1819, '312 118 Y', 'DAGBO', 'NÃ‰E DJEKOURI BADJO JEANIE ELISABETH', '78 14 47 74', '', 'jddbadjo@yahoo.fr', 'jddbadjo', 'f409aca5', 4, 1, 82, 27, 2, 'OUI', '2019-08-01', '23:16:59', '', '0000-00-00', '00:00:00'),
+(1820, '312 116 N', 'DODO', 'BOHOU ZOUZOUGBO JEAN-MARIE', '', '', 'dodojeanmarie@gmail.com', 'dodojeanmarie', 'a67f5d87', 4, 1, 82, 27, 2, 'OUI', '2019-08-01', '23:16:59', '', '0000-00-00', '00:00:00'),
+(1821, '457 073 L', 'DONATIEN', 'LENOIR VANESSA KARELL', '79 41 90 81', '', 'donatienvanessa@yahoo.fr', 'donatienvanessa', 'roxane2013', 4, 1, 82, 27, 2, 'OUI', '2019-08-01', '23:16:59', 'OUI', '2019-08-16', '08:50:34'),
+(1822, '397 673 A', 'DOUGBO ', 'THEA OURAGA MARTIAL PHILIPPE', '77 98 11 08', '', 'dougbothea@hotmail.fr', 'dougbothea', 'Dougbo@2030', 4, 1, 82, 27, 2, 'OUI', '2019-08-01', '23:16:59', 'OUI', '2019-08-02', '08:00:27'),
+(1823, '278 748 D', 'EFFI ', 'KOKORA SERGES RICHARD', '07 09 98 53', '', 'serge_effi@hotmail.com', 'serge_effi', 'Effi1978!', 4, 1, 82, 27, 2, 'OUI', '2019-08-06', '10:03:41', 'OUI', '2019-12-11', '15:16:25'),
+(1824, '391 243 D', 'ESSIS ', 'BOTIAGNE MARC', '08 41 05 94', '', 'marcessis@gmail.com', 'marcessis', 'K0u4551', 4, 1, 82, 27, 2, 'OUI', '2019-08-01', '23:16:59', '', '0000-00-00', '00:00:00'),
+(1825, '404 085 R', 'ETEKOU', 'BEDI YVES STANISLAS', '07 00 84 21', '', 'etekoub@yahoo.fr', 'etekoub', 'f21a7242', 4, 1, 82, 27, 2, 'OUI', '2019-08-01', '23:16:59', '', '0000-00-00', '00:00:00'),
+(1826, '364 866 A', 'GACHA ', 'THOMAS', ' 44 68 76 44', ' ', 'thomasgacha@hotmail.com', 'thomasgacha', '9ad15e5c', 4, 1, 82, 27, 2, 'OUI', '2019-08-01', '23:16:59', '', '0000-00-00', '00:00:00'),
+(1827, '338 335 B', 'GADJI ', 'YAO ABRAHAM', ' 07 80 47 36', ' ', 'gadjiabraham@hotmail.com', 'gadjiabraham', 'titulaire2017', 4, 1, 82, 27, 2, 'OUI', '2019-08-01', '23:16:59', 'OUI', '2019-08-02', '10:03:03'),
+(1828, '283 495 P', 'GOBA', 'DAVID', ' 07 08 05 41', ' ', 'davgoba@yahoo.fr', 'davgoba', '8a3e461d', 4, 1, 82, 27, 2, 'OUI', '2019-08-02', '08:20:21', '', '0000-00-00', '00:00:00'),
+(1829, '203 583 X', 'GUIE', 'KOFFI HONORE', ' 56 56 00 70', ' ', 'honore.guie@gmail.com', 'honore.guie', '9908828e', 4, 1, 82, 27, 2, 'OUI', '2019-08-02', '08:20:21', '', '0000-00-00', '00:00:00'),
+(1830, '303 759 S', 'KADI ', 'DAGO RAYMOND', ' 07 62 85 48', ' ', 'kadidago2@gmail.com', 'kadidago2', 'e9d6de70', 4, 1, 82, 27, 2, 'OUI', '2019-08-02', '08:20:21', '', '0000-00-00', '00:00:00'),
+(1831, '361 364 P', 'KETOURE', 'SORY PHILIPPE', ' 09 66 63 47', ' ', 'philippe.ketoure@gmx.de', 'philippe.ketoure', '87848aa8', 4, 1, 82, 27, 2, 'OUI', '2019-08-02', '08:20:21', '', '0000-00-00', '00:00:00'),
+(1832, '404 086 J', 'KISSIEDOU', 'SYLVERE CAPORAL', ' 05 95 87 06', ' ', 'skissiedou@ymail.com', 'skissiedou', '8d4b3a13', 4, 1, 82, 27, 2, 'OUI', '2019-08-02', '08:20:21', '', '0000-00-00', '00:00:00'),
+(1833, '398 857 C', 'KOFFI ', 'OZIGRE PRIVAT MODESTE', ' 07 36 04 28', ' ', 'ozigretourauxtresors@gmail.com', 'ozigretourauxtresors', '1dc0d0ab', 4, 1, 82, 27, 2, 'OUI', '2019-08-02', '08:20:21', '', '0000-00-00', '00:00:00'),
+(1834, '502 041 W', 'KOIKOI', 'ALLICO BLAISE', ' 02 02 05 40', ' ', 'blaiseallicokoikoi@yahoo.fr', 'blaiseallicokoikoi', 'e4370417', 4, 1, 82, 27, 2, 'OUI', '2019-08-02', '08:20:21', '', '0000-00-00', '00:00:00'),
+(1835, '389 748 V', 'SILUE', 'NÃ‰E KONE ASSATA', '', '', 'astakone2a@yahoo.fr', 'astakone2a', 'c7d3c44f', 4, 1, 82, 27, 2, 'OUI', '2019-08-02', '08:20:21', '', '0000-00-00', '00:00:00'),
+(1836, '332 015 Q', 'KONE ', 'MAMADOU', ' 01 61 23 67', ' ', 'mamadoukeho@yahoo.fr', 'mamadoukeho', '29Oct1969', 4, 1, 82, 27, 2, 'OUI', '2019-08-02', '08:20:21', 'OUI', '2020-02-04', '09:41:10'),
+(1837, '332 652 B', 'KOUAKOU', 'BEHIBRO KONAN GUY CLAUDE', ' 08 99 24 99', ' ', 'kouakouguyclaude@yahoo.fr', 'kouakouguyclaude', '7249ca03', 4, 1, 82, 27, 2, 'OUI', '2019-08-02', '08:20:21', '', '0000-00-00', '00:00:00'),
+(1838, '457 022 M', 'LAGAUD', 'MAYEUL ALEX', '49 26 38 30', '', 'alexmayeullagaud@gmail.com', 'alexmayeullagaud', 'c739faf9', 4, 1, 82, 27, 2, 'OUI', '2019-09-21', '14:14:09', '', '0000-00-00', '00:00:00'),
+(1839, '357 233 G', 'LATH ', 'YEDOH SEBASTIEN', ' 07 50 60 21', ' ', 'lath_yedo@yahoo.fr', 'lath_yedo', 'ce63c132', 4, 1, 82, 27, 2, 'OUI', '2019-08-02', '08:47:03', '', '0000-00-00', '00:00:00'),
+(1840, '361 097 Y', 'MAMBO ', 'YAPI PATERNE', ' 01 68 67 89', ' ', 'mpaterne@yahoo.fr', 'mpaterne', 'Lenantais1', 4, 1, 82, 27, 2, 'OUI', '2019-08-02', '08:47:03', 'OUI', '2019-12-07', '20:15:44'),
+(1841, '456 715 V', 'MEITE', 'MAMADOU', '08 99 21 08', '', 'mamadoumeite@hotmail.fr', 'mamadoumeite', 'MabekonoN1964', 4, 1, 82, 27, 2, 'OUI', '2019-08-02', '08:47:03', 'OUI', '2020-07-06', '10:27:46'),
+(1842, '290 971 E', 'NANGO ', 'INNOCENT', ' 45 48 58 80', ' ', 'inango@yahoo.fr', 'inango', 'a2fef286', 4, 1, 82, 27, 2, 'OUI', '2019-08-02', '08:47:03', '', '0000-00-00', '00:00:00'),
+(1843, '301 105 A', 'N\'DOUA  EPSE KROU', 'STEPHANIE', ' 07 27 49 48', ' ', 'sndouakrou@gmail.com', 'sndouakrou', '60f962ed', 4, 1, 82, 27, 2, 'OUI', '2019-08-02', '08:47:03', 'OUI', '2019-08-02', '15:14:14'),
+(1844, '277 861 E', 'NEVRY ', 'ROGER', ' 42 13 19 19', ' ', 'nevry_roger@yahoo.fr', 'nevry_roger', '2993a414', 4, 1, 82, 27, 2, 'OUI', '2019-08-02', '08:47:03', '', '0000-00-00', '00:00:00'),
+(1845, '373 845 E', 'N\'GUESSAN ', 'DONALD JEAN-MARC', ' 08 16 83 00', ' ', 'dojemang@yahoo.fr', 'dojemang', '08168300', 4, 1, 82, 27, 2, 'OUI', '2019-08-02', '08:47:03', 'OUI', '2019-08-05', '18:32:01'),
+(1846, '456 744 C', 'N\'TAKPE', 'ADJOUA MARIE-HORTENSE EPSE PAYETE', '79 33 79 05', '', 'ntahortense2013@gmail.com', 'ntahortense2013', 'd147c499', 4, 1, 82, 27, 2, 'OUI', '2019-08-02', '08:47:03', '', '0000-00-00', '00:00:00'),
+(1847, '333 472 Y', 'N\'TOH ', 'LATH SUZANNE', ' 01 29 20 53', ' ', 'suzanneyediane@yahoo.fr', 'suzanneyediane', '393211f8', 4, 1, 82, 27, 2, 'OUI', '2019-08-02', '08:47:03', 'OUI', '2019-08-06', '17:58:22'),
+(1848, '301 109 N', 'OUATTARA ', 'ABOUDRAMANE', ' 66 92 92 32', ' ', 'ouatmane@yahoo.com', 'ouatmane', 'b2198bb3', 4, 1, 82, 27, 2, 'OUI', '2019-08-02', '08:47:03', '', '0000-00-00', '00:00:00'),
+(1849, '404 509 F', 'OUFFOUE', 'ALLOMO AMOIN MARINA', ' 57 68 03 40', ' ', 'marinaouffoue@gmail.com', 'marinaouffoue', 'dd6bc02a', 4, 1, 82, 27, 2, 'OUI', '2019-08-02', '08:47:03', 'OUI', '2020-07-23', '12:31:20'),
+(1850, '120 713 Y', 'OULAYE', 'HUBERT', ' 71 46 28 61', ' ', 'marcarthur.kouhe@gmail.com', 'marcarthur.kouhe', 'a78aeb93', 4, 1, 82, 27, 2, 'OUI', '2019-08-02', '08:47:03', '', '0000-00-00', '00:00:00'),
+(1851, '389 867 D', 'TIEBLEY', 'YVES DIDIER', '06 37 20 71', '', 'yvditi@yahoo.fr', 'yvditi', 'restauration', 4, 1, 82, 27, 2, 'OUI', '2019-08-02', '08:58:13', 'OUI', '2019-08-02', '17:42:32'),
+(1852, '344 954 E', 'TRAORE ', 'DOLA ZIE', '09 40 96 79', '', 'dolazie.traore@yahoo.com', 'dolazie.traore', '4baa8af8', 4, 1, 82, 27, 2, 'OUI', '2020-08-18', '17:59:54', '', '0000-00-00', '00:00:00'),
+(1853, '408 056 F', 'EDI ', 'NÃ‰E VOKO NINA BENEDICTE', '06 31 37 55', '', 'vokonina@yahoo.fr', 'vokonina', '375f0518', 4, 1, 82, 27, 2, 'OUI', '2019-08-02', '09:09:49', 'OUI', '2019-11-29', '06:16:43'),
+(1854, '203 564 B', 'WALE', 'EKPO BRUNO', '49 69 58 27', '', 'bwale1956@yahoo.com', 'bwale1956', 'df4045ac', 4, 1, 82, 27, 2, 'OUI', '2019-08-02', '08:58:13', '', '0000-00-00', '00:00:00'),
+(1855, '398 926 Z', 'WOÃ', 'DESIRE CEDRIC MESSE', '08 88 28 46', '', 'desire.woi@gmail.com', 'desire.woi', '9c6e99f4', 4, 1, 82, 27, 2, 'OUI', '2019-08-02', '08:58:13', '', '0000-00-00', '00:00:00'),
+(1856, '456 778 N', 'YAO', 'KAKOU ALBERT', '78 74 37 50', '', 'albertkakou@yahoo.fr', 'albertkakou', '7c9efbaf', 4, 1, 82, 27, 2, 'OUI', '2019-09-21', '14:14:09', 'OUI', '2019-10-08', '23:07:33'),
+(1857, '239 749 X', 'YAPO', 'YAPI ANDRE', '05 85 90 32', '', 'yapoyapiandre@gmail.com', 'yapoyapiandre', '685c7cc5', 4, 1, 82, 27, 2, 'OUI', '2019-08-02', '08:58:13', '', '0000-00-00', '00:00:00'),
+(1858, '398 045 H', 'ZAGRE ', 'EUGENE', '58 57 40 82', '', 'afzagre@gmail.com', 'afzagre', '3db6827e', 4, 1, 82, 27, 2, 'OUI', '2019-08-02', '08:58:13', '', '0000-00-00', '00:00:00'),
+(1859, '456 560 G', 'ATSE', 'ASSI CAMILLE', '88 52 33 90', '', 'camillassiats@yahoo.fr', 'camillassiats', 'e6bb704a', 4, 1, 82, 27, 2, 'OUI', '2019-09-21', '14:14:09', '', '0000-00-00', '00:00:00'),
+(1860, '456 575 T', 'BRIDJI', 'OZOUA MARIE CHANTAL', '71 30 20 20', '', 'm.bridjiavocat@gmail.com', 'm.bridjiavocat', 'Joelucas2010', 4, 1, 82, 27, 2, 'OUI', '2019-08-02', '11:31:43', 'OUI', '2019-08-05', '19:35:47'),
+(1861, '458 915 S', 'ADJELOU', 'CHRISTIAN ARNAUD', '78 15 97 12', '', 'arnaudadjelou@hotmail.com', 'arnaudadjelou', 'Univ_FHBDROIT', 4, 1, 82, 27, 2, 'OUI', '2019-08-02', '11:31:43', 'OUI', '2019-08-04', '13:14:43'),
+(1862, '460 370 Z', 'COULIBALY', 'SOGNON CELINE', '59 44 57 36', '', 'sognon_coulibaly@yahoo.fr', 'sognon_coulibaly', 'delphine76', 4, 1, 82, 27, 2, 'OUI', '2019-08-02', '11:31:43', 'OUI', '2020-07-07', '12:41:46'),
+(1863, '225 394 W', 'GAGO', 'CHELOM NIHO', ' ', ' ', 'gagochlom@yahoo.fr', 'gagochlom', '78a24ddd', 4, 1, 41, 27, 2, 'OUI', '2019-08-02', '11:31:43', '', '0000-00-00', '00:00:00'),
+(1864, '209 713 N', 'GBANE ', 'BOURAHIMA', ' 07 00 66 62', ' ', 'bgbane2@yahoo.com', 'bgbane2', '925e67ba', 4, 1, 82, 27, 2, 'OUI', '2019-08-02', '11:31:43', '', '0000-00-00', '00:00:00'),
+(1865, '138 983 N', 'AMAND', ' CHARLOTTE CESSEE EPSE N\'GOM', ' 07 08 52 45', ' ', 'charlotte.c.amand@gmail.com', 'charlotte.c.amand', 'melissadjoua', 4, 1, 82, 27, 2, 'OUI', '2019-08-02', '11:31:43', 'OUI', '2019-08-13', '14:42:27'),
+(1866, '140 499 F', 'KADJO', 'YAHA DELPHINE EPSE ABOUA', ' 07 08 64 36', ' ', 'deborahaboua@gmail.com', 'deborahaboua', '27c98579', 4, 1, 82, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1867, '202 685 C', 'KABRAN ', 'APPIA', ' 07 91 07 86', ' ', 'kabranappia@yahoo.fr', 'kabranappia', 'vekvek-vosxir-Wurre6', 4, 1, 82, 27, 2, 'OUI', '2019-08-03', '20:28:32', 'OUI', '2019-08-03', '22:21:21'),
+(1868, '203 571 A', 'KAKOU', 'ALAIN CLAUDE', ' 07 05 38 07', ' ', 'alainclaudekakou@yahoo.fr', 'alainclaudekakou', '93023f34', 4, 1, 82, 27, 2, 'OUI', '2019-08-03', '20:28:32', '', '0000-00-00', '00:00:00'),
+(1869, '980 006 F', 'KASSI', 'ANOH EDDYSON FREDERIC', '07 23 20 35', '', 'kassieddyson@yahoo.fr', 'kassieddyson', 'bdffe9ee', 4, 1, 82, 27, 2, 'OUI', '2019-08-03', '20:28:32', '', '0000-00-00', '00:00:00'),
+(1870, '503 121 L', 'KONATE', 'ZIEMONGO FRANCIS', '59 69 19 14', '', 'francis.konate@gmail.com', 'francis.konate', '7GNOUAN1', 4, 1, 82, 27, 2, 'OUI', '2019-08-03', '20:28:32', 'OUI', '2019-08-05', '15:34:56'),
+(1871, '259 098 K', 'YAO ', 'KOFFI', '07 98 24 56', '', 'meyah3@aviso.ci', 'meyah3', '9d0cbf94', 4, 1, 82, 27, 2, 'OUI', '2019-08-03', '20:28:32', '', '0000-00-00', '00:00:00'),
+(1872, '245 881 T', 'DAGBO', 'GODE PIERRE', '47 84 22 28', '', 'dagbopierre59@gmail.com', 'dagbopierre59', 'f339cb53', 4, 1, 82, 27, 2, 'OUI', '2019-08-03', '20:34:00', '', '0000-00-00', '00:00:00'),
+(1873, '257 520 G', 'ADOUKO ', 'BERNADIN', '40 96 14 12', '', 'adoukobe@yahoo.fr', 'adouko_bernadin', '7e6020f2', 4, 2, 49, 27, 2, 'OUI', '2019-08-04', '21:40:55', '', '0000-00-00', '00:00:00'),
+(1874, '270 372 Y', 'BOUAFFON ', 'YAPO N\'DIA VICTOR', '05 95 32 19', '', 'bouaffon@gmail.com', 'bouaffon', '148d298e', 4, 15, 44, 27, 2, 'OUI', '2019-08-04', '22:37:52', 'OUI', '2019-08-05', '13:12:04'),
+(1875, '953 330 NR', 'KOFFI', 'AKA STEPHANIE', '08 11 16 68', '', 'xastin2009@yahoo.fr', 'xastin2009', 'BP348bonoua.', 4, 3, 48, 27, 2, 'OUI', '2019-08-05', '13:24:45', 'OUI', '2020-09-06', '18:01:44');
+INSERT INTO `utilisateur` (`id_utilisateur`, `matricule_utilisateur`, `nom_utilisateur`, `prenom_utilisateur`, `tel_utilisateur`, `adresse_utilisateur`, `email_utilisateur`, `login_utilisateur`, `mot_passe_utilisateur`, `id_type_utilisateur`, `id_etablissement`, `id_departement`, `id_groupe_utilisateur`, `id_qualite_utilisateur`, `parametres_envoye`, `date_envoie`, `heure_envoie`, `connexion_reussie`, `date_derniere_connexion`, `heure_derniere_connexion`) VALUES
+(1876, '456 689 E', 'KOUASSI', 'AKE SERGE PASCAL', '07 73 58 54', '', 'kouassiake@yahoo.fr', 'kouassiake', '28b59c36', 4, 2, 49, 27, 2, 'OUI', '2019-08-23', '09:55:32', 'OUI', '2019-08-08', '04:05:43'),
+(1877, '458 776 N', 'NEVRY', 'ESSOH MARIE DELPHINE', '49 13 55 64', '', 'yessohnevry@hotmail.fr', 'yessohnevry', '4fea1447', 4, 2, 49, 27, 2, 'OUI', '2019-08-07', '19:30:09', 'OUI', '2019-08-09', '12:14:42'),
+(1878, '456 726 S', 'N\'GRATIER', 'ANTOINE', '08 45 91 73', '', 'napositif2005@yahoo.fr', 'napositif2005', 'P@wch@n', 4, 2, 49, 27, 2, 'OUI', '2019-08-07', '19:30:09', 'OUI', '2020-08-31', '10:18:18'),
+(1879, '315 747 H', 'N\'GUESSAN', 'KOUADIO SIMON-PIERRE', '09 34 11 28', '', 'pierrekouadio78@yahoo.fr', 'pierrekouadio78', 'dc2541ff', 4, 2, 49, 27, 2, 'OUI', '2019-08-07', '19:30:09', '', '0000-00-00', '00:00:00'),
+(1880, '456 736 U', 'OSSONON', 'AHOU CLAUDINE', '07 27 71 54', '', 'ahouclaudioss@gmail.com', 'ahouclaudioss', 'e8a1cf9d', 4, 2, 49, 27, 2, 'OUI', '2019-08-23', '09:55:32', 'OUI', '2019-08-21', '15:24:42'),
+(1881, '315 119 U', 'SONZAÃ', 'THEODORE', '07 78 82 38', '', 'sonzai2014@gmail.com', 'sonzai2014', '2004KamondaE', 4, 2, 49, 27, 2, 'OUI', '2019-08-07', '19:30:09', 'OUI', '2019-08-21', '12:07:56'),
+(1882, '418 877 U', 'SYLLA', 'MAMADOU', '75 49 50 49', '', 'sylla87@hotmail.com', 'sylla87', '1e863274', 4, 2, 49, 27, 2, 'OUI', '2019-08-07', '19:30:09', 'OUI', '2020-07-05', '18:01:37'),
+(1883, '456 770 J', 'TOURE', 'KANY ABIBA NELLY CARLA', '87 53 55 55', '', 'carla.toure@yahoo.fr', 'carla.toure', 'c588aefa', 4, 2, 49, 27, 2, 'OUI', '2019-08-07', '19:30:09', 'OUI', '2020-06-26', '11:43:03'),
+(1884, '315 116 R', 'YEO', 'OUANZELEO ALFRED', '07 36 37 91', '', 'yeoo51@yahoo.fr', 'yeoo51', '8952779c', 4, 2, 49, 27, 2, 'OUI', '2019-08-07', '19:30:09', '', '0000-00-00', '00:00:00'),
+(1885, '953 110 NR', 'AHOGNISSO', 'AFFIA ANGELINE', '09 18 37 40', '', 'affiaange@yahoo.fr', 'affiaange', '131960anael', 4, 2, 49, 27, 2, 'OUI', '2019-08-07', '19:36:21', 'OUI', '2019-08-07', '19:54:30'),
+(1886, '255 308 W', 'BASSIFE', 'OUATTARA', '06 08 30 45', '', 'bassifeo@yahoo.com', 'bassifeo', '809c5387', 4, 2, 49, 27, 2, 'OUI', '2019-08-07', '19:36:21', '', '0000-00-00', '00:00:00'),
+(1887, '953 342 NR', 'MANOU', 'LOU BELEFE DIANE CARINE', '58 05 89 92', '', 'manou_carine@yahoo.fr', 'manou_carine', '62a18d0c', 4, 2, 49, 27, 2, 'OUI', '2019-08-08', '08:51:13', '', '0000-00-00', '00:00:00'),
+(1888, '953 101 NR', 'DOMOA', 'CHAYE DANIELLE LARISSA EPSE KOUASSI', '03 01 09 52', '', 'danielledomoa@gmail.com', 'danielledomoa', 'domoa', 4, 2, 49, 27, 2, 'OUI', '2019-08-08', '08:51:13', 'OUI', '2019-08-08', '09:19:02'),
+(1889, '953 102 NR', 'GONDO', 'TONGBE CESAIRE', '07 68 42 72', '', 'gondocesaire@yahoo.fr', 'gondocesaire', '03c1b185', 4, 2, 49, 27, 2, 'OUI', '2019-08-08', '08:51:13', 'OUI', '2020-06-30', '09:08:31'),
+(1890, '953 341 NR', 'KOUAME', 'AKRASSI KOUAKOU EVRARD', '07 24 04 49', '', 'evrardakrassi@gmail.com', 'evrardakrassi', 'Akrassi1980', 4, 2, 49, 27, 2, 'OUI', '2019-08-08', '08:51:13', 'OUI', '2019-08-12', '17:53:41'),
+(1891, '953 340 NR', 'BEAH', 'DREH YVETTE ARMELLE', '', '', '', 'beahdreh', 'ad3cf1b1', 4, 2, 49, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1892, '953 343 NR', 'YOHOU', 'DJEDJE HERMANN', '', '', '', '', '043d5e9a', 4, 2, 49, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1893, '277 901 L', 'ATSE', 'BOUA CELESTIN', '', '', 'atse_boua_celestin@hotmail.com', 'atse_boua_celestin', 'd97dea62', 4, 5, 42, 29, 2, 'OUI', '2019-08-18', '11:05:42', '', '0000-00-00', '00:00:00'),
+(1894, '061 915 L', 'SANGARE NEE ', 'KOUASSI AFFOUE', '', '', 'sangareaffoue@hotmail.com', 'sangareaffoue', '8a398e2e', 4, 5, 42, 29, 2, 'OUI', '2019-08-18', '11:05:42', '', '0000-00-00', '00:00:00'),
+(1895, '206 943 A', 'COULIBALY ', 'M\'BETIGUE', '', '', 'coulongo@yahoo.fr', 'coulongo', '6af80e5a', 4, 5, 42, 29, 2, 'OUI', '2019-08-18', '11:05:42', '', '0000-00-00', '00:00:00'),
+(1896, '356 798 N', 'DJATCHI', 'GNAGBO RAYMOND', '09 15 18 60', '', 'gnagboraymond@yahoo.fr', 'gnagboraymond', 'sidonie11S', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '15:24:08', 'OUI', '2020-09-06', '00:48:05'),
+(1897, '117 816 HR', 'GNAOULE', 'OUPOH BRUNO', ' 08 45 65 66', '', 'brunognaoule_oupoh@yahoo.fr', 'brunognaoule_oupoh', '267ad089', 4, 11, 16, 28, 2, 'OUI', '2019-08-28', '16:09:25', '', '0000-00-00', '00:00:00'),
+(1898, '203 827 T', 'KOUAKOU', 'KOUAME JEAN BAPTISTE', ' 08 14 39 13', ' ', 'kouamejb@yahoo.fr', 'kouamejb', '8c1465e8', 4, 11, 16, 27, 2, 'OUI', '2019-08-28', '16:50:00', '', '0000-00-00', '00:00:00'),
+(1899, '333 667 B', 'ZIGOLI ', 'ANTONIN', '08 82 06 68', '', 'zigolibokobli@gmail.com', 'zigolibokobli', '2bed5cf2', 4, 11, 16, 27, 2, 'OUI', '2020-02-17', '13:53:28', '', '0000-00-00', '00:00:00'),
+(1900, '314 273 D', 'KOPOIN', 'KOPOIN FRANCOIS', '49 97 53 23', '', 'kopoinlecrivain@gmail.com', 'kopoinlecrivain', 'adb3df05', 4, 11, 16, 27, 2, 'OUI', '2019-08-29', '21:59:13', 'OUI', '2020-09-09', '11:42:37'),
+(1901, '369 954 T', 'BOHOUSSOU', 'LOUIS CHARLES KOUADIO KOUAME', '', '', 'blcharly@yahoo.com', 'blcharly', 'succes', 4, 11, 14, 27, 2, 'OUI', '2019-09-21', '11:17:30', 'OUI', '2020-08-15', '13:26:19'),
+(1902, '952 004 A', 'BOGNI', 'OBOUE JEAN ARISTIDE', '', '', 'bognywise@gmail.com', 'bognywise', 'WisEB', 4, 11, 14, 27, 2, 'OUI', '2020-04-06', '17:30:27', 'OUI', '2020-04-11', '11:30:44'),
+(1903, '233 199 T', 'DIABI ', 'MAMERI', '01 05 30 61', '', '', 'mameridiabi', '0a6c56c8', 4, 1, 82, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1904, '354 538 F', 'DOUMBIA ', 'SOULEYMANE', '04 58 60 59', '', 'souleymandoumbia@yahoo.fr', 'soulemandoumbia', '6422', 4, 1, 82, 27, 2, 'OUI', '2019-12-23', '12:08:48', 'OUI', '2020-01-02', '11:33:42'),
+(1905, '290 707 N', 'DIDIER', 'MARIE LAURENCE  EPSE ZEZE', '02 03 48 42', '', 'didierzeze@yahoo.fr', 'didierzeze', '4c76cff4', 4, 1, 82, 27, 2, 'OUI', '2019-09-21', '14:14:09', '', '0000-00-00', '00:00:00'),
+(1906, '161 113 L', 'SAY', 'NEE TANOH AHOU CLEMENTINE', '57 19 80 88', '', 'blasomy2007@yahoo.fr', 'blasomy2007', 'Beauharnois2019', 4, 4, 22, 27, 2, 'OUI', '2019-10-04', '15:48:17', '', '0000-00-00', '00:00:00'),
+(1907, '428 096 K', 'TANO-BIAN', 'ANMONKAN JEANINE ARMELLE ESPE SEKONGO', '', '', 'ajatbian@hotmail.com', 'ajatbian', '140326', 4, 1, 82, 27, 2, 'OUI', '2019-10-09', '08:18:41', 'OUI', '2019-10-09', '09:59:32'),
+(1908, '389 911 Z', 'ADJE ', 'N\'GORAN PASCAL', '07 58 45 13', '', 'adngopas@yahoo.fr', 'adngopasRP', '3fa86503', 5, 4, 28, 17, 1, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-04-15', '10:33:17'),
+(1909, '477 244 C', 'COULIBALY ', 'SORO IBRAHIMA', '05 92 70 18', '', 'csibrahima@gmail.com', 'csibrahima', 'SoroCoul-1979', 4, 3, 48, 27, 2, 'OUI', '2019-10-31', '11:28:59', 'OUI', '2020-09-07', '15:19:33'),
+(1910, '900 700 AUF', 'KOUA', 'BROU LLC', '', '', '', 'Kouallc', '35a35442', 3, 11, 16, 13, 3, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2019-11-01', '21:21:55'),
+(1911, '364 870 J', 'OWO', 'KOUASSI JEAN MARC', ' ', ' ', 'owo_jm@yahoo.fr', 'owo_jm', 'ca5a0039', 4, 13, 24, 27, 2, 'OUI', '2019-11-11', '20:46:48', 'OUI', '2020-08-13', '12:54:45'),
+(1912, '456 023 M', 'BAMBA', 'BAKARY', '08 69 34 43', '', 'bambs6678baky@yahoo.fr', 'bambs6678baky', 'Krawaba6678b2', 4, 3, 48, 27, 2, 'OUI', '2019-11-13', '14:23:09', 'OUI', '2020-08-19', '08:11:53'),
+(1913, '700 578 F', 'SORO', 'SANA ALBERT', '', '', 'sanasoro@gmail.com', 'sanasoro', 'keline1993', 3, 4, 20, 13, 3, 'OUI', '2019-11-20', '22:13:35', 'OUI', '2019-11-21', '09:39:06'),
+(1914, '953 100 NR', 'ABLE', 'ZOBO VINCENT DE PAUL', '', '', 'vincentdepaulzobo@yahoo.fr', 'vincentdepaulzobo', 'd18660c1', 4, 13, 24, 27, 2, 'OUI', '2019-12-05', '15:03:06', 'OUI', '2020-07-04', '00:40:55'),
+(1915, '285 396 V', 'N\'GUESSAN ', 'TETCHI ALBIN', '59 56 45 55', '', 'albintetchi@gmail.com', 'albintetchi', '010371docteurtetchi', 4, 13, 24, 27, 2, 'OUI', '2019-12-07', '12:15:38', 'OUI', '2020-08-02', '18:29:29'),
+(1916, '456 549 H', 'AKA', 'ASSALE FELIX', '09 08 06 42', '', 'akafelix81@yahoo.fr', 'akafelix81', '', 4, 4, 86, 27, 2, 'OUI', '2019-12-23', '14:32:03', 'OUI', '2020-01-07', '13:22:43'),
+(1917, '458 394 G', 'AKADJE', 'AMANI LEOCADIE MARIE-CLAUDE EPSE KONAN', '07 40 66 05', '', 'maclaude35@yahoo.fr', 'maclaude35', 'Pass_2904', 4, 4, 86, 27, 2, 'OUI', '2019-12-23', '14:32:03', 'OUI', '2020-06-16', '17:13:49'),
+(1918, '900 000 AD', 'SILUE', 'DRIBRIL', '', '', 'djibrilsilue@gmail.com', 'djibrilsilueAD', 'd85602f3', 5, 11, 14, 19, 3, 'OUI', '2019-12-23', '20:36:02', 'OUI', '2020-06-27', '09:30:17'),
+(1919, '236 848 G', 'SARAKA', 'KOUAME SIMON', '06 34 90 65', ' ', 'kerepagi@yahoo.fr', 'kerepagi', 'simon@66', 4, 4, 28, 27, 2, 'OUI', '2019-12-31', '11:07:02', 'OUI', '2020-06-22', '12:36:09'),
+(1920, '390 377 N', 'ZRAN ', 'GONKANOU MARIUS', '08 74 11 84', '', 'Zran.marius@yahoo.fr', 'Zran.marius', '39e6a17b', 4, 4, 28, 27, 2, '', '0000-00-00', '00:00:00', '', '0000-00-00', '00:00:00'),
+(1921, '404 046 Z', 'ANOUMAN ', 'ADIKO JEAN-MICHEL', '', '', 'adiko.anouman222@gmail.com', 'adiko.anouman', '39b6818f', 4, 10, 37, 27, 2, 'OUI', '2020-07-10', '16:56:37', 'OUI', '2020-07-15', '15:03:28'),
+(1922, '351 071 B', 'BONI ', 'ASSIE JEAN-BAPTISTE', '41 30 50 85', '', 'assieci@yahoo.fr', 'assieci', 'EHIAKOLORADO05', 4, 10, 37, 27, 2, 'OUI', '2020-07-14', '15:46:12', 'OUI', '2020-07-17', '11:30:30'),
+(1923, '278 099 P', 'KONE', 'BASSIRIMA', '01 22 42 87', '', 'bassirimakone@gmail.com', 'bassirimakone', 'sizangue', 4, 10, 37, 27, 2, 'OUI', '2020-01-02', '11:25:43', 'OUI', '2020-07-17', '18:44:06'),
+(1924, '315 535 M', 'AMANI', 'KOUASSI DESIRE', '89 83 83 40', '', 'dezlesex2006@yahoo.fr', 'dezlesex2006', 'ef23ee5a', 4, 10, 37, 27, 2, 'OUI', '2020-07-09', '17:54:34', 'OUI', '2020-07-17', '06:33:02'),
+(1925, '244 789 M', 'BAMBA ', 'SIDIKI', '07 09 01 35', '', 'bsidiki@yahoo.com', 'bsidiki', 'b4181a6d', 4, 10, 89, 27, 2, 'OUI', '2020-07-07', '20:49:14', 'OUI', '2020-07-08', '00:24:59'),
+(1926, '503 101 Z', 'KOUAKOU', 'KAN SAMUEL', '40 51 91 00', '', 'kouakouksamuel@gmail.com', 'kouakouksamuel', 'f3070686', 4, 10, 89, 27, 2, 'OUI', '2020-07-08', '12:07:58', 'OUI', '2020-08-04', '13:57:48'),
+(1927, '472 814 K', 'N\'GORAN', 'AHOU BEATRICE', '59 01 01 53', '', 'Srngo_bea@yahoo.fr', 'Srngo_bea', '1974', 4, 10, 89, 27, 2, 'OUI', '2020-01-02', '16:49:49', 'OUI', '2020-07-13', '14:06:52'),
+(1928, '254 053 G', 'TOURE', 'AMIDOU', '40 83 54 22', '', 'amlatoure06@yahoo.com', 'amlatoure06', 'ahmson1965', 4, 10, 89, 27, 2, 'OUI', '2020-07-07', '22:05:41', 'OUI', '2020-07-08', '09:24:43'),
+(1929, '472 756 G', 'ALOKO', 'N\'GUESSAN KOUADIO JOEL HENRI GILLES', '08 81 99 12', '', 'alokojoel@yahoo.fr', 'alokojoel', 'kevin1992', 4, 10, 89, 27, 2, 'OUI', '2020-01-02', '16:49:49', 'OUI', '2020-07-14', '13:17:27'),
+(1930, '953 461 NR', 'SEY', 'HENRI JOEL', '', '', 'jobikpanhou@yahoo.fr', 'jobikpanhou', 'Amourettes1', 4, 10, 89, 27, 2, 'OUI', '2020-01-02', '16:49:49', 'OUI', '2020-09-08', '20:38:52'),
+(1931, '960 501 NR', 'KARIMU', 'WALIYU OYEWOLE', '07 34 19 19', '', 'wallykarim@yahoo.fr', 'wallykarim', 'Zeynab21', 4, 10, 89, 27, 2, 'OUI', '2020-01-02', '16:49:49', 'OUI', '2020-07-17', '20:37:27'),
+(1932, '960 503 NR', 'ZAHOULI', 'IRIE VINCENT', '48 23 31 38', '', 'Irievincent22@gmail.com', 'Irievincent22', '4823313z', 4, 10, 89, 27, 2, 'OUI', '2020-07-08', '11:57:18', 'OUI', '2020-07-17', '09:36:31'),
+(1933, '650 700 NR', 'KACOU', 'AGNON FREDERIC', '07 76 47 21', '', 'kakoufrederic2014@gmail.com', 'kakoufrederic2014', '05a08cea', 4, 10, 89, 27, 2, 'OUI', '2020-07-08', '12:21:27', '', '0000-00-00', '00:00:00'),
+(1934, '112 866 N', 'KOLI ', 'BI ZUELI', '07 67 25 60', ' ', 'z_kolibi@yahoo.fr', 'z_kolibi', '5a0f35dd', 4, 4, 86, 27, 2, 'OUI', '2020-01-08', '23:05:20', '', '0000-00-00', '00:00:00'),
+(1935, '700 617 S', 'DIAKITE', 'TIDIANE', '05 74 10 38', '', 'djaketty@gmail.com', 'djaketty', 'Papadjak20', 5, 3, 48, 19, 3, 'OUI', '2020-01-10', '08:01:00', 'OUI', '2020-08-04', '11:14:37'),
+(1936, '967 500 VE', 'YEO', 'N\'GANA', '', '', 'nganayeo@gmail.com', 'nganayeo', 'Arolsky,.;19', 4, 11, 17, 27, 2, 'OUI', '2020-01-15', '23:02:22', 'OUI', '2020-08-10', '17:33:02'),
+(1937, '900 700 AD', 'KOUA', 'BROU', '', '', '', 'kouabroudrh', 'e33df991', 2, 17, 54, 1, 3, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-11', '12:50:02'),
+(1938, '361 770 S', 'KARIDJATOU', 'DIALLO', '08 14 76 14', '', 'kady4kd@gmail.com', 'kady4kd', '7379ba6b', 4, 11, 15, 27, 2, 'OUI', '2020-02-09', '18:37:05', 'OUI', '2020-06-18', '12:41:28'),
+(1939, '333 918 X', 'N\'GUESSAN', 'KOFFI RICHARD', '07 72 28 30', '', 'debolyrichard@yahoo.fr', 'debolyrichard', 'f6629137', 4, 5, 42, 27, 2, 'OUI', '2020-02-19', '15:03:49', 'OUI', '2020-07-04', '00:53:42'),
+(1940, '445 267 B', 'AKALE', 'AGNON MARIE SOLANGE', '05 42 52 94', '', 'solangeakale@gmail.com', 'solangeakale', 'etendard', 4, 11, 19, 27, 2, 'OUI', '2020-02-19', '15:03:49', 'OUI', '2020-07-03', '13:15:54'),
+(1941, '234 733 S', 'DJAGOURI', 'KOUDOU', '08 35 52 79', '', 'lazouri06@gmail.com', 'lazouri06', '5898dk', 4, 3, 48, 27, 2, 'OUI', '2020-06-15', '16:01:06', 'OUI', '2020-06-15', '16:56:15'),
+(1942, '700 556 9', 'BAKAYOKO', 'IBRAHIMA', '', '', 'bakayokosoft@gmail.com', 'bakayokosoft', '#Sniper1984', 4, 4, 86, 28, 2, 'OUI', '2020-03-11', '15:32:48', 'OUI', '2020-03-12', '15:34:34'),
+(1943, '474 752 E', 'KOFFI', 'KOUADIO ARSENE DIEUDONNE', '57 71 81 34', '', 'arsenekoffi@yahoo.com', 'arsenekoffi', 'yehshwah3+', 4, 5, 42, 27, 2, 'OUI', '2020-04-24', '18:54:05', 'OUI', '2020-07-22', '10:54:10'),
+(1944, '426 090 P', 'KOUA', 'Kpaangni Alex JÃ©rÃ©mie', '07 26 70 83', '', 'jeremiekoua@gmail.com', 'jeremiekoua', 'Ufhb_cours1', 4, 13, 24, 27, 2, 'OUI', '2020-05-25', '18:14:17', 'OUI', '2020-06-15', '23:55:22'),
+(1945, '452 632 Y', 'KOUASSI', 'KOFFI II NAZAIRE', '', '', 'kouassinazaire@gmail.com', 'kouassinazaire', 'da6e0900', 4, 5, 42, 27, 2, 'OUI', '2020-06-09', '17:32:09', 'OUI', '2020-07-01', '22:46:57'),
+(1946, '923 001 T', 'FODJO', 'KOUAKOU KOUMAN', '', '', '2kfodjo@gmail.com', '2kfodjo', '201321', 4, 11, 16, 27, 2, 'OUI', '2020-06-07', '09:06:23', 'OUI', '2020-06-18', '09:46:27'),
+(1947, '290 706 MR', 'MBOBIE', 'Fatto', '02622829', '', 'fatmbob@gmail.com', 'fatmbob', '30167c3d', 4, 3, 48, 27, 2, 'OUI', '0000-00-00', '00:00:00', 'OUI', '2020-06-12', '13:27:58'),
+(1948, '089 237 ZR', 'TOURE', 'SIAKA', '05 01 71 39', '', 'siakaahtoure@yahoo.fr', 'siakaahtoure', '68e72e9c', 4, 3, 48, 27, 2, 'OUI', '2020-06-17', '17:33:45', '', '0000-00-00', '00:00:00'),
+(1949, '300 609 E', 'KOUAKOU', 'N\'DRI BLAISE', '', '', 'bkndri@yahoo.fr', 'bkndri', 'ndri4bk', 4, 3, 48, 28, 2, 'OUI', '2020-06-13', '21:45:18', 'OUI', '2020-06-15', '17:03:19'),
+(1950, '277 963 C', 'THEBY', 'ALLECHY IGNACE', '', '', 'allechygnace@gmail.com', 'allechygnace', '3791@Theby.@14', 4, 3, 48, 28, 2, 'OUI', '2020-06-13', '21:45:18', 'OUI', '2020-06-25', '17:54:54'),
+(1951, '444 617 Z', 'AYIKPA', 'KACOUTCHY JEAN ', '08791990', '', 'ayikpajean@yahoo.fr', 'ayikpajean', 'B08791990e', 4, 13, 24, 27, 2, 'OUI', '2020-06-15', '16:42:51', 'OUI', '2020-09-02', '09:22:08'),
+(1952, '009 350 AF', 'GORAN', 'KOFFI MODESTE', '', '', 'gkmodestearmand@gmail.com', 'gkmodestearmand', 'e4bc0e22', 5, 10, 37, 19, 3, 'OUI', '2020-06-16', '14:14:20', 'OUI', '2020-07-17', '06:38:02'),
+(1953, '214 704 M', 'ASSOHOUN', 'EGOMLI STANISLAS', '07 60 02 12', '', 'stanlasso@gmail.com', 'stanlasso', '8236f625', 4, 13, 24, 27, 2, 'OUI', '2020-06-29', '08:24:03', '', '0000-00-00', '00:00:00'),
+(1954, '315 028 E', 'KOUADIO', 'EMMANUEL', '01 30 63 68', '', 'Emmanuelkouadio.ci@gmail.com', 'kouadio_ke', 'vdpstrm', 5, 12, 35, 19, 3, 'OUI', '2020-06-17', '19:53:59', 'OUI', '2020-08-03', '09:42:12'),
+(1955, '287 465 U', 'MESMIN', 'ADINGRA EHUI', '', '', 'ehuimesmin@gmail.com', 'ehuimesmin', '7b77d177', 4, 11, 16, 27, 2, 'OUI', '2020-06-19', '21:50:36', '', '0000-00-00', '00:00:00'),
+(1956, '900 900 VE', 'KRA', 'PAUL-EMMANUEL KOUAME', '', '', 'pemmanuel.kra@curat-edu.org', 'pemmanuel.kra', 'bb5f0869', 4, 12, 36, 28, 2, 'OUI', '2020-06-20', '18:09:49', '', '0000-00-00', '00:00:00'),
+(1957, '456 577 V', 'BROU', 'KONAN ALAIN', '08 14 44 02', '', 'broukoanalain@gmail.com', 'broukoanalain', 'alinosse', 4, 4, 21, 27, 2, 'OUI', '2020-07-03', '09:57:30', 'OUI', '2020-07-18', '13:28:29'),
+(1958, '456 592 M', 'DIAMIDIA', 'MARIE CECILE', '89 90 16 60', '', 'diamirice@yahoo.fr', 'diamirice', 'd971a929', 4, 4, 21, 27, 2, 'OUI', '2020-07-07', '21:55:39', 'OUI', '2020-07-15', '20:02:30'),
+(1959, '456 641 D', 'KAMATE', 'LADJI', '09 62 24 81', '', 'kamateladji@yahoo.fr', 'kamateladji', 'fecab27b', 4, 4, 21, 27, 2, 'OUI', '2020-06-22', '09:45:59', 'OUI', '2020-07-13', '13:04:21'),
+(1960, '479 728 K', 'MENE', 'YAO FABRICE-ALAIN DAVY', '47 82 80 74', '', 'menelikdavy@gmail.com', 'menelikdavy', '100485', 4, 4, 21, 27, 2, 'OUI', '2020-06-22', '10:31:16', 'OUI', '2020-09-07', '20:30:36'),
+(1961, '276 068 M', 'GUEBO', 'KOUTCHET CHARLES', '', '', 'charles_guebo@yahoo.fr', 'charles_guebo', '8eb5204e', 4, 3, 48, 28, 2, 'OUI', '2020-06-23', '12:50:28', 'OUI', '2020-07-27', '00:02:49'),
+(1962, '290 974 H', 'N\'GUESSAN', 'ASSOA PASCAL', '', '', 'pascalassoa@yahoo.fr', 'pascalassoa', 'b565f170', 4, 3, 48, 27, 2, 'OUI', '2020-07-11', '22:07:01', 'OUI', '2020-07-15', '13:45:17'),
+(1963, '244 930 E', 'N\'GUESSAN', 'KOUAME', '', '', 'sharlissan@hotmail.com', 'sharlissan', 'e7617e68', 4, 3, 48, 27, 2, 'OUI', '2020-06-29', '08:31:18', 'OUI', '2020-07-15', '20:26:30'),
+(1964, '900 901 VE', 'JOFACK', 'SOKENG VALERE', '58 98 78 46', '', 'valere.jofack@uvci.edu.ci', 'valere.jofack', 'Curat@2013!', 4, 12, 36, 27, 2, 'OUI', '2020-06-28', '10:47:27', 'OUI', '2020-07-24', '15:13:01'),
+(1965, '900 9002 VE', 'DJE', 'KOUAKOU BERNARD', '47 50 54 70', '', 'dkouakou_b@yahoo.fr', 'dkouakou_b', 'Amoroki1961*', 4, 12, 36, 28, 2, 'OUI', '2020-06-28', '10:47:27', 'OUI', '2020-06-29', '13:36:46'),
+(1966, '398 737 B', 'AKPANGNI', 'ERNEST', '', '', 'akpangni6@yahoo.fr', 'akpangni6', '55506017', 4, 3, 48, 27, 2, 'OUI', '2020-07-11', '22:07:01', 'OUI', '2020-07-16', '08:00:52'),
+(1967, '400 783 H', 'HOUESSOU ', 'DEHOUEGNON ROMEO DORGELES', '', '', 'dorgeleshouessou@yahoo.fr', 'dorgeleshouessou', '9459df12', 4, 3, 48, 27, 2, 'OUI', '2020-07-11', '22:07:01', 'OUI', '2020-07-13', '18:46:49'),
+(1968, '484 958 D', 'SENY', 'EHOUMAN DIBIE BESMEZ', '', '', 'ehoumanseny@gmail.com', 'ehoumanseny', '82d82830', 4, 3, 48, 27, 2, 'OUI', '2020-07-11', '22:07:01', 'OUI', '2020-07-14', '15:35:08'),
+(1969, '132 112 E', 'LIAZERE', 'SERI ELIE KOUAO', '07 92 61 30', '', 'Liazer57@yahoo.fr', 'Liazer57', '6539ff77', 4, 10, 37, 27, 2, 'OUI', '2020-07-09', '18:54:47', 'OUI', '2020-07-14', '12:29:02'),
+(1970, '358 686 Q', 'OUATTARA', 'OUOLOGO JONATHAN', '58 22 20 68', '', 'jodossong@yahoo.fr', 'jodossong', 'imperial', 4, 10, 37, 27, 2, 'OUI', '2020-07-09', '18:54:47', 'OUI', '2020-09-07', '06:45:07'),
+(1971, '337 073 X', 'LASME', 'MEL FABIEN', '01 22 45 17', '', 'Melasf09@yahoo.fr', 'Melasf09', '60eb4d35', 4, 10, 37, 27, 2, 'OUI', '2020-07-09', '18:54:47', 'OUI', '2020-08-13', '18:58:08'),
+(1972, '249 718 S', 'KOFFI', 'EHUI BRUNO', '07 95 14 73', '', 'Ehuikoffi4ever@yahoo.fr', 'Ehuikoffi4ever', '59f75165', 4, 10, 37, 27, 2, 'OUI', '2020-07-09', '18:54:47', '', '0000-00-00', '00:00:00'),
+(1973, '953 644 VE', 'KOFFI', 'GBAKLIA ELVIS EMMANUEL', '', '', 'gbaklia@yahoo.fr', 'gbaklia', '171059geek', 4, 10, 37, 27, 2, 'OUI', '2020-07-11', '21:34:56', 'OUI', '2020-07-21', '11:41:24'),
+(1974, '231 524 N', 'ANOHA', 'CLOKOU DOMINIQUE', '08 28 24 16', '', 'anohaclokou@yahoo.fr', 'anohaclokou', '8059182e', 4, 10, 37, 27, 2, 'OUI', '2020-07-11', '21:53:15', 'OUI', '2020-07-16', '23:03:44'),
+(1975, '394 253 A', 'COULIBALY', 'DAOUDA', '06 19 19 75', '', 'daouda990@yahoo.fr', 'daouda990', 'tenediakaff', 4, 4, 31, 27, 2, 'OUI', '2020-07-14', '15:36:32', 'OUI', '2020-07-14', '23:06:31'),
+(1976, '', 'KONAN', 'ELISEE', '', '', '', 'Elimco02', '1234', 1, NULL, NULL, 51, 4, 'OUI', '2020-12-01', '00:00:12', 'OUI', '2020-12-28', '00:00:19'),
+(1977, '', 'AKA', 'CHRISTIAN', '', '', '', 'Christian', '1234', 7, NULL, 56, 43, 4, 'OUI', '2020-12-01', '00:00:12', 'OUI', '2020-12-28', '00:00:19'),
+(1978, '', 'GUELADE', 'KEVIN', '', '', '', 'Kevin', '1234', 7, NULL, 56, 43, 4, 'OUI', '2020-12-01', '00:00:12', 'OUI', '2020-12-28', '00:00:19'),
+(1979, '', 'BILE', 'JUNIAS', '', '', '', 'bile', '1234', 3, 1, 82, 14, 4, '', '2021-01-19', '23:00:00', '', '2021-01-19', '23:00:00'),
+(1980, '', 'KANGAH', 'HILAIRE', '', '', '', 'hilaire', '1234', 5, 1, 82, 20, 4, '', '2021-01-19', '23:00:00', '', '2021-01-19', '23:00:00'),
+(1981, '', 'KOUAKOU', 'EVRA', '', '', '', 'evra', '1234', 7, NULL, 56, 42, 4, '', '2021-01-19', '23:00:00', '', '2021-01-19', '23:00:00'),
+(1982, '', 'KOFFI', 'antoine', '', '', '', 'koffi', '1234', 7, NULL, 56, 43, 4, 'OUI', '2020-12-01', '00:00:12', 'OUI', '2020-12-28', '00:00:19'),
+(1983, '', 'BLE', 'junior', '', '', '', 'ble', '1234', 3, 2, 14, 14, 4, '', '2021-01-19', '23:00:00', '', '2021-01-19', '23:00:00'),
+(1984, '', 'FOFIE ', 'MATHURIN', '', '', '', 'fofie', '1234', 2, NULL, 56, 36, 4, '', '2021-01-19', '23:00:00', '', '2021-01-19', '23:00:00'),
+(1985, '', 'ALLA', 'BRICE', '', '', '', 'alla', '1234', 7, NULL, 56, 42, 4, '', '2021-01-19', '23:00:00', '', '2021-01-19', '23:00:00'),
+(1986, '', 'YAO', 'JOSEPH', '', '', '', 'yao', '1234', 7, NULL, 51, 43, 4, 'OUI', '2020-12-01', '00:00:12', 'OUI', '2020-12-28', '00:00:19'),
+(1987, '', 'GOLI', 'YANNIK', '', '', '', 'goli', '1234', 7, NULL, 51, 42, 4, '', '2021-01-19', '23:00:00', '', '2021-01-19', '23:00:00');
 
 --
--- Indexes for dumped tables
+-- Index pour les tables déchargées
 --
 
 --
--- Indexes for table `administrateur`
+-- Index pour la table `administrateur`
 --
 ALTER TABLE `administrateur`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `annee_academique`
+-- Index pour la table `annee_academique`
 --
 ALTER TABLE `annee_academique`
   ADD PRIMARY KEY (`id_annee_academique`);
 
 --
--- Indexes for table `composer_maquette`
+-- Index pour la table `composer_maquette`
 --
 ALTER TABLE `composer_maquette`
   ADD PRIMARY KEY (`id_composer_maquette`),
@@ -29665,45 +31566,45 @@ ALTER TABLE `composer_maquette`
   ADD KEY `id_annee_academique` (`id_annee_academique`);
 
 --
--- Indexes for table `cursus`
+-- Index pour la table `cursus`
 --
 ALTER TABLE `cursus`
   ADD PRIMARY KEY (`id_cursus`);
 
 --
--- Indexes for table `departement`
+-- Index pour la table `departement`
 --
 ALTER TABLE `departement`
   ADD PRIMARY KEY (`id_departement`),
   ADD KEY `id_etablissement` (`id_etablissement`);
 
 --
--- Indexes for table `diplomes`
+-- Index pour la table `diplomes`
 --
 ALTER TABLE `diplomes`
   ADD PRIMARY KEY (`id_diplomes`);
 
 --
--- Indexes for table `etablissement`
+-- Index pour la table `etablissement`
 --
 ALTER TABLE `etablissement`
   ADD PRIMARY KEY (`id_etablissement`),
   ADD KEY `id_type_etablissement` (`id_type_etablissement`);
 
 --
--- Indexes for table `etudiant_sdapa`
+-- Index pour la table `etudiant_sdapa`
 --
 ALTER TABLE `etudiant_sdapa`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `inscription_sdapa`
+-- Index pour la table `inscription_sdapa`
 --
 ALTER TABLE `inscription_sdapa`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `mention`
+-- Index pour la table `mention`
 --
 ALTER TABLE `mention`
   ADD PRIMARY KEY (`id_mention`),
@@ -29712,32 +31613,32 @@ ALTER TABLE `mention`
   ADD KEY `id_domaine` (`id_domaine`);
 
 --
--- Indexes for table `nationalite`
+-- Index pour la table `nationalite`
 --
 ALTER TABLE `nationalite`
   ADD PRIMARY KEY (`id_nationalite`);
 
 --
--- Indexes for table `pays`
+-- Index pour la table `pays`
 --
 ALTER TABLE `pays`
   ADD PRIMARY KEY (`id_pays`);
 
 --
--- Indexes for table `semestre`
+-- Index pour la table `semestre`
 --
 ALTER TABLE `semestre`
   ADD PRIMARY KEY (`id_semestre`),
   ADD KEY `id_niveau` (`id_niveau`);
 
 --
--- Indexes for table `sexe`
+-- Index pour la table `sexe`
 --
 ALTER TABLE `sexe`
   ADD PRIMARY KEY (`id_sexe`);
 
 --
--- Indexes for table `specialite`
+-- Index pour la table `specialite`
 --
 ALTER TABLE `specialite`
   ADD PRIMARY KEY (`id_specialite`),
@@ -29747,13 +31648,13 @@ ALTER TABLE `specialite`
   ADD KEY `id_statut_specialite` (`id_statut_specialite`);
 
 --
--- Indexes for table `total_mentions`
+-- Index pour la table `total_mentions`
 --
 ALTER TABLE `total_mentions`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `utilisateur`
+-- Index pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
   ADD PRIMARY KEY (`id_utilisateur`),
@@ -29764,56 +31665,56 @@ ALTER TABLE `utilisateur`
   ADD KEY `id_groupe_utilisateur` (`id_groupe_utilisateur`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
--- AUTO_INCREMENT for table `administrateur`
+-- AUTO_INCREMENT pour la table `administrateur`
 --
 ALTER TABLE `administrateur`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `annee_academique`
+-- AUTO_INCREMENT pour la table `annee_academique`
 --
 ALTER TABLE `annee_academique`
   MODIFY `id_annee_academique` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `cursus`
+-- AUTO_INCREMENT pour la table `cursus`
 --
 ALTER TABLE `cursus`
-  MODIFY `id_cursus` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_cursus` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `diplomes`
+-- AUTO_INCREMENT pour la table `diplomes`
 --
 ALTER TABLE `diplomes`
   MODIFY `id_diplomes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `inscription_sdapa`
+-- AUTO_INCREMENT pour la table `inscription_sdapa`
 --
 ALTER TABLE `inscription_sdapa`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `nationalite`
+-- AUTO_INCREMENT pour la table `nationalite`
 --
 ALTER TABLE `nationalite`
   MODIFY `id_nationalite` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=195;
 
 --
--- AUTO_INCREMENT for table `sexe`
+-- AUTO_INCREMENT pour la table `sexe`
 --
 ALTER TABLE `sexe`
   MODIFY `id_sexe` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `total_mentions`
+-- AUTO_INCREMENT pour la table `total_mentions`
 --
 ALTER TABLE `total_mentions`
-  MODIFY `id` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

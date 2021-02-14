@@ -1,8 +1,11 @@
 <?php
 include "fonctions/index.php";
-$etablissements = ListeEtablissements();
+if ($_SESSION['id_type_utilisateur '] == 1){
+    $etablissements = ListeEtablissements();
+}else{
+    $etablissements = ListeEtablissementsSession($_SESSION['id_etablissement']);
+}
 $annee = ListeAnnee();
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['impression'] = $_POST;
     header('Location: pdf/index.php');

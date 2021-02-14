@@ -4,18 +4,22 @@ require "config/connexion.php";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     extract($_POST);
 
-    if (isset($email) && isset($motdepasse)) {
+    if (isset($login) && isset($motdepasse)) {
+
         $requete = "SELECT * FROM utilisateur WHERE `login_utilisateur` =:login  AND `mot_passe_utilisateur` =:motdepasse";
         $stmt = $bdd->prepare($requete);
 
-        $stmt->bindParam('login', $email, PDO::PARAM_STR);
+        $stmt->bindParam('login', $login, PDO::PARAM_STR);
         $stmt->bindValue('motdepasse', $motdepasse, PDO::PARAM_STR);
         $stmt->execute();
         $count = $stmt->rowCount();
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($count == 1) {
-            $_SESSION['connecte'] = $row['id'];
+            $_SESSION['connecte'] = $row['id_utilisateur'];
+            $_SESSION['id_etablissement'] = $row['id_etablissement'];
+            $_SESSION['id_departement'] = $row['id_departement'];
+            $_SESSION['id_type_utilisateur '] = $row['id_type_utilisateur'];
             header('Location:index.php');
         } else {
             $_SESSION['connecte'] = "";

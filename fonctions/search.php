@@ -29,6 +29,18 @@ function ListeEtablissements()
     }
 }
 
+function ListeEtablissementsSession($id)
+{
+    global $bdd;
+    $requete = "select * from etablissement where id_etablissement = '".$id."'";
+    $resultat = $bdd->query($requete);
+    if (is_bool($resultat)) {
+        return [];
+    } else {
+        return $resultat->fetchAll();
+    }
+}
+
 /***
  * Info sur un etablissement
  * @param $id_etablissement
