@@ -41,11 +41,11 @@ if (isset($_POST) && !empty($_POST)):
 
     /* critère age */
     if ($critere_age >= 20 && $critere_age < 24) {
-        $p_age = 4;
+        $p_age = 5;
     } elseif ($critere_age >= 24 && $critere_age < 26) {
-        $p_age = 2;
+        $p_age = 3;
     } elseif ($critere_age >= 26) {
-        $p_age = 0;
+        $p_age = 1;
     }
 
     /* critère temps */

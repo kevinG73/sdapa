@@ -143,7 +143,7 @@ $pays = ListePays();
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label class="col-form-label-sm" for="exampleFormControlSelect1">Etablissements</label>
+                                        <label class="col-form-label-sm" for="exampleFormControlSelect1">Etablissement</label>
                                         <select class="form-control" name="id_etablissement" id="id_etablissement">
                                             <?php foreach ($etablissements as $p): ?>
                                                 <option value="<?php echo $p['id_etablissement'] ?>"

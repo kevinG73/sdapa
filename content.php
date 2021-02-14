@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="d-flex">
                 <div class="col-6 mr-5">
-                    <label for="id_etablissement">Etablissements</label>
+                    <label for="id_etablissement">Etablissement</label>
                     <select class="form-control" name="id_etablissement" id="id_etablissement">
                         <?php foreach ($etablissements as $p): ?>
                             <option value="<?php echo $p['id_etablissement'] ?>"
@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <div class="card shadow mb-5">
     <div class="card-header">
-        <h6 class="m-0 font-weight-bold text-primary text-uppercase">Consultation des points d'admissibilités </h6>
+        <h6 class="m-0 font-weight-bold text-primary text-uppercase">Consultation des points d'admissibilité </h6>
     </div>
     <div class="card-body">
         <div class="table-responsive">

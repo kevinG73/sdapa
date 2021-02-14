@@ -15,6 +15,9 @@ $(document).ready(function () {
     function chargerDatatable(id_departement, id_parcours, id_annee) {
         dataTTT = $('#dataTable').DataTable(
             {
+                language: {
+                    url: "https://cdn.datatables.net/plug-ins/1.10.22/i18n/French.json"
+                },
                 bDestroy: true,
                 ajax: {
                     url: './ajax/fetch_etudiant.php',

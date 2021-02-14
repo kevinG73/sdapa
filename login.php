@@ -57,9 +57,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="col-lg-6">
                 <div class="card2 card border-0 px-4 py-5">
                     <div class="row mb-4 px-3">
-                        <h3 class="mb-0 mr-4 mt-2 text-uppercase text-primary">Bienvenue sur le système de DETERMINATION
-                            AUTOMATIQUE DES POINTS
-                            D’ADMISSIBILTES EN MASTER</h3>
+                        <h3 class="mb-0 mr-4 mt-2 text-uppercase text-primary">Bienvenue sur le <b>S</b>ystème de <b>D</b>ETERMINATION
+                            <b>A</b>UTOMATIQUE DES <b>P</b>OINTS
+                            D’ADMISSIBILTE EN MASTER 1</h3>
                     </div>
 
                     <?php if (isset($_SESSION['error_message']) && !empty($_SESSION['error_message'])): ?>
@@ -70,16 +70,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <div class="row px-3"><label class="mb-1">
                                 <h6 class="mb-0 text-sm">nom d'utilisateur</h6>
                             </label> <input class="mb-4" type="text" name="login"
-                                            placeholder="Entrez une adresse addresse" required>
+                                            placeholder="Entrez votre nom d'utilisateur" required>
                         </div>
                         <div class="row px-3"><label class="mb-1">
                                 <h6 class="mb-0 text-sm">mot de passe</h6>
-                            </label> <input type="password" name="motdepasse" placeholder="Entrez un mot de passe"
+                            </label> <input type="password" name="motdepasse" placeholder="Entrez votre mot de passe"
                                             required maxlength="255">
                         </div>
 
                         <div class="row mb-3 px-3 mt-3">
-                            <button type="submit" class="btn btn-primary text-center">se connecter</button>
+                            <button type="submit" class="btn bt btn-primary text-center">se connecter</button>
                         </div>
                     </form>
 
