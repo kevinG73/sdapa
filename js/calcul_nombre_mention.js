@@ -13,7 +13,12 @@ function updateTotals() {
                 var inp = $('input', this);
                 if (inp.length) {
                     if (!$(this).closest('tr').is(':last-child')) {
-                        total += $('input', this).val() * 1;
+                        if ($('input', this).val() > 14
+                        ) {
+                            total += $('input', this).val(14) * 1;
+                        } else {
+                            total += $('input', this).val() * 1;
+                        }
                     } else {
                         $('input', this).val(total)
                         moyennePondere();

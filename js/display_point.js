@@ -75,7 +75,6 @@ $(document).ready(function () {
 
     function determinerPointMention() {
         var critere_nombre_mention = parseFloat($("#total_l4_c5").val()) || 0;
-        console.log(critere_nombre_mention);
         var p_nombre_mention = 0;
         /* afficher le point de l'âge à côté du champ age*/
         if (critere_nombre_mention >= 42) {

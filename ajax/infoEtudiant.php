@@ -57,21 +57,21 @@ if (isset($etudiantID) && !empty($_POST['etudiantid'])) {
 
     $tableau .= <<<EOT
                     <tr class="w-100">
-                    <td class="text-uppercase align-middle">TOTAL}</td>
+                    <td class="text-uppercase align-middle">TOTAL</td>
                     <td class="align-middle">
-                        <input type="number" min="0" max="14" value="{$ab}"
+                        <input type="number" min="0" max="14" value="{$ab}" readonly
                           id="mention_l4_c1" name="mention_l4_c1" class="form-control saisie">
                     </td>
                     <td class="align-middle">
-                         <input type="number" min="0" max="14" value="{$mb}"
+                         <input type="number" min="0" max="14" value="{$mb}"  readonly
                          id="mention_l4_c2" name="mention_l4_c2" class="form-control saisie">
                     </td>
                     <td class="align-middle">
-                         <input type="number" min="0" max="14"  value="{$tb}"
+                         <input type="number" min="0" max="14"  value="{$tb}"  readonly
                          id="mention_l4_c3" name="mention_l4_c3" class="form-control saisie">
                     </td>
                     <td class="align-middle">
-                         <input type="text" min="0" max="14"  value="{$tm}"
+                         <input type="text" min="0" max="14"  value="{$tm}" 
                          id="total_l4_c4" name="total_l4" class="form-control" readonly>
                     </td>
                     <td class="align-middle">
