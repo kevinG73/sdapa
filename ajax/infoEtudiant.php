@@ -4,6 +4,7 @@ include "../config/connexion.php";
 include "../fonctions/index.php";
 include "../fonction.php";
 
+
 $etudiantID = $_POST['etudiantid'];
 
 $ab = 0;
@@ -14,7 +15,7 @@ $moyp = 0;
 
 if (isset($etudiantID) && !empty($_POST['etudiantid'])) {
     $info = infoEtudiant($etudiantID);
-    $totalMention = fetchTotalMention("SADP60284066a95d7");
+    $totalMention = fetchTotalMention($info["id_etudiant"]);
 
 
     $tableau = "<tr> <th>Niveau</th> <th>AB</th> <th>B</th> <th>TB</th><th>Nombre total de mention</th><th>Moyenne pondérée</th> </tr>";
@@ -51,7 +52,7 @@ if (isset($etudiantID) && !empty($_POST['etudiantid'])) {
                          id="total_l{$a}_c5" readonly name="moypond_l{$a}" class="form-control">
                     </td>
                    </tr>        
-        EOT;
+EOT;
 
     endfor;
 
@@ -79,7 +80,7 @@ if (isset($etudiantID) && !empty($_POST['etudiantid'])) {
                          id="total_l4_c5" readonly name="moypond_l4" class="form-control">
                     </td>
                    </tr>        
-        EOT;
+EOT;
 
 
     echo json_encode(array(
