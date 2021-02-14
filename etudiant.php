@@ -76,27 +76,42 @@ $pays = ListePays();
                 $nationalites = fetchNationalite();
 
                 if (isset($_POST['enregistrer'])){
-                   include 'crud_etudiant/enregister_etudiant.php';
+                    include 'crud_etudiant/enregister_etudiant.php';
                 }
-
-                if (isset($_POST['modifier'])){
-                    include 'crud_etudiant/modifier_etudiant.php';
-                }
-
 
                 if (isset($_GET['id'])) {
-                    $etud = $bdd->query('select * from etudiant_sdapa where id ="' . $_GET['id'] . '"') or die(print_r($bdd->errorInfo()));
-                    $res = $etud->fetch();
-                    $insc = $bdd->query('select * from inscription_sdapa where id_etudiant ="' . $_GET['id'] . '"') or die(print_r($bdd->errorInfo()));
-                    $resins = $insc->fetch();
-                    $resdd = $bdd->query('select * from cursus where id_etudiant ="' . $_GET['id'] . '"') or die(print_r($bdd->errorInfo()));
-                    $resdip = $resdd->fetch();
-                    $_SESSION['annee']=$resins['annee'];
-                    $_SESSION['id_etablissement']=$resins['id_etablissement'];
-                    $_SESSION['id_parcours']=$resins['id_parcours'];
-                    $_SESSION['id_departement']=$resins['id_departement'];
-                    $_SESSION['anneeante'] = $resdip['id_anne_ante'];
+                    if ($_SESSION['id_type_utilisateur '] == 1){
+                        $etud = $bdd->query('select * from etudiant_sdapa where id ="' . $_GET['id'] . '"') or die(print_r($bdd->errorInfo()));
+                        $res = $etud->fetch();
+                        $insc = $bdd->query('select * from inscription_sdapa where id_etudiant ="' . $_GET['id'] . '"') or die(print_r($bdd->errorInfo()));
+                        $resins = $insc->fetch();
+                        $resdd = $bdd->query('select * from cursus where id_etudiant ="' . $_GET['id'] . '"') or die(print_r($bdd->errorInfo()));
+                        $resdip = $resdd->fetch();
+                        $_SESSION['annee']=$resins['annee'];
+                        $_SESSION['id_etablissement']=$resins['id_etablissement'];
+                        $_SESSION['id_parcours']=$resins['id_parcours'];
+                        $_SESSION['id_departement']=$resins['id_departement'];
+                        $_SESSION['anneeante'] = $resdip['id_anne_ante'];
 
+                    }else{
+                        $etud = $bdd->query('select * from etudiant_sdapa where id ="' . $_GET['id'] . '"') or die(print_r($bdd->errorInfo()));
+                        $res = $etud->fetch();
+                        $insc = $bdd->query('select * from inscription_sdapa where id_etudiant ="' . $_GET['id'] . '"') or die(print_r($bdd->errorInfo()));
+                        $resins = $insc->fetch();
+                        $resdd = $bdd->query('select * from cursus where id_etudiant ="' . $_GET['id'] . '"') or die(print_r($bdd->errorInfo()));
+                        $resdip = $resdd->fetch();
+                        $_SESSION['anneeante'] = $resdip['id_anne_ante'];
+                        $_SESSION['annee']=$resins['annee'];
+                        $_SESSION['id_parcours']=$resins['id_parcours'];
+                    }
+
+                    if (isset($_POST['modifier'])){
+                        include 'crud_etudiant/modifier_etudiant.php';
+                        ?>
+                        <script>document.location.replace("etudiant.php")</script>
+                        <?php
+
+                    }
                 }
 
                 if (isset($_POST['supprimer'])) {
@@ -143,7 +158,7 @@ $pays = ListePays();
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label class="col-form-label-sm" for="exampleFormControlSelect1">Etablissement</label>
+                                        <label class="col-form-label-sm" for="exampleFormControlSelect1">Etablissements</label>
                                         <select class="form-control" name="id_etablissement" id="id_etablissement">
                                             <?php foreach ($etablissements as $p): ?>
                                                 <option value="<?php echo $p['id_etablissement'] ?>"
@@ -177,6 +192,12 @@ $pays = ListePays();
                                     </div>
                                 </div>
                                 <div class="form-row">
+                                    <div class="form-group col-md-3 mr-5">
+                                        <label class="col-form-label-sm" for="id_parcours">Niveau à acceder</label>
+                                        <select class="form-control">
+                                            <option value="M1">MASTER 1</option>
+                                        </select>
+                                    </div>
                                     <div class="form-group col-md-6">
                                         <label class="col-form-label-sm" for="id_parcours">Parcours</label>
                                         <select class="form-control" name="id_parcours" id="id_parcours">
@@ -411,9 +432,10 @@ $pays = ListePays();
                         </div>
 
                         <?php
-                        include "crud_etudiant/modal_insert.php";
+                        if (!isset($_GET['id'])) {
+                            include "crud_etudiant/modal_insert.php";
+                        }
                         ?>
-
                         <?php
                         include "crud_etudiant/modal_modifier.php";
                         ?>
@@ -431,7 +453,7 @@ $pays = ListePays();
                         <button class="btn btn-lg btn-primary" data-toggle="modal"
                                 data-target="#updateClasseModal">Soumettre
                         </button>
-                        <button type="button" onclick="destroy()" class="btn btn-lg btn-danger">Annuler</button>
+                        <a  class="btn btn-lg btn-danger"  href="etudiant.php">Annuler</a>
                     <?php endif; ?>
                     <div id="destroy">
 
@@ -440,9 +462,9 @@ $pays = ListePays();
 
                 <?php
                 if ($_SESSION['id_type_utilisateur '] == 1){
-                    $gu = $bdd->query("select * from etudiant_sdapa,inscription_sdapa group by inscription_sdapa.id") or die(print_r($bdd->errorInfo()));
+                    $gu = $bdd->query("select * from etudiant_sdapa,inscription_sdapa where etudiant_sdapa.id = inscription_sdapa.id_etudiant group by inscription_sdapa.id") or die(print_r($bdd->errorInfo()));
                 }else{
-                    $gu = $bdd->query("select * from etudiant_sdapa,inscription_sdapa where inscription_sdapa.id_etablissement = '".$_SESSION['id_etablissement']."' and inscription_sdapa.id_departement = '".$_SESSION['id_departement']."' group by inscription_sdapa.id") or die(print_r($bdd->errorInfo()));
+                    $gu = $bdd->query("select * from etudiant_sdapa,inscription_sdapa where etudiant_sdapa.id = inscription_sdapa.id_etudiant and inscription_sdapa.id_etablissement = '".$_SESSION['id_etablissement']."' and inscription_sdapa.id_departement = '".$_SESSION['id_departement']."' group by inscription_sdapa.id") or die(print_r($bdd->errorInfo()));
                 }
 
                 ?>
@@ -475,9 +497,9 @@ $pays = ListePays();
                                         <tr>
                                             <td align="center">
                                                 <input type="checkbox" id="cocher[]" name="cocher[]"
-                                                       value="<?php echo $res['id']; ?>"></td>
+                                                       value="<?php echo $res['id_etudiant']; ?>"></td>
                                             <td class="text-uppercase">
-                                                <a href="etudiant.php?id=<?= $res['id']; ?>"><?= $res['nom']; ?> <?= $res['prenoms']; ?></a>
+                                                <a href="etudiant.php?id=<?= $res['id_etudiant']; ?>"><?= $res['nom']; ?> <?= $res['prenoms']; ?></a>
                                             </td>
                                             <td class="text-uppercase">
                                                 <?= date('m-d-Y',strtotime($res['date_naissance'])); ?>
