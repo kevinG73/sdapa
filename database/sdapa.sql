@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 14, 2021 at 07:10 AM
+-- Generation Time: Feb 14, 2021 at 11:42 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.3.2
 
@@ -28666,7 +28666,7 @@ CREATE TABLE `inscription_sdapa` (
 --
 
 INSERT INTO `inscription_sdapa` (`id`, `annee`, `id_etudiant`, `temps_mis_en_Licence`, `moy_ann_l1`, `moy_ann_l2`, `moy_ann_l3`, `moy_pondere`, `total_point_critere`, `total_mention`, `niveau_etude`, `id_parcours`, `id_departement`, `id_etablissement`, `demande_accepte`) VALUES
-(3, '4', 'SADP60284066a95d7', '4', '10', '14', '12', '12', '6', '0', '3', '1', '24', '13', 0);
+(3, '4', 'SADP60284066a95d7', '4', '10.65', '16.25', '12.35', '13.08', '9', '6', '3', '1', '24', '13', 0);
 
 -- --------------------------------------------------------
 
@@ -29597,9 +29597,45 @@ CREATE TABLE `total_mentions` (
 --
 
 INSERT INTO `total_mentions` (`id`, `id_niveau`, `id_etudiant`, `ab`, `mb`, `tb`, `total_mention`, `moy_pondere`) VALUES
-(13, '1', 'SADP60284066a95d7', '0', '0', '14', '14', '6'),
-(14, '2', 'SADP60284066a95d7', '0', '0', '14', '14', '6'),
-(15, '3', 'SADP60284066a95d7', '0', '0', '14', '14', '6');
+(13, '1', 'SADP60284066a95d7', '14', '0', '0', '14', '2'),
+(14, '2', 'SADP60284066a95d7', '14', '0', '0', '14', '2'),
+(15, '3', 'SADP60284066a95d7', '14', '0', '0', '14', '2');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `utilisateur`
+--
+
+CREATE TABLE `utilisateur` (
+  `id_utilisateur` int(11) NOT NULL,
+  `matricule_utilisateur` varchar(255) NOT NULL,
+  `nom_utilisateur` varchar(255) NOT NULL,
+  `prenom_utilisateur` varchar(255) NOT NULL,
+  `tel_utilisateur` varchar(255) NOT NULL,
+  `adresse_utilisateur` varchar(255) NOT NULL,
+  `email_utilisateur` varchar(255) NOT NULL,
+  `login_utilisateur` varchar(255) NOT NULL,
+  `mot_passe_utilisateur` varchar(255) NOT NULL,
+  `id_type_utilisateur` int(11) DEFAULT NULL,
+  `id_etablissement` int(11) DEFAULT NULL,
+  `id_departement` int(11) DEFAULT NULL,
+  `id_groupe_utilisateur` int(11) DEFAULT NULL,
+  `id_qualite_utilisateur` int(11) DEFAULT NULL,
+  `parametres_envoye` char(3) NOT NULL,
+  `date_envoie` date NOT NULL,
+  `heure_envoie` time NOT NULL,
+  `connexion_reussie` char(3) NOT NULL,
+  `date_derniere_connexion` date NOT NULL,
+  `heure_derniere_connexion` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`id_utilisateur`, `matricule_utilisateur`, `nom_utilisateur`, `prenom_utilisateur`, `tel_utilisateur`, `adresse_utilisateur`, `email_utilisateur`, `login_utilisateur`, `mot_passe_utilisateur`, `id_type_utilisateur`, `id_etablissement`, `id_departement`, `id_groupe_utilisateur`, `id_qualite_utilisateur`, `parametres_envoye`, `date_envoie`, `heure_envoie`, `connexion_reussie`, `date_derniere_connexion`, `heure_derniere_connexion`) VALUES
+(1, '4545456456', 'guelade', 'kevin', '0708863719', 'koumassi', 'kevinguelade@gmail.com', 'kevin73', '123456', NULL, 13, 24, NULL, NULL, '', '2021-02-14', '00:00:00', '', '2021-02-14', '00:00:00');
 
 --
 -- Indexes for dumped tables
@@ -29715,6 +29751,17 @@ ALTER TABLE `specialite`
 --
 ALTER TABLE `total_mentions`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `utilisateur`
+--
+ALTER TABLE `utilisateur`
+  ADD PRIMARY KEY (`id_utilisateur`),
+  ADD KEY `id_type_utilisateur` (`id_type_utilisateur`),
+  ADD KEY `id_etablissement` (`id_etablissement`),
+  ADD KEY `id_departement` (`id_departement`),
+  ADD KEY `id_qualite_utilisateur` (`id_qualite_utilisateur`),
+  ADD KEY `id_groupe_utilisateur` (`id_groupe_utilisateur`);
 
 --
 -- AUTO_INCREMENT for dumped tables

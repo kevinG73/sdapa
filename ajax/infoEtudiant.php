@@ -77,7 +77,7 @@ EOT;
                     </td>
                     <td class="align-middle">
                          <input type="number" min="0" max="14" value="{$moyp}"
-                         id="total_l4_c5" readonly name="moypond_l4" class="form-control">
+                         id="total_l4_c5" readonly name="moypond_l4" class="form-control text-danger">
                     </td>
                    </tr>        
 EOT;

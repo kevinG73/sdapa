@@ -5,10 +5,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     extract($_POST);
 
     if (isset($email) && isset($motdepasse)) {
-        $requete = "SELECT * FROM administrateur WHERE `email` =:email  AND `motdepasse` =:motdepasse";
+        $requete = "SELECT * FROM utilisateur WHERE `login_utilisateur` =:login  AND `mot_passe_utilisateur` =:motdepasse";
         $stmt = $bdd->prepare($requete);
 
-        $stmt->bindParam('email', $email, PDO::PARAM_STR);
+        $stmt->bindParam('login', $email, PDO::PARAM_STR);
         $stmt->bindValue('motdepasse', $motdepasse, PDO::PARAM_STR);
         $stmt->execute();
         $count = $stmt->rowCount();
@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="row mb-4 px-3">
                         <h3 class="mb-0 mr-4 mt-2 text-uppercase text-primary">Bienvenue sur le système de DETERMINATION
                             AUTOMATIQUE DES POINTS
-                            D’ADMISSIBILTE DE LA LICENCE 3 EN MASTER</h3>
+                            D’ADMISSIBILTES EN MASTER</h3>
                     </div>
 
                     <?php if (isset($_SESSION['error_message']) && !empty($_SESSION['error_message'])): ?>
@@ -64,8 +64,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     <form method="post">
                         <div class="row px-3"><label class="mb-1">
-                                <h6 class="mb-0 text-sm">Email</h6>
-                            </label> <input class="mb-4" type="text" name="email"
+                                <h6 class="mb-0 text-sm">nom d'utilisateur</h6>
+                            </label> <input class="mb-4" type="text" name="login"
                                             placeholder="Entrez une adresse addresse" required>
                         </div>
                         <div class="row px-3"><label class="mb-1">

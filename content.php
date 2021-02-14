@@ -62,7 +62,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="col-4 mr-5">
                     <label for="id_critere_selection">critère de selection</label>
                     <select class="form-control" name="id_critere_selection" id="id_critere_selection">
-                        <?php for ($i = 1; $i <= 20; $i++): ?>
+                        <option value="0"> selectionner</option>
+                        <?php for ($i = 1; $i <= 24; $i++): ?>
                             <option value="<?= $i ?>">point superieur à <?= $i ?> </option>
                         <?php endfor; ?>
                     </select>
