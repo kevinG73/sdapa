@@ -107,9 +107,11 @@
 
                                         <td class="align-middle">
                                             Moyenne pondérée
+                                        </td>
+                                        <td class="align-middle">
                                             <input type="number" name="moyp" value="0"
-                                                                        class="form-control w-50"
-                                                                        id="inputMA" min="0" max="20" readonly></td>
+                                                   class="form-control"
+                                                   id="inputMA" min="0" max="20" readonly></td>
                                         <td class="align-middle">
                                             <span id="moyenne-point" class="font-weight-bold  text-danger"></span>
                                         </td>
@@ -118,8 +120,13 @@
                             </div>
                         </div>
 
-                        <div class="form-row mt-3">
-                            <div class="float-right">
+                        <div class="row mt-3 justify-content-between">
+                            <div class="form-inline">
+                                <span class="text-primary text-uppercase">total point critère</span>
+                                <input type="text" readonly id="point_critere"
+                                       class="ml-3 text-danger font-weight-bold form-control w-25">
+                            </div>
+                            <div>
                                 <button type="submit" class="btn btn-primary" id="btn-save">enregistrer</button>
                             </div>
                         </div>

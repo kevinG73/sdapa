@@ -62,6 +62,7 @@ function moyennePondere() {
     $("#total_l2_c5").val(moyp2.toFixed(2));
     $("#total_l3_c5").val(moyp3.toFixed(2));
     $("#total_l4_c5").val(total.toFixed(2));
+
 }
 
 
