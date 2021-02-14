@@ -12,7 +12,7 @@ if (isset($_GET['id_departement'])):
                 specialite.id_specialite = composer_maquette.id_specialite
                 and specialite.id_mention = mention.id_mention
                 and composer_maquette.id_semestre = semestre.id_semestre
-                and semestre.id_niveau = 3 and mention.id_departement = '" . $id_departement . "' 
+                and semestre.id_niveau = 4 and mention.id_departement = '" . $id_departement . "' 
                 group by specialite.id_specialite";
 
     $resultat = $bdd->query($requete);
