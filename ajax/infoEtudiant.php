@@ -6,6 +6,12 @@ include "../fonction.php";
 
 $etudiantID = $_POST['etudiantid'];
 
+$ab = 0;
+$mb = 0;
+$tb = 0;
+$tm = 0;
+$moyp = 0;
+
 if (isset($etudiantID) && !empty($_POST['etudiantid'])) {
     $info = infoEtudiant($etudiantID);
     $totalMention = fetchTotalMention("SADP60284066a95d7");
@@ -13,6 +19,13 @@ if (isset($etudiantID) && !empty($_POST['etudiantid'])) {
 
     $tableau = "<tr> <th>Niveau</th> <th>AB</th> <th>B</th> <th>TB</th><th>Nombre total de mention</th><th>Moyenne pondérée</th> </tr>";
     for ($i = 0; $i <= 2; $i++):
+
+        $ab += $totalMention[$i]['ab'];
+        $mb += $totalMention[$i]['mb'];
+        $tb += $totalMention[$i]['tb'];
+        $tm += $totalMention[$i]['total_mention'];
+        $moyp += $totalMention[$i]['moy_pondere'];
+
         $a = $i + 1;
         $tableau .= <<<EOT
                     <tr class="w-100">
@@ -46,23 +59,23 @@ if (isset($etudiantID) && !empty($_POST['etudiantid'])) {
                     <tr class="w-100">
                     <td class="text-uppercase align-middle">TOTAL}</td>
                     <td class="align-middle">
-                        <input type="number" min="0" max="14" 
+                        <input type="number" min="0" max="14" value="{$ab}"
                           id="mention_l4_c1" name="mention_l4_c1" class="form-control saisie">
                     </td>
                     <td class="align-middle">
-                         <input type="number" min="0" max="14" 
+                         <input type="number" min="0" max="14" value="{$mb}"
                          id="mention_l4_c2" name="mention_l4_c2" class="form-control saisie">
                     </td>
                     <td class="align-middle">
-                         <input type="number" min="0" max="14" 
+                         <input type="number" min="0" max="14"  value="{$tb}"
                          id="mention_l4_c3" name="mention_l4_c3" class="form-control saisie">
                     </td>
                     <td class="align-middle">
-                         <input type="text" min="0" max="14" 
+                         <input type="text" min="0" max="14"  value="{$tm}"
                          id="total_l4_c4" name="total_l4" class="form-control" readonly>
                     </td>
                     <td class="align-middle">
-                         <input type="number" min="0" max="14"
+                         <input type="number" min="0" max="14" value="{$moyp}"
                          id="total_l4_c5" readonly name="moypond_l4" class="form-control">
                     </td>
                    </tr>        

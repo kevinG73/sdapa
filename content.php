@@ -91,6 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <th>moy l1</th>
                     <th>moy l2</th>
                     <th>moy l3</th>
+                    <th>nbre total mentions</th>
                     <th>point critère</th>
                     <th></th>
                 </tr>

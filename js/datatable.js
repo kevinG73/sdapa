@@ -31,6 +31,7 @@ $(document).ready(function () {
                     {data: 'moy_ann_l1', title: 'moy l1'},
                     {data: 'moy_ann_l2', title: 'moy l2'},
                     {data: 'moy_ann_l3', title: 'moy l3'},
+                    {data: 'total_mention', title: 'nbre total mentions'},
                     {data: 'total_point_critere', title: 'point critère'},
                     {
                         data: "id", render: function (data, type, row, meta) {

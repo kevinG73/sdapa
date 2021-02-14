@@ -42,7 +42,8 @@
                         <div class="form-row">
                             <div class="form-group col-md-3">
                                 <label for="inputDateNaissance">Date de naissance</label>
-                                <input type="date" class="form-control" id="inputDateNaissance" readonly name="date_naissance">
+                                <input type="date" class="form-control" id="inputDateNaissance" readonly
+                                       name="date_naissance">
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="inputNationalite">Nationalité</label>
@@ -57,20 +58,27 @@
                         <div class="form-row">
                             <div class="form-group col-md-3">
                                 <label for="inputTemps1" class="mr-2">L'âge de l'étudiant</label>
-                                <input type="number" class="form-control w-25" id="inputAge" name="age"
-                                       disabled>
-                                <span id="age-point"></span>
+                                <div class="form-inline">
+                                    <input type="number" class="form-control w-25 mr-2" id="inputAge" name="age"
+                                           disabled>
+                                    <span id="age-point" class="font-weight-bold"></span>
+                                </div>
                             </div>
                             <div class="form-group col-md-3">
                                 <label for="inputTemps1" class="mr-2">Le temps passé en Licence</label>
-                                <input type="number" class="form-control w-25" id="inputTemps1" name="temps" min="3"
-                                       max="6"
-                                       value="3">
+                                <div class="form-inline">
+                                    <input type="number" class="form-control w-25 mr-2" id="inputTemps1" name="temps"
+                                           min="3"
+                                           max="6" value="3">
+                                    <span id="temps-point" class="font-weight-bold"></span>
+                                </div>
                             </div>
                         </div>
 
                         <div class="form-row">
-                            <p class="text-primary text-uppercase">Le nombre de mention obtenue</p>
+                            <p class="text-primary text-uppercase">Le nombre de mention obtenue
+                                ( <span id="mention-point" class="font-weight-bold"></span> )
+                            </p>
                         </div>
                         <div class="form-row mb-3">
                             <div class="table-responsive">
@@ -97,7 +105,9 @@
                                         <td class="align-middle"><input type="number" name="moyl3" value="0"
                                                                         class="form-control w-100"
                                                                         id="inputML3" min="0" max="20"></td>
-                                        <td class="align-middle">Moyenne pondérée</td>
+                                        <td class="align-middle">Moyenne pondérée
+                                            <span id="moyenne-point" class="font-weight-bold"></span>
+                                        </td>
                                         <td class="align-middle"><input type="number" name="moyp" value="0"
                                                                         class="form-control w-100"
                                                                         id="inputMA" min="0" max="20" readonly></td>

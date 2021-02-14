@@ -60,9 +60,12 @@ function moyennePondere() {
 }
 
 
+/* mentions */
+
+
 updateTotals();
 moyennePondere();
 
 $(document).on("change keyup", "#activity_table input", function () {
-    updateTotals()
+    updateTotals();
 });

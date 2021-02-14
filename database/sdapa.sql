@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 13, 2021 at 02:42 PM
+-- Generation Time: Feb 14, 2021 at 07:10 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.3.2
 
@@ -28427,8 +28427,7 @@ CREATE TABLE `cursus` (
 --
 
 INSERT INTO `cursus` (`id_cursus`, `id_etudiant`, `id_diplomes`, `etablissement`, `id_anne_ante`, `id_pays_obtention`) VALUES
-(2, 'SADP6027853d90a06', 22, 'ESATICS', 1, 1),
-(3, 'SADP602785fa527d9', 1, 'ZER', 1, 1);
+(3, 'SADP60284066a95d7', 1, 'IRIS', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -28532,9 +28531,7 @@ INSERT INTO `diplomes` (`id_diplomes`, `code_diplomes`, `libelle_diplomes`) VALU
 (6, 'BTS', 'Brevet de Technicien Supérieur'),
 (7, 'MST', 'Maîtrise de Sciences et Techniques'),
 (8, 'DU', 'Diplôme d\'université'),
-(9, 'DESS', 'Diplôme d\'étude Supérieures Spécialisées'),
-(22, NULL, 'RIEN'),
-(23, NULL, 'OPZERR');
+(9, 'DESS', 'Diplôme d\'étude Supérieures Spécialisées');
 
 -- --------------------------------------------------------
 
@@ -28638,8 +28635,7 @@ CREATE TABLE `etudiant_sdapa` (
 --
 
 INSERT INTO `etudiant_sdapa` (`id`, `numero_carte`, `mesrs`, `nom`, `prenoms`, `date_naissance`, `lieu_naissance`, `sexe`, `nationalite`, `email`, `telephone`, `ufhb`) VALUES
-('SADP6027853d90a06', 'C145D5F54554', 'ADKFHFHN', 'AKA', 'kevin', '1994-12-01', 'koumassi', '1', '1', 'kevinguelade@gmail.com', '0708863719', 1),
-('SADP602785fa527d9', 'C145D5F5454', '', 'guelade', 'kevin', '1995-03-03', 'kumassi', '1', '1', 'kevinguelade@gmail.com', '4574856585', 2);
+('SADP60284066a95d7', 'CIOJ34867', 'DFG4', 'AKA', 'CHRISTIAN DE', '1996-04-22', 'ABIDAJN', '1', '1', 'chris@gmail.com', '0143148561', 1);
 
 -- --------------------------------------------------------
 
@@ -28655,8 +28651,9 @@ CREATE TABLE `inscription_sdapa` (
   `moy_ann_l1` varchar(255) DEFAULT '0',
   `moy_ann_l2` varchar(255) DEFAULT '0',
   `moy_ann_l3` varchar(255) DEFAULT '0',
-  `id_total_mention` varchar(20) DEFAULT NULL,
+  `moy_pondere` varchar(255) NOT NULL DEFAULT '0',
   `total_point_critere` varchar(11) DEFAULT '0',
+  `total_mention` varchar(255) NOT NULL DEFAULT '0',
   `niveau_etude` varchar(255) DEFAULT NULL,
   `id_parcours` varchar(255) DEFAULT NULL,
   `id_departement` varchar(255) DEFAULT NULL,
@@ -28668,10 +28665,8 @@ CREATE TABLE `inscription_sdapa` (
 -- Dumping data for table `inscription_sdapa`
 --
 
-INSERT INTO `inscription_sdapa` (`id`, `annee`, `id_etudiant`, `temps_mis_en_Licence`, `moy_ann_l1`, `moy_ann_l2`, `moy_ann_l3`, `id_total_mention`, `total_point_critere`, `niveau_etude`, `id_parcours`, `id_departement`, `id_etablissement`, `demande_accepte`) VALUES
-(10, '4', 'SADP6027853d90a06', '0', '0', '0', '0', NULL, '0', '3', '1', '24', '13', 0),
-(11, '4', 'SADP602785fa527d9', '0', '0', '0', '0', NULL, '0', '3', '1', '24', '13', 0),
-(12, '4', 'SADP60279012ee6ef', '', '', '', '', NULL, '', '3', '1', '24', '13', 0);
+INSERT INTO `inscription_sdapa` (`id`, `annee`, `id_etudiant`, `temps_mis_en_Licence`, `moy_ann_l1`, `moy_ann_l2`, `moy_ann_l3`, `moy_pondere`, `total_point_critere`, `total_mention`, `niveau_etude`, `id_parcours`, `id_departement`, `id_etablissement`, `demande_accepte`) VALUES
+(3, '4', 'SADP60284066a95d7', '4', '10', '14', '12', '12', '6', '0', '3', '1', '24', '13', 0);
 
 -- --------------------------------------------------------
 
@@ -29587,12 +29582,24 @@ INSERT INTO `specialite` (`id_specialite`, `libelle_specialite`, `code_specialit
 --
 
 CREATE TABLE `total_mentions` (
-  `id` varchar(255) NOT NULL,
+  `id` bigint(11) NOT NULL,
   `id_niveau` varchar(255) DEFAULT NULL,
+  `id_etudiant` varchar(255) NOT NULL,
   `ab` varchar(255) DEFAULT NULL,
-  `b` varchar(255) DEFAULT NULL,
-  `tb` varchar(255) DEFAULT NULL
+  `mb` varchar(255) DEFAULT NULL,
+  `tb` varchar(255) DEFAULT NULL,
+  `total_mention` varchar(255) NOT NULL,
+  `moy_pondere` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `total_mentions`
+--
+
+INSERT INTO `total_mentions` (`id`, `id_niveau`, `id_etudiant`, `ab`, `mb`, `tb`, `total_mention`, `moy_pondere`) VALUES
+(13, '1', 'SADP60284066a95d7', '0', '0', '14', '14', '6'),
+(14, '2', 'SADP60284066a95d7', '0', '0', '14', '14', '6'),
+(15, '3', 'SADP60284066a95d7', '0', '0', '14', '14', '6');
 
 --
 -- Indexes for dumped tables
@@ -29729,19 +29736,19 @@ ALTER TABLE `annee_academique`
 -- AUTO_INCREMENT for table `cursus`
 --
 ALTER TABLE `cursus`
-  MODIFY `id_cursus` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_cursus` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `diplomes`
 --
 ALTER TABLE `diplomes`
-  MODIFY `id_diplomes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_diplomes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `inscription_sdapa`
 --
 ALTER TABLE `inscription_sdapa`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `nationalite`
@@ -29754,6 +29761,12 @@ ALTER TABLE `nationalite`
 --
 ALTER TABLE `sexe`
   MODIFY `id_sexe` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `total_mentions`
+--
+ALTER TABLE `total_mentions`
+  MODIFY `id` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
