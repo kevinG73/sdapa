@@ -29,7 +29,14 @@ $(document).ready(function () {
     }
 
     /* temps passé en licence */
-    $("#inputTemps1 ").bind('keyup change click blur mouseup', function () {
+    $("#inputTemps1 ").bind('keyup change click blur mouseup', function (e) {
+        if ($(this).val() > 6
+            && e.keyCode !== 46
+            && e.keyCode !== 8
+        ) {
+            e.preventDefault();
+            $(this).val(6);
+        }
         determinerPointTemps();
     });
 
