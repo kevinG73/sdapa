@@ -53,19 +53,21 @@ $(document).ready(function () {
             data: {etudiantid: eventId},
             success: function (response) {
                 var myArray = jQuery.parseJSON(response);
-                $("#id_etudiant").val(myArray.id_etudiant)
-                $("#numero_carte").val(myArray.numero_carte);
-                $("#inputNom").val(myArray.nom);
-                $("#inputPrenom").val(myArray.prenoms);
-                $("#inputDateNaissance").val(myArray.date_naissance);
-                $("#inputNationalite").val(myArray.libelle_nationalite);
-                $("#inputNbMention").val(myArray.nombre_de_mentions);
-                $("#inputTemps1").val(myArray.temps_mis_en_Licence);
-                $("#inputML1").val(myArray.moy_ann_l1);
-                $("#inputML2").val(myArray.moy_ann_l2);
-                $("#inputML3").val(myArray.moy_ann_l3);
-                $("#inputMA").val(myArray.moy_pondere);
 
+                $("#id_etudiant").val(myArray.info.id_etudiant)
+                $("#numero_carte").val(myArray.info.numero_carte);
+                $("#inputNom").val(myArray.info.nom);
+                $("#inputPrenom").val(myArray.info.prenoms);
+                $("#inputDateNaissance").val(myArray.info.date_naissance);
+                $("#inputNationalite").val(myArray.info.libelle_nationalite);
+                $("#inputNbMention").val(myArray.info.nombre_de_mentions);
+                $("#inputTemps1").val(myArray.info.temps_mis_en_Licence);
+                $("#inputML1").val(myArray.info.moy_ann_l1);
+                $("#inputML2").val(myArray.info.moy_ann_l2);
+                $("#inputML3").val(myArray.info.moy_ann_l3);
+                $("#inputMA").val(myArray.info.moy_pondere);
+
+                $("#activity_table").html(myArray.total_mention);
 
                 // Display Modal
                 $('#empModal').modal('show');

@@ -31,7 +31,7 @@ function updateTotals() {
         $('input', this).eq(3).val(total)
 
     });
-};
+}
 
 
 function moyennePondere() {
@@ -63,5 +63,6 @@ function moyennePondere() {
 updateTotals();
 moyennePondere();
 
-
-$('#activity_table input').on('keyup change', updateTotals);
+$(document).on("change keyup", "#activity_table input", function () {
+    updateTotals()
+});

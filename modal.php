@@ -74,57 +74,7 @@
                         </div>
                         <div class="form-row mb-3">
                             <div class="table-responsive">
-                                <table id="activity_table" class="table table-bordered" id="liste_nombre_mentions">
-                                    <tr>
-                                        <th>Niveau</th>
-                                        <th>AB</th>
-                                        <th>B</th>
-                                        <th>TB</th>
-                                        <th>Nombre total de mention</th>
-                                        <th>Moyenne pondérée</th>
-                                    </tr>
-                                    <?php
-                                    require 'fonction.php';
-                                    $totalMention = fetchTotalMention($_SESSION['etudiant_id']);
-                                    ?>
-                                    <?php for ($i = 1; $i <= 4; $i++):
-                                        $a = $i-1;
-                                        ?>
-                                        <tr class="w-100">
-                                            <?php if ($i < 4): ?>
-                                                <td class="text-uppercase align-middle">L<?= $i ?>
-                                            <?php else: ?>
-                                                <td class="text-uppercase align-middle">TOTAL</td>
-                                            <?php endif; ?>
-                                            <td class="align-middle" id="div_l<?= $i ?>_c1">
-                                                <input type="number" min="0" max="14" value="<?=$totalMention[$a]['ab']?>"
-                                                       id="mention_l<?= $i ?>_c1" name="mention_l<?= $i ?>_c1"
-                                                       class="form-control saisie">
-                                            </td>
-                                            <td class="align-middle" id="div_l<?= $i ?>_c2">
-                                                <input type="number" min="0" max="14" value="<?=$totalMention[$a]['mb']?>"
-                                                       id="mention_l<?= $i ?>_c2" name="mention_l<?= $i ?>_c2"
-                                                       class="form-control saisie"
-                                            </td>
-                                            <td class="align-middle" id="div_l<?= $i ?>_c3">
-                                                <input type="number" min="0" max="14" value="<?=$totalMention[$a]['tb']
-                                                ?>"
-                                                       id="mention_l<?= $i ?>_c3" name="mention_l<?= $i ?>_c3"
-                                                       class="form-control saisie"
-                                            </td>
-                                            <td class="align-middle" id="div_l<?= $i ?>_c4">
-                                                <input type="text" min="0" max="14" value="<?=$totalMention[$a]['total_mention']?>"
-                                                       id="total_l<?= $i ?>_c4" name="total_l<?= $i ?>"
-                                                       class="form-control"
-                                            </td>
-                                            <td class="align-middle" id="div_l<?= $i ?>_c5">
-                                                <input type="number" min="0" max="14" value="<?=$totalMention[$a]['moy_pondere']?>"
-                                                       id="total_l<?= $i ?>_c5" readonly name="moypond_l<?= $i ?>"
-                                                       class="form-control">
-
-                                            </td>
-                                        </tr>
-                                    <?php endfor; ?>
+                                <table id="activity_table" class="table table-bordered">
                                 </table>
                             </div>
                         </div>
