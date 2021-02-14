@@ -1,10 +1,11 @@
 <?php
 require_once "../config/connexion.php";
 require_once('./entete.php');
+global $bdd;
 
 /* Liste des etudiants en fonctions des critères ci-dessous : */
 $filtre = [
-    'annee_academique' => $_SESSION['impression']['annee'],
+    'annee_academique' => $_SESSION['impression']['id_annee'],
     'id_etablissement' => $_SESSION['impression']['id_etablissement'],
     'id_departement' => $_SESSION['impression']['id_departement'],
     'id_parcours' => $_SESSION['impression']['id_parcours']
@@ -13,7 +14,7 @@ $filtre = [
 /* liste des étudiants */
 extract($filtre);
 
-global $bdd;
+
 $requete = "select * from inscription_sdapa ins 
     JOIN etudiant_sdapa etd ON etd.id = ins.id_etudiant
     JOIN sexe ON etd.sexe = sexe.id_sexe

@@ -9,17 +9,17 @@ class MYTCPDF extends TCPDF
     {
         $this->SetFont('Helvetica', '', 7);
 
-        $gn = "Légende du document ";
+        $gn = "Légende : ";
         $this->WriteHTMLCell(275, 10, 15, 50, $gn, 0);
         /* FIP */
-        $gn = ": <b>TPL</b> Le temps passé en Licence ,";
-        $this->WriteHTMLCell(275, 10, 45, 50, $gn, 0);
-        $grs = "<b>N.M</b> Le nombre de mention obtenue ,";
-        $this->WriteHTMLCell(275, 10, 85, 50, $grs, 0);
+        $gn =  "<b>moy</b>  moyenne";
+        $this->WriteHTMLCell(275, 10, 35, 50, $gn, 0);
+        $grs =   ", <b>TPL</b> Le temps passé en Licence ,";
+        $this->WriteHTMLCell(275, 10, 55, 50, $grs, 0);
+        $gru = "<b>N.M</b> Le nombre de mention obtenue ,";
+        $this->WriteHTMLCell(275, 10, 95, 50, $gru, 0);
         $gru = "<b>P.C</b>  point critère";
-        $this->WriteHTMLCell(275, 10, 135, 50, $gru, 0);
-        $gru = "<b>moy</b>  moyenne";
-        $this->WriteHTMLCell(275, 10, 165, 50, $gru, 0);
+        $this->WriteHTMLCell(275, 10, 145, 50, $gru, 0);
     }
 
     public function title()
@@ -55,21 +55,12 @@ class MYTCPDF extends TCPDF
         $this->title();
 
 
-        $annee = DeterminerAnnee($_SESSION['impression']['annee']);
+        $annee = DeterminerAnnee($_SESSION['impression']['id_annee']);
         $center = "Année académique : <b>$annee</b>";
         $this->WriteHTMLCell(275, 10, 238, 10, $center, 0);
 
         $right = "Date d'édition " . date("d/m/Y");
         $this->WriteHTMLCell(275, 10, 238, 15, $right);
-
-
-        //Second Line
-        $left = "Niveau ";
-        $this->WriteHTMLCell('', 10, 15, 39, $left, 0);
-
-
-        $left = ": LICENCE 3";
-        $this->WriteHTMLCell('', 10, 45, 39, $left, 0);
 
 
         // on trunc le texte si c'est trop long
