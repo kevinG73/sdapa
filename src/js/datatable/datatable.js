@@ -87,20 +87,48 @@ $(document).ready(function () {
     /* bouton save pour enregister les points */
     $("#btn-save").click(function (e) {
         e.preventDefault();
-        var myform = document.getElementById("forms");
-        var fd = new FormData(myform);
-        $.ajax({
-            url: './ajax/calcul.php',
-            data: fd,
-            cache: false,
-            processData: false,
-            contentType: false,
-            type: 'POST',
-            success: function (response) {
-                $('#empModal').modal('hide');
-                dataTTT.ajax.reload()
-            }
-        });
+        /* ligne */
+        var l1_c3 = parseInt($("#total_l1_c4").val()) || 0;
+        var l2_c3 = parseInt($("#total_l2_c4").val()) || 0;
+        var l3_c3 = parseInt($("#total_l3_c4").val()) || 0;
+
+        if (l1_c3 > 14) {
+            $("#erreur-nombre-1").show();
+            $("#erreur-nombre-2").hide();
+            $("#erreur-nombre-3").hide();
+        } else if (l2_c3 > 14) {
+            $("#erreur-nombre-1").hide();
+            $("#erreur-nombre-2").show();
+            $("#erreur-nombre-3").hide();
+        } else if (l3_c3 > 14) {
+            $("#erreur-nombre-1").hide();
+            $("#erreur-nombre-2").hide();
+            $("#erreur-nombre-3").show();
+        } else if (l1_c3 > 14 && l2_c3 > 14 && l1_c3 > 14) {
+            $("#erreur-nombre-1").show();
+            $("#erreur-nombre-2").show();
+            $("#erreur-nombre-3").show();
+        } else {
+            $("#erreur-nombre-1").hide();
+            $("#erreur-nombre-2").hide();
+            $("#erreur-nombre-3").hide();
+
+            var myform = document.getElementById("forms");
+            var fd = new FormData(myform);
+            $.ajax({
+                url: './ajax/calcul.php',
+                data: fd,
+                cache: false,
+                processData: false,
+                contentType: false,
+                type: 'POST',
+                success: function (response) {
+                    $('#empModal').modal('hide');
+                    dataTTT.ajax.reload()
+                }
+            });
+        }
+
     });
 
     /* pour calculer la moyenne pondere */

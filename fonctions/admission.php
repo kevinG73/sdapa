@@ -24,11 +24,11 @@ function ListeAdmis($annee, $id_etablissement, $id_departement, $id_parcours)
 function AppliquerCritere($annee, $id_etablissement, $id_departement, $id_parcours, $point)
 {
     global $bdd;
-    $requete = "UPDATE inscription_sdapa SET demande_accepte = 1 , id_parcours = $id_parcours	
+    $requete = "UPDATE inscription_sdapa SET demande_accepte = 1 
                 WHERE annee = $annee AND id_etablissement = $id_etablissement AND id_departement = $id_departement AND total_point_critere	> $point";
     $resultat = $bdd->query($requete);
 
-    $requete = "UPDATE inscription_sdapa SET demande_accepte = 0 , id_parcours = $id_parcours	
+    $requete = "UPDATE inscription_sdapa SET demande_accepte = 0 
                 WHERE annee = $annee AND id_etablissement = $id_etablissement AND id_departement = $id_departement AND total_point_critere	<= $point";
     $resultat = $bdd->query($requete);
 }

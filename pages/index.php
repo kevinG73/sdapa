@@ -80,7 +80,7 @@ require "../config/connexion.php";
 <!-- Custom scripts for all pages-->
 <script src="../src/js/sb-admin-2.min.js"></script>
 
-
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
 <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
 <script src="../src/js/datatable/datatable.js"></script>

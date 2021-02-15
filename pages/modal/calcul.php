@@ -13,7 +13,7 @@
                     <div class="bg-danger text-white text-center">
                         <p id="error-message"></p>
                     </div>
-                    <form id="forms" method="post" action="ajax/Calcul.php">
+                    <form id="forms" method="post">
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <h5>Informations personnelles</h5>

@@ -46,6 +46,7 @@ if (isset($etudiantID) && !empty($_POST['etudiantid'])) {
                     <td class="align-middle">
                          <input type="text" min="0" max="14" value="{$totalMention[$i]['total_mention']}"
                          id="total_l{$a}_c4" name="total_l{$a}" class="form-control" readonly>
+                         <span class="text-white bg-danger" id="erreur-nombre-{$a}" style="display:none">erreur</span>
                     </td>
                     <td class="align-middle">
                          <input type="number" min="0" max="14" value="{$totalMention[$i]['moy_pondere']}"

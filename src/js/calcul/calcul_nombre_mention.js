@@ -63,35 +63,7 @@ function moyennePondere() {
     $("#total_l3_c5").val(moyp3.toFixed(2));
     $("#total_l4_c5").val(total.toFixed(2));
 
-    /* desactiver les champs */
-    if (l1c1 === 14 && l1c2 === 0 && l1c3 === 0) {
-        $("#mention_l1_c1").prop('readonly', false);
-        $("#mention_l1_c2").prop('readonly', true);
-        $("#mention_l1_c3").prop('readonly', true);
-    } else if (l1c2 === 14 && l1c1 === 0 && l1c3 === 0) {
-        $("#mention_l1_c1").prop('readonly', true);
-        $("#mention_l1_c2").prop('readonly', false);
-        $("#mention_l1_c3").prop('readonly', true);
-    } else if (l1c3 === 14 && l1c2 === 0 && l1c3 === 0) {
-        $("#mention_l1_c1").prop('readonly', true);
-        $("#mention_l1_c2").prop('readonly', true);
-        $("#mention_l1_c3").prop('readonly', false);
 
-    }
-
-    if (l1c1 + l1c2 === 14) {
-        $("#mention_l1_c1").prop('readonly', false);
-        $("#mention_l1_c2").prop('readonly', false);
-        $("#mention_l1_c3").prop('readonly', true);
-    } else if (l1c2 + l1c3 === 14) {
-        $("#mention_l1_c1").prop('readonly', true);
-        $("#mention_l1_c2").prop('readonly', false);
-        $("#mention_l1_c3").prop('readonly', false);
-    } else if (l1c1 + l1c3 === 14) {
-        $("#mention_l1_c1").prop('readonly', false);
-        $("#mention_l1_c2").prop('readonly', true);
-        $("#mention_l1_c3").prop('readonly', false);
-    }
 
 
 }
