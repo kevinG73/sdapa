@@ -11,7 +11,7 @@ function ListeAdmis($annee, $id_etablissement, $id_departement, $id_parcours)
                 ON etd.id = ins.id_etudiant
                 WHERE annee = $annee AND demande_accepte = 1 AND id_etablissement = $id_etablissement AND id_departement = $id_departement 
                 AND id_parcours = $id_parcours	
-                ORDER BY id_etablissement ASC";
+                ORDER BY total_point_critere DESC";
     $resultat = $bdd->query($requete);
     if (is_bool($resultat)) {
         return [];

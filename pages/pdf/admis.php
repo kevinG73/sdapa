@@ -82,7 +82,7 @@ foreach ($liste_decouper as $index => $etd) {
     <td> ' . $et['moy_ann_l2'] . '</td>
     <td> ' . $et['moy_ann_l3'] . '</td>
     <td> ' . $et['temps_mis_en_Licence'] . '</td>
-    <td> </td>
+    <td> ' . (int)$et['total_mention'] . '</td>
     <td> ' . $et['total_point_critere'] . '</td>
 </tr>
 ';
