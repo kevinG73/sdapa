@@ -1,10 +1,11 @@
+var age = 0;
+var p_temps1 = 0;
+var p_moyenne_annuelle = 0;
+var p_nombre_mention = 0;
+var p_age = 0;
+var total = 0;
+
 $(document).ready(function () {
-    var age = 0;
-    var p_temps1 = 0;
-    var p_moyenne_annuelle = 0;
-    var p_nombre_mention = 0;
-    var p_age = 0;
-    var total = 0;
 
     $('#empModal').on('show.bs.modal', function () {
         determinerAge();
@@ -17,6 +18,7 @@ $(document).ready(function () {
     /* afficher l'âge de l'étudiant */
     $("#inputDateNaissance").bind('keyup change click blur mouseup', function () {
         determinerAge();
+        total_point_critere();
     });
 
     function determinerAge() {
@@ -44,6 +46,7 @@ $(document).ready(function () {
             $(this).val(0);
         }
         determinerPointTemps();
+        total_point_critere();
     });
 
     function determinerPointTemps() {
@@ -95,8 +98,10 @@ $(document).ready(function () {
         total_point_critere();
     });
 
-    function total_point_critere() {
-        total = p_moyenne_annuelle + p_nombre_mention + p_temps1 + p_age
-        $("#point_critere").val(total);
-    }
+
 });
+
+function total_point_critere() {
+    total = p_moyenne_annuelle + p_nombre_mention + p_temps1 + p_age
+    $("#point_critere").val(total);
+}

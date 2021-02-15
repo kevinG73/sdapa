@@ -23,6 +23,7 @@ $requete = "select * from inscription_sdapa ins
     AND ins.demande_accepte	 = 1
     ORDER BY total_point_critere DESC";
 
+
 $resultat = $bdd->query($requete);
 
 if (is_bool($resultat)) {

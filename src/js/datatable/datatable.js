@@ -116,7 +116,7 @@ $(document).ready(function () {
             var myform = document.getElementById("forms");
             var fd = new FormData(myform);
             $.ajax({
-                url: './ajax/calcul.php',
+                url: 'ajax/calcul.php',
                 data: fd,
                 cache: false,
                 processData: false,

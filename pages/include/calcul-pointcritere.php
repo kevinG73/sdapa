@@ -92,7 +92,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="float-right mt-2 pr-2">
                 <button class="btn btn-primary" id="consulter" name="consulter">consulter</button>
-                <button type="submit" class="btn btn-primary" id="imprimer" name="imprimer">imprimer</button>
+                <!--
+                 <button type="submit" class="btn btn-primary" id="imprimer" name="imprimer">imprimer</button>
+                 -->
             </div>
         </div>
     </div>
