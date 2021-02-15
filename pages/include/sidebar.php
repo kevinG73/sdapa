@@ -1,11 +1,11 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center mt-5 mb-5" href="index.php">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center mt-5 mb-5" href="../">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-paperclip"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">GESTION DES POINTS D'ADMISSIBILITÉS</div>
+        <div class="sidebar-brand-text mx-3">GESTION DES POINTS D'ADMISSIBILITÉ</div>
     </a>
 
     <!-- Divider -->
@@ -23,7 +23,16 @@
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
         <a class="nav-link" href="index.php">
-            <span>POINTS D'ADMISSIBILITÉS</span></a>
+            <span>CALCUL DU POINT CRITERE</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item">
+        <a class="nav-link" href="admis.php">
+            <span>LISTE DES ADMIS</span></a>
     </li>
 
     <!-- Divider -->

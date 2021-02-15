@@ -1,5 +1,5 @@
 <?php
-require_once "../config/connexion.php";
+require_once "../../config/connexion.php";
 require_once('./entete.php');
 global $bdd;
 

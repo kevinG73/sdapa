@@ -5,9 +5,9 @@ if (!isset($_SESSION['connecte']) || $_SESSION['connecte'] === "") {
     header("Location:login.php");
 }
 
-require "config/connexion.php";
-include "fonctions/index.php";
-include 'inscription.class.php';
+require "../config/connexion.php";
+include "../fonctions/index.php";
+include '../class/inscription.class.php';
 $etudiants = ListeEtudiants();
 $etablissements = ListeEtablissements();
 $anne = ListeAnnee();
@@ -27,15 +27,15 @@ $anne = ListeAnnee();
     <title>Etudiants</title>
 
     <!-- Custom fonts for this template -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
           rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../src/css/sb-admin-2.min.css" rel="stylesheet">
 
     <!-- Custom styles for this page -->
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 
 </head>
@@ -45,7 +45,7 @@ $anne = ListeAnnee();
 <!-- Page Wrapper -->
 <div id="wrapper">
 
-    <?php include "partials/sidebar.php"; ?>
+    <?php include "include/sidebar.php"; ?>
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -54,7 +54,7 @@ $anne = ListeAnnee();
         <div id="content">
 
             <!-- Topbar -->
-            <?php include "partials/navbar.php"; ?>
+            <?php include "include/navbar.php"; ?>
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
@@ -62,8 +62,8 @@ $anne = ListeAnnee();
 
 
                 <?php
-                require "fonction.php";
-                require "etudiant.class.php";
+                require "../fonctions/fonction.php";
+                require "../class/etudiant.class.php";
                 $sexes = fetchSexe();
                 $nationalites = fetchNationalite();
 
@@ -71,11 +71,11 @@ $anne = ListeAnnee();
 
 
                 //enregister
-                include "crud_etudiant/enregister_etudiant.php";
+                include "include/crud_etudiant/enregister_etudiant.php";
 
 
                 //modifier
-                include "crud_etudiant/modifier_etudiant.php";
+                include "include/crud_etudiant/modifier_etudiant.php";
 
 
                 if (isset($_GET['id'])) {
@@ -84,7 +84,7 @@ $anne = ListeAnnee();
                 }
 
                 //suppression
-                include "crud_etudiant/supprimer_etudiant.php";
+                include "include/crud_etudiant/supprimer_etudiant.php";
 
 
                 ?>
@@ -444,23 +444,23 @@ $anne = ListeAnnee();
 <!-- Logout Modal-->
 
 <!-- Bootstrap core JavaScript-->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Core plugin JavaScript-->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 
 <!-- Custom scripts for all pages-->
-<script src="js/sb-admin-2.min.js"></script>
+<script src="../src/js/sb-admin-2.min.js"></script>
 
 
 <!-- Page level plugins -->
-<script src="vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="../vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 <!-- Page level custom scripts -->
-<script src="js/datatable_etd.js"></script>
-<script src="js/ajax.js"></script>
+<script src="../src/js/datatable_etd.js"></script>
+<script src="../src/js/ajax.js"></script>
 
 </body>
 

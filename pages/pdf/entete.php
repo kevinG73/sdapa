@@ -1,7 +1,7 @@
 <?php
 session_start();
-include "../fonctions/index.php";
-include('tcpdf/tcpdf.php');
+include "../../fonctions/index.php";
+include('../../vendor/tcpdf/tcpdf.php');
 
 class MYTCPDF extends TCPDF
 {

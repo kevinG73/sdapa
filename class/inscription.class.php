@@ -40,7 +40,6 @@ class inscription
         $this->id_etablissement = $id_etablissement;
 
 
-
         $this->bdd = $bdd;
     }
 
@@ -57,7 +56,7 @@ class inscription
     {
 
 
-        $requete = $this->bdd->query('INSERT INTO  inscription_sdapa (annee,id_etudiant,temps_mis_en_Licence,moy_ann_l1,moy_ann_l2,moy_ann_l3,total_point_critere, niveau_etude,id_parcours,id_departement,id_etablissement) VALUES ("'.$this->annee .'","'.$this->id_etudiant.'","'.$this->temps_mis_en_licence.'","'.$this->moy_ann_l1.'","'.$this->moy_ann_l2.'","'.$this->moy_ann_l3.'","'.$this->total_point_critere.'","'.$this->niveau_etude.'","'.$this->id_parcours.'","'.$this->id_departement.'","'.$this->id_etablissement.'")')or die(print_r($this->bdd->errorInfo()));
+        $requete = $this->bdd->query('INSERT INTO  inscription_sdapa (annee,id_etudiant,temps_mis_en_Licence,moy_ann_l1,moy_ann_l2,moy_ann_l3,total_point_critere, niveau_etude,id_parcours,id_departement,id_etablissement) VALUES ("' . $this->annee . '","' . $this->id_etudiant . '","' . $this->temps_mis_en_licence . '","' . $this->moy_ann_l1 . '","' . $this->moy_ann_l2 . '","' . $this->moy_ann_l3 . '","' . $this->total_point_critere . '","' . $this->niveau_etude . '","' . $this->id_parcours . '","' . $this->id_departement . '","' . $this->id_etablissement . '")') or die(print_r($this->bdd->errorInfo()));
 
         return 1;
 
@@ -74,11 +73,11 @@ class inscription
             id_departement=:id_departement WHERE id_etudiant=:id_etudiant');
         $requete->execute(array(
 
-            'id_parcours'=>  $this->id_parcours,
-            'annee'=>  $this->annee,
-            'id_etudiant'=>  $this->id_etudiant,
-            'id_departement'=> $this->id_departement,
-            'id_etablissement'=>  $this->id_etablissement
+            'id_parcours' => $this->id_parcours,
+            'annee' => $this->annee,
+            'id_etudiant' => $this->id_etudiant,
+            'id_departement' => $this->id_departement,
+            'id_etablissement' => $this->id_etablissement
         ));
 
 

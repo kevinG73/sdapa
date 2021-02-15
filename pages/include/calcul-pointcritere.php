@@ -1,11 +1,14 @@
 <?php
-include "fonctions/index.php";
-if ($_SESSION['id_type_utilisateur '] == 1){
+
+require "../fonctions/index.php";
+
+if ($_SESSION['id_type_utilisateur '] == 1) {
     $etablissements = ListeEtablissements();
-}else{
+} else {
     $etablissements = ListeEtablissementsSession($_SESSION['id_etablissement']);
 }
 $annee = ListeAnnee();
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['impression'] = $_POST;
     header('Location: pdf/index.php');
@@ -15,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!-- Begin Page Content -->
 <div class="card shadow mb-2">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Filtre de recherche</h6>
+        <h6 class="m-0 font-weight-bold text-primary text-uppercase">Filtre de recherche</h6>
     </div>
     <div class="card-body">
         <form method="post">
@@ -102,6 +105,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </thead>
             </table>
         </div>
+    </div>
+</div>
+
+
+<div class="card shadow mb-2">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary text-uppercase">selection des admis</h6>
+    </div>
+    <div class="card-body">
+
+        <div class="d-flex mt-4">
+            <div class="col-4 mr-5">
+                <label for="id_critere_selection">critère de selection</label>
+                <select class="form-control" name="id_critere_selection" id="id_critere_selection">
+                    <option value="0"> selectionner</option>
+                    <?php for ($i = 1; $i <= 24; $i++): ?>
+                        <option value="<?= $i ?>">point superieur à <?= $i ?> </option>
+                    <?php endfor; ?>
+                </select>
+            </div>
+        </div>
+
+        <div class="float-right mt-2 pr-2">
+            <button class="btn btn-primary" name="consulter">appliquer le critère de selection</button>
+        </div>
+
     </div>
 </div>
 

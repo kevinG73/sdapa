@@ -5,13 +5,13 @@ if (!isset($_SESSION['connecte']) || $_SESSION['connecte'] === "") {
     header("Location:login.php");
 }
 
-require "config/connexion.php";
-include "fonctions/index.php";
-include 'inscription.class.php';
+require "../config/connexion.php";
+include "../fonctions/index.php";
+include '../class/inscription.class.php';
 
-if ($_SESSION['id_type_utilisateur '] == 1){
+if ($_SESSION['id_type_utilisateur '] == 1) {
     $etablissements = ListeEtablissements();
-}else{
+} else {
     $etablissements = ListeEtablissementsSession($_SESSION['id_etablissement']);
 }
 $etudiants = ListeEtudiants();
@@ -35,16 +35,16 @@ $pays = ListePays();
     <title>Etudiants</title>
 
     <!-- Custom fonts for this template -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
           rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../src/css/sb-admin-2.min.css" rel="stylesheet">
 
 
     <!-- Custom styles for this page -->
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 
 </head>
@@ -54,7 +54,7 @@ $pays = ListePays();
 <!-- Page Wrapper -->
 <div id="wrapper">
 
-    <?php include "partials/sidebar.php"; ?>
+    <?php include "include/sidebar.php"; ?>
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -63,37 +63,37 @@ $pays = ListePays();
         <div id="content">
 
             <!-- Topbar -->
-            <?php include "partials/navbar.php"; ?>
+            <?php include "include/navbar.php"; ?>
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
 
                 <?php
-                require "fonction.php";
-                require "etudiant.class.php";
+                require "../fonctions/fonction.php";
+                require "../class/etudiant.class.php";
                 $sexes = fetchSexe();
                 $nationalites = fetchNationalite();
 
-                if (isset($_POST['enregistrer'])){
-                    include 'crud_etudiant/enregister_etudiant.php';
+                if (isset($_POST['enregistrer'])) {
+                    include 'include/crud_etudiant/enregister_etudiant.php';
                 }
 
                 if (isset($_GET['id'])) {
-                    if ($_SESSION['id_type_utilisateur '] == 1){
+                    if ($_SESSION['id_type_utilisateur '] == 1) {
                         $etud = $bdd->query('select * from etudiant_sdapa where id ="' . $_GET['id'] . '"') or die(print_r($bdd->errorInfo()));
                         $res = $etud->fetch();
                         $insc = $bdd->query('select * from inscription_sdapa where id_etudiant ="' . $_GET['id'] . '"') or die(print_r($bdd->errorInfo()));
                         $resins = $insc->fetch();
                         $resdd = $bdd->query('select * from cursus where id_etudiant ="' . $_GET['id'] . '"') or die(print_r($bdd->errorInfo()));
                         $resdip = $resdd->fetch();
-                        $_SESSION['annee']=$resins['annee'];
-                        $_SESSION['id_etablissement']=$resins['id_etablissement'];
-                        $_SESSION['id_parcours']=$resins['id_parcours'];
-                        $_SESSION['id_departement']=$resins['id_departement'];
+                        $_SESSION['annee'] = $resins['annee'];
+                        $_SESSION['id_etablissement'] = $resins['id_etablissement'];
+                        $_SESSION['id_parcours'] = $resins['id_parcours'];
+                        $_SESSION['id_departement'] = $resins['id_departement'];
                         $_SESSION['anneeante'] = $resdip['id_anne_ante'];
 
-                    }else{
+                    } else {
                         $etud = $bdd->query('select * from etudiant_sdapa where id ="' . $_GET['id'] . '"') or die(print_r($bdd->errorInfo()));
                         $res = $etud->fetch();
                         $insc = $bdd->query('select * from inscription_sdapa where id_etudiant ="' . $_GET['id'] . '"') or die(print_r($bdd->errorInfo()));
@@ -101,12 +101,12 @@ $pays = ListePays();
                         $resdd = $bdd->query('select * from cursus where id_etudiant ="' . $_GET['id'] . '"') or die(print_r($bdd->errorInfo()));
                         $resdip = $resdd->fetch();
                         $_SESSION['anneeante'] = $resdip['id_anne_ante'];
-                        $_SESSION['annee']=$resins['annee'];
-                        $_SESSION['id_parcours']=$resins['id_parcours'];
+                        $_SESSION['annee'] = $resins['annee'];
+                        $_SESSION['id_parcours'] = $resins['id_parcours'];
                     }
 
-                    if (isset($_POST['modifier'])){
-                        include 'crud_etudiant/modifier_etudiant.php';
+                    if (isset($_POST['modifier'])) {
+                        include 'include/crud_etudiant/modifier_etudiant.php';
                         ?>
                         <script>document.location.replace("etudiant.php")</script>
                         <?php
@@ -115,7 +115,7 @@ $pays = ListePays();
                 }
 
                 if (isset($_POST['supprimer'])) {
-                    include 'crud_etudiant/supprimer_etudiant.php';
+                    include 'include/crud_etudiant/supprimer_etudiant.php';
                 }
 
                 ?>
@@ -134,18 +134,16 @@ $pays = ListePays();
                                         <select class="form-control" name="annee" id="anneaca">
                                             <?php foreach ($anne as $repanne): ?>
                                                 <?php
-                                                if ($repanne['id_annee_academique']==$_SESSION['annee'])
-                                                {
+                                                if ($repanne['id_annee_academique'] == $_SESSION['annee']) {
                                                     ?>
-                                                    <option selected value="<?=$repanne['id_annee_academique']?>"> <?=$repanne['libelle_annee_academique']?></option>
+                                                    <option selected
+                                                            value="<?= $repanne['id_annee_academique'] ?>"> <?= $repanne['libelle_annee_academique'] ?></option>
                                                     <?php
 
-                                                }
-                                                else
-                                                {
+                                                } else {
 
                                                     ?>
-                                                    <option  value="<?=$repanne['id_annee_academique']?>"> <?=$repanne['libelle_annee_academique']?></option>
+                                                    <option value="<?= $repanne['id_annee_academique'] ?>"> <?= $repanne['libelle_annee_academique'] ?></option>
 
                                                     <?php
                                                 }
@@ -158,24 +156,23 @@ $pays = ListePays();
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label class="col-form-label-sm" for="exampleFormControlSelect1">Etablissement</label>
+                                        <label class="col-form-label-sm"
+                                               for="exampleFormControlSelect1">Etablissement</label>
                                         <select class="form-control" name="id_etablissement" id="id_etablissement">
                                             <?php foreach ($etablissements as $p): ?>
                                                 <option value="<?php echo $p['id_etablissement'] ?>"
                                                 <?php if (isset($id_etablissement) && $id_etablissement === $p['id_etablissement']) echo 'selected'; ?>
                                                 <?php
-                                                if ($p['id_etablissement']==@$_SESSION['id_etablissement'])
-                                                {
+                                                if ($p['id_etablissement'] == @$_SESSION['id_etablissement']) {
                                                     ?>
-                                                    <option selected value="<?=$p['id_etablissement']?>"> <?=$p['nom_etablissement']?></option>
+                                                    <option selected
+                                                            value="<?= $p['id_etablissement'] ?>"> <?= $p['nom_etablissement'] ?></option>
                                                     <?php
 
-                                                }
-                                                else
-                                                {
+                                                } else {
 
                                                     ?>
-                                                    <option  value="<?=$p['id_etablissement']?>"> <?=$p['nom_etablissement']?></option>
+                                                    <option value="<?= $p['id_etablissement'] ?>"> <?= $p['nom_etablissement'] ?></option>
 
                                                     <?php
                                                 }
@@ -221,10 +218,10 @@ $pays = ListePays();
                                         </div>
                                         <div class="col-md-6">
                                             <input type="radio" id="radio1"
-                                                <?php if ($res['ufhb'] == 1): echo 'checked disabled'; endif;?>>
+                                                <?php if ($res['ufhb'] == 1): echo 'checked disabled'; endif; ?>>
                                             <label class="form-control-sm">Oui</label>
                                             <input type="radio" id="radio2"
-                                                <?php if ($res['ufhb'] == 2): echo 'checked disabled'; endif;?>>
+                                                <?php if ($res['ufhb'] == 2): echo 'checked disabled'; endif; ?>>
                                             <label class="form-control-sm">Non</label>
                                         </div>
                                     </div>
@@ -236,9 +233,11 @@ $pays = ListePays();
                                             <label class="col-form-label-sm">Etes vous étudiant de l'UFHB</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <input type="radio" name="etudiant_ufhb" id="radio1" onchange="load_page1()" checked value="OUI">
+                                            <input type="radio" name="etudiant_ufhb" id="radio1" onchange="load_page1()"
+                                                   checked value="OUI">
                                             <label class="form-control-sm">Oui</label>
-                                            <input type="radio" name="etudiant_ufhb" id="radio2" onchange="load_page2()" value="NON">
+                                            <input type="radio" name="etudiant_ufhb" id="radio2" onchange="load_page2()"
+                                                   value="NON">
                                             <label class="form-control-sm">Non</label>
                                         </div>
                                     </div>
@@ -250,20 +249,24 @@ $pays = ListePays();
                                         <div class="form-row" id="voir_num_carte">
                                             <div class="form-group col-md-4">
                                                 <label class="col-form-label-sm">Numero Carte etudiant</label>
-                                                <input type="text" class="form-control text-uppercase" id="carte_et" required name="numero_carte"
+                                                <input type="text" class="form-control text-uppercase" id="carte_et"
+                                                       required name="numero_carte"
                                                        value="<?php echo @ $res['numero_carte'] ?>">
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label class="col-form-label-sm">Numero Mers</label>
-                                                <input type="text" class="form-control text-uppercase" id="numero_mers" required name="numero_mers"
+                                                <input type="text" class="form-control text-uppercase" id="numero_mers"
+                                                       required name="numero_mers"
                                                        value="<?php echo @ $res['mesrs'] ?>">
                                             </div>
                                         </div>
                                     <?php
                                     else:
                                         ?>
-                                        <input type="hidden" class="form-control text-uppercase" name="numero_carte" value="<?php echo @ $res['numero_carte'] ?>">
-                                        <input type="hidden" class="form-control text-uppercase" name="numero_mers" value="<?php echo @ $res['mesrs'] ?>">
+                                        <input type="hidden" class="form-control text-uppercase" name="numero_carte"
+                                               value="<?php echo @ $res['numero_carte'] ?>">
+                                        <input type="hidden" class="form-control text-uppercase" name="numero_mers"
+                                               value="<?php echo @ $res['mesrs'] ?>">
                                     <?php
                                     endif;
                                 else:
@@ -271,28 +274,32 @@ $pays = ListePays();
                                     <div class="form-row" id="voir_num_carte">
                                         <div class="form-group col-md-4">
                                             <label class="col-form-label-sm">Numero Carte etudiant</label>
-                                            <input type="text" class="form-control text-uppercase" id="carte_et" required name="numero_carte">
+                                            <input type="text" class="form-control text-uppercase" id="carte_et"
+                                                   required name="numero_carte">
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label class="col-form-label-sm">Numero Mers</label>
-                                            <input type="text" class="form-control text-uppercase" id="numero_mers" required name="numero_mers">
+                                            <input type="text" class="form-control text-uppercase" id="numero_mers"
+                                                   required name="numero_mers">
                                         </div>
                                     </div>
                                 <?php endif; ?>
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
                                         <label class="col-form-label-sm">Nom</label>
-                                        <input type="text" class="form-control text-uppercase" required id="nom" name="nom"
+                                        <input type="text" class="form-control text-uppercase" required id="nom"
+                                               name="nom"
                                                value="<?php echo @ $res['nom'] ?>">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label class="col-form-label-sm">Prénoms</label>
-                                        <input type="text" class="form-control text-uppercase" id="prenoms" required name="prenoms"
+                                        <input type="text" class="form-control text-uppercase" id="prenoms" required
+                                               name="prenoms"
                                                value="<?php echo @ $res['prenoms'] ?>">
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label class="col-form-label-sm">Genre</label>
-                                        <select class="form-control text-uppercase" id="id_sexe"  name="id_sexe">
+                                        <select class="form-control text-uppercase" id="id_sexe" name="id_sexe">
                                             <?php foreach ($sexes as $sexe): ?>
                                                 <?php if ($res['sexe'] == $sexe['id_sexe']) : ?>
                                                     <option selected
@@ -308,13 +315,18 @@ $pays = ListePays();
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
                                         <label class="col-form-label-sm">Date de Naissance</label>
-                                        <input required type="date" class="form-control text-uppercase" onchange="testage(this.value)" id="datenaiss" name="date_naissance"
-                                               value="<?php echo @ $res['date_naissance'] ?>" max="<?= date('Y-m-d'); ?>">
-                                        <div class="invalid-tooltip" id="Vdatemin" style="display: none">Age minimum 16 ans</div>
+                                        <input required type="date" class="form-control text-uppercase"
+                                               onchange="testage(this.value)" id="datenaiss" name="date_naissance"
+                                               value="<?php echo @ $res['date_naissance'] ?>"
+                                               max="<?= date('Y-m-d'); ?>">
+                                        <div class="invalid-tooltip" id="Vdatemin" style="display: none">Age minimum 16
+                                            ans
+                                        </div>
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label class="col-form-label-sm">Lieu Naissance</label>
-                                        <input type="text" class="form-control text-uppercase" id="lieu_naissance" name="lieu_naissance" required
+                                        <input type="text" class="form-control text-uppercase" id="lieu_naissance"
+                                               name="lieu_naissance" required
                                                value="<?php echo @ $res['lieu_naissance'] ?>">
                                     </div>
                                     <div class="form-group col-md-4">
@@ -335,12 +347,13 @@ $pays = ListePays();
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
                                         <label class="col-form-label-sm">Email</label>
-                                        <input type="email" class="form-control" id="maila" name="mail"  required
+                                        <input type="email" class="form-control" id="maila" name="mail" required
                                                value="<?php echo @ $res['email'] ?>">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label class="col-form-label-sm">Contact</label>
-                                        <input type="text" class="form-control text-uppercase" id="contact" name="contat" required
+                                        <input type="text" class="form-control text-uppercase" id="contact"
+                                               name="contat" required
                                                value="<?php echo @ $res['telephone'] ?>">
                                     </div>
 
@@ -359,18 +372,16 @@ $pays = ListePays();
                                         <select class="form-control" name="annee_anterieur" id="annee-anterieur">
                                             <?php foreach ($anneanterieur as $repanneante): ?>
                                                 <?php
-                                                if ($repanneante['id_annee_academique']==$_SESSION['anneeante'])
-                                                {
+                                                if ($repanneante['id_annee_academique'] == $_SESSION['anneeante']) {
                                                     ?>
-                                                    <option selected value="<?=$repanneante['id_annee_academique']?>"> <?=$repanneante['libelle_annee_academique']?></option>
+                                                    <option selected
+                                                            value="<?= $repanneante['id_annee_academique'] ?>"> <?= $repanneante['libelle_annee_academique'] ?></option>
                                                     <?php
 
-                                                }
-                                                else
-                                                {
+                                                } else {
 
                                                     ?>
-                                                    <option  value="<?=$repanneante['id_annee_academique']?>"> <?=$repanneante['libelle_annee_academique']?></option>
+                                                    <option value="<?= $repanneante['id_annee_academique'] ?>"> <?= $repanneante['libelle_annee_academique'] ?></option>
 
                                                     <?php
                                                 }
@@ -381,11 +392,15 @@ $pays = ListePays();
                                         </select>
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label class="col-form-label-sm" for="exampleFormControlSelect1">Etablissement origine</label>
-                                        <input type="text" class="form-control text-uppercase" value="<?=@$resdip['etablissement']?>" id="eta_anterieur" name="eta_anterieur">
+                                        <label class="col-form-label-sm" for="exampleFormControlSelect1">Etablissement
+                                            origine</label>
+                                        <input type="text" class="form-control text-uppercase"
+                                               value="<?= @$resdip['etablissement'] ?>" id="eta_anterieur"
+                                               name="eta_anterieur">
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label class="col-form-label-sm" for="exampleFormControlSelect1">Pays obtention diplome</label>
+                                        <label class="col-form-label-sm" for="exampleFormControlSelect1">Pays obtention
+                                            diplome</label>
                                         <select class="form-control text-uppercase" name="pays_anterieur">
                                             <?php foreach ($pays as $payt): ?>
                                                 <?php if ($resdip['id_pays_obtention'] == $payt['id_pays']) : ?>
@@ -402,9 +417,10 @@ $pays = ListePays();
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-4" id="diplome1">
-                                        <label class="col-form-label-sm" for="exampleFormControlSelect1">Diplome obtenue</label>
-                                        <select class="form-control text-uppercase" id="diplome1"  name="diplome1">
-                                            <?php $diplome = ListeDiplome()?>
+                                        <label class="col-form-label-sm" for="exampleFormControlSelect1">Diplome
+                                            obtenue</label>
+                                        <select class="form-control text-uppercase" id="diplome1" name="diplome1">
+                                            <?php $diplome = ListeDiplome() ?>
                                             <?php foreach ($diplome as $dip): ?>
                                                 <?php if ($resdip['id_diplomes'] == $dip['id_diplomes']) : ?>
                                                     <option selected
@@ -417,10 +433,12 @@ $pays = ListePays();
                                         </select>
                                     </div>
                                     <div class="form-group col-md-4" id="diplome2">
-                                        <label class="col-form-label-sm" for="exampleFormControlSelect1">Saisir diplome obtenue</label>
+                                        <label class="col-form-label-sm" for="exampleFormControlSelect1">Saisir diplome
+                                            obtenue</label>
                                         <input type="text" class="form-control text-uppercase" name="diplome2">
                                     </div>
-                                    <button class="btn btn-sm btn-info mr-5" type="button" onclick="autre()" data-dismiss="modal" style="height: 47px;margin-top: 2rem;">
+                                    <button class="btn btn-sm btn-info mr-5" type="button" onclick="autre()"
+                                            data-dismiss="modal" style="height: 47px;margin-top: 2rem;">
                                         Autres
                                     </button>
 
@@ -433,11 +451,11 @@ $pays = ListePays();
 
                         <?php
                         if (!isset($_GET['id'])) {
-                            include "crud_etudiant/modal_insert.php";
+                            include "include/crud_etudiant/modal_insert.php";
                         }
                         ?>
                         <?php
-                        include "crud_etudiant/modal_modifier.php";
+                        include "include/crud_etudiant/modal_modifier.php";
                         ?>
                     </div>
 
@@ -453,7 +471,7 @@ $pays = ListePays();
                         <button class="btn btn-lg btn-primary" data-toggle="modal"
                                 data-target="#updateClasseModal">Soumettre
                         </button>
-                        <a  class="btn btn-lg btn-danger"  href="etudiant.php">Annuler</a>
+                        <a class="btn btn-lg btn-danger" href="etudiant.php">Annuler</a>
                     <?php endif; ?>
                     <div id="destroy">
 
@@ -461,10 +479,10 @@ $pays = ListePays();
                 </div>
 
                 <?php
-                if ($_SESSION['id_type_utilisateur '] == 1){
+                if ($_SESSION['id_type_utilisateur '] == 1) {
                     $gu = $bdd->query("select * from etudiant_sdapa,inscription_sdapa where etudiant_sdapa.id = inscription_sdapa.id_etudiant group by inscription_sdapa.id") or die(print_r($bdd->errorInfo()));
-                }else{
-                    $gu = $bdd->query("select * from etudiant_sdapa,inscription_sdapa where etudiant_sdapa.id = inscription_sdapa.id_etudiant and inscription_sdapa.id_etablissement = '".$_SESSION['id_etablissement']."' and inscription_sdapa.id_departement = '".$_SESSION['id_departement']."' group by inscription_sdapa.id") or die(print_r($bdd->errorInfo()));
+                } else {
+                    $gu = $bdd->query("select * from etudiant_sdapa,inscription_sdapa where etudiant_sdapa.id = inscription_sdapa.id_etudiant and inscription_sdapa.id_etablissement = '" . $_SESSION['id_etablissement'] . "' and inscription_sdapa.id_departement = '" . $_SESSION['id_departement'] . "' group by inscription_sdapa.id") or die(print_r($bdd->errorInfo()));
                 }
 
                 ?>
@@ -502,7 +520,7 @@ $pays = ListePays();
                                                 <a href="etudiant.php?id=<?= $res['id_etudiant']; ?>"><?= $res['nom']; ?> <?= $res['prenoms']; ?></a>
                                             </td>
                                             <td class="text-uppercase">
-                                                <?= date('m-d-Y',strtotime($res['date_naissance'])); ?>
+                                                <?= date('m-d-Y', strtotime($res['date_naissance'])); ?>
                                             </td>
                                             <td class="text-uppercase">
                                                 <?= $res['lieu_naissance']; ?>
@@ -510,20 +528,20 @@ $pays = ListePays();
                                             <td class="text-uppercase">
                                                 <?= $res['telephone']; ?>
                                             </td>
-                                            <td >
+                                            <td>
                                                 <?= $res['email']; ?>
                                             </td>
                                             <td>
-                                                <?php if($res['ufhb'] == 1):
+                                                <?php if ($res['ufhb'] == 1):
                                                     ?>
                                                     Oui
                                                 <?php
-                                                endif;?>
-                                                <?php if($res['ufhb'] == 2):
+                                                endif; ?>
+                                                <?php if ($res['ufhb'] == 2):
                                                     ?>
                                                     Non
                                                 <?php
-                                                endif;?>
+                                                endif; ?>
                                             </td>
                                         </tr>
                                     <?php endwhile; ?>
@@ -535,7 +553,7 @@ $pays = ListePays();
                         <div><a class="btn btn-danger" href="#" data-toggle="modal" data-target="#DeleteEvaluationModal"
                                 style="margin: 20px;"><i class="fas fa-trash fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Supprimer la sélection</a></div>
-                        <?php include "crud_etudiant/modal_supp.php"; ?>
+                        <?php include "include/crud_etudiant/modal_supp.php"; ?>
                     </div>
 
             </div>
@@ -557,28 +575,28 @@ $pays = ListePays();
 <!-- Logout Modal-->
 
 <!-- Bootstrap core JavaScript-->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="../vendor/jquery/jquery.min.js"></script>
+<script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Core plugin JavaScript-->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
 
 <!-- Custom scripts for all pages-->
-<script src="js/sb-admin-2.min.js"></script>
+<script src="../src/js/sb-admin-2.min.js"></script>
 
 
 <!-- Page level plugins -->
-<script src="vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="../vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 <!-- Page level custom scripts -->
-<script src="js/datatable_etd.js"></script>
-<script src="js/ajax.js"></script>
-<script src="js/etudiant_js.js"></script>
-<script src="js/validation/dist/bootstrap-validate.js"></script>
+<script src="../src/js/datatable_etd.js"></script>
+<script src="../src/js/ajax.js"></script>
+<script src="../src/js/etudiant_js.js"></script>
+<script src="../src/js/validation/dist/bootstrap-validate.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyDeLFbqUYXI7Ozg5B9nJpIZyQtoA3dGQco"></script>
 <script>
-    bootstrapValidate(['#carte_et','#numero_mers','#nom','#prenoms','#lieu_naissance','#datenaiss','#maila','#contact','#eta_anterieur'], 'required: Veuillez remplir les champs!')
+    bootstrapValidate(['#carte_et', '#numero_mers', '#nom', '#prenoms', '#lieu_naissance', '#datenaiss', '#maila', '#contact', '#eta_anterieur'], 'required: Veuillez remplir les champs!')
     bootstrapValidate('#maila', 'email: Entrer email valide!')
     bootstrapValidate('#contact', 'min:10: Entrer votre numero sur 10 chiffres')
     var searchInput = 'lieu_naissance';
