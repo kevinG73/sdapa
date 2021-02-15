@@ -14,6 +14,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['impression'] = $_POST;
         header('Location: pdf/index.php');
     }
+
+    if (isset($_POST['appliquer-critere'])) {
+
+        header('Location: admis.php');
+    }
 }
 ?>
 
@@ -106,21 +111,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <h6 class="m-0 font-weight-bold text-primary text-uppercase">selection des admis</h6>
     </div>
     <div class="card-body">
+        <form method="post">
 
-        <div class="d-flex justify-content-between">
-            <div class="form-inline ">
-                <label for="id_critere_selection" class="mr-5">critère de selection</label>
-                <select class="form-control" name="id_critere_selection" id="id_critere_selection">
-                    <option value="0"> selectionner</option>
-                    <?php for ($i = 1; $i <= 24; $i++): ?>
-                        <option value="<?= $i ?>">point superieur à <?= $i ?> </option>
-                    <?php endfor; ?>
-                </select>
+            <div class="d-flex justify-content-between">
+                <div class="form-inline ">
+                    <label for="id_critere_selection" class="mr-5">critère de selection</label>
+                    <select class="form-control" name="id_critere_selection" id="id_critere_selection">
+                        <option value="0"> selectionner</option>
+                        <?php for ($i = 1; $i <= 24; $i++): ?>
+                            <option value="<?= $i ?>">point superieur à <?= $i ?> </option>
+                        <?php endfor; ?>
+                    </select>
+                </div>
+                <div class="mt-2 pr-2">
+                    <button class="btn btn-primary" name="appliquer-critere" type="submit">appliquer le critère de
+                        selection
+                    </button>
+                </div>
             </div>
-            <div class="mt-2 pr-2">
-                <button class="btn btn-primary" name="consulter">appliquer le critère de selection</button>
-            </div>
-        </div>
+        </form>
 
     </div>
 </div>

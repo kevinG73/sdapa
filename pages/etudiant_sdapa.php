@@ -459,7 +459,7 @@ $anne = ListeAnnee();
 <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
 <!-- Page level custom scripts -->
-<script src="../src/js/datatable_etd.js"></script>
+<script src="../src/js/datatable/datatable_etd.js"></script>
 <script src="../src/js/ajax.js"></script>
 
 </body>
