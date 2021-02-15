@@ -167,3 +167,9 @@ a {
         margin: 0px 15px
     }
 }
+
+.fixed-row-bottom {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

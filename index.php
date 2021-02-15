@@ -84,7 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row fixed-row-bottom">
         <div class="col-12 bg-blue py-4 mt-5">
             <div class="row px-3"><small class="ml-4 ml-sm-5 mb-2">Copyright &copy; 2020. Université de Cocody.</small>
             </div>

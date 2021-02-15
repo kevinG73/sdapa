@@ -47,7 +47,8 @@ $(document).ready(function () {
     }
 
     /* clique sur un bouton du datatable */
-    $("#dataTable").on("click", ".btn-determiner", function () {
+    $("#dataTable").on("click", ".btn-determiner", function (e) {
+        e.preventDefault();
         var eventId = $(this).data('id');
 
         // AJAX request

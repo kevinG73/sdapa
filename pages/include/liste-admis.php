@@ -14,9 +14,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id_annee = $_POST['id_annee'];
     $id_etablissement = $_POST['id_etablissement'];
     $id_departement = $_POST['id_departement'];
+    $id_parcours = $_POST['id_parcours'];
 
     if (isset($_POST['action']) && $_POST['action'] === "consulter") {
-        $admis = ListeAdmis($id_annee, $id_etablissement, $id_departement);
+        $admis = ListeAdmis($id_annee, $id_etablissement, $id_departement,$id_parcours);
     }
 
     if (isset($_POST['action']) && $_POST['action'] === "imprimer") {

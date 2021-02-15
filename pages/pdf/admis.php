@@ -20,7 +20,7 @@ $requete = "select * from inscription_sdapa ins
     JOIN sexe ON etd.sexe = sexe.id_sexe
     JOIN nationalite nat ON nat.id_nationalite = etd.nationalite
     where annee = $annee_academique AND id_parcours = $id_parcours AND id_departement = $id_departement
-    AND ins.demande_accepte	 = 2
+    AND ins.demande_accepte	 = 1
     ORDER BY total_point_critere DESC";
 
 $resultat = $bdd->query($requete);
