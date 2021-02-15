@@ -1,8 +1,8 @@
 <?php
 
-include "../config/connexion.php";
-include "../fonctions/index.php";
-include "../fonction.php";
+require "../../config/connexion.php";
+require "../../fonctions/index.php";
+require "../../fonctions/fonction.php";
 
 
 $etudiantID = $_POST['etudiantid'];

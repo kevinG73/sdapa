@@ -38,7 +38,7 @@ class MYTCPDF extends TCPDF
         $this->SetFont('Helvetica', '', 9);
         // Logo de gauche
 
-        $this->Image('../img/logo-ufhb.png', 15, 10, 35, 10, 'PNG', '', '', true, 150, '', false, false, 0, false, false, false);
+        $this->Image('../../src/img/logo-ufhb.png', 15, 10, 35, 10, 'PNG', '', '', true, 150, '', false, false, 0, false, false, false);
 
         //First Line
         $left = "UFR <br>Unité de Formation ";
@@ -50,8 +50,6 @@ class MYTCPDF extends TCPDF
         $left = ": " . DeterminerDepartement($_SESSION['impression']['id_etablissement']);
         $this->WriteHTMLCell('', 10, 45, 35, $left, 0);
 
-        // $pv = "<b>Liste des étudiants admissibles de la Licence 3 en Master 1</b>";
-        // $this->WriteHTMLCell('', 10, 70, 10, $pv, 0);
         $this->title();
 
 

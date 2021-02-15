@@ -1,7 +1,7 @@
 <?php
 session_start();
-require "../config/connexion.php";
-require "../fonctions/index.php";
+require "../../config/connexion.php";
+require "../../fonctions/index.php";
 
 if (isset($_GET['id_departement'])):
     $id_departement = $_GET['id_departement'];

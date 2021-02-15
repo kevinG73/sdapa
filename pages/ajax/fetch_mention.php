@@ -1,6 +1,6 @@
 <?php
-require "../config/connexion.php";
-require "../fonction.php";
+require "../../config/connexion.php";
+require "../../fonctions/index.php";
 
 if (isset($_GET['id_parcours']) && !empty($_GET['id_parcours'])):
     $id_parcours = (int)$_GET['id_parcours'];

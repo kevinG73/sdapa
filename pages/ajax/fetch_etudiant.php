@@ -1,6 +1,6 @@
 <?php
-require "../config/connexion.php";
-require "../fonctions/index.php";
+require "../../config/connexion.php";
+require "../../fonctions/index.php";
 
 if (isset($_GET['id_parcours']) && isset($_GET['id_departement']) && isset($_GET['id_annee'])):
     $id_departement = (int)$_GET['id_departement'];

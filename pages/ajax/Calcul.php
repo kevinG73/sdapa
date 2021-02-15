@@ -1,6 +1,6 @@
 <?php
-include "../config/connexion.php";
-include "../fonctions/index.php";
+require "../../config/connexion.php";
+require "../../fonctions/index.php";
 
 if (isset($_POST) && !empty($_POST)):
     /* variables */

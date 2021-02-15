@@ -20,7 +20,7 @@ $(document).ready(function () {
                 },
                 bDestroy: true,
                 ajax: {
-                    url: './fonctions/ajax/fetch_etudiant.php',
+                    url: './ajax/fetch_etudiant.php',
                     contentType: "application/json",
                     data: {
                         "id_departement": id_departement,
@@ -52,7 +52,7 @@ $(document).ready(function () {
 
         // AJAX request
         $.ajax({
-            url: './fonctions/ajax/infoEtudiant.php',
+            url: './ajax/infoEtudiant.php',
             type: 'post',
             data: {etudiantid: eventId},
             success: function (response) {
@@ -86,7 +86,7 @@ $(document).ready(function () {
         var myform = document.getElementById("forms");
         var fd = new FormData(myform);
         $.ajax({
-            url: '../fonctions/ajax/calcul.php',
+            url: './ajax/calcul.php',
             data: fd,
             cache: false,
             processData: false,

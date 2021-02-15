@@ -33,7 +33,7 @@ if ($_SESSION['id_type_utilisateur '] == 1) {
         <!-- Nav Item - User Information -->
         <li class="nav-item  no-arrow">
             <a class="nav-link" href="logout.php">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Deconnexion</span>
+                <span class="mr-2 d-none d-lg-inline text-primary font-weight-bold text-uppercase small">Deconnexion</span>
             </a>
         </li>
 
