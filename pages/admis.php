@@ -16,8 +16,6 @@ require "../config/connexion.php";
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
     <title>liste des admis en master | UFHB </title>
 
@@ -52,7 +50,7 @@ require "../config/connexion.php";
 
             <!-- Begin Page Content -->
             <div class="container-fluid">
-                <?php include "include/calcul-pointcritere.php"; ?>
+                <?php include "include/liste-admis.php"; ?>
             </div>
             <!-- /.container-fluid -->
 
@@ -82,7 +80,8 @@ require "../config/connexion.php";
 
 <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
 <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
-<script src="../src/js/datatable/datatable.js"></script>
+<script src="../src/js/datatable/datatable_etd.js"></script>
+<script src="../src/js/ajax.js"></script>
 </body>
 
 </html>

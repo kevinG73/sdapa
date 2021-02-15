@@ -3,7 +3,7 @@ session_start();
 require "../../config/connexion.php";
 require "../../fonctions/index.php";
 
-if (isset($_GET['id_departement'])):
+if (isset($_GET['id_departement']) && !empty($_GET['id_departement'])):
     $id_departement = $_GET['id_departement'];
     global $bdd;
     $requete = "SELECT specialite.id_specialite ,specialite.libelle_specialite 
@@ -21,30 +21,13 @@ if (isset($_GET['id_departement'])):
     if (count($liste) > 0):
         foreach ($liste as $res):
             ?>
-            <?php
-            if ($res['id_specialite'] ==$_SESSION['id_parcours'])
-            {
-                ?>
-                <option selected value="<?=$res['id_specialite']?>"> <?=$res['libelle_specialite']?></option>
-                <?php
-
-            }
-            else
-            {
-
-                ?>
-                <option  value="<?=$res['id_specialite']?>"> <?=$res['libelle_specialite']?></option>
-
-
-
-                <?php
-            }
-            ?>
-
+            <option value="<?= $res['id_specialite'] ?>"> <?= $res['libelle_specialite'] ?></option>
         <?php endforeach; ?>
     <?php else: ?>
         <option value="0">selectionner</option>
     <?php endif; ?>
+<?php else: ?>
+    <option value="0">selectionner</option>
 <?php endif; ?>
 
 
