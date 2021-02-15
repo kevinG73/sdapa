@@ -15,8 +15,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id_etablissement = $_POST['id_etablissement'];
     $id_departement = $_POST['id_departement'];
 
-    if (isset($_POST['consulter'])) {
-        $admis = ListeAdmis($id_annee,$id_etablissement,$id_departement);
+    if (isset($_POST['action']) && $_POST['action'] === "consulter") {
+        $admis = ListeAdmis($id_annee, $id_etablissement, $id_departement);
+    }
+
+    if (isset($_POST['action']) && $_POST['action'] === "imprimer") {
+        $_SESSION['impression'] = $_POST;
+        header('Location:pdf/admis.php');
     }
 }
 ?>
@@ -73,8 +78,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
 
             <div class="float-right mt-2 pr-2">
-                <button type="submit" class="btn btn-primary" name="consulter">consulter</button>
-                <button type="submit" class="btn btn-primary" name="imprimer">imprimer</button>
+                <input type="submit" class="btn btn-primary" name="action" value="consulter">
+                <input type="submit" class="btn btn-primary" name="action" value="imprimer">
             </div>
         </form>
     </div>
@@ -90,8 +95,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <table class="table table-bordered w-100" id="dataTable-etd">
                     <thead>
                     <tr>
+                        <th>ID</th>
                         <th>nom</th>
                         <th>prenoms</th>
+                        .
+                        <th>moyenne pondérée</th>
+                        <th>temps mis en Licence</th>
                         <th>nbre total mentions</th>
                         <th>point critère</th>
                     </tr>
@@ -99,8 +108,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <tbody>
                     <?php foreach ($admis as $etudiant): ?>
                         <tr>
+                            <td><?= $etudiant['id'] ?></td>
                             <td><?= $etudiant['nom'] ?></td>
-                            <td><?= $etudiant['nom'] ?></td>
+                            <td><?= $etudiant['prenoms'] ?></td>
+                            <td><?= $etudiant['moy_pondere'] ?></td>
+                            <td><?= $etudiant['temps_mis_en_Licence'] ?></td>
                             <td><?= $etudiant['total_mention'] ?></td>
                             <td><?= $etudiant['total_point_critere'] ?></td>
                         </tr>

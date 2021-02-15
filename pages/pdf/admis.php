@@ -8,8 +8,7 @@ $filtre = [
     'annee_academique' => $_SESSION['impression']['id_annee'],
     'id_etablissement' => $_SESSION['impression']['id_etablissement'],
     'id_departement' => $_SESSION['impression']['id_departement'],
-    'id_parcours' => $_SESSION['impression']['id_parcours'],
-    'id_critere_selection' => $_SESSION['impression']['id_critere_selection']
+    'id_parcours' => $_SESSION['impression']['id_parcours']
 ];
 
 /* liste des étudiants */
@@ -21,8 +20,8 @@ $requete = "select * from inscription_sdapa ins
     JOIN sexe ON etd.sexe = sexe.id_sexe
     JOIN nationalite nat ON nat.id_nationalite = etd.nationalite
     where annee = $annee_academique AND id_parcours = $id_parcours AND id_departement = $id_departement
-    AND total_point_critere > $id_critere_selection";
-
+    AND ins.demande_accepte	 = 2
+    ORDER BY total_point_critere DESC";
 
 $resultat = $bdd->query($requete);
 
@@ -97,7 +96,7 @@ foreach ($liste_decouper as $index => $etd) {
 
 //output
 $pdf->SetFooterMargin(250);
-$pdf->Output('liste-' . rand());
+$pdf->Output();
 
 
 
