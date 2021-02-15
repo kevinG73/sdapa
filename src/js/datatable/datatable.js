@@ -38,6 +38,9 @@ $(document).ready(function () {
                     {data: 'total_point_critere', title: 'point critère'},
                     {
                         data: "id", render: function (data, type, row, meta) {
+                            if (row.total_point_critere > 0) {
+                                return '<button class="btn btn-sm btn-success btn-determiner"  data-id="' + data + '" >récalculer</a>';
+                            }
                             return '<button class="btn btn-sm btn-primary btn-determiner"  data-id="' + data + '" >calculer</a>';
                         }
                     }
