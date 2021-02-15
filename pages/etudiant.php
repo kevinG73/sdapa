@@ -182,7 +182,7 @@ $pays = ListePays();
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-3 mr-5">
-                                        <label class="col-form-label-sm" for="id_parcours">Niveau à acceder</label>
+                                        <label class="col-form-label-sm" for="id_parcours">Niveau à accéder</label>
                                         <select class="form-control">
                                             <option value="M1">MASTER 1</option>
                                         </select>
@@ -240,7 +240,7 @@ $pays = ListePays();
                                         ?>
                                         <div class="form-row" id="voir_num_carte">
                                             <div class="form-group col-md-4">
-                                                <label class="col-form-label-sm">Numero Carte etudiant</label>
+                                                <label class="col-form-label-sm">Numéro Carte étudiant</label>
                                                 <input type="text" class="form-control text-uppercase" id="carte_et"
                                                        required name="numero_carte"
                                                        value="<?php echo @ $res['numero_carte'] ?>">
@@ -265,12 +265,12 @@ $pays = ListePays();
                                     ?>
                                     <div class="form-row" id="voir_num_carte">
                                         <div class="form-group col-md-4">
-                                            <label class="col-form-label-sm">Numero Carte etudiant</label>
+                                            <label class="col-form-label-sm">Numéro Carte étudiant</label>
                                             <input type="text" class="form-control text-uppercase" id="carte_et"
                                                    required name="numero_carte">
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <label class="col-form-label-sm">Numero Mers</label>
+                                            <label class="col-form-label-sm">Numéro Mers</label>
                                             <input type="text" class="form-control text-uppercase" id="numero_mers"
                                                    required name="numero_mers">
                                         </div>
@@ -345,8 +345,7 @@ $pays = ListePays();
                                     <div class="form-group col-md-4">
                                         <label class="col-form-label-sm">Contact</label>
                                         <input type="text" class="form-control text-uppercase" id="contact"
-                                               name="contat" required
-                                               value="<?php echo @ $res['telephone'] ?>">
+                                               name="contat" required value="<?php echo @ $res['telephone'] ?>">
                                     </div>
 
 
@@ -409,7 +408,7 @@ $pays = ListePays();
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-4" id="diplome1">
-                                        <label class="col-form-label-sm" for="exampleFormControlSelect1">Diplome
+                                        <label class="col-form-label-sm" for="exampleFormControlSelect1">Diplôme
                                             obtenue</label>
                                         <select class="form-control text-uppercase" id="diplome1" name="diplome1">
                                             <?php $diplome = ListeDiplome() ?>
@@ -425,7 +424,7 @@ $pays = ListePays();
                                         </select>
                                     </div>
                                     <div class="form-group col-md-4" id="diplome2">
-                                        <label class="col-form-label-sm" for="exampleFormControlSelect1">Saisir diplome
+                                        <label class="col-form-label-sm" for="exampleFormControlSelect1">Saisir diplôme
                                             obtenue</label>
                                         <input type="text" class="form-control text-uppercase" name="diplome2">
                                     </div>
@@ -455,13 +454,11 @@ $pays = ListePays();
 
                 <div align="right">
                     <?php if (!isset($_GET['id'])): ?>
-                        <button class="btn btn-lg btn-primary" data-toggle="modal"
-                                data-target="#saveClasseModal">Soumettre
+                        <button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#saveClasseModal">Soumettre
                         </button>
                         <button class="btn btn-lg btn-danger" type="reset">Annuler</button>
                     <?php elseif (isset($_GET['id'])) : ?>
-                        <button class="btn btn-lg btn-primary" data-toggle="modal"
-                                data-target="#updateClasseModal">Soumettre
+                        <button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#updateClasseModal">Soumettre
                         </button>
                         <a class="btn btn-lg btn-danger" href="etudiant.php">Annuler</a>
                     <?php endif; ?>
@@ -485,7 +482,7 @@ $pays = ListePays();
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Liste des etudiants</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Liste des étudiants</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -585,7 +582,7 @@ $pays = ListePays();
 <script src="../src/js/datatable/datatable_etd.js"></script>
 <script src="../src/js/ajax.js"></script>
 <script src="../src/js/etudiant_js.js"></script>
-<script src="../src/js/validation/dist/bootstrap-validate.js"></script>
+<script src="../vendor/bootstrap-validate/dist/bootstrap-validate.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyDeLFbqUYXI7Ozg5B9nJpIZyQtoA3dGQco"></script>
 <script>
     bootstrapValidate(['#carte_et', '#numero_mers', '#nom', '#prenoms', '#lieu_naissance', '#datenaiss', '#maila', '#contact', '#eta_anterieur'], 'required: Veuillez remplir les champs!')
