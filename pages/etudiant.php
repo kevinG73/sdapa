@@ -267,12 +267,12 @@ $pays = ListePays();
                                         <div class="form-group col-md-4">
                                             <label class="col-form-label-sm">Numéro Carte étudiant</label>
                                             <input type="text" class="form-control text-uppercase" id="carte_et"
-                                                   required name="numero_carte">
+                                                   required name="numero_carte" autocomplete="off">
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label class="col-form-label-sm">Numéro Mers</label>
                                             <input type="text" class="form-control text-uppercase" id="numero_mers"
-                                                   required name="numero_mers">
+                                                   required name="numero_mers" autocomplete="off">
                                         </div>
                                     </div>
                                 <?php endif; ?>
@@ -280,14 +280,14 @@ $pays = ListePays();
                                     <div class="form-group col-md-4">
                                         <label class="col-form-label-sm">Nom</label>
                                         <input type="text" class="form-control text-uppercase" required id="nom"
-                                               name="nom"
+                                               name="nom" autocomplete="off"
                                                value="<?php echo @ $res['nom'] ?>">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label class="col-form-label-sm">Prénoms</label>
                                         <input type="text" class="form-control text-uppercase" id="prenoms" required
                                                name="prenoms"
-                                               value="<?php echo @ $res['prenoms'] ?>">
+                                               value="<?php echo @ $res['prenoms'] ?>" autocomplete="off">
                                     </div>
                                     <div class="form-group col-md-3">
                                         <label class="col-form-label-sm">Genre</label>
@@ -339,12 +339,12 @@ $pays = ListePays();
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
                                         <label class="col-form-label-sm">Email</label>
-                                        <input type="email" class="form-control" id="maila" name="mail" required
+                                        <input type="email" class="form-control" id="maila" name="mail" required autocomplete="off"
                                                value="<?php echo @ $res['email'] ?>">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label class="col-form-label-sm">Contact</label>
-                                        <input type="text" class="form-control text-uppercase" id="contact"
+                                        <input type="text" class="form-control text-uppercase" id="contact" autocomplete="off" max="15"
                                                name="contat" required value="<?php echo @ $res['telephone'] ?>">
                                     </div>
 
