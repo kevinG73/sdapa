@@ -1,5 +1,4 @@
 <?php
-
 require "../fonctions/index.php";
 require "../fonctions/admission.php";
 
@@ -23,9 +22,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (isset($_POST['valider'])) {
+        $_SESSION['select'] = $_POST['id_parcours'];
+
         $pt = verifierPointCritere($id_annee, $id_etablissement, $id_departement, $id_parcours);
         if (isset($pt) && count($pt) > 0) {
-            $message = "Veuillez terminer le calcul des point critère de tous les Etudiants de ce parcours avant d'obtenir des résultats";
+            $message = "Veuillez terminer le calcul des points critères de tous les étudiants de ce parcours avant d'obtenir des résultats . ";
         } else {
             AppliquerCritere($id_annee, $id_etablissement, $id_departement, $id_parcours, $point);
             header('Location: admis.php');
@@ -41,12 +42,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <h6 class="m-0 font-weight-bold text-primary text-uppercase">Filtre de recherche</h6>
         </div>
         <div class="card-body">
-            <div>
-                <p><?php if (isset($message) && !empty($message)): ?>
+            <?php if (isset($message) && !empty($message)): ?>
+                <div class="bg-danger text-white">
+                    <p class="p-2">
                         <?= $message; ?>
-                    <?php endif; ?>
-                </p>
-            </div>
+
+                    </p>
+                </div>
+            <?php endif; ?>
+
             <div class="d-flex justify-content-end">
                 <div class="float-right pr-2">
                     <label for="id_annee">Année académique</label>
@@ -152,5 +156,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </form>
 
 <!-- /.container-fluid -->
-
-

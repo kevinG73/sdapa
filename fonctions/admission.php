@@ -20,7 +20,13 @@ function ListeAdmis($annee, $id_etablissement, $id_departement, $id_parcours)
     }
 }
 
-
+/**
+ * @param $annee
+ * @param $id_etablissement
+ * @param $id_departement
+ * @param $id_parcours
+ * @param $point
+ */
 function AppliquerCritere($annee, $id_etablissement, $id_departement, $id_parcours, $point)
 {
     global $bdd;
@@ -33,7 +39,13 @@ function AppliquerCritere($annee, $id_etablissement, $id_departement, $id_parcou
     $resultat = $bdd->query($requete);
 }
 
-
+/***
+ * @param $annee
+ * @param $id_etablissement
+ * @param $id_departement
+ * @param $id_parcours
+ * @return array
+ */
 function verifierPointCritere($annee, $id_etablissement, $id_departement, $id_parcours)
 {
     global $bdd;

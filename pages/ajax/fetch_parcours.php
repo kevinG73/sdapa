@@ -18,10 +18,15 @@ if (isset($_GET['id_departement']) && !empty($_GET['id_departement'])):
     $resultat = $bdd->query($requete);
     $liste = $resultat->fetchAll();
 
+
     if (count($liste) > 0):
         foreach ($liste as $res):
             ?>
+            <?php if (isset($_SESSION['select']) && !empty($_SESSION['select']) && ($res['id_specialite'] === $_SESSION['select'])): ?>
+            <option selected value="<?= $res['id_specialite'] ?>"> <?= $res['libelle_specialite'] ?></option>
+        <?php else: ?>
             <option value="<?= $res['id_specialite'] ?>"> <?= $res['libelle_specialite'] ?></option>
+        <?php endif; ?>
         <?php endforeach; ?>
     <?php else: ?>
         <option value="0">selectionner</option>
