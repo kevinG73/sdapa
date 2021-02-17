@@ -31,6 +31,15 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
+        <a class="nav-link" href="INFO.pdf">
+            <span>INFO</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item">
         <a class="nav-link" href="admis.php">
             <span>LISTE DES ADMIS</span></a>
     </li>
