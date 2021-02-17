@@ -1,6 +1,8 @@
 <?php
 require_once "../../config/connexion.php";
 require_once('./entete.php');
+setlocale(LC_TIME, "fr_FR");
+
 global $bdd;
 
 /* Liste des etudiants en fonctions des critères ci-dessous : */
@@ -69,12 +71,15 @@ $tbl_footer = '</table>';
 
 foreach ($liste_decouper as $index => $etd) {
     foreach ($etd as $et) {
+        $ndate = explode('-', $et['date_naissance']);
+        $fdate = $ndate[2] . '/' . $ndate[1] . '/' . $ndate[0];
+
         $tbl .= '
 <tr>
     <td> ' . $et['nom'] . '</td>
     <td> ' . $et['prenoms'] . '</td>
 	<td>' . $et['libelle_sexe_court'] . '</td>
-    <td>' . $et['date_naissance'] . '</td>
+    <td>' . $fdate . '</td>
     <td>' . $et['lieu_naissance'] . '</td>
     <td>' . $et['libelle_nationalite'] . '</td>
     <td> ' . $et['moy_ann_l1'] . '</td>

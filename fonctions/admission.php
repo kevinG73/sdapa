@@ -30,12 +30,18 @@ function ListeAdmis($annee, $id_etablissement, $id_departement, $id_parcours)
 function AppliquerCritere($annee, $id_etablissement, $id_departement, $id_parcours, $point)
 {
     global $bdd;
+    /* on donne 1 à tous les candidats qui ne respectent par ce poit critère */
     $requete = "UPDATE inscription_sdapa SET demande_accepte = 1 
-                WHERE annee = $annee AND id_etablissement = $id_etablissement AND id_departement = $id_departement AND total_point_critere	> $point";
+                WHERE annee = $annee AND id_etablissement = $id_etablissement AND id_departement = $id_departement 
+                AND id_parcours = $id_parcours
+                AND total_point_critere	> $point";
     $resultat = $bdd->query($requete);
 
+    /* on donne0 à tous les candidats qui ne respectent par ce poit critère */
     $requete = "UPDATE inscription_sdapa SET demande_accepte = 0 
-                WHERE annee = $annee AND id_etablissement = $id_etablissement AND id_departement = $id_departement AND total_point_critere	<= $point";
+                WHERE annee = $annee AND id_etablissement = $id_etablissement AND id_departement = $id_departement 
+                AND id_parcours = $id_parcours
+                AND total_point_critere	<= $point";
     $resultat = $bdd->query($requete);
 }
 
@@ -46,16 +52,23 @@ function AppliquerCritere($annee, $id_etablissement, $id_departement, $id_parcou
  * @param $id_parcours
  * @return array
  */
-function verifierPointCritere($annee, $id_etablissement, $id_departement, $id_parcours)
+function verifierSiCalculTerminee($annee, $id_etablissement, $id_departement, $id_parcours)
 {
     global $bdd;
-    $requete = "SELECT * FROM inscription_sdapa 	
-                WHERE total_point_critere = 0 AND annee = $annee 
+    $requete = "SELECT count(*) FROM inscription_sdapa 	
+                WHERE total_point_critere <> 0 AND annee = $annee 
                 AND id_etablissement = $id_etablissement AND id_departement = $id_departement AND id_parcours = $id_parcours";
     $resultat = $bdd->query($requete);
-    if (is_bool($resultat)) {
-        return [];
-    } else {
-        return $resultat->fetchAll();
-    }
+    return $resultat->fetchColumn();
+}
+
+
+function totalEtudiantParcours($annee, $id_etablissement, $id_departement, $id_parcours)
+{
+    global $bdd;
+    $requete = "SELECT count(*) FROM inscription_sdapa 	
+                WHERE  annee = $annee AND id_etablissement = $id_etablissement 
+                AND id_departement = $id_departement AND id_parcours = $id_parcours";
+    $resultat = $bdd->query($requete);
+    return $resultat->fetchColumn();
 }

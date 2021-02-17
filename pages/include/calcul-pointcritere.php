@@ -23,14 +23,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (isset($_POST['valider'])) {
         $_SESSION['select'] = $_POST['id_parcours'];
+        /* nombre total d'étudiant ayant quelque chose different de 0 comme point critère */
+        $pt = (int)verifierSiCalculTerminee($id_annee, $id_etablissement, $id_departement, $id_parcours);
+        /* nombre total d'étudiant dans ce parcours */
+        $total = (int)totalEtudiantParcours($id_annee, $id_etablissement, $id_departement, $id_parcours);
 
-        $pt = verifierPointCritere($id_annee, $id_etablissement, $id_departement, $id_parcours);
-        if (isset($pt) && count($pt) > 0) {
-            $message = "Veuillez terminer le calcul des points critères de tous les étudiants de ce parcours avant d'obtenir des résultats . ";
+        if ($total === 0) {
+            $message = "Le parcours selectionné ne contient pas d'étudiant pour effectuer une operation .";
         } else {
-            AppliquerCritere($id_annee, $id_etablissement, $id_departement, $id_parcours, $point);
-            header('Location: admis.php');
+            /* oui */
+            if ($total === $pt) {
+                AppliquerCritere($id_annee, $id_etablissement, $id_departement, $id_parcours, $point);
+                header('Location: admis.php');
+            } else {
+                $message = "Veuillez terminer le calcul des points critères de tous les étudiants de ce parcours avant d'obtenir des résultats . ";
+            }
         }
+
+
     }
 }
 ?>
@@ -134,7 +144,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <div class="card-body">
             <form method="post">
-
                 <div class="d-flex justify-content-between">
                     <div class="form-inline ">
                         <label for="id_critere_selection" class="mr-5">critère de selection</label>

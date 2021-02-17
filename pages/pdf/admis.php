@@ -71,20 +71,23 @@ $tbl_footer = '</table>';
 
 foreach ($liste_decouper as $index => $etd) {
     foreach ($etd as $et) {
+        $ndate = explode('-', $et['date_naissance']);
+        $fdate = $ndate[2] . '/' . $ndate[1] . '/' . $ndate[0];
+
         $tbl .= '
 <tr>
     <td> ' . $et['nom'] . '</td>
     <td> ' . $et['prenoms'] . '</td>
 	<td>' . $et['libelle_sexe_court'] . '</td>
-    <td>' . $et['date_naissance'] . '</td>
+    <td>' . $fdate . '</td>
     <td>' . $et['lieu_naissance'] . '</td>
     <td>' . $et['libelle_nationalite'] . '</td>
-    <td> ' . $et['moy_ann_l1'] . '</td>
-    <td> ' . $et['moy_ann_l2'] . '</td>
-    <td> ' . $et['moy_ann_l3'] . '</td>
-    <td> ' . $et['temps_mis_en_Licence'] . '</td>
-    <td> ' . (int)$et['total_mention'] . '</td>
-    <td> ' . $et['total_point_critere'] . '</td>
+    <td style="text-align:right"> ' . $et['moy_ann_l1'] . '</td>
+    <td style="text-align:right"> ' . $et['moy_ann_l2'] . '</td>
+    <td style="text-align:right"> ' . $et['moy_ann_l3'] . '</td>
+    <td style="text-align:right"> ' . $et['temps_mis_en_Licence'] . '</td>
+    <td style="text-align:right"> ' . $et['total_mention'] . '</td>
+    <td style="text-align:right"> ' . $et['total_point_critere'] . '</td>
 </tr>
 ';
     }
