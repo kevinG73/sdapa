@@ -5,26 +5,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     extract($_POST);
 
     if (isset($login) && isset($motdepasse)) {
-
-        $requete = "SELECT * FROM utilisateur WHERE `login_utilisateur` =:login  AND `mot_passe_utilisateur` =:motdepasse";
-        $stmt = $bdd->prepare($requete);
-
-        $stmt->bindParam('login', $login, PDO::PARAM_STR);
-        $stmt->bindValue('motdepasse', $motdepasse, PDO::PARAM_STR);
-        $stmt->execute();
-        $count = $stmt->rowCount();
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        if ($count == 1) {
-            $_SESSION['connecte'] = $row['id_utilisateur'];
-            $_SESSION['id_etablissement'] = $row['id_etablissement'];
-            $_SESSION['id_departement'] = $row['id_departement'];
-            $_SESSION['id_type_utilisateur '] = $row['id_type_utilisateur'];
+        extract($_POST);
+        $requete = $bdd->query('select * from utilisateur where login_utilisateur = "'.$login.'" and mot_passe_utilisateur = "'.$motdepasse.'"');
+        if ($stmt= $requete->fetch()) {
+            $_SESSION['connecte'] = $stmt['id_utilisateur'];
+            $_SESSION['id_etablissement'] = $stmt['id_etablissement'];
+            $_SESSION['id_departement'] = $stmt['id_departement'];
+            $_SESSION['id_type_utilisateur '] = $stmt['id_type_utilisateur'];
             header('Location:pages/index.php');
         } else {
             $_SESSION['connecte'] = "";
             $_SESSION['error_message'] = "votre nom d'utilisateur ou votre mot de passe est incorrecte";
         }
+
 
     }
 }
