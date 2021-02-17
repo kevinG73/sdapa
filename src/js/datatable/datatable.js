@@ -133,12 +133,31 @@ $(document).ready(function () {
 
     /* pour calculer la moyenne pondere */
     $("#inputML1, #inputML2, #inputML3").change(function () {
-        var l1 = parseFloat($("#inputML1").val(), 10);
-        var l2 = parseFloat($("#inputML2").val(), 10);
-        var l3 = parseFloat($("#inputML3").val(), 10);
-        var calcul = ((l1 + l2 + l3) / 3);
+        var l1 = parseFloat($("#inputML1").val(), 10) || 0;
+        var l2 = parseFloat($("#inputML2").val(), 10) || 0;
+        var l3 = parseFloat($("#inputML3").val(), 10) || 0;
+        var calcul = ((l1 + l2 * 2 + l3 * 4) / 7);
+
         var resultat = isFinite(calcul) ? calcul : 0;
         $("#inputMA").val(parseFloat(resultat).toFixed(2));
+
+        var critere_moyenne_annuelle = parseFloat($("#inputMA").val()) || 0;
+        p_moyenne_annuelle = 0;
+        if (critere_moyenne_annuelle >= 18 && critere_moyenne_annuelle < 20) {
+            p_moyenne_annuelle = 8;
+        } else if (critere_moyenne_annuelle >= 16 && critere_moyenne_annuelle < 18) {
+            p_moyenne_annuelle = 6;
+        } else if (critere_moyenne_annuelle >= 14 && critere_moyenne_annuelle < 16) {
+            p_moyenne_annuelle = 5;
+        } else if (critere_moyenne_annuelle >= 12 && critere_moyenne_annuelle < 14) {
+            p_moyenne_annuelle = 3;
+        } else if (critere_moyenne_annuelle >= 11 && critere_moyenne_annuelle < 12) {
+            p_moyenne_annuelle = 1;
+        } else if (critere_moyenne_annuelle < 11) {
+            p_moyenne_annuelle = 0;
+        }
+        $("#moyenne-point").text(p_moyenne_annuelle + " point(s)");
+
     });
 
 });

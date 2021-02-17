@@ -53,10 +53,10 @@ function moyennePondere() {
     var l3c2 = parseInt($("#mention_l3_c2").val()) || 0;
     var l3c3 = parseInt($("#mention_l3_c3").val()) || 0;
 
-    var moyp1 = parseFloat((l1c1 + (l1c2 * 2) + (l1c3 * 3)) / 7);
-    var moyp2 = parseFloat((l2c1 + (l2c2 * 2) + (l2c3 * 3)) / 7);
-    var moyp3 = parseFloat((l3c1 + (l3c2 * 2) + (l3c3 * 3)) / 7);
-    var total = moyp1 + moyp2 + moyp3;
+    var moyp1 = parseFloat((l1c1 + (l1c2 * 2) + (l1c3 * 3)) / 6);
+    var moyp2 = parseFloat((l2c1 + (l2c2 * 2) + (l2c3 * 3)) / 6);
+    var moyp3 = parseFloat((l3c1 + (l3c2 * 2) + (l3c3 * 3)) / 6);
+    var total = (moyp1 + moyp2 * 2 + moyp3 * 4) / 7;
 
     $("#total_l1_c5").val(moyp1.toFixed(2));
     $("#total_l2_c5").val(moyp2.toFixed(2));

@@ -99,6 +99,7 @@ $(document).ready(function () {
     });
 
 
+
 });
 
 function total_point_critere() {

@@ -5,7 +5,7 @@ $(document).ready(function () {
 
     $(".moyenne").each(function () {
         $(this).bind('keyup change click blur mouseup', function () {
-            var total = parseFloat((nbre1 + nbre2 + nbre3) / 3) || 0;
+            var total = parseFloat((nbre1 + nbre2 * 2 + nbre3 * 4) / 7) || 0;
             $("#inputMA").val(total.toFixed(2))
         });
     });

@@ -87,7 +87,6 @@ require "../config/connexion.php";
 <script src="../src/js/datatable/datatable.js"></script>
 <script src="../src/js/ajax.js"></script>
 <script src="../src/js/calcul/calcul_nombre_mention.js"></script>
-<script src="../src/js/calcul/calcul_moyenne.js"></script>
 </body>
 
 </html>
