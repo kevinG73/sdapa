@@ -582,8 +582,7 @@ $pays = ListePays();
 <script src="../src/js/datatable/datatable_etd.js"></script>
 <script src="../src/js/ajax.js"></script>
 <script src="../src/js/etudiant_js.js"></script>
-<script src="../vendor/bootstrap-validate/dist/bootstrap-validate.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyDeLFbqUYXI7Ozg5B9nJpIZyQtoA3dGQco"></script>
+<script src="../vendor/validation/dist/bootstrap-validate.js"></script>
 <script>
     bootstrapValidate(['#carte_et', '#numero_mers', '#nom', '#prenoms', '#lieu_naissance', '#datenaiss', '#maila', '#contact', '#eta_anterieur'], 'required: Veuillez remplir les champs!')
     bootstrapValidate('#maila', 'email: Entrer email valide!')
