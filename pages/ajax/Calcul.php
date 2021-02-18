@@ -4,7 +4,6 @@ require "../../fonctions/index.php";
 
 if (isset($_POST) && !empty($_POST)):
     /* variables */
-
     $moyl1 = (float)$_POST['moyl1'];
     $moyl2 = (float)$_POST['moyl2'];
     $moyl3 = (float)$_POST['moyl3'];
@@ -27,7 +26,7 @@ if (isset($_POST) && !empty($_POST)):
     }
 
     if (isset($_POST['date_naissance'])) {
-        $critere_age = (int)calculAge($_POST['date_naissance']);
+        $critere_age = (int)$_POST['age'];
     }
 
     if (isset($moyp)) {
@@ -74,14 +73,12 @@ if (isset($_POST) && !empty($_POST)):
         $p_moyenne_annuelle = 0;
     }
 
-
     /* Total */
     $total = $p_nombre_mention + $p_moyenne_annuelle + $p_temps1 + $p_age;
 
-
     /* update */
     $update = $bdd->query("UPDATE inscription_sdapa 
-        SET moy_ann_l1 = $moyl1 , moy_ann_l2 = $moyl2 , moy_ann_l3 = $moyl3 , moy_pondere = $moyp , total_mention = $critere_nombre_mention
+        SET moy_ann_l1 = $moyl1 , moy_ann_l2 = $moyl2 , moy_ann_l3 = $moyl3 , moy_pondere = $moyp , total_mention = $p_nombre_mention
      ,total_point_critere = $total , temps_mis_en_Licence = $critere_temps1 WHERE id_etudiant = '$id_etudiant'") or die(print_r($bdd->errorInfo()));
 
 

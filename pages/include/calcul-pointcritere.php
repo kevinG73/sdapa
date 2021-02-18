@@ -56,7 +56,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="bg-danger text-white">
                     <p class="p-2">
                         <?= $message; ?>
-
                     </p>
                 </div>
             <?php endif; ?>

@@ -23,7 +23,7 @@ function ListeEtablissements()
     $requete = "select * from etablissement where afficher = 'OUI' and id_type_etablissement = 1 and id_etablissement <> 48  and id_etablissement <> 47 and id_etablissement <> 46 and id_etablissement <> 14 and id_etablissement <> 15 and id_etablissement <> 49  and id_etablissement <> 16 order by id_etablissement asc";
     $resultat = $bdd->query($requete);
     if (is_bool($resultat)) {
-        return [];
+        return array();
     } else {
         return $resultat->fetchAll();
     }
@@ -35,7 +35,7 @@ function ListeEtablissementsSession($id)
     $requete = "select * from etablissement where id_etablissement = '".$id."'";
     $resultat = $bdd->query($requete);
     if (is_bool($resultat)) {
-        return [];
+        return array();
     } else {
         return $resultat->fetchAll();
     }
@@ -70,7 +70,7 @@ function InfoParcours($id = null)
     }
     $resultat = $bdd->query($requete);
     if (is_bool($resultat)) {
-        return [];
+        return array();
     } else {
         return $resultat->fetchAll();
     }

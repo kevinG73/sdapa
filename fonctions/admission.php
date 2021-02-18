@@ -14,7 +14,7 @@ function ListeAdmis($annee, $id_etablissement, $id_departement, $id_parcours)
                 ORDER BY total_point_critere DESC";
     $resultat = $bdd->query($requete);
     if (is_bool($resultat)) {
-        return [];
+        return array();
     } else {
         return $resultat->fetchAll();
     }
