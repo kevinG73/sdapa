@@ -78,7 +78,7 @@ if (isset($_POST) && !empty($_POST)):
 
     /* update */
     $update = $bdd->query("UPDATE inscription_sdapa 
-        SET moy_ann_l1 = $moyl1 , moy_ann_l2 = $moyl2 , moy_ann_l3 = $moyl3 , moy_pondere = $moyp , total_mention = $critere_nombre_mention
+        SET moy_ann_l1 = $moyl1 , moy_ann_l2 = $moyl2 , moy_ann_l3 = $moyl3 , moy_pondere = $moyp , total_mention = $p_nombre_mention
      ,total_point_critere = $total , temps_mis_en_Licence = $critere_temps1 WHERE id_etudiant = '$id_etudiant'") or die(print_r($bdd->errorInfo()));
 
 
