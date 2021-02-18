@@ -7,6 +7,7 @@ if (!isset($_SESSION['connecte']) || $_SESSION['connecte'] === "") {
 }
 require "../config/connexion.php";
 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,11 +50,18 @@ require "../config/connexion.php";
             <!-- Topbar -->
             <?php include "include/navbar.php"; ?>
             <!-- End of Topbar -->
-
+            <?php
+            if($_SESSION["id_type_utilisateur "] == 1 || $_SESSION['id_groupe_utilisateur'] == 19 || $_SESSION['id_groupe_utilisateur'] == 20 ):
+            ?>
             <!-- Begin Page Content -->
             <div class="container-fluid">
                 <?php include "include/calcul-pointcritere.php"; ?>
             </div>
+            <?php
+            endif;
+            ?>
+
+
             <!-- /.container-fluid -->
 
         </div>

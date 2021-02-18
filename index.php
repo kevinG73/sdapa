@@ -12,6 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['id_etablissement'] = $stmt['id_etablissement'];
             $_SESSION['id_departement'] = $stmt['id_departement'];
             $_SESSION['id_type_utilisateur '] = $stmt['id_type_utilisateur'];
+            $_SESSION['id_groupe_utilisateur'] = $stmt['id_groupe_utilisateur'];
             header('Location:pages/index.php');
         } else {
             $_SESSION['connecte'] = "";

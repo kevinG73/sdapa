@@ -112,7 +112,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </div>
     </div>
-
     <div class="card shadow mb-5">
         <div class="card-header">
             <h6 class="m-0 font-weight-bold text-primary text-uppercase">Consultation des points d'admissibilité </h6>
@@ -137,7 +136,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </div>
 
-
+    <?php
+    if($_SESSION["id_type_utilisateur "] == 1 || $_SESSION['id_groupe_utilisateur'] == 20 ):
+    ?>
     <div class="card shadow mb-5">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary text-uppercase">selection des admis</h6>
@@ -162,6 +163,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         </div>
     </div>
+    <?php
+    endif;
+    ?>
 </form>
 
 <!-- /.container-fluid -->

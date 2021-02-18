@@ -12,7 +12,6 @@ if (isset($_GET['id_etablissement']) && !empty($_GET['id_etablissement'])):
     } else {
         $id_etablissement = (int)$_SESSION['id_etablissement'];
         $requete = "SELECT * FROM departement WHERE id_etablissement = $id_etablissement";
-        $id_etablissement = $_SESSION['id_etablissement'];
     }
 
 
