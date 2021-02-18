@@ -4,7 +4,6 @@ require "../../fonctions/index.php";
 
 if (isset($_POST) && !empty($_POST)):
     /* variables */
-
     $moyl1 = (float)$_POST['moyl1'];
     $moyl2 = (float)$_POST['moyl2'];
     $moyl3 = (float)$_POST['moyl3'];
@@ -27,7 +26,7 @@ if (isset($_POST) && !empty($_POST)):
     }
 
     if (isset($_POST['date_naissance'])) {
-        $critere_age = (int)calculAge($_POST['date_naissance']);
+        $critere_age = (int)$_POST['age'];
     }
 
     if (isset($moyp)) {
@@ -74,10 +73,8 @@ if (isset($_POST) && !empty($_POST)):
         $p_moyenne_annuelle = 0;
     }
 
-
     /* Total */
     $total = $p_nombre_mention + $p_moyenne_annuelle + $p_temps1 + $p_age;
-
 
     /* update */
     $update = $bdd->query("UPDATE inscription_sdapa 

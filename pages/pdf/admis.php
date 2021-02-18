@@ -33,7 +33,7 @@ if (is_bool($resultat)) {
 }
 
 
-$liste_decouper = array_chunk($etudiants, 12);
+$liste_decouper = array_chunk($etudiants, 22);
 
 
 /* make TCPDF object */

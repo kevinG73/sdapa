@@ -60,7 +60,7 @@
                                 <label for="inputTemps1" class="mr-2">L'âge de l'étudiant</label>
                                 <div class="form-inline">
                                     <input type="number" class="form-control w-25 mr-2" id="inputAge" name="age"
-                                           disabled>
+                                           readonly>
                                     <span id="age-point" class="font-weight-bold text-danger"></span>
                                 </div>
                             </div>

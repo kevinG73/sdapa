@@ -31,7 +31,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-        <a class="nav-link" href="INFO.pdf">
+        <a class="nav-link" href="info.php">
             <span>INFO</span></a>
     </li>
 
