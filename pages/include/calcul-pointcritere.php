@@ -23,6 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (isset($_POST['valider'])) {
         $_SESSION['select'] = $_POST['id_parcours'];
+        $_SESSION['id_annee'] = $_POST['id_annee'];
         /* nombre total d'étudiant ayant quelque chose different de 0 comme point critère */
         $pt = (int)verifierSiCalculTerminee($id_annee, $id_etablissement, $id_departement, $id_parcours);
         /* nombre total d'étudiant dans ce parcours */
@@ -65,9 +66,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label for="id_annee">Année académique</label>
                     <select class="form-control" name="id_annee" id="id_annee">
                         <?php foreach ($annee as $an): ?>
-                            <option value="<?= $an['id_annee_academique'] ?>">
-                                <?= $an['libelle_annee_academique'] ?>
-                            </option>
+                            <?php if (isset($_SESSION['id_annee']) && !empty($_SESSION['id_annee']) && ($_SESSION['id_annee'] == $an['id_annee_academique'])): ?>
+                                <option selected value="<?= $an['id_annee_academique'] ?>">
+                                    <?= $an['libelle_annee_academique'] ?>
+                                </option>
+                            <?php else: ?>
+                                <option value="<?= $an['id_annee_academique'] ?>">
+                                    <?= $an['libelle_annee_academique'] ?>
+                                </option>
+                            <?php endif; ?>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -136,32 +143,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
     <?php
-    if($_SESSION["id_type_utilisateur "] == 1 || $_SESSION['id_groupe_utilisateur'] == 20 ):
-    ?>
-    <div class="card shadow mb-5">
-        <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary text-uppercase">selection des admis</h6>
-        </div>
-        <div class="card-body">
-            <form method="post">
-                <div class="d-flex justify-content-between">
-                    <div class="form-inline ">
-                        <label for="id_critere_selection" class="mr-5">critère de selection</label>
-                        <select class="form-control" name="id_critere_selection" id="id_critere_selection">
-                            <option value="0"> selectionner</option>
-                            <?php for ($i = 0; $i <= 24; $i++): ?>
-                                <option value="<?= $i ?>">point superieur à <?= $i ?> </option>
-                            <?php endfor; ?>
-                        </select>
+    if ($_SESSION["id_type_utilisateur "] == 1 || $_SESSION['id_groupe_utilisateur'] == 20):
+        ?>
+        <div class="card shadow mb-5">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary text-uppercase">selection des admis</h6>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    <div class="d-flex justify-content-between">
+                        <div class="form-inline ">
+                            <label for="id_critere_selection" class="mr-5">critère de selection</label>
+                            <select class="form-control" name="id_critere_selection" id="id_critere_selection">
+                                <option value="0"> selectionner</option>
+                                <?php for ($i = 0; $i <= 24; $i++): ?>
+                                    <option value="<?= $i ?>">point superieur à <?= $i ?> </option>
+                                <?php endfor; ?>
+                            </select>
+                        </div>
+                        <div class="mt-2 pr-2">
+                            <input class="btn btn-primary" name="valider" type="submit" value="valider le critère">
+                        </div>
                     </div>
-                    <div class="mt-2 pr-2">
-                        <input class="btn btn-primary" name="valider" type="submit" value="valider le critère">
-                    </div>
-                </div>
-            </form>
+                </form>
 
+            </div>
         </div>
-    </div>
     <?php
     endif;
     ?>

@@ -12,13 +12,15 @@ $annee = ListeAnnee();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id_annee = $_POST['id_annee'];
+    $_SESSION['id_annee'] = $_POST['id_annee'];
     $id_etablissement = $_POST['id_etablissement'];
     $id_departement = $_POST['id_departement'];
     $id_parcours = $_POST['id_parcours'];
 
+
     if (isset($_POST['action']) && $_POST['action'] === "consulter") {
         $_SESSION['select'] = $_POST['id_parcours'];
-        $admis = ListeAdmis($id_annee, $id_etablissement, $id_departement,$id_parcours);
+        $admis = ListeAdmis($id_annee, $id_etablissement, $id_departement, $id_parcours);
     }
 
     if (isset($_POST['action']) && $_POST['action'] === "imprimer") {
@@ -41,9 +43,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label for="id_annee">Année académique</label>
                     <select class="form-control" name="id_annee" id="id_annee">
                         <?php foreach ($annee as $an): ?>
-                            <option value="<?= $an['id_annee_academique'] ?>">
-                                <?= $an['libelle_annee_academique'] ?>
-                            </option>
+                            <?php if (isset($_SESSION['id_annee']) && !empty($_SESSION['id_annee']) && ($_SESSION['id_annee'] == $an['id_annee_academique'])): ?>
+                                <option selected value="<?= $an['id_annee_academique'] ?>">
+                                    <?= $an['libelle_annee_academique'] ?>
+                                </option>
+                            <?php else: ?>
+                                <option value="<?= $an['id_annee_academique'] ?>">
+                                    <?= $an['libelle_annee_academique'] ?>
+                                </option>
+                            <?php endif; ?>
                         <?php endforeach; ?>
                     </select>
                 </div>
