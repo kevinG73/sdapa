@@ -1,6 +1,8 @@
 <?php
 if (isset($_POST['modifier'])) {
     extract($_POST);
+
+
     $code_et = $_GET['id'];
     $nom = $nom;
     $prenom = $prenoms;
@@ -22,8 +24,16 @@ if (isset($_POST['modifier'])) {
         if ($modification == 1) {
             $inscription = new inscription($annee, $code_et,'',
                 '', '', '', '',
-                '', $id_parcours, $id_departement, $id_etablissement, $bdd);
-            $enregistrement2 = $inscription->modification();
+                '','', $id_departement, $id_etablissement, $bdd);
+            $enregistrement2 = $inscription->modification($code_et);
+
+            foreach ($id_parcours as $testparcours):
+                $inscription = new inscription($annee, $code_et, 0,
+                    0, 0, 0, 0,
+                    3, $testparcours, $id_departement, $id_etablissement, $bdd);
+                $enregistrement2 = $inscription->enregistrement();
+            endforeach;
+
             ?>
             <div><span class="form-text text-success font-weight-bold"><i
                         class="fas fa-check-square fa-md fa-fw mr-2"></i>Informations modifiées avec succès .</span>
@@ -48,6 +58,7 @@ if (isset($_POST['modifier'])) {
         <?php
 
     }
+
 
 }
 ?>

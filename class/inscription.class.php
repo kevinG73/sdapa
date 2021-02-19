@@ -64,21 +64,13 @@ class inscription
     }
 
 
-    public function modification()
+    public function modification($id_etudiant)
     {
-        $requete = $this->bdd->prepare('UPDATE inscription_sdapa SET  annee=:annee,
-           
-            id_parcours=:id_parcours,        
-            id_etablissement=:id_etablissement,
-            id_departement=:id_departement WHERE id_etudiant=:id_etudiant');
-        $requete->execute(array(
+        $requete5 = $this->bdd->prepare('DELETE FROM inscription_sdapa WHERE id_etudiant=:id');
+        $requete5->execute(array(
+            'id' => $id_etudiant));
 
-            'id_parcours' => $this->id_parcours,
-            'annee' => $this->annee,
-            'id_etudiant' => $this->id_etudiant,
-            'id_departement' => $this->id_departement,
-            'id_etablissement' => $this->id_etablissement
-        ));
+
 
 
     }

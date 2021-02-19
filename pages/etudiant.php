@@ -39,6 +39,8 @@ $pays = ListePays();
     <link href="../src/css/sb-admin-2.min.css" rel="stylesheet">
     <!-- Custom styles for this page -->
     <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="../vendor/select/dist/css/select2.min.css" rel="stylesheet" />
+
 </head>
 
 <body id="page-top">
@@ -75,15 +77,16 @@ $pays = ListePays();
                     if ($_SESSION['id_type_utilisateur '] == 1) {
                         $etud = $bdd->query('select * from etudiant_sdapa where id ="' . $_GET['id'] . '"') or die(print_r($bdd->errorInfo()));
                         $res = $etud->fetch();
-                        $insc = $bdd->query('select * from inscription_sdapa where id_etudiant ="' . $_GET['id'] . '"') or die(print_r($bdd->errorInfo()));
+                        $insc = $bdd->query('select * from inscription_sdapa where id_etudiant ="' . $_GET['id'] . '" group by id_etudiant') or die(print_r($bdd->errorInfo()));
                         $resins = $insc->fetch();
                         $resdd = $bdd->query('select * from cursus where id_etudiant ="' . $_GET['id'] . '"') or die(print_r($bdd->errorInfo()));
                         $resdip = $resdd->fetch();
                         $_SESSION['annee'] = $resins['annee'];
                         $_SESSION['id_etablissement'] = $resins['id_etablissement'];
-                        $_SESSION['id_parcours'] = $resins['id_parcours'];
                         $_SESSION['id_departement'] = $resins['id_departement'];
                         $_SESSION['anneeante'] = $resdip['id_anne_ante'];
+                        $array_parcours=array();
+                        $_SESSION['id_']=$_GET['id'];
 
                     } else {
                         $etud = $bdd->query('select * from etudiant_sdapa where id ="' . $_GET['id'] . '"') or die(print_r($bdd->errorInfo()));
@@ -94,13 +97,14 @@ $pays = ListePays();
                         $resdip = $resdd->fetch();
                         $_SESSION['anneeante'] = $resdip['id_anne_ante'];
                         $_SESSION['annee'] = $resins['annee'];
-                        $_SESSION['id_parcours'] = $resins['id_parcours'];
+                        $array_parcours=array();
+                        $_SESSION['id_']=$_GET['id'];
                     }
 
                     if (isset($_POST['modifier'])) {
                         include 'include/crud_etudiant/modifier_etudiant.php';
                         ?>
-                        <script>document.location.replace("etudiant.php")</script>
+
                         <?php
 
                     }
@@ -189,7 +193,7 @@ $pays = ListePays();
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label class="col-form-label-sm" for="id_parcours">Parcours</label>
-                                        <select class="form-control" name="id_parcours" id="id_parcours">
+                                        <select class="form-control js-example-basic-multiple" name="id_parcours[]" id="id_parcours" multiple>
                                             <option value="0">parcours</option>
                                         </select>
                                     </div>
@@ -460,7 +464,7 @@ $pays = ListePays();
                     <?php elseif (isset($_GET['id'])) : ?>
                         <button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#updateClasseModal">Soumettre
                         </button>
-                        <a class="btn btn-lg btn-danger" href="etudiant.php">Annuler</a>
+                        <button class="btn btn-lg btn-danger" onclick="destroy()">Annuler</button>
                     <?php endif; ?>
                     <div id="destroy">
 
@@ -471,7 +475,7 @@ $pays = ListePays();
                 if ($_SESSION['id_type_utilisateur '] == 1) {
                     $gu = $bdd->query("select * from etudiant_sdapa,inscription_sdapa where etudiant_sdapa.id = inscription_sdapa.id_etudiant group by inscription_sdapa.id") or die(print_r($bdd->errorInfo()));
                 } else {
-                    $gu = $bdd->query("select * from etudiant_sdapa,inscription_sdapa where etudiant_sdapa.id = inscription_sdapa.id_etudiant and inscription_sdapa.id_etablissement = '" . $_SESSION['id_etablissement'] . "' and inscription_sdapa.id_departement = '" . $_SESSION['id_departement'] . "' group by inscription_sdapa.id") or die(print_r($bdd->errorInfo()));
+                    $gu = $bdd->query("select * from etudiant_sdapa,inscription_sdapa where etudiant_sdapa.id = inscription_sdapa.id_etudiant and inscription_sdapa.id_etablissement = '" . $_SESSION['id_etablissement'] . "' and inscription_sdapa.id_departement = '" . $_SESSION['id_departement'] . "' group by inscription_sdapa.id_etudiant") or die(print_r($bdd->errorInfo()));
                 }
 
                 ?>
@@ -583,11 +587,15 @@ $pays = ListePays();
 <script src="../src/js/ajax.js"></script>
 <script src="../src/js/etudiant_js.js"></script>
 <script src="../vendor/validation/dist/bootstrap-validate.js"></script>
+<script src="../vendor/select/dist/js/select2.min.js"></script>
 <script>
+
+    $(document).ready(function() {
+        $('.js-example-basic-multiple').select2();
+    });
     bootstrapValidate(['#carte_et', '#numero_mers', '#nom', '#prenoms', '#lieu_naissance', '#datenaiss', '#maila', '#contact', '#eta_anterieur'], 'required: Veuillez remplir les champs!')
     bootstrapValidate('#maila', 'email: Entrer email valide!')
     bootstrapValidate('#contact', 'min:10: Entrer votre numero sur 10 chiffres')
-    var searchInput = 'lieu_naissance';
 
 </script>
 

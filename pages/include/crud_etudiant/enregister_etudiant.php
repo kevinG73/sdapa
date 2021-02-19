@@ -33,13 +33,20 @@ if ($verificaion == 1) {
     $enregistrement = $insertEt->enregistrement();
     $cursus = $insertEt->insertcursus($code_et, $annee_anterieur, $eta_anterieur, $diplome1, $diplome2, $pays_anterieur);
     if ($enregistrement == 1) {
-        $inscription = new inscription($annee, $code_et, 0,
-            0, 0, 0, 0,
-            3, $id_parcours, $id_departement, $id_etablissement, $bdd);
+
         for ($i = 1; $i <= 3; $i++) {
             $mention = $bdd->query('insert into total_mentions(id_niveau, id_etudiant, ab, mb, tb, total_mention, moy_pondere) VALUES ("' . $i . '","' . $code_et . '",0,0,0,0,0)') or die(print_r($bdd->errorInfo()));
         }
-        $enregistrement2 = $inscription->enregistrement();
+
+        foreach ($id_parcours as $testparcours){
+
+            $inscription = new inscription($annee, $code_et, 0,
+                0, 0, 0, 0,
+                3, $testparcours, $id_departement, $id_etablissement, $bdd);
+
+            $enregistrement2 = $inscription->enregistrement();
+        }
+
         ?>
         <div>
                                 <span class="form-text text-success font-weight-bold"><i
@@ -64,6 +71,4 @@ if ($verificaion == 1) {
     </div>
     <?php
 }
-
-
 ?>
