@@ -6,7 +6,7 @@ var p_age = 0;
 var total = 0;
 
 $(document).ready(function () {
-
+    /* quand le modal de calcul s'ouvre */
     $('#empModal').on('show.bs.modal', function () {
         determinerAge();
         determinerPointTemps();
@@ -25,8 +25,10 @@ $(document).ready(function () {
         var Bday = +new Date($("#inputDateNaissance").val());
         age = parseInt(~~((Date.now() - Bday) / (31557600000))) || 0;
         /* afficher le point de l'âge à côté du champ age*/
-        $("#inputAge").val(age);
-        if (age >= 20 && age < 24) {
+        $("#inputAge").val(age)
+        if (age < 20) {
+            p_age = 0;
+        } else if (age >= 20 && age < 24) {
             p_age = 5;
         } else if (age >= 24 && age < 26) {
             p_age = 3;
@@ -37,13 +39,13 @@ $(document).ready(function () {
     }
 
     /* temps passé en licence */
-    $("#inputTemps1 ").bind('keyup change click blur mouseup', function (e) {
+    $("#inputTemps1").bind('keyup change click blur mouseup', function (e) {
         if ($(this).val() > 6
             && e.keyCode !== 46
             && e.keyCode !== 8
         ) {
             e.preventDefault();
-            $(this).val(0);
+            $(this).val(3);
         }
         determinerPointTemps();
         total_point_critere();
@@ -85,7 +87,7 @@ $(document).ready(function () {
     }
 
     /* total mentions */
-    $(document).on("change keyup", "#activity_table input", function () {
+    $(document).on("change keyup blur mouseup", "#activity_table input", function () {
         determinerPointMention();
     });
 
@@ -98,7 +100,33 @@ $(document).ready(function () {
         total_point_critere();
     });
 
+    /* pour calculer la moyenne pondéré de la licence */
+    $("#inputML1, #inputML2, #inputML3").on("change keyup click blur mouseup", function () {
+        var l1 = parseFloat($("#inputML1").val(), 10) || 0;
+        var l2 = parseFloat($("#inputML2").val(), 10) || 0;
+        var l3 = parseFloat($("#inputML3").val(), 10) || 0;
+        var calcul = ((l1 + l2 * 2 + l3 * 4) / 7);
 
+        var resultat = isFinite(calcul) ? calcul : 0;
+        $("#inputMA").val(parseFloat(resultat).toFixed(2));
+
+        var critere_moyenne_annuelle = parseFloat($("#inputMA").val()) || 0;
+        p_moyenne_annuelle = 0;
+        if (critere_moyenne_annuelle >= 18 && critere_moyenne_annuelle < 20) {
+            p_moyenne_annuelle = 8;
+        } else if (critere_moyenne_annuelle >= 16 && critere_moyenne_annuelle < 18) {
+            p_moyenne_annuelle = 6;
+        } else if (critere_moyenne_annuelle >= 14 && critere_moyenne_annuelle < 16) {
+            p_moyenne_annuelle = 5;
+        } else if (critere_moyenne_annuelle >= 12 && critere_moyenne_annuelle < 14) {
+            p_moyenne_annuelle = 3;
+        } else if (critere_moyenne_annuelle >= 11 && critere_moyenne_annuelle < 12) {
+            p_moyenne_annuelle = 1;
+        } else if (critere_moyenne_annuelle < 11) {
+            p_moyenne_annuelle = 0;
+        }
+        $("#moyenne-point").text(p_moyenne_annuelle + " point(s)");
+    });
 
 });
 
