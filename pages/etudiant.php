@@ -18,6 +18,7 @@ $etudiants = ListeEtudiants();
 $anne = ListeAnnee();
 $anneanterieur = ListeAnneeAnter();
 $pays = ListePays();
+$diplome = ListeDiplome();
 
 ?>
 
@@ -88,6 +89,7 @@ $pays = ListePays();
                         $array_parcours=array();
                         $_SESSION['id_']=$_GET['id'];
 
+
                     } else {
                         $etud = $bdd->query('select * from etudiant_sdapa where id ="' . $_GET['id'] . '"') or die(print_r($bdd->errorInfo()));
                         $res = $etud->fetch();
@@ -103,9 +105,6 @@ $pays = ListePays();
 
                     if (isset($_POST['modifier'])) {
                         include 'include/crud_etudiant/modifier_etudiant.php';
-                        ?>
-
-                        <?php
 
                     }
                 }
@@ -114,7 +113,7 @@ $pays = ListePays();
                     include 'include/crud_etudiant/supprimer_etudiant.php';
                 }
 
-                ?>
+               ?>
 
                 <form method="post">
 
@@ -186,14 +185,14 @@ $pays = ListePays();
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-3 mr-5">
-                                        <label class="col-form-label-sm" for="id_parcours">Niveau à accéder</label>
+                                        <label class="col-form-label-sm">Niveau à accéder</label>
                                         <select class="form-control">
                                             <option value="M1">MASTER 1</option>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label class="col-form-label-sm" for="id_parcours">Parcours</label>
-                                        <select class="form-control js-example-basic-multiple" name="id_parcours[]" id="id_parcours" multiple>
+                                        <select class="form-control js-example-basic-multiple" required name="id_parcours[]" id="id_parcours" multiple>
                                             <option value="0">parcours</option>
                                         </select>
                                     </div>
@@ -252,7 +251,7 @@ $pays = ListePays();
                                             <div class="form-group col-md-4">
                                                 <label class="col-form-label-sm">Numero Mers</label>
                                                 <input type="text" class="form-control text-uppercase" id="numero_mers"
-                                                       required name="numero_mers"
+                                                       name="numero_mers"
                                                        value="<?php echo @ $res['mesrs'] ?>">
                                             </div>
                                         </div>
@@ -415,7 +414,6 @@ $pays = ListePays();
                                         <label class="col-form-label-sm" for="exampleFormControlSelect1">Diplôme
                                             obtenue</label>
                                         <select class="form-control text-uppercase" id="diplome1" name="diplome1">
-                                            <?php $diplome = ListeDiplome() ?>
                                             <?php foreach ($diplome as $dip): ?>
                                                 <?php if ($resdip['id_diplomes'] == $dip['id_diplomes']) : ?>
                                                     <option selected
@@ -593,9 +591,10 @@ $pays = ListePays();
     $(document).ready(function() {
         $('.js-example-basic-multiple').select2();
     });
-    bootstrapValidate(['#carte_et', '#numero_mers', '#nom', '#prenoms', '#lieu_naissance', '#datenaiss', '#maila', '#contact', '#eta_anterieur'], 'required: Veuillez remplir les champs!')
+    bootstrapValidate(['#carte_et', '#numero_mers', '#nom', '#prenoms', '#lieu_naissance', '#datenaiss', '#maila', '#contact', '#eta_anterieur','#id_parcours'], 'required: Veuillez remplir les champs!')
     bootstrapValidate('#maila', 'email: Entrer email valide!')
     bootstrapValidate('#contact', 'min:10: Entrer votre numero sur 10 chiffres')
+    bootstrapValidate('#contact', 'max:10: Votre numero ne doit pas depasser les 10 chiffres')
 
 </script>
 

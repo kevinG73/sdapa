@@ -1,8 +1,6 @@
 <?php
 if (isset($_POST['modifier'])) {
     extract($_POST);
-
-
     $code_et = $_GET['id'];
     $nom = $nom;
     $prenom = $prenoms;
@@ -33,8 +31,9 @@ if (isset($_POST['modifier'])) {
                     3, $testparcours, $id_departement, $id_etablissement, $bdd);
                 $enregistrement2 = $inscription->enregistrement();
             endforeach;
-
+            unset($_SESSION['id_']);
             ?>
+            <script>document.location.replace("etudiant.php")</script>
             <div><span class="form-text text-success font-weight-bold"><i
                         class="fas fa-check-square fa-md fa-fw mr-2"></i>Informations modifiées avec succès .</span>
             </div>
