@@ -276,7 +276,7 @@ $pays = ListePays();
                                         <div class="form-group col-md-4">
                                             <label class="col-form-label-sm">Numéro Mers</label>
                                             <input type="text" class="form-control text-uppercase" id="numero_mers"
-                                                   required name="numero_mers" autocomplete="off">
+                                                   name="numero_mers" autocomplete="off">
                                         </div>
                                     </div>
                                 <?php endif; ?>
@@ -315,7 +315,7 @@ $pays = ListePays();
                                                onchange="testage(this.value)" id="datenaiss" name="date_naissance"
                                                value="<?php echo @ $res['date_naissance'] ?>"
                                                max="<?= date('Y-m-d'); ?>">
-                                        <div class="invalid-tooltip" id="Vdatemin" style="display: none">Age minimum 16
+                                        <div class="invalid-tooltip" id="Vdatemin" style="display: none">Age minimum 17
                                             ans
                                         </div>
                                     </div>
@@ -348,7 +348,7 @@ $pays = ListePays();
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label class="col-form-label-sm">Contact</label>
-                                        <input type="text" class="form-control text-uppercase" id="contact" autocomplete="off" max="15"
+                                        <input type="text" class="form-control text-uppercase" id="contact" autocomplete="off" min="10" max="10"
                                                name="contat" required value="<?php echo @ $res['telephone'] ?>">
                                     </div>
 
