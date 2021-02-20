@@ -129,7 +129,7 @@ $diplome = ListeDiplome();
                                         <select class="form-control" name="annee" id="anneaca">
                                             <?php foreach ($anne as $repanne): ?>
                                                 <?php
-                                                if ($repanne['id_annee_academique'] == $_SESSION['annee']) {
+                                                if ($repanne['id_annee_academique'] == isset($_SESSION['annee'])) {
                                                     ?>
                                                     <option selected
                                                             value="<?= $repanne['id_annee_academique'] ?>"> <?= $repanne['libelle_annee_academique'] ?></option>
@@ -471,7 +471,7 @@ $diplome = ListeDiplome();
 
                 <?php
                 if ($_SESSION['id_type_utilisateur '] == 1) {
-                    $gu = $bdd->query("select * from etudiant_sdapa,inscription_sdapa where etudiant_sdapa.id = inscription_sdapa.id_etudiant group by inscription_sdapa.id") or die(print_r($bdd->errorInfo()));
+                    $gu = $bdd->query("select * from etudiant_sdapa,inscription_sdapa where etudiant_sdapa.id = inscription_sdapa.id_etudiant group by inscription_sdapa.id_etudiant") or die(print_r($bdd->errorInfo()));
                 } else {
                     $gu = $bdd->query("select * from etudiant_sdapa,inscription_sdapa where etudiant_sdapa.id = inscription_sdapa.id_etudiant and inscription_sdapa.id_etablissement = '" . $_SESSION['id_etablissement'] . "' and inscription_sdapa.id_departement = '" . $_SESSION['id_departement'] . "' group by inscription_sdapa.id_etudiant") or die(print_r($bdd->errorInfo()));
                 }
