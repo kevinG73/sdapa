@@ -24,6 +24,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['valider'])) {
         $_SESSION['select'] = $_POST['id_parcours'];
         $_SESSION['id_annee'] = $_POST['id_annee'];
+        $_SESSION['mode-calcul'] = $_POST['mode-calcul'];
+
         /* nombre total d'étudiant ayant quelque chose different de 0 comme point critère */
         $pt = (int)verifierSiCalculTerminee($id_annee, $id_etablissement, $id_departement, $id_parcours);
         /* nombre total d'étudiant dans ce parcours */
@@ -32,12 +34,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($total === 0) {
             $message = "Le parcours selectionné ne contient pas d'étudiant pour effectuer une operation .";
         } else {
+
             /* oui */
-            if ($total === $pt) {
+            $choix_mode_calcul = (int)$_POST['mode-calcul'];
+
+
+            if ($choix_mode_calcul === 0) {
+                /* tout parcours confonu */
+                header('Location: attribution-manuel.php');
+            } else {
+                /* par parcours */
                 AppliquerCritere($id_annee, $id_etablissement, $id_departement, $id_parcours, $point);
                 header('Location: admis.php');
-            } else {
-                $message = "Veuillez terminer le calcul des points critères de tous les étudiants de ce parcours avant d'obtenir des résultats . ";
             }
         }
 
@@ -150,23 +158,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <h6 class="m-0 font-weight-bold text-primary text-uppercase">selection des admis</h6>
             </div>
             <div class="card-body">
-                <form method="post">
-                    <div class="d-flex justify-content-between">
-                        <div class="form-inline ">
-                            <label for="id_critere_selection" class="mr-5">critère de selection</label>
-                            <select class="form-control" name="id_critere_selection" id="id_critere_selection">
-                                <option value="0"> selectionner</option>
-                                <?php for ($i = 0; $i <= 24; $i++): ?>
-                                    <option value="<?= $i ?>">point superieur à <?= $i ?> </option>
-                                <?php endfor; ?>
-                            </select>
-                        </div>
-                        <div class="mt-2 pr-2">
-                            <input class="btn btn-primary" name="valider" type="submit" value="valider le critère">
-                        </div>
+                <div class="d-flex justify-content-between">
+                    <div class="form-inline ">
+                        <label for="mode-calcul" class="mr-5">mode de calcul</label>
+                        <select class="form-control" name="mode-calcul" id="mode-calcul">
+                            <option value="0"> tout parcours confondu</option>
+                            <option value="1" selected> par parcours</option>
+                        </select>
                     </div>
-                </form>
 
+                    <div class="form-inline ">
+                        <label for="id_critere_selection" class="mr-5">critère de selection</label>
+                        <select class="form-control" name="id_critere_selection" id="id_critere_selection">
+                            <option value="0"> selectionner</option>
+                            <?php for ($i = 0; $i <= 24; $i++): ?>
+                                <option value="<?= $i ?>">point superieur à <?= $i ?> </option>
+                            <?php endfor; ?>
+                        </select>
+                    </div>
+                    <div class="mt-2 pr-2">
+                        <input class="btn btn-primary" name="valider" type="submit" value="valider">
+                    </div>
+                </div>
             </div>
         </div>
     <?php
