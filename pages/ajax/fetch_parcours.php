@@ -5,12 +5,13 @@ require "../../fonctions/index.php";
 
 
 $array_parcours=[];
+if (isset($_SESSION['id_'])):
 $parcours = $bdd->query('select * from inscription_sdapa where id_etudiant ="' . $_SESSION['id_'] . '"') or die(print_r($bdd->errorInfo()));
 
 while($res_parcours=$parcours->fetch()):
     array_push($array_parcours,$res_parcours['id_parcours']);
 endwhile;
-
+endif;
 if (isset($_GET['id_departement']) && !empty($_GET['id_departement'])):
     $id_departement = $_GET['id_departement'];
     global $bdd;
@@ -20,7 +21,8 @@ if (isset($_GET['id_departement']) && !empty($_GET['id_departement'])):
                 specialite.id_specialite = composer_maquette.id_specialite
                 and specialite.id_mention = mention.id_mention
                 and composer_maquette.id_semestre = semestre.id_semestre
-                and semestre.id_niveau = 4 and mention.id_departement = '" . $id_departement . "' 
+                and semestre.id_niveau = 4 and mention.id_departement = '" . $id_departement . "'
+                and specialite.id_specialite not in (63,64,65,66,67,319)
                 group by specialite.id_specialite";
 
     $resultat = $bdd->query($requete);

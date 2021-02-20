@@ -8,11 +8,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         extract($_POST);
         $requete = $bdd->query('select * from utilisateur where login_utilisateur = "'.$login.'" and mot_passe_utilisateur = "'.$motdepasse.'"');
         if ($stmt= $requete->fetch()) {
-            $_SESSION['connecte'] = $stmt['id_utilisateur'];
-            $_SESSION['id_etablissement'] = $stmt['id_etablissement'];
-            $_SESSION['id_departement'] = $stmt['id_departement'];
-            $_SESSION['id_type_utilisateur '] = $stmt['id_type_utilisateur'];
-            $_SESSION['id_groupe_utilisateur'] = $stmt['id_groupe_utilisateur'];
+            if($stmt['id_groupe_utilisateur'] == 14){
+                $_SESSION['connecte'] = $stmt['id_utilisateur'];
+                $_SESSION['id_etablissement'] = $stmt['id_etablissement'];
+                $_SESSION['id_type_utilisateur '] = $stmt['id_type_utilisateur'];
+                $_SESSION['id_groupe_utilisateur'] = $stmt['id_groupe_utilisateur'];
+            }else{
+                $_SESSION['connecte'] = $stmt['id_utilisateur'];
+                $_SESSION['id_etablissement'] = $stmt['id_etablissement'];
+                $_SESSION['id_departement'] = $stmt['id_departement'];
+                $_SESSION['id_type_utilisateur '] = $stmt['id_type_utilisateur'];
+                $_SESSION['id_groupe_utilisateur'] = $stmt['id_groupe_utilisateur'];
+            }
+
             if ($_SESSION['id_groupe_utilisateur'] == 14){
                 header('Location:pages/admis.php');
             }elseif ($_SESSION['id_groupe_utilisateur'] == 20){

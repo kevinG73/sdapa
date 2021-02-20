@@ -5,9 +5,14 @@ $information = $info->fetch();
 if ($_SESSION['id_type_utilisateur '] == 1) {
 
 } else {
-    $nom_etablissement = $bdd->query("SELECT nom_etablissement FROM etablissement WHERE id_etablissement = '" . $_SESSION['id_etablissement'] . "'")->fetchColumn();
-    $nom_departement = $bdd->query("SELECT nom_departement FROM departement WHERE id_departement = '" . $_SESSION['id_departement'] . "'")->fetchColumn();
+    if ($_SESSION['id_groupe_utilisateur'] == 14){
+        $nom_etablissement = $bdd->query("SELECT nom_etablissement FROM etablissement WHERE id_etablissement = '" . $_SESSION['id_etablissement'] . "'")->fetchColumn();
+    }else{
+        $nom_etablissement = $bdd->query("SELECT nom_etablissement FROM etablissement WHERE id_etablissement = '" . $_SESSION['id_etablissement'] . "'")->fetchColumn();
+        $nom_departement = $bdd->query("SELECT nom_departement FROM departement WHERE id_departement = '" . $_SESSION['id_departement'] . "'")->fetchColumn();
+    }
 }
+
 
 ?>
 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
@@ -22,7 +27,17 @@ if ($_SESSION['id_type_utilisateur '] == 1) {
     </div>
 
     <div class="col-md-5">
-        <p class="mb-5"> <h6 class="text-uppercase">UNITE DE FORMATION : <?php echo @$nom_departement ?></h6></p>
+        <?php
+        if ($_SESSION['id_groupe_utilisateur'] == 14) :
+            ?>
+
+        <?php
+        else:
+            ?>
+            <p class="mb-5"> <h6 class="text-uppercase">UNITE DE FORMATION : <?php echo @$nom_departement ?></h6></p>
+        <?php
+        endif;
+        ?>
     </div>
 
     <!-- Topbar Navbar -->
