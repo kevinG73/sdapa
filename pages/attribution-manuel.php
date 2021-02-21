@@ -62,6 +62,8 @@ require "../config/connexion.php";
 </div>
 <!-- End of Page Wrapper -->
 
+<?php include "modal/orientation.php"; ?>
+
 <!-- Scroll to Top Button-->
 <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
@@ -78,6 +80,7 @@ require "../config/connexion.php";
 <script src="../src/js/sb-admin-2.min.js"></script>
 <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
 <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="../src/js/datatable/datatable_attribution.js"></script>
 </body>
 
 </html>

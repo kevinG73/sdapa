@@ -6,7 +6,7 @@ function fetchNationalite(){
 
     $resultat = $bdd->query($requete);
     if (is_bool($resultat)) {
-        return [];
+        return array();
     } else {
         return $resultat->fetchAll();
     }
@@ -19,7 +19,7 @@ function fetchSexe(){
 
     $resultat = $bdd->query($requete);
     if (is_bool($resultat)) {
-        return [];
+        return array();
     } else {
         return $resultat->fetchAll();
     }
@@ -33,7 +33,7 @@ function fetchAnne()
 
     $resultat = $bdd->query($requete);
     if (is_bool($resultat)) {
-        return [];
+        return array();
     } else {
         return $resultat->fetchAll();
     }
@@ -48,7 +48,7 @@ function fetchTypeIns()
 
     $resultat = $bdd->query($requete);
     if (is_bool($resultat)) {
-        return [];
+        return array();
     } else {
         return $resultat->fetchAll();
     }
@@ -65,7 +65,7 @@ function fetchTotalMention($id)
 
     $resultat = $bdd->query($requete);
     if (is_bool($resultat)) {
-        return [];
+        return array();
     } else {
         return $resultat->fetchAll();
     }
@@ -80,7 +80,7 @@ function fetchFil()
 
     $resultat = $bdd->query($requete);
     if (is_bool($resultat)) {
-        return [];
+        return array();
     } else {
         return $resultat->fetchAll();
     }
@@ -94,7 +94,7 @@ function fetchEt(){
 
     $resultat = $bdd->query($requete);
     if (is_bool($resultat)) {
-        return [];
+        return array();
     } else {
         return $resultat->fetchAll();
     }
@@ -104,7 +104,7 @@ function fetchNiv(){
     $requete = "select * from niveau where id_niveau = 1 or id_niveau = 2 or id_niveau = 3 ";
     $resultat = $bdd->query($requete);
     if (is_bool($resultat)) {
-        return [];
+        return array();
     } else {
         return $resultat->fetchAll();
     }
@@ -114,7 +114,7 @@ function fetchTypeDemande(){
     $requete = "select * from type_formulaire where id_type_formulaire = 17 or id_type_formulaire = 49 or id_type_formulaire = 50";
     $resultat = $bdd->query($requete);
     if (is_bool($resultat)) {
-        return [];
+        return array();
     } else {
         return $resultat->fetchAll();
     }
@@ -124,7 +124,7 @@ function fetchStatutDemande(){
     $requete = "select * from statut_demande";
     $resultat = $bdd->query($requete);
     if (is_bool($resultat)) {
-        return [];
+        return array();
     } else {
         return $resultat->fetchAll();
     }
@@ -227,7 +227,7 @@ group by id_demande
 
     $resultat = $bdd->query($requete1);
     if (is_bool($resultat)) {
-        return [];
+        return array();
     } else {
         return $resultat->fetchAll();
     }

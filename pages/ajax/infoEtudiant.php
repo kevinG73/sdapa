@@ -18,14 +18,15 @@ if (isset($etudiantID) && !empty($_POST['etudiantid'])) {
     $totalMention = fetchTotalMention($info["id_etudiant"]);
 
 
+
     $tableau = "<tr> <th>Niveau</th> <th>AB</th> <th>B</th> <th>TB</th><th>Nombre total de mention</th><th>Moyenne pondérée</th> </tr>";
     for ($i = 0; $i <= 2; $i++):
 
-        $ab += $totalMention[$i]['ab'];
-        $mb += $totalMention[$i]['mb'];
-        $tb += $totalMention[$i]['tb'];
-        $tm += $totalMention[$i]['total_mention'];
-        $moyp += $totalMention[$i]['moy_pondere'];
+        $ab += (int) $totalMention[$i]['ab'];
+        $mb += (int) $totalMention[$i]['mb'];
+        $tb += (int) $totalMention[$i]['tb'];
+        $tm += (int) $totalMention[$i]['total_mention'];
+        $moyp += (int) $totalMention[$i]['moy_pondere'];
 
         $a = $i + 1;
         $tableau .= <<<EOT
