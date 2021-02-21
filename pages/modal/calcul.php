@@ -67,9 +67,7 @@
                             <div class="form-group col-md-3">
                                 <label for="inputTemps1" class="mr-2">Le temps passé en Licence</label>
                                 <div class="form-inline">
-                                    <input type="number" class="form-control w-25 mr-2 " id="inputTemps1" name="temps"
-                                           min="3"
-                                           max="6" value="3">
+                                    <input type="number" class="form-control w-25 mr-2 " id="inputTemps1" name="temps" min="3" max="6" value="3">
                                     <span id="temps-point" class="font-weight-bold text-danger"></span>
                                 </div>
                             </div>

@@ -3,6 +3,8 @@ require "../../config/connexion.php";
 require "../../fonctions/index.php";
 
 if (isset($_POST) && !empty($_POST)):
+
+
     /* variables */
     $moyl1 = (float)$_POST['moyl1'];
     $moyl2 = (float)$_POST['moyl2'];
@@ -25,9 +27,10 @@ if (isset($_POST) && !empty($_POST)):
         $critere_temps1 = (int)$_POST['temps'];
     }
 
-    if (isset($_POST['date_naissance'])) {
+    if (isset($_POST['age'])) {
         $critere_age = (int)$_POST['age'];
     }
+
 
     if (isset($moyp)) {
         $critere_moyenne_annuelle = (float)$moyp;
@@ -39,13 +42,16 @@ if (isset($_POST) && !empty($_POST)):
     }
 
     /* critère age */
-    if ($critere_age >= 20 && $critere_age < 24) {
+    if ($critere_age < 20) {
+        $p_age = 0;
+    } elseif ($critere_age >= 20 && $critere_age < 24) {
         $p_age = 5;
     } elseif ($critere_age >= 24 && $critere_age < 26) {
         $p_age = 3;
     } elseif ($critere_age >= 26) {
         $p_age = 1;
     }
+
 
     /* critère temps */
     if ($critere_temps1 == 3) {
@@ -75,6 +81,7 @@ if (isset($_POST) && !empty($_POST)):
 
     /* Total */
     $total = $p_nombre_mention + $p_moyenne_annuelle + $p_temps1 + $p_age;
+
 
     /* update */
     $update = $bdd->query("UPDATE inscription_sdapa 

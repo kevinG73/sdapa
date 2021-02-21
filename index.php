@@ -57,8 +57,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="row d-flex">
         <div class="col-lg-6">
             <div class="card1 pb-5">
-                <div class="row px-3 justify-content-center mt-4 mb-5 border-line"><img
-                            src="src/img/uNGdWHi.png" class="image"></div>
+                <div class="row px-3 justify-content-center mt-4 mb-5 border-line">
+                    <img alt="image" src="src/img/uNGdWHi.png" class="image"></div>
             </div>
         </div>
         <div class="col-lg-6">
@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
     <div class="row fixed-row-bottom">
         <div class="col-12 bg-blue py-4 mt-5">
-            <div class="row px-3"><small class="ml-4 ml-sm-5 mb-2">Copyright &copy; 2020. Université de Cocody.</small>
+            <div class="row px-3"><small class="ml-4 ml-sm-5 mb-2">Copyright &copy; 2020.  UNIVERSITÉ FELIX HOUPHOUET-BOIGNY .</small>
             </div>
         </div>
     </div>
