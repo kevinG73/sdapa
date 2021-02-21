@@ -130,6 +130,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </tbody>
                 </table>
             </div>
+        <?php else: ?>
+            <p class="text-center text-uppercase">Aucun résultat disponible , veuillez essayer avec un autre parcours .</p>
         <?php endif; ?>
     </div>
 </div>
