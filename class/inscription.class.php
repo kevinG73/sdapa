@@ -16,7 +16,6 @@ class inscription
     private $total_point_critere;
     private $niveau_etude;
 
-    private $id_parcours;
     private $id_departement;
     private $id_etablissement;
 
@@ -25,7 +24,7 @@ class inscription
 
     public function __construct($annee, $id_etudiant, $temps_mis_en_licence,
                                 $moy_ann_l1, $moy_ann_l2, $moy_ann_l3, $total_point_critere,
-                                $niveau_etude, $id_parcours, $id_departement, $id_etablissement, $bdd)
+                                $niveau_etude, $id_departement, $id_etablissement, $bdd)
     {
         $this->annee = $annee;
         $this->id_etudiant = trim($id_etudiant);
@@ -35,7 +34,6 @@ class inscription
         $this->moy_ann_l3 = trim($moy_ann_l3);
         $this->total_point_critere = $total_point_critere;
         $this->niveau_etude = $niveau_etude;
-        $this->id_parcours = $id_parcours;
         $this->id_departement = $id_departement;
         $this->id_etablissement = $id_etablissement;
 
@@ -56,7 +54,7 @@ class inscription
     {
 
 
-        $requete = $this->bdd->query('INSERT INTO  inscription_sdapa (annee,id_etudiant,temps_mis_en_Licence,moy_ann_l1,moy_ann_l2,moy_ann_l3,total_point_critere, niveau_etude,id_parcours,id_departement,id_etablissement) VALUES ("' . $this->annee . '","' . $this->id_etudiant . '","' . $this->temps_mis_en_licence . '","' . $this->moy_ann_l1 . '","' . $this->moy_ann_l2 . '","' . $this->moy_ann_l3 . '","' . $this->total_point_critere . '","' . $this->niveau_etude . '","' . $this->id_parcours . '","' . $this->id_departement . '","' . $this->id_etablissement . '")') or die(print_r($this->bdd->errorInfo()));
+        $requete = $this->bdd->query('INSERT INTO  inscription_sdapa (annee,id_etudiant,temps_mis_en_Licence,moy_ann_l1,moy_ann_l2,moy_ann_l3,total_point_critere, niveau_etude,id_departement,id_etablissement) VALUES ("' . $this->annee . '","' . $this->id_etudiant . '","' . $this->temps_mis_en_licence . '","' . $this->moy_ann_l1 . '","' . $this->moy_ann_l2 . '","' . $this->moy_ann_l3 . '","' . $this->total_point_critere . '","' . $this->niveau_etude . '","' . $this->id_departement . '","' . $this->id_etablissement . '")') or die(print_r($this->bdd->errorInfo()));
 
         return 1;
 
@@ -66,7 +64,17 @@ class inscription
 
     public function modification($id_etudiant)
     {
-        $requete5 = $this->bdd->prepare('DELETE FROM inscription_sdapa WHERE id_etudiant=:id');
+
+        $requete = $this->bdd->prepare('UPDATE inscription_sdapa SET  annee=:annee, 
+            id_etablissement=:id_etablissement,
+            id_departement=:id_departement WHERE id_etudiant=:id_etudiant');
+        $requete->execute(array(
+            'annee'=>  $this->annee,
+            'id_etudiant'=>  $id_etudiant,
+            'id_departement'=> $this->id_departement,
+            'id_etablissement'=>  $this->id_etablissement
+        ));
+        $requete5 = $this->bdd->prepare('DELETE FROM parcours_sdapa WHERE id_etudiant=:id');
         $requete5->execute(array(
             'id' => $id_etudiant));
 
