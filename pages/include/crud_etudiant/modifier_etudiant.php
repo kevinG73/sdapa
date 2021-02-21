@@ -19,18 +19,18 @@ if (isset($_POST['modifier'])) {
     if ($verificaion === 1) {
         $modification = $insertEt->modification();
         $cursus = $insertEt->modifiercursus($code_et,$annee_anterieur,$eta_anterieur,$diplome1,$diplome2,$pays_anterieur);
+
         if ($modification == 1) {
-            $inscription = new inscription($annee, $code_et,'',
+            $inscription = new inscription($annee,'','',
                 '', '', '', '',
-                '','', $id_departement, $id_etablissement, $bdd);
+                '',$id_departement, $id_etablissement, $bdd);
+
             $enregistrement2 = $inscription->modification($code_et);
 
             foreach ($id_parcours as $testparcours):
-                $inscription = new inscription($annee, $code_et, 0,
-                    0, 0, 0, 0,
-                    3, $testparcours, $id_departement, $id_etablissement, $bdd);
-                $enregistrement2 = $inscription->enregistrement();
+                $parcours_sdapa = $bdd->query('insert into parcours_sdapa (id_etudiant,id_parcours) values ("' . $code_et . '","' . $testparcours . '")');
             endforeach;
+
             unset($_SESSION['id_']);
             ?>
             <script>document.location.replace("etudiant.php")</script>

@@ -189,6 +189,11 @@ VALUES ("' . $id_etudiant . '","' . $dip2rep['dip'] . '","' . $etabl . '","' . $
         $requete4->execute(array(
             'id' => $this->id));
 
+        $requete5 = $this->bdd->prepare('DELETE FROM parcours_sdapa WHERE id_etudiant=:id');
+
+        $requete5->execute(array(
+            'id' => $this->id));
+
         return 1;
 
 

@@ -6,7 +6,7 @@ require "../../fonctions/index.php";
 
 $array_parcours=[];
 if (isset($_SESSION['id_'])):
-$parcours = $bdd->query('select * from inscription_sdapa where id_etudiant ="' . $_SESSION['id_'] . '"') or die(print_r($bdd->errorInfo()));
+$parcours = $bdd->query('select * from parcours_sdapa where id_etudiant ="' . $_SESSION['id_'] . '"') or die(print_r($bdd->errorInfo()));
 
 while($res_parcours=$parcours->fetch()):
     array_push($array_parcours,$res_parcours['id_parcours']);
