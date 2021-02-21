@@ -81,12 +81,12 @@ if (isset($_POST) && !empty($_POST)):
 
     /* Total */
     $total = $p_nombre_mention + $p_moyenne_annuelle + $p_temps1 + $p_age;
-
+    $moyenne_poids = (($p_age + $p_temps1 * 2 + $p_nombre_mention * 3 + $p_moyenne_annuelle * 4) / 10);
 
     /* update */
     $update = $bdd->query("UPDATE inscription_sdapa 
         SET moy_ann_l1 = $moyl1 , moy_ann_l2 = $moyl2 , moy_ann_l3 = $moyl3 , moy_pondere = $moyp , total_mention = $p_nombre_mention
-     ,total_point_critere = $total , temps_mis_en_Licence = $critere_temps1 WHERE id_etudiant = '$id_etudiant'") or die(print_r($bdd->errorInfo()));
+     ,total_point_critere = $total , temps_mis_en_Licence = $critere_temps1 , moyenne_poids	= $moyenne_poids WHERE id_etudiant = '$id_etudiant'") or die(print_r($bdd->errorInfo()));
 
 
     for ($i = 1; $i <= 3; $i++) {

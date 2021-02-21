@@ -29,10 +29,33 @@ function ListeEtablissements()
     }
 }
 
+/***
+ * @return array
+ */
+function ListeParcoursDepartement($id_departement)
+{
+    global $bdd;
+    $requete = "SELECT specialite.id_specialite ,specialite.libelle_specialite 
+                FROM specialite,composer_maquette,mention,semestre
+                where
+                specialite.id_specialite = composer_maquette.id_specialite
+                and specialite.id_mention = mention.id_mention
+                and composer_maquette.id_semestre = semestre.id_semestre
+                and semestre.id_niveau = 4 and mention.id_departement = '" . $id_departement . "'
+                and specialite.id_specialite not in (63,64,65,66,67,319)
+                group by specialite.id_specialite";
+    $resultat = $bdd->query($requete);
+    if (is_bool($resultat)) {
+        return array();
+    } else {
+        return $resultat->fetchAll();
+    }
+}
+
 function ListeEtablissementsSession($id)
 {
     global $bdd;
-    $requete = "select * from etablissement where id_etablissement = '".$id."'";
+    $requete = "select * from etablissement where id_etablissement = '" . $id . "'";
     $resultat = $bdd->query($requete);
     if (is_bool($resultat)) {
         return array();

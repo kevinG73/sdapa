@@ -81,6 +81,8 @@ require "../config/connexion.php";
 <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
 <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
 <script src="../src/js/datatable/datatable_attribution.js"></script>
+<script src="../src/js/ajax.js"></script>
+
 </body>
 
 </html>

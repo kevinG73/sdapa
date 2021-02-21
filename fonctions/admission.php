@@ -7,10 +7,11 @@
 function ListeAdmis($annee, $id_etablissement, $id_departement, $id_parcours)
 {
     global $bdd;
-    $requete = "select * from etudiant_sdapa  etd JOIN  inscription_sdapa ins 
-                ON etd.id = ins.id_etudiant
-                WHERE annee = $annee AND demande_accepte = 1 AND id_etablissement = $id_etablissement AND id_departement = $id_departement 
-                AND id_parcours = $id_parcours	
+    $requete = "select * from etudiant_sdapa  etd 
+                JOIN  inscription_sdapa ins ON etd.id = ins.id_etudiant
+                JOIN  parcours_sdapa p ON p.id_etudiant	= ins.id_etudiant
+                WHERE annee = $annee  AND id_etablissement = $id_etablissement AND id_departement = $id_departement 
+                AND id_parcours = $id_parcours	 AND demande_accepte = 1
                 ORDER BY total_point_critere DESC";
     $resultat = $bdd->query($requete);
     if (is_bool($resultat)) {
@@ -50,7 +51,7 @@ function AppliquerCritere($annee, $id_etablissement, $id_departement, $id_parcou
  * @param $id_etablissement
  * @param $id_departement
  * @param $id_parcours
- * @return array
+ * @return string
  */
 function verifierSiCalculTerminee($annee, $id_etablissement, $id_departement, $id_parcours)
 {

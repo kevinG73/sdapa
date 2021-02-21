@@ -291,7 +291,7 @@ $etudiants = ListeEtudiants();
                                         <label class="col-form-label-sm">Genre</label>
                                         <select class="form-control text-uppercase" id="id_sexe" name="id_sexe">
                                             <?php
-                                            $sexes = $bdd->query("SELECT * FROM sexe")
+                                            $sexes = $bdd->query("SELECT * FROM sexe");
                                             ?>
                                             <?php while ($sexe = $sexes->fetch()) :?>
                                                 <?php if ($res['sexe'] == $sexe['id_sexe']) : ?>
