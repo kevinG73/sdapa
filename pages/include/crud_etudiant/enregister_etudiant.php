@@ -13,10 +13,7 @@ $nationalite = $origine;
 $email = $mail;
 $telephone = $contat;
 
-
-$_SESSION['annee'] = $annee;
 $_SESSION['id_etablissement'] = $id_etablissement;
-$_SESSION['id_parcours'] = $id_parcours;
 $_SESSION['id_departement'] = $id_departement;
 
 $code_et = uniqid('SADP', false);

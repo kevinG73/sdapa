@@ -15,10 +15,7 @@ if ($_SESSION['id_type_utilisateur '] == 1) {
     $etablissements = ListeEtablissementsSession($_SESSION['id_etablissement']);
 }
 $etudiants = ListeEtudiants();
-$anne = ListeAnnee();
-$anneanterieur = ListeAnneeAnter();
-$pays = ListePays();
-$diplome = ListeDiplome();
+
 
 ?>
 
@@ -67,8 +64,7 @@ $diplome = ListeDiplome();
                 <?php
                 require "../fonctions/fonction.php";
                 require "../class/etudiant.class.php";
-                $sexes = fetchSexe();
-                $nationalites = fetchNationalite();
+
 
                 if (isset($_POST['enregistrer'])) {
                     include 'include/crud_etudiant/enregister_etudiant.php';
@@ -82,10 +78,8 @@ $diplome = ListeDiplome();
                         $resins = $insc->fetch();
                         $resdd = $bdd->query('select * from cursus where id_etudiant ="' . $_GET['id'] . '"') or die(print_r($bdd->errorInfo()));
                         $resdip = $resdd->fetch();
-                        $_SESSION['annee'] = $resins['annee'];
                         $_SESSION['id_etablissement'] = $resins['id_etablissement'];
                         $_SESSION['id_departement'] = $resins['id_departement'];
-                        $_SESSION['anneeante'] = $resdip['id_anne_ante'];
                         $array_parcours=array();
                         $_SESSION['id_']=$_GET['id'];
 
@@ -97,8 +91,6 @@ $diplome = ListeDiplome();
                         $resins = $insc->fetch();
                         $resdd = $bdd->query('select * from cursus where id_etudiant ="' . $_GET['id'] . '"') or die(print_r($bdd->errorInfo()));
                         $resdip = $resdd->fetch();
-                        $_SESSION['anneeante'] = $resdip['id_anne_ante'];
-                        $_SESSION['annee'] = $resins['annee'];
                         $array_parcours=array();
                         $_SESSION['id_']=$_GET['id'];
                     }
@@ -127,9 +119,12 @@ $diplome = ListeDiplome();
                                     <div class="float-right pr-2">
                                         <label class="col-form-label-sm">Année académique</label>
                                         <select class="form-control" name="annee" id="anneaca">
-                                            <?php foreach ($anne as $repanne): ?>
+                                            <?php
+                                            $annetest = $bdd->query("SELECT * FROM annee_academique order by id_annee_academique desc");
+                                            ?>
+                                            <?php while ($repanne = $annetest->fetch()): ?>
                                                 <?php
-                                                if ($repanne['id_annee_academique'] == isset($_SESSION['annee'])) {
+                                                if ($repanne['id_annee_academique'] == $resins['annee']) {
                                                     ?>
                                                     <option selected
                                                             value="<?= $repanne['id_annee_academique'] ?>"> <?= $repanne['libelle_annee_academique'] ?></option>
@@ -145,7 +140,7 @@ $diplome = ListeDiplome();
                                                 ?>
 
 
-                                            <?php endforeach; ?>
+                                            <?php endwhile; ?>
                                         </select>
                                     </div>
                                 </div>
@@ -295,7 +290,10 @@ $diplome = ListeDiplome();
                                     <div class="form-group col-md-3">
                                         <label class="col-form-label-sm">Genre</label>
                                         <select class="form-control text-uppercase" id="id_sexe" name="id_sexe">
-                                            <?php foreach ($sexes as $sexe): ?>
+                                            <?php
+                                            $sexes = $bdd->query("SELECT * FROM sexe")
+                                            ?>
+                                            <?php while ($sexe = $sexes->fetch()) :?>
                                                 <?php if ($res['sexe'] == $sexe['id_sexe']) : ?>
                                                     <option selected
                                                             value="<?= $sexe['id_sexe'] ?>"> <?= $sexe['libelle_sexe'] ?></option>
@@ -303,7 +301,7 @@ $diplome = ListeDiplome();
                                                     <option value="<?= $sexe['id_sexe'] ?>"> <?= $sexe['libelle_sexe'] ?></option>
                                                 <?php endif; ?>
                                                 ?>
-                                            <?php endforeach; ?>
+                                            <?php endwhile; ?>
                                         </select>
                                     </div>
                                 </div>
@@ -327,14 +325,17 @@ $diplome = ListeDiplome();
                                     <div class="form-group col-md-4">
                                         <label class="col-form-label-sm ">Nationalité</label>
                                         <select class="form-control text-uppercase" id="paysnaiss" name="origine">
-                                            <?php foreach ($nationalites as $nationalite): ?>
+                                            <?php
+                                            $nationalites = $bdd->query('SELECT * FROM nationalite')
+                                            ?>
+                                            <?php while($nationalite = $nationalites->fetch()): ?>
                                                 <?php if ($res['nationalite'] == $nationalite['id_nationalite']): ?>
                                                     <option selected
                                                             value="<?= $res['nationalite'] ?>"> <?= $nationalite['libelle_nationalite'] ?></option>
                                                 <?php else: ?>
                                                     <option value="<?= $nationalite['id_nationalite'] ?>"> <?= $nationalite['libelle_nationalite'] ?></option>
                                                 <?php endif; ?>
-                                            <?php endforeach; ?>
+                                            <?php endwhile; ?>
                                         </select>
                                     </div>
 
@@ -364,9 +365,12 @@ $diplome = ListeDiplome();
                                     <div class="form-group col-md-4">
                                         <label class="col-form-label-sm">Année académique obtention diplome</label>
                                         <select class="form-control" name="annee_anterieur" id="annee-anterieur">
-                                            <?php foreach ($anneanterieur as $repanneante): ?>
+                                            <?php
+                                            $anneanterieur = $bdd->query("SELECT * FROM annee_academique order by id_annee_academique asc");
+                                            ?>
+                                            <?php while($repanneante = $anneanterieur->fetch()) : ?>
                                                 <?php
-                                                if ($repanneante['id_annee_academique'] == $_SESSION['anneeante']) {
+                                                if ($repanneante['id_annee_academique'] == $resdip['id_anne_ante']) {
                                                     ?>
                                                     <option selected
                                                             value="<?= $repanneante['id_annee_academique'] ?>"> <?= $repanneante['libelle_annee_academique'] ?></option>
@@ -382,7 +386,7 @@ $diplome = ListeDiplome();
                                                 ?>
 
 
-                                            <?php endforeach; ?>
+                                            <?php endwhile; ?>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-4">
@@ -396,7 +400,10 @@ $diplome = ListeDiplome();
                                         <label class="col-form-label-sm" for="exampleFormControlSelect1">Pays obtention
                                             diplome</label>
                                         <select class="form-control text-uppercase" name="pays_anterieur">
-                                            <?php foreach ($pays as $payt): ?>
+                                            <?php
+                                            $pays = $bdd->query("SELECT * FROM pays");
+                                            ?>
+                                            <?php while ($payt = $pays->fetch()): ?>
                                                 <?php if ($resdip['id_pays_obtention'] == $payt['id_pays']) : ?>
                                                     <option selected
                                                             value="<?= $payt['id_pays'] ?>"> <?= $payt['lib_pays'] ?></option>
@@ -404,7 +411,7 @@ $diplome = ListeDiplome();
                                                     <option value="<?= $payt['id_pays'] ?>"> <?= $payt['lib_pays'] ?></option>
                                                 <?php endif; ?>
                                                 ?>
-                                            <?php endforeach; ?>
+                                            <?php endwhile; ?>
                                         </select>
                                     </div>
 
@@ -414,7 +421,10 @@ $diplome = ListeDiplome();
                                         <label class="col-form-label-sm" for="exampleFormControlSelect1">Diplôme
                                             obtenue</label>
                                         <select class="form-control text-uppercase" id="diplome1" name="diplome1">
-                                            <?php foreach ($diplome as $dip): ?>
+                                            <?php
+                                            $diplome = $bdd->query("SELECT * FROM diplomes");
+                                            ?>
+                                            <?php while ($dip = $diplome->fetch()): ?>
                                                 <?php if ($resdip['id_diplomes'] == $dip['id_diplomes']) : ?>
                                                     <option selected
                                                             value="<?= $dip['id_diplomes'] ?>"> <?= $dip['libelle_diplomes'] ?></option>
@@ -422,7 +432,7 @@ $diplome = ListeDiplome();
                                                     <option value="<?= $dip['id_diplomes'] ?>"> <?= $dip['libelle_diplomes'] ?></option>
                                                 <?php endif; ?>
                                                 ?>
-                                            <?php endforeach; ?>
+                                            <?php endwhile; ?>
                                         </select>
                                     </div>
                                     <div class="form-group col-md-4" id="diplome2">
