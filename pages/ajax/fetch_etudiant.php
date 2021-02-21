@@ -10,7 +10,6 @@ if (isset($_GET['id_parcours']) && isset($_GET['id_departement']) && isset($_GET
     global $bdd;
     $requete = "SELECT * FROM etudiant_sdapa etd JOIN inscription_sdapa ins 
                 ON etd.id = ins.id_etudiant
-                JOIN parcours_sdapa pc ON  ins.id_etudiant = pc.id_etudiant
                 WHERE id_parcours = $id_parcours AND id_departement = $id_departement AND annee = $id_annee";
 
     $resultat = $bdd->query($requete);

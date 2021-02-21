@@ -17,30 +17,52 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id_parcours = $_POST['id_parcours'];
     $point = $_POST['id_critere_selection'];
 
-    if (isset($_POST['imprimer'])) {
-        $_SESSION['impression'] = $_POST;
-        header('Location: pdf/index.php');
-    }
-
     if (isset($_POST['valider'])) {
-        /* oui */
-        $choix_mode_calcul = (int)$_POST['mode-calcul'];
-        /* si il selectionne tout parcours confondu */
-        if ($choix_mode_calcul === 0) {
-            $deliberation = verifierDeliberation($id_etablissement, $id_departement, $id_annee);
-            if ((int)$deliberation > 0) {
-                header('Location: attribution-manuel.php');
-            } else {
-                /* tout parcours confonu */
-                creerDeliberation($point, $id_etablissement, $id_departement, $id_annee);
-                header('Location: attribution-manuel.php');
-            }
-        } else {
-            /* si il selectionne par parcours */
-            AppliquerCritere($id_annee, $id_etablissement, $id_departement, $id_parcours, $point);
-            header('Location: admis.php');
-        }
+        /* le nombre total d'étudiants avec les points critères calculés */
+        $total_etudiant_evalue = (int)TotalEtudiantEvalue($id_annee, $id_etablissement, $id_departement, $id_parcours);
+        /* le nombre total d'étudiant dans ce parcours */
+        $total_etudiants = (int)TotalEtudiantParcours($id_annee, $id_etablissement, $id_departement, $id_parcours);
 
+        /* si il n'y a aucune donnée dans un parcours */
+        if ($total_etudiants > 0) {
+            if ($total_etudiant_evalue != $total_etudiants) {
+                $message = "Veuillez calculer le point critère de tous les étudiants de ce parcours avant de faire la selection des admis .";
+            } else {
+                /* oui */
+                $choix_mode_calcul = (int)$_POST['mode-calcul'];
+                /* si il selectionne tout parcours confondu */
+                if ($choix_mode_calcul === 0) {
+                    /* réinitialiser ce qui a été fait par le mode parcours par parcours */
+                    resetCritere($id_annee, $id_etablissement, $id_departement);
+                    /* verifier si il y a eu une deliberation */
+                    $deliberation = verifierDeliberation($id_etablissement, $id_departement, $id_annee);
+                    /* tout parcours confonu */
+                    if ((int)$deliberation > 0) {
+                        /* mise à jour */
+                        majDeliberation($point, $id_etablissement, $id_departement, $id_annee);
+                        header('Location: attribution-manuel.php');
+                    } else {
+                        /* création */
+                        creerDeliberation($point, $id_etablissement, $id_departement, $id_annee);
+                        header('Location: attribution-manuel.php');
+                    }
+                } else {
+                    $id_critere_selection = (int)$_POST['id_critere_selection'];
+                    if ($id_critere_selection > 0) {
+                        /* si il selectionne par parcours */
+                        supprimerDeliberation($id_etablissement, $id_departement, $id_annee);
+                        AppliquerCritere($id_annee, $id_etablissement, $id_departement, $id_parcours, $point);
+                        header('Location: admis.php');
+                    } else {
+                        $message = "veuillez selectionner une valeur dans le champ critère de selection .";
+                    }
+                }
+            }
+
+
+        } else {
+            $message = "veuillez selectionner un parcours avec des étudiants inscrits dans la base de donnée .";
+        }
 
     }
 }
@@ -55,9 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="card-body">
             <?php if (isset($message) && !empty($message)): ?>
                 <div class="bg-danger text-white">
-                    <p class="p-2">
-                        <?= $message; ?>
-                    </p>
+                    <p class="p-2"><?= $message; ?></p>
                 </div>
             <?php endif; ?>
 
@@ -162,7 +182,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="form-inline ">
                         <label for="id_critere_selection" class="mr-5">critère de selection</label>
                         <select class="form-control" name="id_critere_selection" id="id_critere_selection">
-                            <option value="0"> selectionner</option>
+                            <option value=""> selectionner</option>
                             <?php for ($i = 0; $i <= 24; $i++): ?>
                                 <option value="<?= $i ?>">point superieur à <?= $i ?> </option>
                             <?php endfor; ?>

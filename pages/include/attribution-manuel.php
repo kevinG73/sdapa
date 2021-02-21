@@ -19,7 +19,7 @@ if (isset($_SESSION['orientation'])) {
     $verifier = verifierDeliberation($id_etablissement, $id_departement, $id_annee);
     if ((int)$verifier === 0) {
         unset($_SESSION['orientation']);
-        $message = "veuillez lancer rélancer le mode de calcul tout parcours confondu avant de continuer";
+        $message = "Pour utiliser cette page , vous devez selectionner tout parcours confondu comme mode de calcul sur la page de calcul du critère .";
     } else {
         $parcours = ListeParcoursDepartement($id_departement);
         $liste = ListeEtudiantOrientation($id_etablissement, $id_departement, $id_annee);
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ((int)$verifier === 0) {
             unset($_SESSION['orientation']);
-            $message = "veuillez lancer rélancer le mode de calcul tout parcours confondu avant de continuer";
+            $message = "Pour utiliser cette page , vous devez selectionner tout parcours confondu comme mode de calcul sur la page de calcul du critère .";
         } else {
             $parcours = ListeParcoursDepartement($id_departement);
             $liste = ListeEtudiantOrientation($id_etablissement, $id_departement, $id_annee);
@@ -51,11 +51,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     /* après avoir coché une case pour affecter des étudiants */
     if (isset($_POST['affecter'])) {
-        $nbre_chb = count($_POST['chb_id']);
-        foreach ($_POST['chb_id'] as $chb) {
-            $id_etudiant = $chb;
-            $parcours_selectionnee = $_POST['id_parcours'];
-            affecterAparcours($id_etudiant, $parcours_selectionnee);
+        if (isset($_POST['chb_id'])) {
+            $nbre_chb = count($_POST['chb_id']);
+            if (!empty($_POST['chb_id'])) {
+                foreach ($_POST['chb_id'] as $chb) {
+                    $id_etudiant = $chb;
+                    $parcours_selectionnee = $_POST['id_parcours'];
+                    affecterAparcours($id_etudiant, $parcours_selectionnee);
+                }
+            }
+        } else {
+            $erreur_msg = "veuillez selectionner au moins une ligne avant d'effectuer une action .";
         }
     }
     /* si on clique sur valider pour fermer l'attributation */
@@ -67,10 +73,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 
 <?php if (isset($message) && !empty($message)): ?>
-    <div class="bg-danger text-white">
-        <p class="p-2">
-            <?= $message; ?>
-        </p>
+    <div class="card text-white bg-danger">
+        <div class="card-body">
+            <p class="p-2 card-text text-center">
+                <?= $message; ?>
+            </p>
+        </div>
     </div>
 
 <?php else: ?>
@@ -80,6 +88,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <h6 class="m-0 font-weight-bold text-primary text-uppercase">Filtre de recherche</h6>
             </div>
             <div class="card-body">
+                <?php if (isset($erreur_msg) && !empty($erreur_msg)): ?>
+                    <div class="bg-danger text-white">
+                        <p class="p-2">
+                            <?= $erreur_msg; ?>
+                        </p>
+                    </div>
+                <?php endif; ?>
                 <div class="d-flex justify-content-end">
                     <div class="float-right pr-2">
                         <label for="id_annee">Année académique</label>
