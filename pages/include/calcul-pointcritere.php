@@ -32,27 +32,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $choix_mode_calcul = (int)$_POST['mode-calcul'];
                 /* si il selectionne tout parcours confondu */
                 if ($choix_mode_calcul === 0) {
-                    /* réinitialiser ce qui a été fait par le mode parcours par parcours */
-                    resetCritere($id_annee, $id_etablissement, $id_departement);
-                    /* verifier si il y a eu une deliberation */
-                    $deliberation = verifierDeliberation($id_etablissement, $id_departement, $id_annee);
-                    /* tout parcours confonu */
-                    if ((int)$deliberation > 0) {
-                        /* mise à jour */
-                        majDeliberation($point, $id_etablissement, $id_departement, $id_annee);
-                        header('Location: attribution-manuel.php');
+                    if ($point > 0) {
+                        /* réinitialiser ce qui a été fait par le mode parcours par parcours */
+                        resetCritere($id_annee, $id_etablissement, $id_departement);
+                        /* verifier si il y a eu une deliberation */
+                        $deliberation = (int)verifierDeliberation($id_etablissement, $id_departement, $id_annee);
+
+                        /* tout parcours confonu */
+                        if ($deliberation > 0) {
+                            /* mise à jour */
+                            majDeliberation($point, $id_etablissement, $id_departement, $id_annee);
+                            header('Location: attribution-manuel.php');
+                        } else {
+                            /* création */
+                            creerDeliberation($point, $id_etablissement, $id_departement, $id_annee);
+                            header('Location: attribution-manuel.php');
+                        }
                     } else {
-                        /* création */
-                        creerDeliberation($point, $id_etablissement, $id_departement, $id_annee);
-                        header('Location: attribution-manuel.php');
+                        $message = "veuillez selectionner une valeur dans le champ critère de selection .";
                     }
                 } else {
-                    $id_critere_selection = (int)$_POST['id_critere_selection'];
-                    if ($id_critere_selection > 0) {
+
+                    if ($point > 0) {
                         /* si il selectionne par parcours */
                         supprimerDeliberation($id_etablissement, $id_departement, $id_annee);
                         AppliquerCritere($id_annee, $id_etablissement, $id_departement, $id_parcours, $point);
-                        header('Location: admis.php');
+                        header('Location:admis.php');
                     } else {
                         $message = "veuillez selectionner une valeur dans le champ critère de selection .";
                     }

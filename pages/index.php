@@ -51,12 +51,12 @@ require "../config/connexion.php";
             <?php include "include/navbar.php"; ?>
             <!-- End of Topbar -->
             <?php
-            if($_SESSION["id_type_utilisateur "] == 1 || $_SESSION['id_groupe_utilisateur'] == 19 || $_SESSION['id_groupe_utilisateur'] == 20 ):
-            ?>
-            <!-- Begin Page Content -->
-            <div class="container-fluid">
-                <?php include "include/calcul-pointcritere.php"; ?>
-            </div>
+            if ($_SESSION["id_type_utilisateur "] == 1 || $_SESSION['id_groupe_utilisateur'] == 19 || $_SESSION['id_groupe_utilisateur'] == 20):
+                ?>
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+                    <?php include "include/calcul-pointcritere.php"; ?>
+                </div>
             <?php
             endif;
             ?>

@@ -50,11 +50,18 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item">
-        <a class="nav-link" href="attribution-manuel.php">
-            <span class="text-uppercase">affectation manuelle</span></a>
-    </li>
+    <?php
+    if ($_SESSION["id_type_utilisateur "] == 1 || $_SESSION['id_groupe_utilisateur'] == 14 || $_SESSION['id_groupe_utilisateur'] == 20):
+        ?>
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item">
+            <a class="nav-link" href="attribution-manuel.php">
+                <span class="text-uppercase">affectation manuelle</span></a>
+        </li>
+
+    <?php
+    endif;
+    ?>
 
     <!-- Divider -->
     <hr class="sidebar-divider">

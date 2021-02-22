@@ -7,7 +7,7 @@
 function creerDeliberation($min_pt_critere, $id_etablissement, $id_departement, $id_annee)
 {
     global $bdd;
-    $requete = "INSERT INTO deliberation_sdapa SET type_deliberation = 1 , min_point_critere= $min_pt_critere,
+    $requete = "INSERT INTO deliberation_sdapa SET type_deliberation = 1 , min_point_critere = $min_pt_critere,
     id_etablissement = '$id_etablissement', id_departement = $id_departement , id_annee = '$id_annee'";
     $bdd->query($requete) or die(print_r($bdd->errorInfo()));
 }

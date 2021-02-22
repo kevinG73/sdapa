@@ -69,9 +69,10 @@ function resetCritere($annee, $id_etablissement, $id_departement)
 function TotalEtudiantEvalue($annee, $id_etablissement, $id_departement, $id_parcours)
 {
     global $bdd;
-    $requete = "SELECT count(*) FROM inscription_sdapa 	
+    $requete = "SELECT count(*) FROM inscription_sdapa 	ins
+                JOIN  parcours_sdapa p ON p.id_etudiant = ins.id_etudiant
                 WHERE total_point_critere <> 0 AND annee = '$annee' 
-                AND id_etablissement = '$id_etablissement' AND id_departement = '$id_departement' AND id_parcours = '$id_parcours'";
+                AND id_etablissement = '$id_etablissement' AND id_departement = '$id_departement' AND p.id_parcours = '$id_parcours'";
     $resultat = $bdd->query($requete);
     return $resultat->fetchColumn();
 }
@@ -80,9 +81,10 @@ function TotalEtudiantEvalue($annee, $id_etablissement, $id_departement, $id_par
 function TotalEtudiantParcours($annee, $id_etablissement, $id_departement, $id_parcours)
 {
     global $bdd;
-    $requete = "SELECT count(*) FROM inscription_sdapa 	
+    $requete = "SELECT count(*) FROM inscription_sdapa 	ins
+                JOIN  parcours_sdapa p ON p.id_etudiant = ins.id_etudiant
                 WHERE  annee = '$annee' AND id_etablissement = '$id_etablissement'
-                AND id_departement = '$id_departement' AND id_parcours = '$id_parcours'";
+                AND id_departement = '$id_departement' AND p.id_parcours = '$id_parcours'";
     $resultat = $bdd->query($requete);
     return $resultat->fetchColumn();
 }
