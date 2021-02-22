@@ -71,7 +71,7 @@ function moyennePondere() {
 updateTotals();
 moyennePondere();
 
-$(document).on("change keyup", "#activity_table input", function () {
+$(document).on("change keyup blur mouseup", "#activity_table input", function () {
     updateTotals();
     total_point_critere();
 });

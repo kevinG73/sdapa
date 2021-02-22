@@ -11,6 +11,7 @@ $(document).ready(function () {
         determinerAge();
         determinerPointTemps();
         determinerPointMoyenne();
+        moyennePondere();
         determinerPointMention();
         total_point_critere();
     });
