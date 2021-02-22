@@ -13,6 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['id_etablissement'] = $stmt['id_etablissement'];
                 $_SESSION['id_type_utilisateur '] = $stmt['id_type_utilisateur'];
                 $_SESSION['id_groupe_utilisateur'] = $stmt['id_groupe_utilisateur'];
+                $_SESSION['id_departement_grand'] = $stmt['id_departement'];
             }else{
                 $_SESSION['connecte'] = $stmt['id_utilisateur'];
                 $_SESSION['id_etablissement'] = $stmt['id_etablissement'];
