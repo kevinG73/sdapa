@@ -42,22 +42,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         if ($deliberation > 0) {
                             /* mise à jour */
                             majDeliberation($point, $id_etablissement, $id_departement, $id_annee);
-                            header('Location: attribution-manuel.php');
+                            echo '<script language="JavaScript" type="text/javascript">window.location.replace("attribution-manuel.php");</script>';
                         } else {
                             /* création */
                             creerDeliberation($point, $id_etablissement, $id_departement, $id_annee);
-                            header('Location: attribution-manuel.php');
+                            echo '<script language="JavaScript" type="text/javascript">window.location.replace("attribution-manuel.php");</script>';
                         }
                     } else {
                         $message = "veuillez selectionner une valeur dans le champ critère de selection .";
                     }
                 } else {
-
                     if ($point > 0) {
                         /* si il selectionne par parcours */
                         supprimerDeliberation($id_etablissement, $id_departement, $id_annee);
                         AppliquerCritere($id_annee, $id_etablissement, $id_departement, $id_parcours, $point);
-                        header('Location:admis.php');
+                        echo '<script language="JavaScript" type="text/javascript">window.location.replace("admis.php");</script>';
                     } else {
                         $message = "veuillez selectionner une valeur dans le champ critère de selection .";
                     }

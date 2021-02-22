@@ -30,18 +30,42 @@ function ListeAdmis($annee, $id_etablissement, $id_departement, $id_parcours)
 function AppliquerCritere($annee, $id_etablissement, $id_departement, $id_parcours, $point)
 {
     global $bdd;
-    /* on donne 1 à tous les candidats qui ne respectent par ce poit critère */
-    $requete = "UPDATE inscription_sdapa SET statut_inscription = 1 
+    /* on donne 1 à tous les candidats qui respectent ce poit critère */
+    $requete = "UPDATE inscription_sdapa ins 
+                JOIN parcours_sdapa p ON ins.id_etudiant = p.id_etudiant
+                SET statut_inscription = 1  ,  p.demande_accepte = 1 , ins.id_parcours = $id_parcours         
                 WHERE annee = $annee AND id_etablissement = $id_etablissement AND id_departement = $id_departement 
-                AND id_parcours = $id_parcours
-                AND total_point_critere	> $point";
+                AND p.id_parcours = $id_parcours AND total_point_critere > $point";
+
     $bdd->query($requete);
 
+    /* on donne 0 à tous les autres id_parcours de la table parcours_sdapa */
+    $requete = "SELECT p.id_parcours , p.id_etudiant FROM  inscription_sdapa   ins JOIN parcours_sdapa p ON ins.id_etudiant = p.id_etudiant
+                WHERE annee = $annee AND id_etablissement = $id_etablissement AND id_departement = $id_departement AND p.id_parcours = $id_parcours
+                AND statut_inscription = 1 AND demande_accepte = 1";
+
+
+    $resultat = $bdd->query($requete);
+    $ins = array();
+    if (is_bool($resultat)) {
+        return $ins;
+    } else {
+        $ins = $resultat->fetchAll();
+    }
+
+    foreach ($ins as $re) {
+        $id_etudiant = $re['id_etudiant'];
+        $id_parcours = $re['id_parcours'];
+        $requete = "UPDATE parcours_sdapa SET demande_accepte = 1 WHERE id_etudiant = '$id_etudiant' AND id_parcours <> '$id_parcours'";
+        $bdd->query($requete);
+    }
+
     /* on donne 2 à tous les candidats qui ne respectent par ce poit critère */
-    $requete = "UPDATE inscription_sdapa SET statut_inscription = 2 
+    $requete = "UPDATE inscription_sdapa ins
+                JOIN parcours_sdapa p ON ins.id_etudiant = p.id_etudiant
+                SET statut_inscription = 2 
                 WHERE annee = $annee AND id_etablissement = $id_etablissement AND id_departement = $id_departement 
-                AND id_parcours = $id_parcours
-                AND total_point_critere	<= $point";
+                AND p.id_parcours = $id_parcours AND total_point_critere <= $point";
     $bdd->query($requete);
 }
 
@@ -54,7 +78,7 @@ function resetCritere($annee, $id_etablissement, $id_departement)
 {
     global $bdd;
     /* on donne 1 à tous les candidats qui ne respectent par ce poit critère */
-    $requete = "UPDATE inscription_sdapa SET statut_inscription = 0 
+    $requete = "UPDATE inscription_sdapa SET statut_inscription = 0 , id_parcours = 0 
                 WHERE annee = '$annee' AND id_etablissement = '$id_etablissement' AND id_departement = '$id_departement'";
     $bdd->query($requete);
 }

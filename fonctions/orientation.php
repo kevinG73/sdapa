@@ -38,7 +38,6 @@ function supprimerDeliberation($id_etablissement, $id_departement, $id_annee)
     $bdd->query($requete);
 
     $requete = "UPDATE inscription_sdapa SET statut_inscription	= 2 WHERE statut_inscription = 0  AND id_etablissement = '$id_etablissement' AND id_departement = '$id_departement' AND annee = '$id_annee'";
-
     $bdd->query($requete);
 }
 
