@@ -15,10 +15,10 @@
         <ol>
             <li>L&rsquo;&acirc;ge de l&rsquo;&eacute;tudiant,</li>
             <li>Le temps pass&eacute; en Licence,</li>
-            <li>La moyenne annuelle obtenue durant ces ann&eacute;es (Licence),</li>
             <li>Le nombre de mention obtenue (dans les diff&eacute;rentes UE) durant ces ann&eacute;es Licence :
-                <strong>Quelles sont les mentions &agrave; prendre en compte&nbsp;? Quand on sait qu&rsquo;il y a diff&eacute;rentes
-                    mentions&nbsp;: passable, assez-bien, bien, tr&egrave;s bien, &hellip;</strong></li>
+                <strong>les mentions &agrave; prendre en compte&nbsp;sont : Assez-Bien, Bien, Tr&egrave;s-Bien, &hellip;</strong></li>
+            <li>La moyenne annuelle obtenue durant ces ann&eacute;es (Licence)</li>
+
         </ol>
         <p>&nbsp;</p>
         <ul>
@@ -26,7 +26,7 @@
         </ul>
         <ol>
             <li>Le poids des crit&egrave;res est dans l&rsquo;ordre croissant des crit&egrave;res &eacute;num&eacute;r&eacute;s
-                ci-dessus,
+                ci-dessus utilisé en cas d'Ex aequo,
             </li>
             <li>Le point attribu&eacute; par rapport &agrave; un cas d&rsquo;un crit&egrave;re donn&eacute; peut aussi
                 changer d&rsquo;une ann&eacute;e acad&eacute;mique &agrave; une autre.

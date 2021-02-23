@@ -1,3 +1,14 @@
+<?php
+function active($currect_page)
+{
+    $url_array = explode('/', $_SERVER['REQUEST_URI']);
+    $url = end($url_array);
+    if ($currect_page == $url) {
+        echo 'active'; //class name in css
+    }
+}
+?>
+
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
@@ -29,8 +40,8 @@
     if ($_SESSION["id_type_utilisateur "] == 1 || $_SESSION['id_groupe_utilisateur'] == 19 || $_SESSION['id_groupe_utilisateur'] == 20):
         ?>
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item">
-            <a class="nav-link" href="index.php">
+        <li class="nav-item <?php active('index.php');?>">
+            <a class="nav-link " href="index.php">
                 <span>CALCUL DU POINT CRITERE</span></a>
         </li>
 
@@ -42,8 +53,8 @@
     <hr class="sidebar-divider">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item">
-        <a class="nav-link" href="info.php">
+    <li class="nav-item <?php active('info.php');?>">
+        <a class="nav-link " href="info.php">
             <span>INFO</span></a>
     </li>
 
@@ -54,8 +65,8 @@
     if ($_SESSION["id_type_utilisateur "] == 1 || $_SESSION['id_groupe_utilisateur'] == 14 || $_SESSION['id_groupe_utilisateur'] == 20):
         ?>
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item">
-            <a class="nav-link" href="attribution-manuel.php">
+        <li class="nav-item <?php active('attribution-manuel.php');?>">
+            <a class="nav-link " href="attribution-manuel.php">
                 <span class="text-uppercase">affectation manuelle</span></a>
         </li>
 
@@ -70,7 +81,7 @@
     if ($_SESSION["id_type_utilisateur "] == 1 || $_SESSION['id_groupe_utilisateur'] == 14 || $_SESSION['id_groupe_utilisateur'] == 20):
         ?>
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item">
+        <li class="nav-item <?php active('admis.php');?>">
             <a class="nav-link" href="admis.php">
                 <span>LISTE DES ADMIS</span></a>
         </li>
