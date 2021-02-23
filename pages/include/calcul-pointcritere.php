@@ -166,7 +166,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <div class="card-body">
                 <div class="d-flex justify-content-between">
                     <div class="form-inline ">
-                        <label for="mode-calcul" class="mr-5">mode de calcul</label>
+                        <label for="mode-calcul" class="mr-5">mode de selection</label>
                         <select class="form-control" name="mode-calcul" id="mode-calcul">
                             <option value="0"> tout parcours confondu</option>
                             <option value="1" selected> par parcours</option>

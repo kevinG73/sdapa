@@ -25,8 +25,8 @@ function active($currect_page)
     if ($_SESSION["id_type_utilisateur "] == 1 || $_SESSION['id_groupe_utilisateur'] == 19):
         ?>
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item">
-            <a class="nav-link" href="etudiant.php">
+        <li class="nav-item <?php active('etudiant.php');?>">
+            <a class="nav-link  " href="etudiant.php">
                 <span>ETUDIANTS</span></a>
         </li>
     <?php

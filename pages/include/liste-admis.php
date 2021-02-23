@@ -107,7 +107,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <table class="table table-bordered w-100" id="dataTable-etd">
                     <thead>
                     <tr>
-                        <th>ID</th>
                         <th>nom</th>
                         <th>prenoms</th>
                         .
@@ -120,7 +119,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <tbody>
                     <?php foreach ($admis as $etudiant): ?>
                         <tr>
-                            <td><?= $etudiant['id'] ?></td>
                             <td><?= $etudiant['nom'] ?></td>
                             <td><?= $etudiant['prenoms'] ?></td>
                             <td><?= $etudiant['moy_pondere'] ?></td>
