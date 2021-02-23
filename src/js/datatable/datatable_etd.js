@@ -6,7 +6,8 @@ $(document).ready(function () {
             bDestroy: true,
             language: {
                 url: "https://cdn.datatables.net/plug-ins/1.10.22/i18n/French.json"
-            }
+            },
+            columnDefs: [{"orderable": false, "targets": 0}]
         }
     );
 });

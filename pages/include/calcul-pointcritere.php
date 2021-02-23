@@ -151,18 +151,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered w-100" id="dataTable">
-                    <thead>
-                    <tr>
-                        <th>nom</th>
-                        <th>prenoms</th>
-                        <th>moy l1</th>
-                        <th>moy l2</th>
-                        <th>moy l3</th>
-                        <th>nbre total mentions</th>
-                        <th>point critère</th>
-                        <th></th>
-                    </tr>
-                    </thead>
                 </table>
             </div>
         </div>
