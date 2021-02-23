@@ -72,6 +72,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
+<h1 class="h4 mb-1 text-primary text-uppercase mb-4">calcul des points critères</h1>
+
 <!-- Begin Page Content -->
 <form method="post">
     <div class="card shadow mb-2">

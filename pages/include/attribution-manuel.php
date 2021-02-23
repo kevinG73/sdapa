@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ((int)$verifier === 0) {
             unset($_SESSION['orientation']);
-            $message = "Pour utiliser cette page , vous devez selectionner tout parcours confondu comme mode de calcul sur la page de calcul du critère .";
+            $message = "Pour utiliser cette page , vous devez selectionner tout parcours confondu comme mode de calcul sur la page de calcul des points critères .";
         } else {
             $parcours = ListeParcoursDepartement($id_departement);
             $liste = ListeEtudiantOrientation($id_etablissement, $id_departement, $id_annee);
@@ -71,6 +71,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
+
+<h1 class="h4 mb-1 text-primary text-uppercase mb-2">Attribution manuelle</h1>
+
+<p class="mb-4">Cette page permet d'affecter les étudiants un par un dans différents parcours .</p>
 
 <?php if (isset($message) && !empty($message)): ?>
     <div class="card text-white bg-danger">

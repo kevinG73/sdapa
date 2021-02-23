@@ -30,6 +30,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
+<h1 class="h4 mb-1 text-primary text-uppercase mb-4">Liste des admis</h1>
+
 <!-- Begin Page Content -->
 <div class="card shadow mb-2">
     <div class="card-header py-3">
