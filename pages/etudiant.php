@@ -600,6 +600,13 @@ $etudiants = ListeEtudiants();
 
     $(document).ready(function() {
         $('.js-example-basic-multiple').select2();
+        $('.js-example-basic-multiple').on("select2:select", function (evt) {
+            var element = evt.params.data.element;
+            var $element = $(element);
+            $element.detach();
+            $(this).append($element);
+            $(this).trigger("change");
+        });
     });
     bootstrapValidate(['#carte_et', '#numero_mers', '#nom', '#prenoms', '#lieu_naissance', '#datenaiss', '#maila', '#contact', '#eta_anterieur','#id_parcours'], 'required: Veuillez remplir les champs!')
     bootstrapValidate('#maila', 'email: Entrer email valide!')

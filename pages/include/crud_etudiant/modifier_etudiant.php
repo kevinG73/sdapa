@@ -27,10 +27,12 @@ if (isset($_POST['modifier'])) {
 
             $enregistrement2 = $inscription->modification($code_et);
 
-            foreach ($id_parcours as $testparcours):
-                $parcours_sdapa = $bdd->query('insert into parcours_sdapa (id_etudiant,id_parcours) values ("' . $code_et . '","' . $testparcours . '")');
-            endforeach;
+            foreach ($id_parcours as $key => $testparcours) {
 
+                $choix = (int)$key+1;
+                $parcours_sdapa = $bdd->query('insert into parcours_sdapa (id_etudiant,id_parcours,choix) values ("' . $code_et . '","' . $testparcours . '","' . $choix. '")');
+
+            }
             unset($_SESSION['id_']);
             ?>
             <script>document.location.replace("etudiant.php")</script>
