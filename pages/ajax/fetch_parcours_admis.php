@@ -22,7 +22,7 @@ if (isset($_GET['id_departement']) && !empty($_GET['id_departement'])):
     if (count($liste) > 0):
         foreach ($liste as $res):
             ?>
-            <option value="<?= $res['id_specialite'] ?>"> <?= $res['libelle_specialite'] ?></option>
+            <option value="<?= $res['id_specialite'] ?>"> <?= convert_accent($res['libelle_specialite']) ?></option>
         <?php endforeach; ?>
     <?php else: ?>
         <option value="0">selectionner</option>

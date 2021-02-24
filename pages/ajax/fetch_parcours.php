@@ -4,13 +4,13 @@ require "../../config/connexion.php";
 require "../../fonctions/index.php";
 
 
-$array_parcours=[];
+$array_parcours = [];
 if (isset($_SESSION['id_'])):
-$parcours = $bdd->query('select * from parcours_sdapa where id_etudiant ="' . $_SESSION['id_'] . '"') or die(print_r($bdd->errorInfo()));
+    $parcours = $bdd->query('select * from parcours_sdapa where id_etudiant ="' . $_SESSION['id_'] . '"') or die(print_r($bdd->errorInfo()));
 
-while($res_parcours=$parcours->fetch()):
-    array_push($array_parcours,$res_parcours['id_parcours']);
-endwhile;
+    while ($res_parcours = $parcours->fetch()):
+        array_push($array_parcours, $res_parcours['id_parcours']);
+    endwhile;
 endif;
 if (isset($_GET['id_departement']) && !empty($_GET['id_departement'])):
     $id_departement = $_GET['id_departement'];
@@ -32,10 +32,11 @@ if (isset($_GET['id_departement']) && !empty($_GET['id_departement'])):
     if (count($liste) > 0):
         foreach ($liste as $res):
             ?>
-            <?php if ( (isset($_SESSION['select']) && !empty($_SESSION['select']) && ($res['id_specialite'] === $_SESSION['select'])) || in_array($res['id_specialite'], $array_parcours)): ?>
-            <option selected value="<?= $res['id_specialite'] ?>"> <?= $res['libelle_specialite'] ?></option>
+            <?php if ((isset($_SESSION['select']) && !empty($_SESSION['select']) && ($res['id_specialite'] === $_SESSION['select'])) || in_array($res['id_specialite'], $array_parcours)): ?>
+            <option selected
+                    value="<?= $res['id_specialite'] ?>"> <?= convert_accent($res['libelle_specialite']) ?></option>
         <?php else: ?>
-            <option value="<?= $res['id_specialite'] ?>"> <?= $res['libelle_specialite'] ?></option>
+            <option value="<?= $res['id_specialite'] ?>"> <?= convert_accent($res['libelle_specialite']) ?></option>
         <?php endif; ?>
         <?php endforeach; ?>
     <?php else: ?>

@@ -157,3 +157,13 @@ function DeterminerMention($id)
         return $resultat->fetchColumn();
     }
 }
+
+/***
+ * permet d'afficher les caractères special normalement
+ * @param $string
+ * @return string
+ */
+function convert_accent($string)
+{
+    return htmlspecialchars_decode(htmlentities(utf8_decode($string)));
+}

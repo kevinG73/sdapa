@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <?php foreach ($etablissements as $p): ?>
                             <option value="<?php echo $p['id_etablissement'] ?>"
                                 <?php if (isset($id_etablissement) && $id_etablissement === $p['id_etablissement']) echo 'selected'; ?>
-                            ><?php echo $p['nom_etablissement'] ?></option>
+                            ><?php echo convert_accent($p['nom_etablissement']); ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>
@@ -131,7 +131,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </table>
             </div>
         <?php else: ?>
-            <p class="text-center text-uppercase">Aucun résultat disponible , veuillez essayer avec un autre parcours .</p>
+            <p class="text-center text-uppercase">Aucun résultat disponible , veuillez essayer avec un autre parcours
+                .</p>
         <?php endif; ?>
     </div>
 </div>
