@@ -6,15 +6,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (isset($login) && isset($motdepasse)) {
         extract($_POST);
-        $requete = $bdd->query('select * from utilisateur where login_utilisateur = "'.$login.'" and mot_passe_utilisateur = "'.$motdepasse.'"');
-        if ($stmt= $requete->fetch()) {
-            if($stmt['id_groupe_utilisateur'] == 14){
+        $requete = $bdd->query('select * from utilisateur_sdapa where login_utilisateur = "' . $login . '" and mot_passe_utilisateur = "' . $motdepasse . '"');
+        if ($stmt = $requete->fetch()) {
+            if ($stmt['id_groupe_utilisateur'] == 14) {
                 $_SESSION['connecte'] = $stmt['id_utilisateur'];
                 $_SESSION['id_etablissement'] = $stmt['id_etablissement'];
                 $_SESSION['id_type_utilisateur '] = $stmt['id_type_utilisateur'];
                 $_SESSION['id_groupe_utilisateur'] = $stmt['id_groupe_utilisateur'];
                 $_SESSION['id_departement_grand'] = $stmt['id_departement'];
-            }else{
+            } else {
                 $_SESSION['connecte'] = $stmt['id_utilisateur'];
                 $_SESSION['id_etablissement'] = $stmt['id_etablissement'];
                 $_SESSION['id_departement'] = $stmt['id_departement'];
@@ -22,11 +22,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $_SESSION['id_groupe_utilisateur'] = $stmt['id_groupe_utilisateur'];
             }
 
-            if ($_SESSION['id_groupe_utilisateur'] == 14){
+            if ($_SESSION['id_groupe_utilisateur'] == 14) {
                 header('Location:pages/admis.php');
-            }elseif ($_SESSION['id_groupe_utilisateur'] == 20){
+            } elseif ($_SESSION['id_groupe_utilisateur'] == 20) {
                 header('Location:pages/index.php');
-            }else{
+            } else {
                 header('Location:pages/etudiant.php');
             }
 
@@ -83,7 +83,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                     <div class="row px-3"><label class="mb-1">
                             <h6 class="mb-0 text-sm">mot de passe</h6>
-                        </label> <input type="password" name="motdepasse" placeholder="Entrez votre mot de passe" required maxlength="255">
+                        </label> <input type="password" name="motdepasse" placeholder="Entrez votre mot de passe"
+                                        required maxlength="255">
                     </div>
 
                     <div class="row mb-3 px-3 mt-3">
@@ -96,7 +97,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
     <div class="row fixed-row-bottom">
         <div class="col-12 bg-blue py-4 mt-5">
-            <div class="row px-3"><small class="ml-4 ml-sm-5 mb-2">Copyright &copy; 2020.  UNIVERSITÉ FELIX HOUPHOUET-BOIGNY .</small>
+            <div class="row px-3"><small class="ml-4 ml-sm-5 mb-2">Copyright &copy; 2020. UNIVERSITÉ FELIX
+                    HOUPHOUET-BOIGNY .</small>
             </div>
         </div>
     </div>

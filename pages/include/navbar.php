@@ -1,6 +1,6 @@
 <?php
 
-$info = $bdd->query('select * from utilisateur where id_utilisateur ="' . $_SESSION['connecte'] . '" ');
+$info = $bdd->query('select * from utilisateur_sdapa where id_utilisateur ="' . $_SESSION['connecte'] . '" ');
 $information = $info->fetch();
 if ($_SESSION['id_type_utilisateur '] == 1) {
 
