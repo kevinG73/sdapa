@@ -17,6 +17,8 @@ $_SESSION['id_etablissement'] = $id_etablissement;
 $_SESSION['id_departement'] = $id_departement;
 
 $code_et = uniqid('SADP', false);
+
+
 if ($etudiant_ufhb == 'OUI') {
     $ufhb = 1;
 }
@@ -41,9 +43,10 @@ if ($verificaion == 1) {
 
         $enregistrement2 = $inscription->enregistrement();
 
-        foreach ($id_parcours as $testparcours) {
+        foreach ($id_parcours as $key => $testparcours) {
 
-            $parcours_sdapa = $bdd->query('insert into parcours_sdapa (id_etudiant,id_parcours) values ("' . $code_et . '","' . $testparcours . '")');
+            $choix = (int)$key+1;
+            $parcours_sdapa = $bdd->query('insert into parcours_sdapa (id_etudiant,id_parcours,choix) values ("' . $code_et . '","' . $testparcours . '","' . $choix. '")');
 
         }
 
