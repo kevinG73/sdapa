@@ -10,16 +10,18 @@ if ($_SESSION['id_type_utilisateur '] == 1) {
     $etablissements = ListeEtablissementsSession($_SESSION['id_etablissement']);
 }
 $annee = ListeAnnee();
+$type_deliberation = 2;
+$id_parcours_a = 0;
 
 if (isset($_SESSION['orientation'])) {
     $id_etablissement = $_SESSION['orientation']['id_etablissement'];
     $id_departement = $_SESSION['orientation']['id_departement'];
     $id_annee = $_SESSION['orientation']['id_annee'];
 
-    $verifier = verifierDeliberation($id_etablissement, $id_departement, $id_annee);
+    $verifier = verifierDeliberation($type_deliberation, $id_etablissement, $id_departement, $id_parcours_a, $id_annee);
     if ((int)$verifier === 0) {
         unset($_SESSION['orientation']);
-        $message = "Pour utiliser cette page , vous devez selectionner tout parcours confondu comme mode de calcul sur la page de calcul du critère .";
+        $message = "Pour utiliser cette page , vous devez selectionner tout parcours confondu comme mode de calcul sur la page de calcul du critère  .";
     } else {
         $parcours = ListeParcoursDepartement($id_departement);
         $liste = ListeEtudiantOrientation($id_etablissement, $id_departement, $id_annee);
@@ -39,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     );
     /* pour afficher les données du tableau */
     if (isset($_POST['consulter'])) {
-        $verifier = verifierDeliberation($id_etablissement, $id_departement, $id_annee);
+        $verifier = verifierDeliberation($type_deliberation, $id_etablissement, $id_departement, $id_parcours_a, $id_annee);
 
         if ((int)$verifier === 0) {
             unset($_SESSION['orientation']);

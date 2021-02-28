@@ -49,10 +49,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     if ($point > 0) {
                         $type_critere = 2;
                         $id_parcours_a = 0;
-                        /* réinitialiser ce qui a été fait par le mode parcours par parcours */
+                        /* réinitialiser ce qui a été fait par le mode par parcours */
                         resetCritere($id_annee, $id_etablissement, $id_departement);
                         /* verifier si il y a eu une deliberation */
-                        $deliberation = (int)verifierDeliberation($id_etablissement, $id_departement, $id_parcours_a, $id_annee);
+                        $deliberation = (int)verifierDeliberation($type_critere, $id_etablissement, $id_departement, $id_parcours_a, $id_annee);
                         /* tout parcours confonu */
                         if ($deliberation > 0) {
                             /* mise à jour */
@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 } else {
                     $type_critere = 1;
                     if ($point > 0) {
-                        $deliberation = (int)verifierDeliberation($id_etablissement, $id_departement, $id_parcours, $id_annee);
+                        $deliberation = (int)verifierDeliberation($type_critere, $id_etablissement, $id_departement, $id_parcours, $id_annee);
                         if ($deliberation) {
                             /* on affiche une fenetre modale */
                             echo "<script>$(window).on('load',function(){ $('#critereModal').modal('show'); });</script>";

@@ -55,11 +55,11 @@ function resetDeliberation($id_etablissement, $id_departement, $id_parcours, $id
  * verifier si un parcours a déjà choisis ses admis
  * @return int
  */
-function verifierDeliberation($id_etablissement, $id_departement, $id_parcours, $id_annee)
+function verifierDeliberation($type_deliberation, $id_etablissement, $id_departement, $id_parcours, $id_annee)
 {
     global $bdd;
     $requete = "SELECT count(*) FROM deliberation_sdapa WHERE  id_etablissement = '$id_etablissement' AND id_departement = $id_departement 
-    AND id_parcours = $id_parcours AND statut = 1 AND id_annee = '$id_annee'";
+    AND type_deliberation = '$type_deliberation' AND id_parcours = $id_parcours AND statut = 1 AND id_annee = '$id_annee'";
     $resultat = $bdd->query($requete);
     return $resultat->fetchColumn();
 }
@@ -78,8 +78,8 @@ function ListeEtudiantOrientation($id_etablissement, $id_departement, $id_annee)
                 FROM etudiant_sdapa etd 
                 JOIN inscription_sdapa ins ON etd.id = ins.id_etudiant
                 JOIN deliberation_sdapa dl ON dl.id_etablissement = ins.id_etablissement
-                WHERE ins.id_etablissement = $id_etablissement AND ins.id_departement = $id_departement AND annee = $id_annee
-                AND total_point_critere	> min_point_critere";
+                WHERE type_deliberation = '2' AND ins.id_etablissement = '$id_etablissement' AND ins.id_departement = '$id_departement' 
+                AND annee = '$id_annee' AND total_point_critere	> min_point_critere";
 
     $resultat = $bdd->query($requete);
     if (is_bool($resultat)) {

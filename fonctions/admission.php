@@ -78,7 +78,6 @@ function resetCritere($annee, $id_etablissement, $id_departement)
     /* on donne 1 à tous les candidats qui ne respectent par ce poit critère */
     $requete = "UPDATE inscription_sdapa SET statut_inscription = 0 , id_parcours = 0 
                 WHERE annee = '$annee' AND id_etablissement = '$id_etablissement' AND id_departement = '$id_departement'";
-
     $bdd->query($requete);
 }
 
