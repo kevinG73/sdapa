@@ -4,11 +4,11 @@
  * @param $id_specialite
  * @param $id_annee
  */
-function creerDeliberation($min_pt_critere, $id_etablissement, $id_departement, $id_annee)
+function creerDeliberation($type_critere, $min_pt_critere, $id_etablissement, $id_departement, $id_parcours, $id_annee)
 {
     global $bdd;
-    $requete = "INSERT INTO deliberation_sdapa SET type_deliberation = 1 , min_point_critere = $min_pt_critere,
-    id_etablissement = '$id_etablissement', id_departement = $id_departement , id_annee = '$id_annee'";
+    $requete = "INSERT INTO deliberation_sdapa SET type_deliberation = $type_critere , min_point_critere = $min_pt_critere,
+    id_etablissement = '$id_etablissement', id_departement = $id_departement , id_parcours = $id_parcours, statut = 1,  id_annee = '$id_annee'";
     $bdd->query($requete) or die(print_r($bdd->errorInfo()));
 }
 
@@ -18,11 +18,11 @@ function creerDeliberation($min_pt_critere, $id_etablissement, $id_departement, 
  * @param $id_departement
  * @param $id_annee
  */
-function majDeliberation($min_pt_critere, $id_etablissement, $id_departement, $id_annee)
+function majDeliberation($min_pt_critere, $id_etablissement, $id_departement, $id_parcours, $id_annee)
 {
     global $bdd;
-    $requete = "UPDATE deliberation_sdapa SET  min_point_critere= $min_pt_critere WHERE 
-    id_etablissement = '$id_etablissement' AND id_departement = $id_departement AND id_annee = '$id_annee'";
+    $requete = "UPDATE deliberation_sdapa SET  min_point_critere= $min_pt_critere , statut = 1 WHERE 
+    id_etablissement = '$id_etablissement' AND id_departement = $id_departement AND id_parcours = $id_parcours AND id_annee = '$id_annee'";
     $bdd->query($requete) or die(print_r($bdd->errorInfo()));
 }
 
@@ -36,19 +36,30 @@ function supprimerDeliberation($id_etablissement, $id_departement, $id_annee)
     global $bdd;
     $requete = "DELETE FROM deliberation_sdapa WHERE id_etablissement = '$id_etablissement' AND id_departement = '$id_departement' AND id_annee = '$id_annee'";
     $bdd->query($requete);
-
-    $requete = "UPDATE inscription_sdapa SET statut_inscription	= 2 WHERE statut_inscription = 0  AND id_etablissement = '$id_etablissement' AND id_departement = '$id_departement' AND annee = '$id_annee'";
-    $bdd->query($requete);
 }
 
 /***
- * Liste des parcours selectionnés par un étudiant
- * @return array
+ * @param $id_etablissement
+ * @param $id_specialite
+ * @param $id_annee
  */
-function verifierDeliberation($id_etablissement, $id_departement, $id_annee)
+function resetDeliberation($id_etablissement, $id_departement, $id_parcours, $id_annee)
 {
     global $bdd;
-    $requete = "SELECT count(*) FROM deliberation_sdapa WHERE  id_etablissement = '$id_etablissement' AND id_departement = $id_departement AND id_annee = '$id_annee'";
+    $requete = "UPDATE deliberation_sdapa SET  statut = 0 WHERE 
+    id_etablissement = '$id_etablissement' AND id_departement = '$id_departement' AND id_parcours <> '$id_parcours' AND id_annee = '$id_annee'";
+    $bdd->query($requete) or die(print_r($bdd->errorInfo()));
+}
+
+/***
+ * verifier si un parcours a déjà choisis ses admis
+ * @return int
+ */
+function verifierDeliberation($id_etablissement, $id_departement, $id_parcours, $id_annee)
+{
+    global $bdd;
+    $requete = "SELECT count(*) FROM deliberation_sdapa WHERE  id_etablissement = '$id_etablissement' AND id_departement = $id_departement 
+    AND id_parcours = $id_parcours AND statut = 1 AND id_annee = '$id_annee'";
     $resultat = $bdd->query($requete);
     return $resultat->fetchColumn();
 }
@@ -88,7 +99,7 @@ function parcoursAffecte($id_etudiant)
     WHERE id_etudiant	= '$id_etudiant'";
     $resultat = $bdd->query($requete);
     if (is_bool($resultat)) {
-        return array();
+        return 0;
     } else {
         return $resultat->fetchColumn();
     }

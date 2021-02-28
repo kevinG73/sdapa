@@ -165,5 +165,8 @@ function DeterminerMention($id)
  */
 function convert_accent($string)
 {
+    return $string;
+    /*
     return htmlspecialchars_decode(htmlentities(utf8_decode($string)));
+    */
 }

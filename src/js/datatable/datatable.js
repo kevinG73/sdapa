@@ -34,7 +34,7 @@ $(document).ready(function () {
                     {data: 'moy_ann_l1', title: 'moy l1'},
                     {data: 'moy_ann_l2', title: 'moy l2'},
                     {data: 'moy_ann_l3', title: 'moy l3'},
-                    {data: 'moy_pondere', title: 'moyenne pondéré'},
+                    {data: 'moy_pondere', title: 'moyenne pondérée'},
                     {data: 'total_mention', title: 'total mention'},
                     {data: 'temps_mis_en_Licence', title: 'temps mis en Licence'},
                     {data: 'total_point_critere', title: 'point critère'},

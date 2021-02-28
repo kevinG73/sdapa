@@ -10,12 +10,26 @@ if ($_SESSION['id_type_utilisateur '] == 1) {
 }
 $annee = ListeAnnee();
 
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id_annee = $_POST['id_annee'];
     $id_etablissement = $_POST['id_etablissement'];
     $id_departement = $_POST['id_departement'];
     $id_parcours = $_POST['id_parcours'];
     $point = $_POST['id_critere_selection'];
+
+
+    if (!empty($id_annee)) {
+        $_SESSION['id_annee'] = $id_annee;
+    }
+
+    if (!empty($id_parcours)) {
+        $_SESSION['select'] = $id_parcours;
+    }
+
+    if (!empty($point)) {
+        $_SESSION['point'] = $point;
+    }
 
     if (isset($_POST['valider'])) {
         /* le nombre total d'étudiants avec les points critères calculés */
@@ -33,30 +47,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 /* si il selectionne tout parcours confondu */
                 if ($choix_mode_calcul === 0) {
                     if ($point > 0) {
+                        $type_critere = 2;
+                        $id_parcours_a = 0;
                         /* réinitialiser ce qui a été fait par le mode parcours par parcours */
                         resetCritere($id_annee, $id_etablissement, $id_departement);
                         /* verifier si il y a eu une deliberation */
-                        $deliberation = (int)verifierDeliberation($id_etablissement, $id_departement, $id_annee);
-
+                        $deliberation = (int)verifierDeliberation($id_etablissement, $id_departement, $id_parcours_a, $id_annee);
                         /* tout parcours confonu */
                         if ($deliberation > 0) {
                             /* mise à jour */
-                            majDeliberation($point, $id_etablissement, $id_departement, $id_annee);
+                            majDeliberation($point, $id_etablissement, $id_departement, $id_parcours_a, $id_annee);
                             echo '<script language="JavaScript" type="text/javascript">window.location.replace("attribution-manuel.php");</script>';
                         } else {
                             /* création */
-                            creerDeliberation($point, $id_etablissement, $id_departement, $id_annee);
+                            creerDeliberation($type_critere, $point, $id_etablissement, $id_departement, $id_parcours_a, $id_annee);
                             echo '<script language="JavaScript" type="text/javascript">window.location.replace("attribution-manuel.php");</script>';
                         }
                     } else {
                         $message = "veuillez selectionner une valeur dans le champ critère de selection .";
                     }
                 } else {
+                    $type_critere = 1;
                     if ($point > 0) {
-                        /* si il selectionne par parcours */
-                        supprimerDeliberation($id_etablissement, $id_departement, $id_annee);
-                        AppliquerCritere($id_annee, $id_etablissement, $id_departement, $id_parcours, $point);
-                        echo '<script language="JavaScript" type="text/javascript">window.location.replace("admis.php");</script>';
+                        $deliberation = (int)verifierDeliberation($id_etablissement, $id_departement, $id_parcours, $id_annee);
+                        if ($deliberation) {
+                            /* on affiche une fenetre modale */
+                            echo "<script>$(window).on('load',function(){ $('#critereModal').modal('show'); });</script>";
+                        } else {
+                            /* si il selectionne par parcours */
+                            creerDeliberation($type_critere, $point, $id_etablissement, $id_departement, $id_parcours, $id_annee);
+                            AppliquerCritere($id_annee, $id_etablissement, $id_departement, $id_parcours, $point);
+                            echo '<script language="JavaScript" type="text/javascript">window.location.replace("admis.php");</script>';
+                        }
+
                     } else {
                         $message = "veuillez selectionner une valeur dans le champ critère de selection .";
                     }
@@ -69,6 +92,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
     }
+
+    /* si il confirme sur le modal */
+    if (isset($_POST['confirmer'])) {
+        $id_annee = $_SESSION['id_annee'];
+        $point = $_SESSION['point'];
+        $id_parcours = $_SESSION['select'];
+
+        /* reset */
+        resetCritere($id_annee, $id_etablissement, $id_departement);
+        resetDeliberation($id_etablissement, $id_departement, $id_parcours, $id_annee);
+
+        /* mise à jour des déliberations */
+        majDeliberation($point, $id_etablissement, $id_departement, $id_parcours, $id_annee);
+
+        /* application des nouveaux critères */
+        AppliquerCritere($id_annee, $id_etablissement, $id_departement, $id_parcours, $point);
+    }
 }
 ?>
 
@@ -76,6 +116,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!-- Begin Page Content -->
 <form method="post">
+    <?php include_once "modal/question.php"; ?>
     <div class="card shadow mb-2">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary text-uppercase">Filtre de recherche</h6>
@@ -194,3 +235,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </form>
 
 <!-- /.container-fluid -->
+

@@ -1,10 +1,8 @@
-<h1 class="h4 mb-1 text-primary text-uppercase mb-4">info</h1>
-
 <div class="card shadow mb-2">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary text-uppercase">
             <p>DETERMINATION AUTOMATIQUE DES POINTS D&rsquo;ADMISSIBILTE EN <strong>MASTER
-                    1 </strong>SELON LES CRITERES DE SELECTION CI-DESSOUS DECRITS</p>
+                    1 </strong>SELON LES CRITERES DE SELECTION</p>
         </h6>
     </div>
     <div class="card-body">

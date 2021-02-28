@@ -55,7 +55,7 @@ function active($currect_page)
     <!-- Nav Item - Dashboard -->
     <li class="nav-item <?php active('info.php');?>">
         <a class="nav-link " href="info.php">
-            <span>INFO</span></a>
+            <span>INFO SUR LE POINT CRITERE</span></a>
     </li>
 
     <!-- Divider -->
