@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         } else {
             $_SESSION['connecte'] = "";
-            $_SESSION['error_message'] = "votre nom d'utilisateur ou votre mot de passe est incorrecte";
+            $_SESSION['error_message'] = "votre nom d'utilisateur ou votre mot de passe est incorrect.";
         }
 
 
