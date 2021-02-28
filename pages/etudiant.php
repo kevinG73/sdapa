@@ -5,7 +5,7 @@ if (!isset($_SESSION['connecte']) || $_SESSION['connecte'] === "") {
     header("Location:login.php");
 }
 
-require "../config/connexion.php";
+require "../config/connection.php";
 include "../fonctions/index.php";
 include '../class/inscription.class.php';
 

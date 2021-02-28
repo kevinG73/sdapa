@@ -1,5 +1,5 @@
 <?php
-require "../../config/connexion.php";
+require "../../config/connection.php";
 require "../../fonctions/index.php";
 
 if (isset($_GET['id_parcours']) && !empty($_GET['id_parcours'])):

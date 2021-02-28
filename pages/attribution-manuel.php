@@ -5,7 +5,7 @@ setlocale(LC_TIME, 'french.UTF-8', 'fr_FR.UTF-8');
 if (!isset($_SESSION['connecte']) || $_SESSION['connecte'] === "") {
     header("Location:../index.php");
 }
-require "../config/connexion.php";
+require "../config/connection.php";
 
 ?>
 <!DOCTYPE html>

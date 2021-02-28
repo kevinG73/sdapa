@@ -1,6 +1,6 @@
 <?php
 
-require "../../config/connexion.php";
+require "../../config/connection.php";
 require "../../fonctions/index.php";
 require "../../fonctions/fonction.php";
 
@@ -16,8 +16,6 @@ $moyp = 0;
 if (isset($etudiantID) && !empty($_POST['etudiantid'])) {
     $info = infoEtudiant($etudiantID);
     $totalMention = fetchTotalMention($info["id_etudiant"]);
-
-
 
     $tableau = "<tr> <th>Niveau</th> <th>AB</th> <th>B</th> <th>TB</th><th>Nombre total de mention</th><th>Moyenne pondérée</th> </tr>";
     for ($i = 0; $i <= 2; $i++):

@@ -1,5 +1,5 @@
 <?php
-require_once "../../config/connexion.php";
+require_once "../../config/connection.php";
 require_once('./entete.php');
 setlocale(LC_TIME, "fr_FR");
 

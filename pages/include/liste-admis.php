@@ -99,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <div class="card shadow mb-5">
     <div class="card-header">
-        <h6 class="m-0 font-weight-bold text-primary text-uppercase">Liste des admis en master 1 </h6>
+        <h6 class="m-0 font-weight-bold text-primary text-uppercase">Liste des étudiants admissibles en master 1 </h6>
     </div>
     <div class="card-body">
         <?php if (isset($admis) && count($admis) > 0): ?>
@@ -130,14 +130,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </tbody>
                 </table>
             </div>
-        <?php else: ?>
-            <p class="text-center text-uppercase">Aucun résultat disponible , veuillez essayer avec un autre parcours
-                .</p>
         <?php endif; ?>
     </div>
 </div>
-
-
 <!-- /.container-fluid -->
 
 

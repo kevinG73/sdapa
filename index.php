@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "config/connexion.php";
+require "config/connection.php";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     extract($_POST);
 

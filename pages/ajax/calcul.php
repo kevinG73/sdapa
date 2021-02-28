@@ -1,10 +1,8 @@
 <?php
-require "../../config/connexion.php";
+require "../../config/connection.php";
 require "../../fonctions/index.php";
 
 if (isset($_POST) && !empty($_POST)):
-
-
     /* variables */
     $moyl1 = (float)$_POST['moyl1'];
     $moyl2 = (float)$_POST['moyl2'];
@@ -16,7 +14,6 @@ if (isset($_POST) && !empty($_POST)):
     $critere_temps1 = 0;
     $critere_moyenne_annuelle = 0;
     $critere_nombre_mention = 0;
-
 
     $p_age = 0;
     $p_temps1 = 0;
@@ -30,7 +27,6 @@ if (isset($_POST) && !empty($_POST)):
     if (isset($_POST['age'])) {
         $critere_age = (int)$_POST['age'];
     }
-
 
     if (isset($moyp)) {
         $critere_moyenne_annuelle = (float)$moyp;
@@ -111,7 +107,6 @@ if (isset($_POST) && !empty($_POST)):
                           total_mention = "' . $total_l[$i] . '" , moy_pondere = "' . $moypondl[$i] . '"  where id_etudiant = "' . $id_etudiant . '" and id_niveau = "' . $i . '" ';
         $rep3 = $bdd->prepare($requupdate);
         $rep3->execute();
-
     }
 
     exit;

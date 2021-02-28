@@ -1,5 +1,5 @@
 <?php
-require "../../config/connexion.php";
+require "../../config/connection.php";
 require "../../fonctions/index.php";
 
 if (isset($_GET['id_parcours']) && isset($_GET['id_departement']) && isset($_GET['id_annee'])):
@@ -16,7 +16,7 @@ if (isset($_GET['id_parcours']) && isset($_GET['id_departement']) && isset($_GET
 
     $resultat = $bdd->query($requete);
     $liste = $resultat->fetchAll(PDO::FETCH_ASSOC);
-    if (count($liste) > 0):
+    if (!is_bool($liste) && count($liste) > 0):
         echo json_encode(array('data' => $liste));
     else:
         echo json_encode(array('data' => array()));

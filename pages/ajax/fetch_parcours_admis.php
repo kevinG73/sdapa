@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "../../config/connexion.php";
+require "../../config/connection.php";
 require "../../fonctions/index.php";
 
 if (isset($_GET['id_departement']) && !empty($_GET['id_departement'])):

@@ -5,7 +5,7 @@ setlocale(LC_TIME, 'french.UTF-8', 'fr_FR.UTF-8');
 if (!isset($_SESSION['connecte']) || $_SESSION['connecte'] === "") {
     header("Location:../index.php");
 }
-require "../config/connexion.php";
+require "../config/connection.php";
 
 ?>
 <!DOCTYPE html>
@@ -17,7 +17,7 @@ require "../config/connexion.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>liste des admis en master | UFHB </title>
+    <title>liste des étudiants admissibles en master 1 | UFHB </title>
 
     <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
