@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     );
     /* pour afficher les données du tableau */
     if (isset($_POST['consulter'])) {
-        $verifier = verifierDeliberation($type_deliberation, $id_etablissement, $id_departement, $id_parcours_a, $id_annee);
+        $verifier = verifierDeliberationC($type_deliberation, $id_etablissement, $id_departement, $id_parcours_a, $id_annee);
 
         if ((int)$verifier === 0) {
             unset($_SESSION['orientation']);
@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     /* si on clique sur valider pour fermer l'attributation */
     if (isset($_POST['valider'])) {
-        supprimerDeliberation($id_etablissement, $id_departement, $id_annee);
+        termineDeliberation($id_etablissement, $id_departement, $id_annee);
         header('Location: admis.php');
     }
 }

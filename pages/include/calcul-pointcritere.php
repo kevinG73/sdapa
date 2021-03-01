@@ -49,6 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     if ($point > 0) {
                         $type_critere = 2;
                         $id_parcours_a = 0;
+
                         /* réinitialiser ce qui a été fait par le mode par parcours */
                         resetCritere($id_annee, $id_etablissement, $id_departement);
                         /* verifier si il y a eu une deliberation */
@@ -56,11 +57,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         /* tout parcours confonu */
                         if ($deliberation > 0) {
                             /* mise à jour */
-                            majDeliberation($point, $id_etablissement, $id_departement, $id_parcours_a, $id_annee);
+                            majDeliberation($point, $id_etablissement, $id_departement, $id_parcours_a, 0, $id_annee);
                             echo '<script language="JavaScript" type="text/javascript">window.location.replace("attribution-manuel.php");</script>';
                         } else {
                             /* création */
-                            creerDeliberation($type_critere, $point, $id_etablissement, $id_departement, $id_parcours_a, $id_annee);
+                            creerDeliberation($type_critere, $point, $id_etablissement, $id_departement, $id_parcours_a, 0, $id_annee);
                             echo '<script language="JavaScript" type="text/javascript">window.location.replace("attribution-manuel.php");</script>';
                         }
                     } else {
@@ -69,15 +70,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 } else {
                     $type_critere = 1;
                     if ($point > 0) {
-                        $deliberation = (int)verifierDeliberation($type_critere, $id_etablissement, $id_departement, $id_parcours, $id_annee);
+
+                        /* verifier si il y a eu déliberation tout parcours confondu (en cours ou terminée )*/
+                        $deliberation_toutparcours = (int)verifierDeliberation(2, $id_etablissement, $id_departement, 0, $id_annee);
+                        if ($deliberation_toutparcours) {
+                            /* réinitialiser ce qui a été fait par le mode tout parcours confondu */
+                            resetCritere($id_annee, $id_etablissement, $id_departement);
+                            /* supprime la deliberation tout parcours confondu de la table */
+                            supprimerDeliberation(2, $id_etablissement, $id_departement, $id_annee);
+                        }
+
+                        /* verifier si il y a eu deliberation par parcours */
+                        $deliberation = (int)verifierDeliberationT($type_critere, $id_etablissement, $id_departement, $id_parcours, $id_annee);
                         if ($deliberation) {
                             /* on affiche une fenetre modale */
                             echo "<script>$(window).on('load',function(){ $('#critereModal').modal('show'); });</script>";
                         } else {
                             /* si il selectionne par parcours */
-                            creerDeliberation($type_critere, $point, $id_etablissement, $id_departement, $id_parcours, $id_annee);
+                            creerDeliberation($type_critere, $point, $id_etablissement, $id_departement, $id_parcours, 1, $id_annee);
                             AppliquerCritere($id_annee, $id_etablissement, $id_departement, $id_parcours, $point);
-                            echo '<script language="JavaScript" type="text/javascript">window.location.replace("admis.php");</script>';
+                            $_SESSION['success'] = "selection effectuée avec succès .";
                         }
 
                     } else {
@@ -104,10 +116,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         resetDeliberation($id_etablissement, $id_departement, $id_parcours, $id_annee);
 
         /* mise à jour des déliberations */
-        majDeliberation($point, $id_etablissement, $id_departement, $id_parcours, $id_annee);
+        majDeliberation($point, $id_etablissement, $id_departement, $id_parcours, 1, $id_annee);
 
         /* application des nouveaux critères */
         AppliquerCritere($id_annee, $id_etablissement, $id_departement, $id_parcours, $point);
+
+        $_SESSION['success'] = "selection effectuée avec succès .";
     }
 }
 ?>
@@ -125,6 +139,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <?php if (isset($message) && !empty($message)): ?>
                 <div class="bg-danger text-white">
                     <p class="p-2"><?= $message; ?></p>
+                </div>
+            <?php endif; ?>
+
+            <?php if (isset($_SESSION['success']) && !empty($_SESSION['success'])): ?>
+                <div class="bg-success text-white">
+                    <p class="p-2"><?= $_SESSION['success']; ?></p>
+                    <?php unset($_SESSION['success']); ?>
                 </div>
             <?php endif; ?>
 

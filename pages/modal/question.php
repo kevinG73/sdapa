@@ -9,10 +9,9 @@
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body">Le point critère pour l'admission à ce parcours a déjà été donnée , si
+            <div class="modal-body">Le point critère pour l'admission à ce parcours a déjà été donné , si
                 vous cliquez sur le bouton "confirmer" ci-dessous , vous risquez de modifier la selection des admis des
-                autres parcours .
-
+                autres parcours de ce département .
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler
