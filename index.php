@@ -28,14 +28,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 header('Location:pages/admis.php');
             } elseif ($_SESSION['id_groupe_utilisateur'] == 20) {
                 header('Location:pages/index.php');
-            } else {
-                header('Location:pages/etudiant.php');
+            } elseif ($_SESSION['id_groupe_utilisateur'] == 38) {
+                header('Location:xh3/index.php');
             }
 
         } else {
-            $_SESSION['connecte'] = "";
-            $_SESSION['error_message'] = "votre nom d'utilisateur ou votre mot de passe est incorrect.";
+            header('Location:pages/etudiant.php');
         }
+
+    } else {
+        $_SESSION['connecte'] = "";
+        $_SESSION['error_message'] = "votre nom d'utilisateur ou votre mot de passe est incorrect.";
     }
 }
 ?>
