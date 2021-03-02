@@ -9,7 +9,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($login) && isset($motdepasse)) {
         extract($_POST);
         $requete = $bdd->query('select * from utilisateur_sdapa where login_utilisateur = "' . $login . '" and mot_passe_utilisateur = "' . $motdepasse . '"');
+
         if ($stmt = $requete->fetch()) {
+
             if ($stmt['id_groupe_utilisateur'] == 14) {
                 $_SESSION['connecte'] = $stmt['id_utilisateur'];
                 $_SESSION['id_etablissement'] = $stmt['id_etablissement'];
@@ -30,15 +32,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 header('Location:pages/index.php');
             } elseif ($_SESSION['id_groupe_utilisateur'] == 38) {
                 header('Location:xh3/index.php');
+            } else {
+                header('Location:pages/etudiant.php');
             }
 
         } else {
-            header('Location:pages/etudiant.php');
+            $_SESSION['connecte'] = "";
+            $_SESSION['error_message'] = "votre nom d'utilisateur ou votre mot de passe est incorrect.";
         }
-
-    } else {
-        $_SESSION['connecte'] = "";
-        $_SESSION['error_message'] = "votre nom d'utilisateur ou votre mot de passe est incorrect.";
     }
 }
 ?>

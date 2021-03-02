@@ -39,8 +39,6 @@ include '../class/utilisateur.class.php';
 <!-- Page Wrapper -->
 <div id="wrapper">
 
-    <?php include "../pages/include/sidebar.php"; ?>
-
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
@@ -107,7 +105,7 @@ $res=$req->fetch();
 
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <center><h2 class="m-0 font-weight-bold text-primary">Utilisateurs (Enseignants et personnel)</h2></center>
+                        <h4 class="m-0 font-weight-bold text-primary text-uppercase">Utilisateurs (Enseignants et personnel)</h4>
                     </div>
                     <div class="card-body">
                         <form action="" method="POST">
