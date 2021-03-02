@@ -1,6 +1,8 @@
 <?php
 session_start();
 require "config/connection.php";
+
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     extract($_POST);
 
@@ -34,8 +36,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['connecte'] = "";
             $_SESSION['error_message'] = "votre nom d'utilisateur ou votre mot de passe est incorrect.";
         }
-
-
     }
 }
 ?>

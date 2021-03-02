@@ -481,9 +481,11 @@ $etudiants = ListeEtudiants();
 
                 <?php
                 if ($_SESSION['id_type_utilisateur '] == 1) {
-                    $gu = $bdd->query("select * from etudiant_sdapa,inscription_sdapa where etudiant_sdapa.id = inscription_sdapa.id_etudiant group by inscription_sdapa.id_etudiant") or die(print_r($bdd->errorInfo()));
+                    $gu = $bdd->query("select inscription_sdapa.id_etudiant , nom , prenoms , date_naissance , telephone , email , ufhb from etudiant_sdapa,inscription_sdapa where etudiant_sdapa.id = inscription_sdapa.id_etudiant group by inscription_sdapa.id_etudiant , inscription_sdapa.nom , inscription_sdapa.prenoms , inscription_sdapa.date_naissance ,telephone , email , ufhb") or die(print_r($bdd->errorInfo()));
                 } else {
-                    $gu = $bdd->query("select * from etudiant_sdapa,inscription_sdapa where etudiant_sdapa.id = inscription_sdapa.id_etudiant and inscription_sdapa.id_etablissement = '" . $_SESSION['id_etablissement'] . "' and inscription_sdapa.id_departement = '" . $_SESSION['id_departement'] . "' group by inscription_sdapa.id_etudiant") or die(print_r($bdd->errorInfo()));
+                    $gu = $bdd->query("select inscription_sdapa.id_etudiant , nom , prenoms , date_naissance , telephone , email , ufhb
+                     from etudiant_sdapa,inscription_sdapa where etudiant_sdapa.id = inscription_sdapa.id_etudiant and inscription_sdapa.id_etablissement = '" . $_SESSION['id_etablissement'] . "' and inscription_sdapa.id_departement = '" . $_SESSION['id_departement'] . "' 
+                     group by inscription_sdapa.id_etudiant , inscription_sdapa.nom , inscription_sdapa.prenoms , inscription_sdapa.date_naissance ,telephone , email , ufhb ") or die(print_r($bdd->errorInfo()));
                 }
 
                 ?>
