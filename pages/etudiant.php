@@ -616,7 +616,6 @@ $etudiants = ListeEtudiants();
     bootstrapValidate('#maila', 'email: Entrer email valide!')
     bootstrapValidate('#contact', 'min:10: Entrer votre numero sur 10 chiffres')
     bootstrapValidate('#contact', 'max:10: Votre numero ne doit pas depasser les 10 chiffres')
-
 </script>
 
 </body>
