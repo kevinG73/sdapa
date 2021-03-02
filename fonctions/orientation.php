@@ -141,7 +141,7 @@ function ListeEtudiantOrientation($id_etablissement, $id_departement, $id_annee)
 function parcoursAffecte($id_etudiant)
 {
     global $bdd;
-    $requete = "SELECT libelle_specialite FROM inscription_sdapa p JOIN specialite s ON s.id_specialite = p.id_parcours 
+    $requete = "SELECT libelle_specialite FROM inscription_sdapa p JOIN specialite_sdapa s ON s.id_specialite = p.id_parcours 
     WHERE id_etudiant	= '$id_etudiant'";
     $resultat = $bdd->query($requete);
     if (is_bool($resultat)) {

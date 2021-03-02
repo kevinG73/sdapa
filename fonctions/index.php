@@ -83,7 +83,8 @@ function ListePays()
     }
 }
 
-function ListeDiplome(){
+function ListeDiplome()
+{
     global $bdd;
     $requete = "SELECT * FROM diplomes";
     $resultat = $bdd->query($requete);
@@ -137,7 +138,7 @@ function DeterminerDepartement($id)
 function DeterminerParcours($id)
 {
     global $bdd;
-    $requete = "SELECT 	libelle_specialite FROM specialite WHERE id_specialite = $id";
+    $requete = "SELECT 	libelle_specialite FROM specialite_sdapa WHERE id_specialite = $id";
     $resultat = $bdd->query($requete);
     if (is_bool($resultat)) {
         return array();
@@ -166,7 +167,4 @@ function DeterminerMention($id)
 function convert_accent($string)
 {
     return $string;
-    /*
-    return htmlspecialchars_decode(htmlentities(utf8_decode($string)));
-    */
 }

@@ -6,7 +6,7 @@ if (isset($_GET['id_parcours']) && !empty($_GET['id_parcours'])):
     $id_parcours = (int)$_GET['id_parcours'];
 
     global $bdd;
-    $requete = "SELECT * FROM mention m JOIN departement d ON m.id_departement = d.id_departement JOIN specialite s ON s.id_mention = m.id_mention WHERE id_specialite  = $id_parcours";
+    $requete = "SELECT * FROM mention m JOIN departement d ON m.id_departement = d.id_departement JOIN specialite_sdapa s ON s.id_mention = m.id_mention WHERE id_specialite  = $id_parcours";
 
     $resultat = $bdd->query($requete);
     $liste = $resultat->fetchAll();
