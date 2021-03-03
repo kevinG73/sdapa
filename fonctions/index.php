@@ -125,7 +125,7 @@ function DeterminerEtablissement($id)
 function DeterminerDepartement($id)
 {
     global $bdd;
-    $requete = "SELECT nom_departement FROM departement WHERE id_etablissement = $id";
+    $requete = "SELECT nom_departement FROM departement WHERE id_departement = $id";
     $resultat = $bdd->query($requete);
     if (is_bool($resultat)) {
         return array();

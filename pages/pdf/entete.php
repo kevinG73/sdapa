@@ -47,7 +47,7 @@ class MYTCPDF extends TCPDF
         $left = ": " . DeterminerEtablissement($_SESSION['impression']['id_etablissement']);
         $this->WriteHTMLCell('', 10, 45, 31, $left, 0);
 
-        $left = ": " . DeterminerDepartement($_SESSION['impression']['id_etablissement']);
+        $left = ": " . DeterminerDepartement($_SESSION['impression']['id_departement']);
         $this->WriteHTMLCell('', 10, 45, 35, $left, 0);
 
         $this->title();

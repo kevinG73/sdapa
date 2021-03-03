@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (isset($_POST['action']) && $_POST['action'] === "consulter") {
         $_SESSION['select'] = $_POST['id_parcours'];
+        $_SESSION['select_departemnt'] = $_POST['id_departement'];
         $admis = ListeAdmis($id_annee, $id_etablissement, $id_departement, $id_parcours);
     }
 

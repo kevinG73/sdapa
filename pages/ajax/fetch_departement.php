@@ -31,7 +31,7 @@ if (isset($_GET['id_etablissement']) && !empty($_GET['id_etablissement'])):
         foreach ($liste as $res):?>
 
             <?php
-            if ($res['id_departement'] == isset($_SESSION['id_departement'])) {
+            if ((isset($_SESSION['select_departemnt']) && !empty($_SESSION['select_departemnt']) && ($res['id_departement'] === $_SESSION['select_departemnt'])) || $res['id_departement'] == isset($_SESSION['id_departement'])) {
                 ?>
                 <option selected value="<?= $res['id_departement'] ?>"> <?= $res['nom_departement'] ?></option>
                 <?php
