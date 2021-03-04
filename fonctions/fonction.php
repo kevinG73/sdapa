@@ -233,6 +233,4 @@ group by id_demande
     }
 
 }
-
-
 ?>
