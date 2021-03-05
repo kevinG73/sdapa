@@ -103,6 +103,18 @@ $(document).ready(function () {
 
     /* pour calculer la moyenne pondéré de la licence */
     $("#inputML1, #inputML2, #inputML3").on("change keyup click blur mouseup", function () {
+        if ($("#inputML1").val() > 20 || $("#inputML1").val() < 0) {
+            $(this).val(0);
+        }
+
+        if ($("#inputML2").val() > 20 || $("#inputML2").val() < 0) {
+            $(this).val(0);
+        }
+
+        if ($("#inputML3").val() > 20 || $("#inputML3").val() < 0) {
+            $(this).val(0);
+        }
+
         var l1 = parseFloat($("#inputML1").val(), 10) || 0;
         var l2 = parseFloat($("#inputML2").val(), 10) || 0;
         var l3 = parseFloat($("#inputML3").val(), 10) || 0;
