@@ -8,15 +8,6 @@ if (!isset($_SESSION['connecte']) || $_SESSION['connecte'] === "") {
 require "../config/connection.php";
 include "../fonctions/index.php";
 include '../class/inscription.class.php';
-
-if ($_SESSION['id_type_utilisateur '] == 1) {
-    $etablissements = ListeEtablissements();
-} else {
-    $etablissements = ListeEtablissementsSession($_SESSION['id_etablissement']);
-}
-$etudiants = ListeEtudiants();
-
-
 ?>
 
 <!DOCTYPE html>
@@ -104,6 +95,15 @@ $etudiants = ListeEtudiants();
                 if (isset($_POST['supprimer'])) {
                     include 'include/crud_etudiant/supprimer_etudiant.php';
                 }
+
+                if ($_SESSION['id_type_utilisateur '] == 1) {
+                    $etablissements = ListeEtablissements();
+                } else {
+                    $etablissements = ListeEtablissementsSession($_SESSION['id_etablissement']);
+                }
+                $etudiants = ListeEtudiants();
+
+
 
                 ?>
 
@@ -312,7 +312,7 @@ $etudiants = ListeEtudiants();
                                                onchange="testage(this.value)" id="datenaiss" name="date_naissance"
                                                value="<?php echo @ $res['date_naissance'] ?>"
                                                max="<?= date('Y-m-d'); ?>">
-                                        <div class="invalid-tooltip" id="Vdatemin" style="display: none">Age minimum 17
+                                        <div class="invalid-tooltip" id="Vdatemin" style="display: none">Age minimum 9
                                             ans
                                         </div>
                                     </div>
@@ -343,7 +343,7 @@ $etudiants = ListeEtudiants();
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
                                         <label class="col-form-label-sm">Email</label>
-                                        <input type="email" class="form-control" id="maila" name="mail" required autocomplete="off"
+                                        <input type="email" class="form-control" id="maila" name="mail" autocomplete="off"
                                                value="<?php echo @ $res['email'] ?>">
                                     </div>
                                     <div class="form-group col-md-4">

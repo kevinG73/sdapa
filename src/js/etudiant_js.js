@@ -25,7 +25,7 @@ function testage(value) {
     dob = new Date(value);
     var today = new Date();
     var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
-    if (age<17){
+    if (age<9){
         $('#Vdatemin').show();
     }else {
         $('#Vdatemin').hide();

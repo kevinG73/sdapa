@@ -103,6 +103,18 @@ class utilisateur{
 
     }
 
+    public function modif_pass(){
+
+        $requete = $this->bdd->prepare('UPDATE utilisateur_sdapa SET login_utilisateur=:login_utilisateur ,  mot_passe_utilisateur=:mot_passe_utilisateur WHERE id_utilisateur=:id_utilisateur');
+        $requete->execute(array(
+            'id_utilisateur'=>  $this->id_utilisateur,
+            'login_utilisateur'=>  $this->login_utilisateur,
+            'mot_passe_utilisateur'=>  $this->mot_passe_utilisateur
+
+
+        )) or die(print_r($this->bdd->errorInfo()));
+    }
+
 
 
     public function suppression()

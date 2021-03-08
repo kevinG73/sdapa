@@ -89,6 +89,13 @@ function active($currect_page)
     endif;
     ?>
 
+    <hr class="sidebar-divider">
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item <?php active('modifier_passe.php');?>">
+        <a class="nav-link " href="modifier_passe.php">
+            <span>MODIFIER MOT DE PASSE</span></a>
+    </li>
+
     <!-- Divider -->
     <hr class="sidebar-divider">
 
