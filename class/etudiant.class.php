@@ -60,7 +60,6 @@ class etudiant
             }
 
             return 1;
-
         }
     }
 
