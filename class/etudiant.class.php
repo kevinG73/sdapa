@@ -49,7 +49,7 @@ class etudiant
             return $erreur;
         } else {
             $syntaxe = '#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#';
-            if (strlen($this->email) !== 0 && preg_match($syntaxe, $this->email)) { /*email bon*/
+            if (strlen($this->email) !== 0 && !preg_match($syntaxe, $this->email)) { /*email bon*/
                 $erreur = 'Le format de l\'email est incorrect .';
                 return $erreur;
             }
