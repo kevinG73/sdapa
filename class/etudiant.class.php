@@ -44,22 +44,22 @@ class etudiant
     public function verification()
     {
 
-        if (strlen($this->nom) == 0 || strlen($this->prenoms) == 0 || strlen($this->date_naissance) == 0 || strlen($this->lieu_naissance) == 0 || strlen($this->email) == 0 || strlen($this->telephone) == 0) {
+        if (strlen($this->nom) == 0 || strlen($this->prenoms) == 0 || strlen($this->date_naissance) == 0 || strlen($this->lieu_naissance) == 0 || strlen($this->telephone) == 0) {
             $erreur = 'Veuillez remplir le(s) champ(s) vide(s)';
             return $erreur;
         } else {
             $syntaxe = '#^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,6}$#';
-            if (preg_match($syntaxe, $this->email)) { /*email bon*/
-                if (strlen($this->telephone) != 10) {
-                    $erreur = 'Le numero de téléphone doit contenir 10 chiffres';
-                    return $erreur;
-
-                }
-                return 1;
-            } else {
-                $erreur = 'Le format de l\'email est incorrect';
+            if (strlen($this->email) !== 0 && preg_match($syntaxe, $this->email)) { /*email bon*/
+                $erreur = 'Le format de l\'email est incorrect .';
                 return $erreur;
             }
+
+            if (strlen($this->telephone) != 10) {
+                $erreur = 'Le numero de téléphone doit contenir 10 chiffres .';
+                return $erreur;
+            }
+
+            return 1;
 
         }
     }

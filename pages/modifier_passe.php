@@ -15,7 +15,7 @@ include '../class/utilisateur.class.php';
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Etudiants</title>
+    <title>MODIFICATION MOT DE PASSE</title>
 
     <!-- Custom fonts for this template -->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -25,7 +25,7 @@ include '../class/utilisateur.class.php';
     <link href="../src/css/sb-admin-2.min.css" rel="stylesheet">
     <!-- Custom styles for this page -->
     <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <link href="../vendor/select/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="../vendor/select/dist/css/select2.min.css" rel="stylesheet"/>
 
 </head>
 
@@ -51,10 +51,12 @@ include '../class/utilisateur.class.php';
                 <?php
                 if (isset($_POST['modifier'])) {
                     extract($_POST);
-                    $utilisateur= new utilisateur($_SESSION['connecte'],'',$login_utilisateur,$mot_passe_utilisateur,'','','', '', '', '',$bdd);
-                    $utilisateur=$utilisateur->modif_pass();
+                    $utilisateur = new utilisateur($_SESSION['connecte'], '', $login_utilisateur, $mot_passe_utilisateur, '', '', '', '', '', '', $bdd);
+                    $utilisateur = $utilisateur->modif_pass();
                     ?>
-                    <div><span id="" class="form-text text-success font-weight-bold"><i class="fas fa-fa-check-square fa-md fa-fw mr-2"></i>Modification effectuée</span></div>
+                    <div><span id="" class="form-text text-success font-weight-bold"><i
+                                    class="fas fa-fa-check-square fa-md fa-fw mr-2"></i>Modification effectuée</span>
+                    </div>
                     <?php
                 }
 
@@ -65,19 +67,24 @@ include '../class/utilisateur.class.php';
                     <div>
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary text-uppercase">MODIFICATION MOT DE PASSE</h6>
+                                <h6 class="m-0 font-weight-bold text-primary text-uppercase">MODIFICATION MOT DE
+                                    PASSE</h6>
                             </div>
                             <div class="card-body">
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label class="col-form-label-sm"
-                                               for="exampleFormControlSelect1">Login utilisateur</label>
-                                        <input type="text" class="form-control" required id="nom" name="login_utilisateur" autocomplete="off" value="<?=$rep['login_utilisateur']?>">
+                                               for="nom">nom d'utilisateur</label>
+                                        <input type="text" class="form-control" required id="nom"
+                                               name="login_utilisateur" autocomplete="off"
+                                               value="<?= $rep['login_utilisateur'] ?>">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label class="col-form-label-sm"
-                                               for="exampleFormControlSelect1">Mot de passe</label>
-                                        <input type="text" class="form-control" required id="nom" name="mot_passe_utilisateur" autocomplete="off" value="<?=$rep['mot_passe_utilisateur']?>">
+                                               for="password">Mot de passe</label>
+                                        <input type="text" class="form-control" required id="password"
+                                               name="mot_passe_utilisateur" autocomplete="off"
+                                               value="<?= $rep['mot_passe_utilisateur'] ?>">
                                     </div>
                                 </div>
                             </div>
@@ -88,7 +95,8 @@ include '../class/utilisateur.class.php';
                     ?>
                 </form>
                 <div align="right">
-                    <button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#updateClasseModal">Soumettre
+                    <button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#updateClasseModal">
+                        Soumettre
                     </button>
                     <button class="btn btn-lg btn-danger">Annuler</button>
                 </div>
