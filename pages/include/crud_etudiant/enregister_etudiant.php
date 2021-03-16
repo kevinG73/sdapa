@@ -58,10 +58,13 @@ if ($verificaion == 1) {
         <?php
 
     } else {
+        $etu=$bdd->query('SELECT * FROM etudiant_sdapa WHERE numero_carte="'.@$numero_carte .'"');
+        $rep_etu=$etu->fetch();
 
         ?>
-        <div><span id="" class="form-text text-success font-weight-bold"><i
-                        class="fas fa-ban fa-md fa-fw mr-2"></i><?= $enregistrement ?></span>
+        <div><span id="" class="form-text text-warning font-weight-bold"><i
+                        class="fas fa-ban fa-md fa-fw mr-2"></i><?= $enregistrement ?>.<br>
+                        Veuillez cliquer <a href="etudiant.php?id=<?=@$rep_etu[0]?>" title="Ajouter un parcours">ici</a> pour inscrire cet étudiant dans un parcours de votre choix <br>sans toutefois modifier ou supprimer les parcours dans lesquels l'étudiant est déja inscrit.</span>
         </div>
         <?php
     }
