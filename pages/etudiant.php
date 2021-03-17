@@ -485,9 +485,9 @@ include '../class/inscription.class.php';
 
                 <?php
                 if ($_SESSION['id_type_utilisateur '] == 1) {
-                    $gu = $bdd->query("select inscription_sdapa.id_etudiant , nom , prenoms , date_naissance , telephone , lieu_naissance, email , ufhb from etudiant_sdapa,inscription_sdapa where etudiant_sdapa.id = inscription_sdapa.id_etudiant group by inscription_sdapa.id_etudiant , nom , prenoms , date_naissance , telephone , email , ufhb") or die(print_r($bdd->errorInfo()));
+                    $gu = $bdd->query("select inscription_sdapa.id_etudiant , nom , prenoms , date_naissance , telephone , lieu_naissance, email ,numero_carte, ufhb from etudiant_sdapa,inscription_sdapa where etudiant_sdapa.id = inscription_sdapa.id_etudiant group by inscription_sdapa.id_etudiant , nom , prenoms , date_naissance , telephone , email , ufhb") or die(print_r($bdd->errorInfo()));
                 } else {
-                    $requete = "select inscription_sdapa.id_etudiant , nom , prenoms , date_naissance , lieu_naissance , telephone , email , ufhb from etudiant_sdapa,inscription_sdapa where etudiant_sdapa.id = inscription_sdapa.id_etudiant and inscription_sdapa.id_etablissement = '" . $_SESSION['id_etablissement'] . "' and inscription_sdapa.id_departement = '" . $_SESSION['id_departement'] . "' group by inscription_sdapa.id_etudiant , nom , prenoms , date_naissance , telephone , email , ufhb";
+                    $requete = "select inscription_sdapa.id_etudiant , nom , prenoms , date_naissance , lieu_naissance , telephone , email ,numero_carte, ufhb from etudiant_sdapa,inscription_sdapa where etudiant_sdapa.id = inscription_sdapa.id_etudiant and inscription_sdapa.id_etablissement = '" . $_SESSION['id_etablissement'] . "' and inscription_sdapa.id_departement = '" . $_SESSION['id_departement'] . "' group by inscription_sdapa.id_etudiant , nom , prenoms , date_naissance , telephone , email , ufhb";
 
                     $gu = $bdd->query($requete) or die(print_r($bdd->errorInfo()));
 
@@ -510,11 +510,13 @@ include '../class/inscription.class.php';
                                     <thead>
                                     <tr>
                                         <th></th>
+                                        <th>Carte étudiant </th>
                                         <th>Etudiant</th>
                                         <th>date de naissance</th>
                                         <th>lieu de naissance</th>
                                         <th>contact</th>
                                         <th>email</th>
+
                                         <th>étudiant ufhb</th>
                                     </tr>
                                     </thead>
@@ -525,6 +527,9 @@ include '../class/inscription.class.php';
                                             <td align="center">
                                                 <input type="checkbox" id="cocher[]" name="cocher[]"
                                                        value="<?php echo $res['id_etudiant']; ?>"></td>
+                                            <td class="text-uppercase">
+                                                <?= $res['numero_carte']; ?>
+                                            </td>
                                             <td class="text-uppercase">
                                                 <a href="etudiant.php?id=<?= $res['id_etudiant']; ?>"><?= $res['nom']; ?> <?= $res['prenoms']; ?></a>
                                             </td>
@@ -540,6 +545,7 @@ include '../class/inscription.class.php';
                                             <td>
                                                 <?= $res['email']; ?>
                                             </td>
+
                                             <td>
                                                 <?php if ($res['ufhb'] == 1):
                                                     ?>
