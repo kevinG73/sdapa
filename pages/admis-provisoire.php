@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     /* bouton consulter */
     if (isset($_POST['action']) && $_POST['action'] === "consulter") {
-        $_SESSION['select'] = $_POST['id_parcours'];
+        $_SESSION['select_mult'] = $id_parcours;
         $_SESSION['select_departemnt'] = $_POST['id_departement'];
         $admis = ListeProvisoireAdmis($id_annee, $id_etablissement, $id_departement, $id_parcours);
     }
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     /* bouton imprimer */
     if (isset($_POST['action']) && $_POST['action'] === "imprimer") {
         $_SESSION['impression'] = $_POST;
-        $_SESSION['select_parcours'] = $id_parcours;
+        $_SESSION['select_mult'] = $id_parcours;
         if (count($id_parcours) > 1) {
             $_SESSION['erreur'] = "vous devez selectionner un seul parcours , pour l'impression de la liste .";
         } else {
@@ -237,7 +237,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
 <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
 <script src="../src/js/datatable/datatable_etd.js"></script>
-<script src="../src/js/ajax.js"></script>
+<script src="../src/js/ajax_multiple.js"></script>
 <script>
     $(document).ready(function () {
         $('.js-example-basic-multiple').select2();
