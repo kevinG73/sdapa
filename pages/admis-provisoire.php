@@ -23,21 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id_etablissement = $_POST['id_etablissement'];
     $id_departement = $_POST['id_departement'];
     $id_parcours = $_POST['id_parcours'];
-    $point = $_POST['id_critere_selection'];
-
-    /* cliquer sur le bouton valider */
-    if (isset($_POST['action']) && $_POST['action'] === "valider") {
-        $_SESSION['select'] = $_POST['id_parcours'];
-        $_SESSION['select_departemnt'] = $_POST['id_departement'];
-
-        if (isset($point) && (int)$point === 0) {
-            $_SESSION['erreur'] = "vous devez selectionner une valeur dans le champ critère de selection";
-        } else {
-            resetCritereAP($id_annee, $id_etablissement, $id_departement);
-            AppliquerCritereAP($id_annee, $id_etablissement, $id_departement, $id_parcours, $point);
-            $_SESSION['success'] = "crittère de selection pris en compte.";
-        }
-    }
 
     /* bouton consulter */
     if (isset($_POST['action']) && $_POST['action'] === "consulter") {
@@ -49,7 +34,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     /* bouton imprimer */
     if (isset($_POST['action']) && $_POST['action'] === "imprimer") {
         $_SESSION['impression'] = $_POST;
-        header('Location:pdf/admis.php');
+        $_SESSION['select_parcours'] = $id_parcours;
+        if (count($id_parcours) > 1) {
+            $_SESSION['erreur'] = "vous devez selectionner un seul parcours , pour l'impression de la liste .";
+        } else {
+            $_SESSION['impression'] = $_POST;
+            header('Location:pdf/admis-provisoire.php');
+        }
     }
 }
 ?>
@@ -173,29 +164,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <input type="submit" class="btn btn-primary" name="action" value="imprimer">
                             </div>
 
-                        </div>
-                    </div>
-
-                    <!-- critère de selection -->
-                    <div class="card shadow mb-2">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary text-uppercase">Critère de sélection</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="d-flex mt-4">
-                                <div class="col-4">
-                                    <label for="id_critere_selection" class="mr-5">critère de selection</label>
-                                    <select class="form-control" name="id_critere_selection" id="id_critere_selection">
-                                        <option value=""> selectionner</option>
-                                        <?php for ($i = 0; $i <= 24; $i++): ?>
-                                            <option value="<?= $i ?>">point superieur à <?= $i ?> </option>
-                                        <?php endfor; ?>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="float-right mt-2 pr-2">
-                                <input type="submit" class="btn btn-primary" name="action" value="valider">
-                            </div>
                         </div>
                     </div>
                 </form>

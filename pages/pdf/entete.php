@@ -62,7 +62,7 @@ class MYTCPDF extends TCPDF
 
 
         // on trunc le texte si c'est trop long
-        $right = "Parcours : " . DeterminerParcours($_SESSION['impression']['id_parcours']);;
+        $right = "Parcours : " . DeterminerParcours($_SESSION['impression']['id_parcours'][0]);;
         $this->WriteHTMLCell(275, 10, 230, 31, $right, 0);
 
         $mention = "Mention : " . DeterminerMention($_SESSION['impression']['id_departement']);
