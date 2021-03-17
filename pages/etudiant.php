@@ -4,6 +4,10 @@ session_start();
 if (!isset($_SESSION['connecte']) || $_SESSION['connecte'] === "") {
     header("Location:login.php");
 }
+if(!isset($_GET['id']))
+{
+    $_SESSION['id_']='fghjkl';
+}
 
 require "../config/connection.php";
 include "../fonctions/index.php";
