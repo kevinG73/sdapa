@@ -80,6 +80,10 @@ function active($currect_page)
     <?php
     if ($_SESSION["id_type_utilisateur "] == 1 || $_SESSION['id_groupe_utilisateur'] == 14 || $_SESSION['id_groupe_utilisateur'] == 20):
         ?>
+        <li class="nav-item <?php active('admis-provisoire.php');?>">
+            <a class="nav-link text-uppercase" href="admis-provisoire.php">
+                <span>liste provisioire des admis</span></a>
+        </li>
         <!-- Nav Item - Dashboard -->
         <li class="nav-item <?php active('admis.php');?>">
             <a class="nav-link" href="admis.php">
