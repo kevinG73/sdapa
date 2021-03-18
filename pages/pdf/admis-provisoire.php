@@ -1,6 +1,6 @@
 <?php
 require_once "../../config/connection.php";
-require_once('./entete.php');
+require_once('./entete-provisoire.php');
 global $bdd;
 
 /* Liste des etudiants en fonctions des critères ci-dessous : */

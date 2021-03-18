@@ -7,6 +7,7 @@ function active($currect_page)
         echo 'active'; //class name in css
     }
 }
+
 ?>
 
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
@@ -25,7 +26,7 @@ function active($currect_page)
     if ($_SESSION["id_type_utilisateur "] == 1 || $_SESSION['id_groupe_utilisateur'] == 19):
         ?>
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item <?php active('etudiant.php');?>">
+        <li class="nav-item <?php active('etudiant.php'); ?>">
             <a class="nav-link  " href="etudiant.php">
                 <span>ETUDIANTS</span></a>
         </li>
@@ -40,7 +41,7 @@ function active($currect_page)
     if ($_SESSION["id_type_utilisateur "] == 1 || $_SESSION['id_groupe_utilisateur'] == 19 || $_SESSION['id_groupe_utilisateur'] == 20):
         ?>
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item <?php active('index.php');?>">
+        <li class="nav-item <?php active('index.php'); ?>">
             <a class="nav-link " href="index.php">
                 <span>CALCUL DU POINT CRITERE</span></a>
         </li>
@@ -53,7 +54,7 @@ function active($currect_page)
     <hr class="sidebar-divider">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item <?php active('info.php');?>">
+    <li class="nav-item <?php active('info.php'); ?>">
         <a class="nav-link " href="info.php">
             <span>INFO SUR LE POINT CRITERE</span></a>
     </li>
@@ -65,7 +66,7 @@ function active($currect_page)
     if ($_SESSION["id_type_utilisateur "] == 1 || $_SESSION['id_groupe_utilisateur'] == 14 || $_SESSION['id_groupe_utilisateur'] == 20):
         ?>
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item <?php active('attribution-manuel.php');?>">
+        <li class="nav-item <?php active('attribution-manuel.php'); ?>">
             <a class="nav-link " href="attribution-manuel.php">
                 <span class="text-uppercase">affectation manuelle</span></a>
         </li>
@@ -80,12 +81,15 @@ function active($currect_page)
     <?php
     if ($_SESSION["id_type_utilisateur "] == 1 || $_SESSION['id_groupe_utilisateur'] == 14 || $_SESSION['id_groupe_utilisateur'] == 20):
         ?>
-        <li class="nav-item <?php active('admis-provisoire.php');?>">
+        <?php if (isset($_SESSION['id_etablissement']) && (int)$_SESSION['id_etablissement'] == 5): ?>
+        <li class="nav-item <?php active('admis-provisoire.php'); ?>">
             <a class="nav-link text-uppercase" href="admis-provisoire.php">
-                <span>liste provisioire des admis</span></a>
+                <span>liste provisioire des admis</span>
+            </a>
         </li>
+    <?php endif; ?>
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item <?php active('admis.php');?>">
+        <li class="nav-item <?php active('admis.php'); ?>">
             <a class="nav-link" href="admis.php">
                 <span>LISTE DES ADMIS</span></a>
         </li>
@@ -95,7 +99,7 @@ function active($currect_page)
 
     <hr class="sidebar-divider">
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item <?php active('modifier_passe.php');?>">
+    <li class="nav-item <?php active('modifier_passe.php'); ?>">
         <a class="nav-link " href="modifier_passe.php">
             <span>MODIFIER MOT DE PASSE</span></a>
     </li>
