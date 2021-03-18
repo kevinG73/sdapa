@@ -27,7 +27,7 @@ class MYTCPDF extends TCPDF
         $this->legende();
 
         $this->SetFont('Helvetica', 'B', 11);
-        $pv = "Liste des étudiants admissibles en Master 1";
+        $pv = "Liste provisoire des étudiants admissibles en Master 1";
         $this->WriteHTMLCell('', 10, 105, 15, $pv, 0);
         $this->SetFont('Helvetica', '', 9);
         $this->SetTextColor(0, 0, 0);

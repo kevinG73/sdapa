@@ -1,14 +1,16 @@
 <?php
 require_once "../../config/connection.php";
-require_once('./entete.php');
+require_once('./entete-provisoire.php');
 global $bdd;
 
 /* Liste des etudiants en fonctions des critères ci-dessous : */
+
+
 $filtre = [
     'annee_academique' => $_SESSION['impression']['id_annee'],
     'id_etablissement' => $_SESSION['impression']['id_etablissement'],
     'id_departement' => $_SESSION['impression']['id_departement'],
-    'id_parcours' => $_SESSION['impression']['id_parcours']
+    'id_parcours' => $_SESSION['impression']['id_parcours'][0]
 ];
 
 /* liste des étudiants */
@@ -18,9 +20,9 @@ extract($filtre);
 $requete = "select * from inscription_sdapa ins 
     JOIN etudiant_sdapa etd ON etd.id = ins.id_etudiant
     JOIN sexe ON etd.sexe = sexe.id_sexe
+    JOIN parcours_sdapa p ON p.id_etudiant = etd.id 
     JOIN nationalite nat ON nat.id_nationalite = etd.nationalite
-    where annee = $annee_academique AND id_parcours = $id_parcours AND id_departement = $id_departement
-    AND ins.statut_inscription = 1 
+    where annee = $annee_academique AND p.id_parcours = $id_parcours AND id_departement = $id_departement
     ORDER BY total_point_critere DESC , moyenne_poids  DESC , moy_pondere DESC";
 
 $resultat = $bdd->query($requete);
