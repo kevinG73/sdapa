@@ -78,16 +78,19 @@ function active($currect_page)
     <!-- Divider -->
     <hr class="sidebar-divider">
 
-    <?php
-    if ($_SESSION["id_type_utilisateur "] == 1 || $_SESSION['id_groupe_utilisateur'] == 14 || $_SESSION['id_groupe_utilisateur'] == 20):
-        ?>
-        <?php if (isset($_SESSION['id_etablissement']) && (int)$_SESSION['id_etablissement'] == 5): ?>
+    <?php if (isset($_SESSION['id_etablissement']) == 14 || $_SESSION['id_groupe_utilisateur'] == 20): ?>
         <li class="nav-item <?php active('admis-provisoire.php'); ?>">
             <a class="nav-link text-uppercase" href="admis-provisoire.php">
-                <span>liste provisioire des admis</span>
+                <span>liste provisoire des admis</span>
             </a>
         </li>
     <?php endif; ?>
+
+    <hr class="sidebar-divider">
+
+    <?php
+    if ($_SESSION["id_type_utilisateur "] == 1 || $_SESSION['id_groupe_utilisateur'] == 14 || $_SESSION['id_groupe_utilisateur'] == 20):
+        ?>
         <!-- Nav Item - Dashboard -->
         <li class="nav-item <?php active('admis.php'); ?>">
             <a class="nav-link" href="admis.php">
