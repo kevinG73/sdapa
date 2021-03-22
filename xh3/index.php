@@ -117,7 +117,7 @@ $res=$req->fetch();
                                     <label for="Libellé">groupe utilisateur</label>
                                     <select class=" form-control" name="id_groupe_utilisateur" >
                                         <?php
-                                        $req=$bdd->query('SELECT * FROM groupe_utilisateur');
+                                        $req=$bdd->query('SELECT * FROM groupe_utilisateur WHERE id_groupe_utilisateur IN (19,14,20)');
                                         while ($rep=$req->fetch())
                                         {
                                             if ($res['id_groupe_utilisateur']==$rep['id_groupe_utilisateur'])
