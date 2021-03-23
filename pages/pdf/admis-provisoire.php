@@ -55,6 +55,7 @@ $tbl_header = '
 </style>
 <table nobr="true" width="100%" border="1"  cellspacing="0" cellpadding="3">
   <tr>
+    <th>N°</th>
     <th width="10%"><b>Nom</b></th>
     <th style="text-align:left;" width="20%"><b>Prénom</b></th>
     <th width="5%"><b>Genre</b></th>
@@ -77,6 +78,7 @@ foreach ($liste_decouper as $index => $etd) {
 
         $tbl .= '
 <tr>
+    <td>' . $index . '</td>
     <td> ' . $et['nom'] . '</td>
     <td> ' . $et['prenoms'] . '</td>
 	<td>' . $et['libelle_sexe_court'] . '</td>
@@ -101,7 +103,7 @@ foreach ($liste_decouper as $index => $etd) {
 
 //output
 $pdf->SetFooterMargin(250);
-$pdf->Output('liste-admis-' . rand() . '.pdf','D');
+$pdf->Output('liste-admis-' . rand() . '.pdf', 'D');
 
 
 
