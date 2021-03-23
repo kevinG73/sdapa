@@ -99,6 +99,24 @@ if (isset($_POST['supprimer'])) {
 }
 
 
+if (isset($_POST['envoyer'])) {
+    extract($_POST);
+    if (!empty($_POST["cocher"])) {
+        foreach ($_POST["cocher"] as $c) {
+
+
+
+            $utilisateur = new utilisateur($c, '','','','','','', '', '', '',$bdd);
+            $utilisateur=$utilisateur->envoyer_email();
+        }
+
+        ?>
+        <div><span id="" class="form-text text-success font-weight-bold"><i class="fas fa-fa-check-square fa-md fa-fw mr-2"></i>Accès envoyés</span></div>
+        <?php
+
+    }
+}
+
 $req=$bdd->query("SELECT * FROM utilisateur_sdapa WHERE id_utilisateur='".@$_GET['id']."' ");
 $res=$req->fetch();
 ?>
@@ -241,7 +259,7 @@ $res=$req->fetch();
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="Libellé">Mot de passe</label>
-                                    <input type="password" class="form-control "   name="mot_passe_utilisateur" required="" value="<?php echo @$res['mot_passe_utilisateur']?>"  >
+                                    <input type="text" class="form-control "   name="mot_passe_utilisateur" required="" value="<?php echo @$res['mot_passe_utilisateur']?>"  >
                                 </div>
 
                             </div>
@@ -405,6 +423,7 @@ $res=$req->fetch();
                         </div>
 
                         <div><a class="btn btn-danger" href="#" data-toggle="modal" data-target="#DeleteEvaluationModal" style="margin: 20px;"><i class="fas fa-trash fa-sm fa-fw mr-2 text-gray-400"></i> Supprimer la sélection</a></div>
+                        <div align="right"><a class="btn btn-info" href="#" data-toggle="modal" data-target="#emailEvaluationModal" style="margin: 20px;"><i class="fas fa-envelope fa-sm fa-fw mr-2 text-gray-400"></i>Envoyer les accès</a></div>
 
                         <div class="modal fade" id="DeleteEvaluationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -430,8 +449,40 @@ $res=$req->fetch();
                         <?php //include "include/crud_etudiant/modal_supp.php"; ?>
                     </div>
 
+
+
+
             </div>
             <!-- /.container-fluid -->
+
+        <div class="modal fade" id="emailEvaluationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Voulez-vous vraiment envoyer les accés de cette sélection par email ?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Cliquez sur le bouton "Envoyer" ci-dessous si vous voulez envoyer les accès.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+                        <!--<a class="btn btn-primary" href="index.php?page=aj_etab&amp;act=save">Enregistrer</a>-->
+                        <button type="submit" class="btn btn-info" name="envoyer"><i class="fas fa-envelope fa-sm fa-fw mr-2 text-gray-400"></i> Envoyer </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <?php //include "include/crud_etudiant/modal_supp.php"; ?>
+</div>
+
+
+
+
+</div>
 
         </div>
 
@@ -441,9 +492,10 @@ $res=$req->fetch();
 
 
 
-               
 
-        
+
+
+
     </div>
     <!-- /.container-fluid -->
 
