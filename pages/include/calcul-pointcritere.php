@@ -189,14 +189,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
             </div>
 
-            <div class="d-flex mt-4">
-                <div class="col-4 mr-5">
-                    <label for="id_parcours">Parcours</label>
-                    <select class="form-control" name="id_parcours" id="id_parcours">
-                        <option value="0">parcours</option>
-                    </select>
-                </div>
-            </div>
 
             <div class="float-right mt-2 pr-2">
                 <button class="btn btn-primary" id="consulter" name="consulter">consulter</button>
@@ -227,15 +219,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <div class="card-body">
                 <div class="d-flex justify-content-between">
-                    <div class="form-inline ">
+                    <div class="col-3">
                         <label for="mode-calcul" class="mr-5">mode de selection</label>
-                        <select class="form-control" name="mode-calcul" id="mode-calcul">
+                        <select class="form-control" name="mode-calcul" id="mode-calcul" onchange="ChangerPara(this.value)">
                             <option value="0"> tout parcours confondu</option>
                             <option value="1" selected> par parcours</option>
                         </select>
                     </div>
 
-                    <div class="form-inline ">
+                    <div class="col-4" id="parTest">
+                        <label for="id_parcours">Parcours</label>
+                        <select class="form-control" name="id_parcours" id="id_parcours">
+                            <option value="0">parcours</option>
+                        </select>
+                    </div>
+
+                    <div class="col-3">
                         <label for="id_critere_selection" class="mr-5">critère de selection</label>
                         <select class="form-control" name="id_critere_selection" id="id_critere_selection">
                             <option value=""> selectionner</option>
@@ -244,9 +243,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <?php endfor; ?>
                         </select>
                     </div>
-                    <div class="mt-2 pr-2">
-                        <input class="btn btn-primary" name="valider" type="submit" value="valider">
-                    </div>
+                </div>
+                <br>
+                <div align="right">
+                    <input class="btn btn-primary" name="valider" type="submit" value="valider">
                 </div>
             </div>
         </div>
@@ -257,3 +257,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!-- /.container-fluid -->
 
+<script type="text/javascript">
+    function ChangerPara(value) {
+        if (value == 0){
+            $('#parTest').toggle()
+        }else {
+            $('#parTest').toggle()
+        }
+    }
+</script>

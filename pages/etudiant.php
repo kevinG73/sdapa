@@ -183,16 +183,28 @@ include '../class/inscription.class.php';
                                     </div>
                                 </div>
                                 <div class="form-row">
-                                    <div class="form-group col-md-3 mr-5">
+                                    <div class="form-group col-md-3">
                                         <label class="col-form-label-sm">Niveau à accéder</label>
                                         <select class="form-control">
                                             <option value="M1">MASTER 1</option>
                                         </select>
                                     </div>
-                                    <div class="form-group col-md-6">
-                                        <label class="col-form-label-sm" for="id_parcours">Parcours</label>
-                                        <select class="form-control js-example-basic-multiple" required name="id_parcours[]" id="id_parcours" multiple>
-                                            <option value="0">parcours</option>
+                                    <div class="form-group col-md-3">
+                                        <label class="col-form-label-sm">Parcours : Choix 1</label>
+                                        <select class="form-control" name="id_parcours1" id="id_parcours1">
+
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label class="col-form-label-sm">Parcours : Choix 2</label>
+                                        <select class="form-control" name="id_parcours2" id="id_parcours2">
+
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label class="col-form-label-sm">Parcours : Choix 3</label>
+                                        <select class="form-control" name="id_parcours3" id="id_parcours3">
+
                                         </select>
                                     </div>
                                 </div>
@@ -607,11 +619,11 @@ include '../class/inscription.class.php';
 <!-- Page level custom scripts -->
 <script src="../src/js/datatable/datatable_etd.js"></script>
 <script src="../src/js/ajax.js"></script>
+<script src="../src/js/ajax_multiple.js"></script>
 <script src="../src/js/etudiant_js.js"></script>
 <script src="../vendor/validation/dist/bootstrap-validate.js"></script>
 <script src="../vendor/select/dist/js/select2.min.js"></script>
 <script>
-
     $(document).ready(function() {
         $('.js-example-basic-multiple').select2();
         $('.js-example-basic-multiple').on("select2:select", function (evt) {
@@ -622,7 +634,8 @@ include '../class/inscription.class.php';
             $(this).trigger("change");
         });
     });
-    bootstrapValidate(['#carte_et', '#numero_mers', '#nom', '#prenoms', '#lieu_naissance', '#datenaiss', '#maila', '#contact', '#eta_anterieur','#id_parcours'], 'required: Veuillez remplir les champs!')
+
+    bootstrapValidate(['#carte_et', '#numero_mers', '#nom', '#prenoms', '#lieu_naissance', '#datenaiss', '#maila', '#contact', '#eta_anterieur'], 'required: Veuillez remplir les champs!')
     bootstrapValidate('#maila', 'email: Entrer email valide!')
     bootstrapValidate('#contact', 'min:10: Entrer votre numero sur 10 chiffres')
     bootstrapValidate('#contact', 'max:10: Votre numero ne doit pas depasser les 10 chiffres')
@@ -631,3 +644,4 @@ include '../class/inscription.class.php';
 </body>
 
 </html>
+

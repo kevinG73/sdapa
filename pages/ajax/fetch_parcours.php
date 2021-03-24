@@ -28,13 +28,16 @@ if (isset($_GET['id_departement']) && !empty($_GET['id_departement'])):
     $resultat = $bdd->query($requete);
     $liste = $resultat->fetchAll();
 
-    
+
     if (count($liste) > 0):
+
         foreach ($liste as $res):
+
             ?>
+
             <?php if ((isset($_SESSION['select']) && !empty($_SESSION['select']) && ($res['id_specialite'] === $_SESSION['select'])) || in_array($res['id_specialite'], $array_parcours)): ?>
-            <option selected
-                    value="<?= $res['id_specialite'] ?>"> <?= convert_accent($res['libelle_specialite']) ?></option>
+
+            <option value="<?= $res['id_specialite'] ?>"> <?= convert_accent($res['libelle_specialite']) ?></option>
         <?php else: ?>
             <option value="<?= $res['id_specialite'] ?>"> <?= convert_accent($res['libelle_specialite']) ?></option>
         <?php endif; ?>

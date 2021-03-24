@@ -21,7 +21,7 @@ $(document).ready(function () {
                         id_niveau: id_niveau
                     },
                     success: function (data) {
-                        $("#id_parcours").html(data);
+                        $("#id_parcours1").html(data);
                     }
                 });
             }
@@ -39,7 +39,7 @@ $(document).ready(function () {
             method: 'GET',
             data: {id_niveau: id_niveau, id_departement: id_departement},
             success: function (data) {
-                $("#id_parcours").html(data);
+                $("#id_parcours1").html(data);
             }
         });
     });
