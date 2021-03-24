@@ -1,6 +1,6 @@
 <?php
 
-
+include '../fonctions/email/mail_function.php';
 
 class utilisateur{
 
@@ -115,6 +115,17 @@ class utilisateur{
         )) or die(print_r($this->bdd->errorInfo()));
     }
 
+    public function envoyer_email(){
+        $requete = $this->bdd->prepare('SELECT * FROM utilisateur_sdapa WHERE id_utilisateur=:id_utilisateur ');
+        $requete->execute(array('id_utilisateur' => $this->id_utilisateur
+        ));
+        $reponse = $requete->fetch();
+        $message='Vos accès à SDAPA sont : Login: '.$reponse['login_utilisateur'].'  /  Mot de passe: '.$reponse['mot_passe_utilisateur'];
+        if ($reponse) {
+            send_mail($reponse['email_utilisateur'],'ACCES SDAPA',$message);
+            return 1;
+        }
+    }
 
 
     public function suppression()
