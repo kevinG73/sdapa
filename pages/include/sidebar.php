@@ -75,6 +75,13 @@ function active($currect_page)
     endif;
     ?>
 
+    <hr class="sidebar-divider">
+    <li class="nav-item <?php active('candidats.php'); ?>">
+        <a class="nav-link text-uppercase" href="candidats.php">
+            <span>liste des candidats</span>
+        </a>
+    </li>
+
     <!-- Divider -->
     <hr class="sidebar-divider">
 
