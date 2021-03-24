@@ -23,24 +23,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id_etablissement = $_POST['id_etablissement'];
     $id_departement = $_POST['id_departement'];
     $id_parcours = $_POST['id_parcours'];
+    $point = $_POST['id_critere_selection'];
+
+    /* cliquer sur le bouton valider */
+    if (isset($_POST['action']) && $_POST['action'] === "valider") {
+        $_SESSION['select'] = $_POST['id_parcours'];
+        $_SESSION['select_departemnt'] = $_POST['id_departement'];
+
+        if (isset($point) && (int)$point === 0) {
+            $_SESSION['erreur'] = "vous devez selectionner une valeur dans le champ critère de selection";
+        } else {
+            $dejafait = verifierAdmissionProvisoire($id_etablissement, $id_departement, $id_parcours, $id_annee);
+            if ($dejafait) {
+                majAdmissionProvisoire($id_etablissement, $id_departement, $id_parcours, $point, $id_annee);
+            } else {
+                creerAdmissionProvisoire($id_etablissement, $id_departement, $id_parcours, $point, $id_annee);
+            }
+            $_SESSION['success'] = "critère de selection pris en compte. Vous pouvez consulter la liste provisoire des admis .";
+        }
+    }
 
     /* bouton consulter */
     if (isset($_POST['action']) && $_POST['action'] === "consulter") {
-        $_SESSION['select_mult'] = $id_parcours;
+        $_SESSION['select'] = $_POST['id_parcours'];
         $_SESSION['select_departemnt'] = $_POST['id_departement'];
         $admis = ListeProvisoireAdmis($id_annee, $id_etablissement, $id_departement, $id_parcours);
+        if (count($admis) < 1) {
+            $message_data = "Aucune donnée disponible pour avec ce critère , veuillez réessayer avec un autre critère de selection ou un autre parcours .";
+        }
     }
 
     /* bouton imprimer */
     if (isset($_POST['action']) && $_POST['action'] === "imprimer") {
         $_SESSION['impression'] = $_POST;
-        $_SESSION['select_mult'] = $id_parcours;
-        if (count($id_parcours) > 1) {
-            $_SESSION['erreur'] = "vous devez selectionner un seul parcours , pour l'impression de la liste .";
-        } else {
-            $_SESSION['impression'] = $_POST;
-            header('Location:pdf/admis-provisoire.php');
-        }
+        header('Location:pdf/admis.php');
     }
 }
 ?>
@@ -53,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Liste provisoire des étudiants admissibles en master 1 | UFHB </title>
+    <title>liste provisoire des étudiants admissibles en master 1 | UFHB </title>
 
     <!-- Custom fonts for this template-->
     <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -103,7 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <form method="post">
                     <!-- filtre de recherche -->
-                    <div class="card shadow mb-2">
+                    <div class="card shadow mb-3">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary text-uppercase">Structure d'accueil</h6>
                         </div>
@@ -142,7 +158,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                                 <div class="col-4">
                                     <label for="id_departement">Départements</label>
-                                    <select class="form-control" name="id_departement" id="id_departement">
+                                    <select class="form-control " name="id_departement" id="id_departement">
                                         <option value="0">selectionner</option>
                                     </select>
                                 </div>
@@ -150,9 +166,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                             <div class="d-flex mt-4">
                                 <div class="col-6 mr-5">
-                                    <label for="id_parcours">Parcours ou liste des parcours</label>
-                                    <select required class="form-control js-example-basic-multiple" name="id_parcours[]"
-                                            id="id_parcours" multiple>
+                                    <label for="id_parcours">Parcours</label>
+                                    <select required class="form-control" name="id_parcours" id="id_parcours">
                                         <option value="0">parcours</option>
                                     </select>
                                 </div>
@@ -164,6 +179,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <input type="submit" class="btn btn-primary" name="action" value="imprimer">
                             </div>
 
+                        </div>
+                    </div>
+
+                    <!-- critère de selection -->
+                    <div class="card shadow mb-3">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary text-uppercase">Définir le critère de
+                                sélection</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex mt-4 justify-content-between">
+                                <div class="form-inline">
+                                    <label for="id_critere_selection" class="mr-5">critère de selection</label>
+                                    <select class="form-control" name="id_critere_selection" id="id_critere_selection">
+                                        <option value=""> selectionner</option>
+                                        <?php for ($i = 0; $i <= 24; $i++): ?>
+                                            <option value="<?= $i ?>">point superieur à <?= $i ?> </option>
+                                        <?php endfor; ?>
+                                    </select>
+                                </div>
+                                <div class="pr-2">
+                                    <input type="submit" class="btn btn-primary" name="action" value="valider">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </form>
@@ -182,7 +221,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     <tr>
                                         <th>nom</th>
                                         <th>prenoms</th>
-                                        .
                                         <th>moyenne pondérée</th>
                                         <th>temps mis en Licence</th>
                                         <th>nbre total mentions</th>
@@ -203,6 +241,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     </tbody>
                                 </table>
                             </div>
+                        <?php endif; ?>
+                        <?php if (isset($message_data) && !empty($message_data)): ?>
+                            <p class="text-center"><?= $message_data ?></p>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -237,17 +278,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
 <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
 <script src="../src/js/datatable/datatable_etd.js"></script>
-<script src="../src/js/ajax_multiple.js"></script>
+<script src="../src/js/ajax.js"></script>
 <script>
     $(document).ready(function () {
         $('.js-example-basic-multiple').select2();
-        $('.js-example-basic-multiple').on("select2:select", function (evt) {
-            var element = evt.params.data.element;
-            var $element = $(element);
-            $element.detach();
-            $(this).append($element);
-            $(this).trigger("change");
-        });
     });
 </script>
 </body>

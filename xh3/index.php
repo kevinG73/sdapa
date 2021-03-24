@@ -30,7 +30,7 @@ include '../class/utilisateur.class.php';
     <link href="../src/css/sb-admin-2.min.css" rel="stylesheet">
     <!-- Custom styles for this page -->
     <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <link href="../vendor/select/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="../vendor/select/dist/css/select2.min.css" rel="stylesheet"/>
 
 </head>
 
@@ -52,104 +52,104 @@ include '../class/utilisateur.class.php';
             <!-- Begin Page Content -->
             <div class="container-fluid">
 
-<?php
+                <?php
 
-if (isset($_POST['enregistrer']))
-{
-        
-    extract($_POST);
-    $utilisateur= new utilisateur(11111, $tel_utilisateur,$login_utilisateur,$mot_passe_utilisateur,$id_groupe_utilisateur,$email_utilisateur,$id_departement, $id_etablissement, $nom_utilisateur, $prenom_utilisateur,$bdd);
-    $utilisateur=$utilisateur->enregistrement();
-    ?>
- <div><span id="" class="form-text text-success font-weight-bold"><i class="fas fa-fa-check-square fa-md fa-fw mr-2"></i>Enregistrement effectué</span></div>
-    <?php
-}
+                if (isset($_POST['enregistrer'])) {
 
-
-if (isset($_POST['modifier']))
-{ 
-        
-    extract($_POST);
-    $utilisateur= new utilisateur($_GET['id'], $tel_utilisateur,$login_utilisateur,$mot_passe_utilisateur,$id_groupe_utilisateur,$email_utilisateur,$id_departement, $id_etablissement, $nom_utilisateur, $prenom_utilisateur,$bdd);
-    $utilisateur=$utilisateur->modification();
-
-    ?>
-     <div><span id="" class="form-text text-success font-weight-bold"><i class="fas fa-fa-check-square fa-md fa-fw mr-2"></i>Modification effectuée</span></div>
-    <?php
-    
-}
-
-//Suppression
-if (isset($_POST['supprimer'])) {
-  extract($_POST);
-  if (!empty($_POST["cocher"])) {
-    foreach ($_POST["cocher"] as $c) {
-
-     
- 
-  $utilisateur = new utilisateur($c, '','','','','','', '', '', '',$bdd);
-  $utilisateur=$utilisateur->suppression();
-    }
-   
-   ?>
-    <div><span id="" class="form-text text-success font-weight-bold"><i class="fas fa-fa-check-square fa-md fa-fw mr-2"></i>Suppression effectuée</span></div>
-   <?php
-   
-  }
-}
+                    extract($_POST);
+                    $utilisateur = new utilisateur(11111, $tel_utilisateur, $login_utilisateur, $mot_passe_utilisateur, $id_groupe_utilisateur, $email_utilisateur, $id_departement, $id_etablissement, $nom_utilisateur, $prenom_utilisateur, $bdd);
+                    $utilisateur = $utilisateur->enregistrement();
+                    ?>
+                    <div><span id="" class="form-text text-success font-weight-bold"><i
+                                    class="fas fa-fa-check-square fa-md fa-fw mr-2"></i>Enregistrement effectué</span>
+                    </div>
+                    <?php
+                }
 
 
-if (isset($_POST['envoyer'])) {
-    extract($_POST);
-    if (!empty($_POST["cocher"])) {
-        foreach ($_POST["cocher"] as $c) {
+                if (isset($_POST['modifier'])) {
+
+                    extract($_POST);
+                    $utilisateur = new utilisateur($_GET['id'], $tel_utilisateur, $login_utilisateur, $mot_passe_utilisateur, $id_groupe_utilisateur, $email_utilisateur, $id_departement, $id_etablissement, $nom_utilisateur, $prenom_utilisateur, $bdd);
+                    $utilisateur = $utilisateur->modification();
+
+                    ?>
+                    <div><span id="" class="form-text text-success font-weight-bold"><i
+                                    class="fas fa-fa-check-square fa-md fa-fw mr-2"></i>Modification effectuée</span>
+                    </div>
+                    <?php
+
+                }
+
+                //Suppression
+                if (isset($_POST['supprimer'])) {
+                    extract($_POST);
+                    if (!empty($_POST["cocher"])) {
+                        foreach ($_POST["cocher"] as $c) {
 
 
+                            $utilisateur = new utilisateur($c, '', '', '', '', '', '', '', '', '', $bdd);
+                            $utilisateur = $utilisateur->suppression();
+                        }
 
-            $utilisateur = new utilisateur($c, '','','','','','', '', '', '',$bdd);
-            $utilisateur=$utilisateur->envoyer_email();
-        }
+                        ?>
+                        <div><span id="" class="form-text text-success font-weight-bold"><i
+                                        class="fas fa-fa-check-square fa-md fa-fw mr-2"></i>Suppression effectuée</span>
+                        </div>
+                        <?php
 
-        ?>
-        <div><span id="" class="form-text text-success font-weight-bold"><i class="fas fa-fa-check-square fa-md fa-fw mr-2"></i>Accès envoyés</span></div>
-        <?php
+                    }
+                }
 
-    }
-}
 
-$req=$bdd->query("SELECT * FROM utilisateur_sdapa WHERE id_utilisateur='".@$_GET['id']."' ");
-$res=$req->fetch();
-?>
+                if (isset($_POST['envoyer'])) {
+                    extract($_POST);
+                    if (!empty($_POST["cocher"])) {
+                        foreach ($_POST["cocher"] as $c) {
+
+
+                            $utilisateur = new utilisateur($c, '', '', '', '', '', '', '', '', '', $bdd);
+                            $utilisateur = $utilisateur->envoyer_email();
+                        }
+
+                        ?>
+                        <div><span id="" class="form-text text-success font-weight-bold"><i
+                                        class="fas fa-fa-check-square fa-md fa-fw mr-2"></i>Accès envoyés</span></div>
+                        <?php
+
+                    }
+                }
+
+                $req = $bdd->query("SELECT * FROM utilisateur_sdapa WHERE id_utilisateur='" . @$_GET['id'] . "' ");
+                $res = $req->fetch();
+                ?>
 
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h4 class="m-0 font-weight-bold text-primary text-uppercase">Utilisateurs (Enseignants et personnel)</h4>
+                        <h4 class="m-0 font-weight-bold text-primary text-uppercase">Utilisateurs (Enseignants et
+                            personnel)</h4>
                     </div>
                     <div class="card-body">
                         <form action="" method="POST">
                             <div class="form-row">
 
 
-
                                 <div class="form-group col-md-6">
                                     <label for="Libellé">groupe utilisateur</label>
-                                    <select class=" form-control" name="id_groupe_utilisateur" >
+                                    <select class=" form-control" name="id_groupe_utilisateur">
                                         <?php
-                                        $req=$bdd->query('SELECT * FROM groupe_utilisateur WHERE id_groupe_utilisateur IN (19,14,20)');
-                                        while ($rep=$req->fetch())
-                                        {
-                                            if ($res['id_groupe_utilisateur']==$rep['id_groupe_utilisateur'])
-                                            {
+                                        $req = $bdd->query('SELECT * FROM groupe_utilisateur WHERE id_groupe_utilisateur IN (19,14,20)');
+                                        while ($rep = $req->fetch()) {
+                                            if ($res['id_groupe_utilisateur'] == $rep['id_groupe_utilisateur']) {
                                                 ?>
-                                                <option selected value="<?=$rep['id_groupe_utilisateur']?>"> <?=$rep['libelle_groupe_utilisateur']?></option>
+                                                <option selected
+                                                        value="<?= $rep['id_groupe_utilisateur'] ?>"> <?= $rep['libelle_groupe_utilisateur'] ?></option>
                                                 <?php
 
-                                            }
-                                            else
-                                            {
+                                            } else {
 
                                                 ?>
-                                                <option value="<?=$rep['id_groupe_utilisateur']?>"> <?=$rep['libelle_groupe_utilisateur']?></option>
+                                                <option value="<?= $rep['id_groupe_utilisateur'] ?>"> <?= $rep['libelle_groupe_utilisateur'] ?></option>
                                                 <?php
                                             }
                                         }
@@ -160,32 +160,28 @@ $res=$req->fetch();
                                 </div>
 
 
-
                             </div>
                             <div class="form-row">
 
 
-
                                 <div class="form-group col-md-6">
                                     <label for="Libellé">Etablissement</label>
-                                    <select class=" form-control" name="id_etablissement" onchange="select_departement(this.value)" id="id_etablissement">
+                                    <select class=" form-control" name="id_etablissement"
+                                            onchange="select_departement(this.value)" id="id_etablissement">
                                         <option value="0">selectionner</option>
                                         <?php
-                                        $req=$bdd->query('SELECT * FROM etablissement');
-                                        while ($rep=$req->fetch())
-                                        {
-                                            if ($res['id_etablissement']==$rep['id_etablissement'])
-                                            {
+                                        $req = $bdd->query('SELECT * FROM etablissement');
+                                        while ($rep = $req->fetch()) {
+                                            if ($res['id_etablissement'] == $rep['id_etablissement']) {
                                                 ?>
-                                                <option selected value="<?=$rep['id_etablissement']?>"> <?=$rep['nom_etablissement']?></option>
+                                                <option selected
+                                                        value="<?= $rep['id_etablissement'] ?>"> <?= $rep['nom_etablissement'] ?></option>
                                                 <?php
 
-                                            }
-                                            else
-                                            {
+                                            } else {
 
                                                 ?>
-                                                <option value="<?=$rep['id_etablissement']?>"> <?=$rep['nom_etablissement']?></option>
+                                                <option value="<?= $rep['id_etablissement'] ?>"> <?= $rep['nom_etablissement'] ?></option>
                                                 <?php
                                             }
                                         }
@@ -198,56 +194,52 @@ $res=$req->fetch();
 
                                 <div class="form-group col-md-6" id="affiche">
                                     <label for="Libellé">Département</label>
-                                       <?php 
-                                       if (isset($_GET['id'])) 
-                                       {
+                                    <?php
+                                    if (isset($_GET['id'])) {
                                         ?>
-                                        <select class=" form-control" name="id_departement" >
-                                        <?php
-                                        $req=$bdd->query('SELECT * FROM departement WHERE id_etablissement="'.$res['id_etablissement'].'" AND  id_departement NOT IN (39 , 40 , 41 , 52 , 53 , 28 , 29 , 30 , 
+                                        <select class=" form-control" name="id_departement">
+                                            <?php
+                                            $req = $bdd->query('SELECT * FROM departement WHERE id_etablissement="' . $res['id_etablissement'] . '" AND  id_departement NOT IN (39 , 40 , 41 , 52 , 53 , 28 , 29 , 30 , 
     31 ,32 , 33 , 34 , 38 , 25 , 26 , 27, 91 , 36,77,43,88,89,90) ');
-                                        while ($rep=$req->fetch())
-                                        {
-                                            if ($res['id_departement']==$rep['id_departement'])
-                                            {
-                                                ?>
-                                                <option selected value="<?=$rep['id_departement']?>"> <?=$rep['nom_departement']?></option>
-                                                <?php
+                                            while ($rep = $req->fetch()) {
+                                                if ($res['id_departement'] == $rep['id_departement']) {
+                                                    ?>
+                                                    <option selected
+                                                            value="<?= $rep['id_departement'] ?>"> <?= $rep['nom_departement'] ?></option>
+                                                    <?php
 
+                                                } else {
+
+                                                    ?>
+                                                    <option value="<?= $rep['id_departement'] ?>"> <?= $rep['nom_departement'] ?></option>
+                                                    <?php
+                                                }
                                             }
-                                            else
-                                            {
-
-                                                ?>
-                                                <option value="<?=$rep['id_departement']?>"> <?=$rep['nom_departement']?></option>
-                                                <?php
-                                            }
-                                        }
-                                        ?>
-
-
-                                    </select>
-                                        <?php
-                                        }
-                                        else
-                                        {
                                             ?>
-                                            <select class="form-control" name="id_departement" id="id_departement">
+
+
+                                        </select>
+                                        <?php
+                                    } else {
+                                        ?>
+                                        <select class="form-control" name="id_departement" id="id_departement">
                                             <option value="0">selectionner</option>
                                         </select>
-                                            <?php
-                                        } ?>
+                                        <?php
+                                    } ?>
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="Libellé">Nom</label>
-                                    <input type="text" class="form-control "   name="nom_utilisateur" required="" value="<?php echo @$res['nom_utilisateur']?>"  >
+                                    <input type="text" class="form-control " name="nom_utilisateur" required=""
+                                           value="<?php echo @$res['nom_utilisateur'] ?>">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="Libellé">Prénoms</label>
-                                    <input type="" class="form-control "   name="prenom_utilisateur" required="" value="<?php echo @$res['prenom_utilisateur']?>"  >
+                                    <input type="" class="form-control " name="prenom_utilisateur" required=""
+                                           value="<?php echo @$res['prenom_utilisateur'] ?>">
                                 </div>
 
                             </div>
@@ -255,30 +247,30 @@ $res=$req->fetch();
                             <div class="form-row">
                                 <div class="form-group col-md-6">
                                     <label for="Libellé">Login</label>
-                                    <input type="text" class="form-control "   name="login_utilisateur" required="" value="<?php echo @$res['login_utilisateur']?>"  >
+                                    <input type="text" class="form-control " name="login_utilisateur" required=""
+                                           value="<?php echo @$res['login_utilisateur'] ?>">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="Libellé">Mot de passe</label>
-                                    <input type="text" class="form-control "   name="mot_passe_utilisateur" required="" value="<?php echo @$res['mot_passe_utilisateur']?>"  >
+                                    <input type="text" class="form-control " name="mot_passe_utilisateur" required=""
+                                           value="<?php echo @$res['mot_passe_utilisateur'] ?>">
                                 </div>
 
                             </div>
-
-
-
-
 
 
                             <div class="form-row">
 
                                 <div class="form-group col-md-6">
                                     <label for="Libellé">Email</label>
-                                    <input type="email" class="form-control "   name="email_utilisateur" required="" value="<?php echo @$res['email_utilisateur']?>"  >
+                                    <input type="email" class="form-control " name="email_utilisateur" required=""
+                                           value="<?php echo @$res['email_utilisateur'] ?>">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="Libellé">Numero de telephone</label>
 
-                                        <input type="text" class="form-control "    value="<?php echo @$res['tel_utilisateur']?>"  name="tel_utilisateur" >
+                                    <input type="text" class="form-control "
+                                           value="<?php echo @$res['tel_utilisateur'] ?>" name="tel_utilisateur">
 
                                 </div>
 
@@ -287,81 +279,90 @@ $res=$req->fetch();
                             <div class="form-row" id="informations">
 
 
-
-
-
                             </div>
 
 
-
-
-
-                            <div class="modal fade" id="saveClasseModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="saveClasseModal" tabindex="-1" role="dialog"
+                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Voulez-vous vraiment enregistrer ces informations ?</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">Voulez-vous vraiment
+                                                enregistrer ces informations ?</h5>
                                             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">×</span>
                                             </button>
                                         </div>
-                                        <div class="modal-body">Cliquez sur le bouton "Enregistrer" ci-dessous si vous voulez valider ces informations.</div>
+                                        <div class="modal-body">Cliquez sur le bouton "Enregistrer" ci-dessous si vous
+                                            voulez valider ces informations.
+                                        </div>
                                         <div class="modal-footer">
-                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">
+                                                Annuler
+                                            </button>
                                             <!--<a class="btn btn-primary" href="index.php?page=aj_etab&amp;act=save">Enregistrer</a>-->
-                                            <button type="submit" class="btn btn-primary" name="enregistrer" data-toggle="modal" data-target="#saveClasseModal" ><i class="fas fa-plus-square fa-sm fa-fw mr-2 text-gray-400"></i> Enregister </button>
+                                            <button type="submit" class="btn btn-primary" name="enregistrer"
+                                                    data-toggle="modal" data-target="#saveClasseModal"><i
+                                                        class="fas fa-plus-square fa-sm fa-fw mr-2 text-gray-400"></i>
+                                                Enregister
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
 
-                            <div class="modal fade" id="updateClasseModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="updateClasseModal" tabindex="-1" role="dialog"
+                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Voulez-vous vraiment modifier ces informations ?</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">Voulez-vous vraiment modifier
+                                                ces informations ?</h5>
                                             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">×</span>
                                             </button>
                                         </div>
-                                        <div class="modal-body">Cliquez sur le bouton "Modifier" ci-dessous si vous voulez valider ces informations.</div>
+                                        <div class="modal-body">Cliquez sur le bouton "Modifier" ci-dessous si vous
+                                            voulez valider ces informations.
+                                        </div>
                                         <div class="modal-footer">
-                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+                                            <button class="btn btn-secondary" type="button" data-dismiss="modal">
+                                                Annuler
+                                            </button>
                                             <!--<a class="btn btn-primary" href="index.php?page=aj_etab&amp;act=save">Enregistrer</a>-->
-                                            <button type="submit" class="btn btn-primary" name="modifier" data-toggle="modal" data-target="#saveClasseModal" ><i class="fas fa-edit fa-sm fa-fw mr-2 text-gray-400"></i> Modifier </button>
+                                            <button type="submit" class="btn btn-primary" name="modifier"
+                                                    data-toggle="modal" data-target="#saveClasseModal"><i
+                                                        class="fas fa-edit fa-sm fa-fw mr-2 text-gray-400"></i> Modifier
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
 
-
-
-                    </form>
+                        </form>
 
                         <?php
-                        if (!isset($_GET['id']))
-                        {
+                        if (!isset($_GET['id'])) {
                             ?>
-                            <button  class="btn btn-primary" data-toggle="modal" data-target="#saveClasseModal">Valider</button>
-                            <a  class="btn btn-danger"  href="index.php">Retour</a>
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#saveClasseModal">Valider
+                            </button>
+                            <a class="btn btn-danger" href="index.php">Retour</a>
                             <?php
-                        }
-                        else if(isset($_GET['id']))
-                        {
+                        } else if (isset($_GET['id'])) {
                             ?>
-                            <button  class="btn btn-primary" data-toggle="modal" data-target="#updateClasseModal">Modifier</button>
-                            <a  class="btn btn-danger"  href="index.php">Retour</a>
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#updateClasseModal">
+                                Modifier
+                            </button>
+                            <a class="btn btn-danger" href="index.php">Retour</a>
                             <?php
                         } ?>
                     </div>
                 </div>
 
 
-
-
-<?php            $gu = $bdd->query("select * from utilisateur_sdapa,groupe_utilisateur,departement,etablissement where utilisateur_sdapa.id_groupe_utilisateur = groupe_utilisateur.id_groupe_utilisateur AND departement.id_departement=utilisateur_sdapa.id_departement AND utilisateur_sdapa.id_etablissement=etablissement.id_etablissement ORDER BY utilisateur_sdapa.id_utilisateur DESC") or die(print_r($bdd->errorInfo()));
+                <?php $gu = $bdd->query("select * from utilisateur_sdapa,groupe_utilisateur,departement,etablissement where utilisateur_sdapa.id_groupe_utilisateur = groupe_utilisateur.id_groupe_utilisateur AND departement.id_departement=utilisateur_sdapa.id_departement AND utilisateur_sdapa.id_etablissement=etablissement.id_etablissement ORDER BY utilisateur_sdapa.id_utilisateur DESC") or die(print_r($bdd->errorInfo()));
 
 
                 ?>
@@ -381,7 +382,7 @@ $res=$req->fetch();
                                     <tr>
                                         <th></th>
 
-                                        <th>Nom et prenoms </th>
+                                        <th>Nom et prenoms</th>
 
                                         <th>Login</th>
                                         <th>Groupe utilisateur</th>
@@ -402,10 +403,10 @@ $res=$req->fetch();
                                                 <a href="?id=<?= $res['id_utilisateur']; ?>"><?= $res['nom_utilisateur']; ?> <?= $res['prenom_utilisateur']; ?></a>
                                             </td>
 
-                                            <td >
+                                            <td>
                                                 <?= $res['login_utilisateur']; ?>
                                             </td>
-                                            <td >
+                                            <td>
                                                 <?= $res['libelle_groupe_utilisateur']; ?>
                                             </td>
                                             <td class="text-uppercase">
@@ -422,23 +423,35 @@ $res=$req->fetch();
                             </div>
                         </div>
 
-                        <div><a class="btn btn-danger" href="#" data-toggle="modal" data-target="#DeleteEvaluationModal" style="margin: 20px;"><i class="fas fa-trash fa-sm fa-fw mr-2 text-gray-400"></i> Supprimer la sélection</a></div>
-                        <div align="right"><a class="btn btn-info" href="#" data-toggle="modal" data-target="#emailEvaluationModal" style="margin: 20px;"><i class="fas fa-envelope fa-sm fa-fw mr-2 text-gray-400"></i>Envoyer les accès</a></div>
+                        <div><a class="btn btn-danger" href="#" data-toggle="modal" data-target="#DeleteEvaluationModal"
+                                style="margin: 20px;"><i class="fas fa-trash fa-sm fa-fw mr-2 text-gray-400"></i>
+                                Supprimer la sélection</a></div>
+                        <div align="right"><a class="btn btn-info" href="#" data-toggle="modal"
+                                              data-target="#emailEvaluationModal" style="margin: 20px;"><i
+                                        class="fas fa-envelope fa-sm fa-fw mr-2 text-gray-400"></i>Envoyer les accès</a>
+                        </div>
 
-                        <div class="modal fade" id="DeleteEvaluationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="DeleteEvaluationModal" tabindex="-1" role="dialog"
+                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Voulez-vous vraiment supprimer la sélection ?</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Voulez-vous vraiment supprimer la
+                                            sélection ?</h5>
                                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">×</span>
                                         </button>
                                     </div>
-                                    <div class="modal-body">Cliquez sur le bouton "Supprimer" ci-dessous si vous voulez supprimer les éléments sélectionnés.</div>
+                                    <div class="modal-body">Cliquez sur le bouton "Supprimer" ci-dessous si vous voulez
+                                        supprimer les éléments sélectionnés.
+                                    </div>
                                     <div class="modal-footer">
-                                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
+                                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler
+                                        </button>
                                         <!--<a class="btn btn-primary" href="index.php?page=aj_etab&amp;act=save">Enregistrer</a>-->
-                                        <button type="submit" class="btn btn-danger" name="supprimer"><i class="fas fa-trash fa-sm fa-fw mr-2 text-gray-400"></i> Supprimer </button>
+                                        <button type="submit" class="btn btn-danger" name="supprimer"><i
+                                                    class="fas fa-trash fa-sm fa-fw mr-2 text-gray-400"></i> Supprimer
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -446,29 +459,33 @@ $res=$req->fetch();
                     </div>
 
 
-                        <?php //include "include/crud_etudiant/modal_supp.php"; ?>
-                    </div>
-
-
-
-
+                    <?php //include "include/crud_etudiant/modal_supp.php"; ?>
             </div>
-            <!-- /.container-fluid -->
 
-        <div class="modal fade" id="emailEvaluationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+        </div>
+        <!-- /.container-fluid -->
+
+        <div class="modal fade" id="emailEvaluationModal" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Voulez-vous vraiment envoyer les accés de cette sélection par email ?</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Voulez-vous vraiment envoyer les accés de cette
+                            sélection par email ?</h5>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
-                    <div class="modal-body">Cliquez sur le bouton "Envoyer" ci-dessous si vous voulez envoyer les accès.</div>
+                    <div class="modal-body">Cliquez sur le bouton "Envoyer" ci-dessous si vous voulez envoyer les
+                        accès.
+                    </div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Annuler</button>
                         <!--<a class="btn btn-primary" href="index.php?page=aj_etab&amp;act=save">Enregistrer</a>-->
-                        <button type="submit" class="btn btn-info" name="envoyer"><i class="fas fa-envelope fa-sm fa-fw mr-2 text-gray-400"></i> Envoyer </button>
+                        <button type="submit" class="btn btn-info" name="envoyer"><i
+                                    class="fas fa-envelope fa-sm fa-fw mr-2 text-gray-400"></i> Envoyer
+                        </button>
                     </div>
                 </div>
             </div>
@@ -480,24 +497,13 @@ $res=$req->fetch();
 </div>
 
 
-
+</div>
 
 </div>
 
-        </div>
 
-
-
-
-
-
-
-
-
-
-
-    </div>
-    <!-- /.container-fluid -->
+</div>
+<!-- /.container-fluid -->
 
 </div>
 <!-- End of Main Content -->
@@ -532,12 +538,11 @@ $res=$req->fetch();
 <script src="../vendor/select/dist/js/select2.min.js"></script>
 
 
+<script>
+    function select_departement(value) {
 
-<script >
-     function select_departement(value){
-       
-        $('#affiche').load('ajax/fetch_departement.php',{
-            id_etablissement:value
+        $('#affiche').load('ajax/fetch_departement.php', {
+            id_etablissement: value
         });
     }
 </script>

@@ -120,7 +120,7 @@ class utilisateur{
         $requete->execute(array('id_utilisateur' => $this->id_utilisateur
         ));
         $reponse = $requete->fetch();
-        $message='Vos accès à SDAPA sont : Login: '.$reponse['login_utilisateur'].'  /  Mot de passe: '.$reponse['mot_passe_utilisateur'];
+        $message='Vos accès à SDAP sont : Login: '.$reponse['login_utilisateur'].'  /  Mot de passe: '.$reponse['mot_passe_utilisateur'];
         if ($reponse) {
             send_mail($reponse['email_utilisateur'],'ACCES SDAPA',$message);
             return 1;
