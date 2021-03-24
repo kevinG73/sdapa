@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             } else {
                 creerAdmissionProvisoire($id_etablissement, $id_departement, $id_parcours, $point, $id_annee);
             }
-            $_SESSION['success'] = "critère de selection pris en compte. Vous pouvez consulter la liste provisoire des admis .";
+            $_SESSION['success'] = "Le critère de selection a été pris enregistré . Vous pouvez consulter la liste provisoire des admis du parcours " . DeterminerParcours($id_parcours) . "  .";
         }
     }
 
@@ -111,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <?php endif; ?>
 
                 <?php if (isset($_SESSION['success']) && !empty($_SESSION['success'])): ?>
-                    <div class="text-uppercase text-white bg-success">
+                    <div class="text-white bg-success">
                         <p class="p-2"><?= $_SESSION['success'] ?></p>
                         <?php unset($_SESSION['success']) ?>
                     </div>
