@@ -140,7 +140,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                             <div class="float-right mt-2 pr-2">
                                 <input type="submit" class="btn btn-primary" name="action" value="consulter">
-                                <input type="submit" class="btn btn-primary" name="action" value="imprimer">
+                                <?php if ($_SESSION['id_groupe_utilisateur'] == 14): ?>
+                                    <input type="submit" class="btn btn-primary" name="action" value="imprimer">
+                                <?php endif; ?>
                             </div>
                         </form>
                     </div>
@@ -148,7 +150,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <div class="card shadow mb-5">
                     <div class="card-header">
-                        <h6 class="m-0 font-weight-bold text-primary text-uppercase">Liste des étudiants admissibles en master 1 </h6>
+                        <h6 class="m-0 font-weight-bold text-primary text-uppercase">Liste des étudiants admissibles en
+                            master 1 </h6>
                     </div>
                     <div class="card-body">
                         <?php if (isset($admis) && count($admis) > 0): ?>

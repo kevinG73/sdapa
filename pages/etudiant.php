@@ -124,7 +124,7 @@ include '../class/inscription.class.php';
                                         <label class="col-form-label-sm">Année académique</label>
                                         <select class="form-control" name="annee" id="anneaca">
                                             <?php
-                                            $annetest = $bdd->query("SELECT * FROM annee_academique order by id_annee_academique desc");
+                                            $annetest = $bdd->query("SELECT * FROM annee_academique order by annee_cloture desc");
                                             ?>
                                             <?php while ($repanne = $annetest->fetch()): ?>
                                                 <?php

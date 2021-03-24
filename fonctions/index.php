@@ -50,7 +50,7 @@ function calculAge($date)
 function ListeAnnee()
 {
     global $bdd;
-    $requete = "SELECT * FROM annee_academique order by id_annee_academique desc";
+    $requete = "SELECT * FROM annee_academique order by annee_cloture desc";
     $resultat = $bdd->query($requete);
     if (is_bool($resultat)) {
         return array();

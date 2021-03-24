@@ -150,7 +150,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                             <div class="d-flex mt-4">
                                 <div class="col-6 mr-5">
-                                    <label for="id_parcours">Parcours</label>
+                                    <label for="id_parcours">Parcours ou liste des parcours</label>
                                     <select required class="form-control js-example-basic-multiple" name="id_parcours[]"
                                             id="id_parcours" multiple>
                                         <option value="0">parcours</option>

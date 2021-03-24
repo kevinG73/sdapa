@@ -53,13 +53,13 @@ $tbl_header = '
 </style>
 <table nobr="true" width="100%" border="1"  cellspacing="0" cellpadding="3">
   <tr>
-    <th>N°</th>
+    <th style="text-align:left;" width="2%">N°</th>
     <th width="10%"><b>Nom</b></th>
     <th style="text-align:left;" width="20%"><b>Prénom</b></th>
     <th width="5%"><b>Genre</b></th>
     <th width="12%">Date de naissance</th>
     <th width="12%">Lieu de naissance</th>
-    <th width="12%">Nationalité</th>
+    <th width="10%">Nationalité</th>
     <th width="5%">moy L1</th>
     <th width="5%">moy L2</th>
     <th width="5%">moy L3</th>
@@ -69,14 +69,16 @@ $tbl_header = '
   </tr>';
 $tbl_footer = '</table>';
 
+$compteur = 0;
 foreach ($liste_decouper as $index => $etd) {
-    foreach ($etd as $et) {
+    foreach ($etd as $index2 => $et) {
         $ndate = explode('-', $et['date_naissance']);
         $fdate = $ndate[2] . '/' . $ndate[1] . '/' . $ndate[0];
 
+        $compteur = $compteur + 1;
         $tbl .= '
 <tr>
-    <td>' . $index . '</td>
+    <td>' . $compteur . '</td>
     <td> ' . $et['nom'] . '</td>
     <td> ' . $et['prenoms'] . '</td>
 	<td>' . $et['libelle_sexe_court'] . '</td>
