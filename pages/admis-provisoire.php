@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     /* bouton imprimer */
     if (isset($_POST['action']) && $_POST['action'] === "imprimer") {
         $_SESSION['impression'] = $_POST;
-        header('Location:pdf/admis.php');
+        header('Location:pdf/admis-provisoire.php');
     }
 }
 ?>

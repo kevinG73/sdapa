@@ -62,6 +62,8 @@ function ListeProvisoireAdmis($annee, $id_etablissement, $id_departement, $id_pa
     global $bdd;
     $requete = "select * from etudiant_sdapa  etd 
                 JOIN  inscription_sdapa ins ON etd.id = ins.id_etudiant
+                JOIN nationalite nat ON nat.id_nationalite = etd.nationalite
+                JOIN sexe ON etd.sexe = sexe.id_sexe
                 JOIN parcours_sdapa p ON p.id_etudiant = etd.id 
                 JOIN admis_provisoire ap ON ap.id_parcours = p.id_parcours
                 WHERE annee = $annee  AND ins.id_etablissement = $id_etablissement AND ins.id_departement = $id_departement 

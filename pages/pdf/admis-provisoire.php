@@ -1,6 +1,7 @@
 <?php
 require_once "../../config/connection.php";
 require_once('./entete-provisoire.php');
+require_once "../../fonctions/admission-provisoire.php";
 global $bdd;
 
 /* Liste des etudiants en fonctions des critères ci-dessous : */
@@ -10,32 +11,15 @@ $filtre = [
     'annee_academique' => $_SESSION['impression']['id_annee'],
     'id_etablissement' => $_SESSION['impression']['id_etablissement'],
     'id_departement' => $_SESSION['impression']['id_departement'],
-    'id_parcours' => $_SESSION['impression']['id_parcours'][0]
+    'id_parcours' => $_SESSION['impression']['id_parcours']
 ];
 
 /* liste des étudiants */
 extract($filtre);
 
-
-$requete = "select * from inscription_sdapa ins 
-    JOIN etudiant_sdapa etd ON etd.id = ins.id_etudiant
-    JOIN sexe ON etd.sexe = sexe.id_sexe
-    JOIN parcours_sdapa p ON p.id_etudiant = etd.id 
-    JOIN nationalite nat ON nat.id_nationalite = etd.nationalite
-    where annee = $annee_academique AND p.id_parcours = $id_parcours AND id_departement = $id_departement
-    ORDER BY total_point_critere DESC , moyenne_poids  DESC , moy_pondere DESC";
-
-$resultat = $bdd->query($requete);
-
-if (is_bool($resultat)) {
-    $etudiants = array();
-} else {
-    $etudiants = $resultat->fetchAll();
-}
-
-
+/* Liste des étudiants */
+$etudiants = ListeProvisoireAdmis($filtre['annee_academique'], $filtre['id_etablissement'], $filtre['id_departement'], $filtre['id_parcours']);
 $liste_decouper = array_chunk($etudiants, 20);
-
 
 /* make TCPDF object */
 $pdf = new MYTCPDF('L', 'mm', 'A4');
