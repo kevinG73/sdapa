@@ -75,7 +75,6 @@ include '../class/inscription.class.php';
                         $resdip = $resdd->fetch();
                         $_SESSION['id_etablissement'] = $resins['id_etablissement'];
                         $_SESSION['id_departement'] = $resins['id_departement'];
-                        $array_parcours=array();
                         $_SESSION['id_']=$_GET['id'];
 
 
@@ -86,7 +85,6 @@ include '../class/inscription.class.php';
                         $resins = $insc->fetch();
                         $resdd = $bdd->query('select * from cursus where id_etudiant ="' . $_GET['id'] . '"') or die(print_r($bdd->errorInfo()));
                         $resdip = $resdd->fetch();
-                        $array_parcours=array();
                         $_SESSION['id_']=$_GET['id'];
                     }
 
@@ -150,9 +148,9 @@ include '../class/inscription.class.php';
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label class="col-form-label-sm"
+                                        <label class="col-form-label-sm etablissement"
                                                for="exampleFormControlSelect1">Etablissement</label>
-                                        <select class="form-control" name="id_etablissement" id="id_etablissement">
+                                        <select class="form-control" name="id_etablissement" id="id_etablissement" >
                                             <?php foreach ($etablissements as $p): ?>
                                                 <option value="<?php echo $p['id_etablissement'] ?>"
                                                 <?php if (isset($id_etablissement) && $id_etablissement === $p['id_etablissement']) echo 'selected'; ?>
@@ -619,20 +617,94 @@ include '../class/inscription.class.php';
 <!-- Page level custom scripts -->
 <script src="../src/js/datatable/datatable_etd.js"></script>
 <script src="../src/js/ajax.js"></script>
-<script src="../src/js/ajax_multiple.js"></script>
 <script src="../src/js/etudiant_js.js"></script>
 <script src="../vendor/validation/dist/bootstrap-validate.js"></script>
 <script src="../vendor/select/dist/js/select2.min.js"></script>
 <script>
-    $(document).ready(function() {
-        $('.js-example-basic-multiple').select2();
-        $('.js-example-basic-multiple').on("select2:select", function (evt) {
-            var element = evt.params.data.element;
-            var $element = $(element);
-            $element.detach();
-            $(this).append($element);
-            $(this).trigger("change");
+    $(document).ready(function () {
+        /* évènement sur la selection d'un établissement */
+        $("#id_etablissement").on("change", function () {
+            var id_etablissement = $(this).val();
+            $.ajax({
+                url: "./ajax/fetch_departement.php",
+                method: 'GET',
+                data: {id_etablissement: id_etablissement},
+                success: function (data) {
+                    $("#id_departement").html(data);
+                    /* departements */
+                    var id_departement = $("#id_departement").val();
+                    var id_niveau = $("#id_niveau").val();
+                        $.ajax({
+                            url: "./ajax/new/fetch_parcours1.php",
+                            method: 'GET',
+                            data: {
+                                id_departement: id_departement,
+                                id_niveau: id_niveau
+                            },
+                            success: function (data) {
+                                $("#id_parcours1").html(data);
+                            }
+                        });
+                    $.ajax({
+                        url: "./ajax/new/fetch_parcours2.php",
+                        method: 'GET',
+                        data: {
+                            id_departement: id_departement,
+                            id_niveau: id_niveau
+                        },
+                        success: function (data) {
+                            $("#id_parcours2").html(data);
+                        }
+                    });
+                    $.ajax({
+                        url: "./ajax/new/fetch_parcours3.php",
+                        method: 'GET',
+                        data: {
+                            id_departement: id_departement,
+                            id_niveau: id_niveau
+                        },
+                        success: function (data) {
+                            $("#id_parcours3").html(data);
+                        }
+                    });
+                }
+            });
+        }).trigger("change");
+
+        /* évènement sur la selection d'un département */
+        $("#id_departement").on("change", function () {
+            /* parcours */
+            var id_niveau = $("#id_niveau").val();
+            var id_departement = $("#id_departement").val();
+                $.ajax({
+                    url: "./ajax/new/fetch_parcours1.php",
+                    method: 'GET',
+                    data: {id_niveau: id_niveau, id_departement: id_departement},
+                    success: function (data) {
+                        $("#id_parcours1").html(data);
+                    }
+                });
+            $.ajax({
+                url: "./ajax/new/fetch_parcours2.php",
+                method: 'GET',
+                data: {id_niveau: id_niveau, id_departement: id_departement},
+                success: function (data) {
+                    $("#id_parcours2").html(data);
+                }
+            });
+            $.ajax({
+                url: "./ajax/new/fetch_parcours3.php",
+                method: 'GET',
+                data: {id_niveau: id_niveau, id_departement: id_departement},
+                success: function (data) {
+                    $("#id_parcours3").html(data);
+                }
+            });
         });
+
+
+
+
     });
 
     bootstrapValidate(['#carte_et', '#numero_mers', '#nom', '#prenoms', '#lieu_naissance', '#datenaiss', '#maila', '#contact', '#eta_anterieur'], 'required: Veuillez remplir les champs!')

@@ -1,17 +1,12 @@
 <?php
 session_start();
-require "../../config/connection.php";
-require "../../fonctions/index.php";
-
-
-$array_parcours = [];
+require "../../../config/connection.php";
+require "../../../fonctions/index.php";
 if (isset($_SESSION['id_'])):
-    $parcours = $bdd->query('select * from parcours_sdapa where id_etudiant ="' . $_SESSION['id_'] . '"') or die(print_r($bdd->errorInfo()));
-
-    while ($res_parcours = $parcours->fetch()):
-        array_push($array_parcours, $res_parcours['id_parcours']);
-    endwhile;
+    $parcours = $bdd->query('select * from parcours_sdapa where id_etudiant ="' . $_SESSION['id_'] . '" and choix = 3') or die(print_r($bdd->errorInfo()));
+    $valeur = $parcours->fetch();
 endif;
+
 if (isset($_GET['id_departement']) && !empty($_GET['id_departement'])):
     $id_departement = $_GET['id_departement'];
     global $bdd;
@@ -29,9 +24,12 @@ if (isset($_GET['id_departement']) && !empty($_GET['id_departement'])):
     $liste = $resultat->fetchAll();
 
     if (count($liste) > 0):
+        ?>
+        <option value="-1"></option>
+        <?php
         foreach ($liste as $res):
             ?>
-            <?php if ((isset($_SESSION['select_mult']) && !empty($_SESSION['select_mult']) && ($res['id_specialite'] === $_SESSION['select_mult'])) || in_array($res['id_specialite'], $_SESSION['select_mult']) || in_array($res['id_specialite'], $array_parcours)): ?>
+            <?php if (@$valeur['id_parcours'] == $res['id_specialite']): ?>
             <option selected
                     value="<?= $res['id_specialite'] ?>"> <?= convert_accent($res['libelle_specialite']) ?></option>
         <?php else: ?>

@@ -42,13 +42,29 @@ if ($verificaion == 1) {
             3, $id_departement, $id_etablissement, $bdd);
 
         $enregistrement2 = $inscription->enregistrement();
+        $choix1 = (int)$id_parcours1;
+        $choix2 = (int)$id_parcours2;
+        $choix3 = (int)$id_parcours3;
 
-        foreach ($id_parcours as $key => $testparcours) {
+        if ($choix1 == -1) {
 
-            $choix = (int)$key+1;
-            $parcours_sdapa = $bdd->query('insert into parcours_sdapa (id_etudiant,id_parcours,choix) values ("' . $code_et . '","' . $testparcours . '","' . $choix. '")');
-
+        }else{
+            $parcours_sdapa = $bdd->query('insert into parcours_sdapa (id_etudiant,id_parcours,choix) values ("' . $code_et . '","' . $choix1 . '",1)');
         }
+
+        if ($choix2 == -1) {
+
+        }else{
+            $parcours_sdapa = $bdd->query('insert into parcours_sdapa (id_etudiant,id_parcours,choix) values ("' . $code_et . '","' . $choix2 . '",2)');
+        }
+
+        if ($choix3 == -1) {
+
+        }else{
+            $parcours_sdapa = $bdd->query('insert into parcours_sdapa (id_etudiant,id_parcours,choix) values ("' . $code_et . '","' . $choix3 . '",3)');
+        }
+
+
 
         ?>
         <div>

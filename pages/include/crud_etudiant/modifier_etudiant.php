@@ -27,12 +27,28 @@ if (isset($_POST['modifier'])) {
 
             $enregistrement2 = $inscription->modification($code_et);
 
-            foreach ($id_parcours as $key => $testparcours) {
+            $choix1 = (int)$id_parcours1;
+            $choix2 = (int)$id_parcours2;
+            $choix3 = (int)$id_parcours3;
 
-                $choix = (int)$key+1;
-                $parcours_sdapa = $bdd->query('insert into parcours_sdapa (id_etudiant,id_parcours,choix) values ("' . $code_et . '","' . $testparcours . '","' . $choix. '")');
+            if ($choix1 == -1) {
 
+            }else{
+                $parcours_sdapa = $bdd->query('insert into parcours_sdapa (id_etudiant,id_parcours,choix) values ("' . $code_et . '","' . $choix1 . '",1)');
             }
+
+            if ($choix2 == -1) {
+
+            }else{
+                $parcours_sdapa = $bdd->query('insert into parcours_sdapa (id_etudiant,id_parcours,choix) values ("' . $code_et . '","' . $choix2 . '",2)');
+            }
+
+            if ($choix3 == -1) {
+
+            }else{
+                $parcours_sdapa = $bdd->query('insert into parcours_sdapa (id_etudiant,id_parcours,choix) values ("' . $code_et . '","' . $choix3 . '",3)');
+            }
+
             unset($_SESSION['id_']);
             ?>
             <script>document.location.replace("etudiant.php")</script>
