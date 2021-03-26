@@ -467,14 +467,13 @@ include '../class/inscription.class.php';
                         </div>
 
                         <?php
+                        include "include/crud_etudiant/infoInsert.php";
+                        include "include/crud_etudiant/infoParcou.php";
                         if (!isset($_GET['id'])) {
                             include "include/crud_etudiant/modal_insert.php";
-                            include "include/crud_etudiant/infoInsert.php";
-                            include "include/crud_etudiant/infoParcou.php";
                         }
                         ?>
                         <?php
-                        include "include/crud_etudiant/infoParcou.php";
                         include "include/crud_etudiant/modal_modifier.php";
                         ?>
                     </div>
@@ -637,17 +636,17 @@ include '../class/inscription.class.php';
                     /* departements */
                     var id_departement = $("#id_departement").val();
                     var id_niveau = $("#id_niveau").val();
-                        $.ajax({
-                            url: "./ajax/new/fetch_parcours1.php",
-                            method: 'GET',
-                            data: {
-                                id_departement: id_departement,
-                                id_niveau: id_niveau
-                            },
-                            success: function (data) {
-                                $("#id_parcours1").html(data);
-                            }
-                        });
+                    $.ajax({
+                        url: "./ajax/new/fetch_parcours1.php",
+                        method: 'GET',
+                        data: {
+                            id_departement: id_departement,
+                            id_niveau: id_niveau
+                        },
+                        success: function (data) {
+                            $("#id_parcours1").html(data);
+                        }
+                    });
                     $.ajax({
                         url: "./ajax/new/fetch_parcours2.php",
                         method: 'GET',
@@ -679,14 +678,14 @@ include '../class/inscription.class.php';
             /* parcours */
             var id_niveau = $("#id_niveau").val();
             var id_departement = $("#id_departement").val();
-                $.ajax({
-                    url: "./ajax/new/fetch_parcours1.php",
-                    method: 'GET',
-                    data: {id_niveau: id_niveau, id_departement: id_departement},
-                    success: function (data) {
-                        $("#id_parcours1").html(data);
-                    }
-                });
+            $.ajax({
+                url: "./ajax/new/fetch_parcours1.php",
+                method: 'GET',
+                data: {id_niveau: id_niveau, id_departement: id_departement},
+                success: function (data) {
+                    $("#id_parcours1").html(data);
+                }
+            });
             $.ajax({
                 url: "./ajax/new/fetch_parcours2.php",
                 method: 'GET',
@@ -728,11 +727,8 @@ include '../class/inscription.class.php';
         if (id_parcours1 == -1 && id_parcours2 == -1 && id_parcours3 == -1){
             jQuery("#erreurParcours").modal();
         }else {
-            if ( ((id_parcours1 != -1) == (id_parcours2 != -1)) || ((id_parcours1 != -1) == (id_parcours3 != -1)) || ((id_parcours2 != -1) == (id_parcours3!= -1)) || ((id_parcours1 != -1) == (id_parcours2 != -1) == (id_parcours3 != -1))){
-                jQuery("#erreurPar").modal();
-            }else {
-                jQuery("#updateClasseModal").modal();
-            }
+            jQuery("#updateClasseModal").modal();
+
         }
 
     }
