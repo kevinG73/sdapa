@@ -92,7 +92,7 @@ require "../config/connection.php";
 <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
 <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
 <script src="../src/js/calcul/calcul_nombre_mention.js"></script>
-<script src="../src/js/display_point.js"></script>
+<script src="../src/js/display_point_2.js"></script>
 <script src="../src/js/datatable/datatable.js"></script>
 <script src="../src/js/ajax.js"></script>
 </body>

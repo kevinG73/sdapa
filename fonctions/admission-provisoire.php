@@ -28,8 +28,8 @@ function verifierAdmissionProvisoire($id_etablissement, $id_departement, $id_par
     $code = $id_annee . $id_etablissement . $id_departement . $id_parcours;
     $requete = "SELECT count(*) as nb FROM admis_provisoire WHERE id = '$code'";
     $resultat = $bdd->query($requete);
-    $data = $resultat->fetch();
-    if (!is_bool($data)) {
+    if (!is_bool($resultat)) {
+        $data = $resultat->fetch();
         return $data['nb'];
     } else {
         return 0;
@@ -71,10 +71,9 @@ function ListeProvisoireAdmis($annee, $id_etablissement, $id_departement, $id_pa
                 ORDER BY total_point_critere DESC";
 
     $resultat = $bdd->query($requete);
-    $data = $resultat->fetchAll();
-    if (is_bool($data)) {
+    if (is_bool($resultat)) {
         return array();
     } else {
-        return $data;
+        return $resultat->fetchAll();
     }
 }

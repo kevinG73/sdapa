@@ -4,6 +4,7 @@ setlocale(LC_TIME, 'french.UTF-8', 'fr_FR.UTF-8');
 
 require "../config/connection.php";
 require "../fonctions/index.php";
+require "../fonctions/admission.php";
 require "../fonctions/admission-provisoire.php";
 
 if (!isset($_SESSION['connecte']) || $_SESSION['connecte'] === "") {
@@ -30,17 +31,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['select'] = $_POST['id_parcours'];
         $_SESSION['select_departemnt'] = $_POST['id_departement'];
 
-        if (isset($point) && (int)$point === 0) {
-            $_SESSION['erreur'] = "vous devez selectionner une valeur dans le champ critère de selection";
+        /* le nombre total d'étudiants avec les points critères calculés */
+        $total_etudiant_evalue = (int)TotalEtudiantEvalue($id_annee, $id_etablissement, $id_departement, $id_parcours);
+        /* le nombre total d'étudiant dans ce parcours */
+        $total_etudiants = (int)TotalEtudiantParcours($id_annee, $id_etablissement, $id_departement, $id_parcours);
+
+        if ($total_etudiant_evalue != $total_etudiants) {
+            $_SESSION['erreur'] = "Veuillez calculer le point critère de tous les étudiants du parcours " . DeterminerParcours($id_parcours) . "  .";
         } else {
-            $dejafait = verifierAdmissionProvisoire($id_etablissement, $id_departement, $id_parcours, $id_annee);
-            if ($dejafait) {
-                majAdmissionProvisoire($id_etablissement, $id_departement, $id_parcours, $point, $id_annee);
+            if (isset($point) && (int)$point === 0) {
+                $_SESSION['erreur'] = "vous devez selectionner une valeur dans le champ critère de selection";
             } else {
-                creerAdmissionProvisoire($id_etablissement, $id_departement, $id_parcours, $point, $id_annee);
+                $dejafait = verifierAdmissionProvisoire($id_etablissement, $id_departement, $id_parcours, $id_annee);
+                if ($dejafait) {
+                    majAdmissionProvisoire($id_etablissement, $id_departement, $id_parcours, $point, $id_annee);
+                } else {
+                    creerAdmissionProvisoire($id_etablissement, $id_departement, $id_parcours, $point, $id_annee);
+                }
+                $_SESSION['success'] = "Le critère de selection a été pris enregistré . Vous pouvez consulter la liste provisoire des admis du parcours " . DeterminerParcours($id_parcours) . "  .";
             }
-            $_SESSION['success'] = "Le critère de selection a été pris enregistré . Vous pouvez consulter la liste provisoire des admis du parcours " . DeterminerParcours($id_parcours) . "  .";
         }
+
     }
 
     /* bouton consulter */
@@ -49,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['select_departemnt'] = $_POST['id_departement'];
         $admis = ListeProvisoireAdmis($id_annee, $id_etablissement, $id_departement, $id_parcours);
         if (count($admis) < 1) {
-            $message_data = "Aucune donnée disponible pour avec ce critère , veuillez réessayer avec un autre critère de selection ou un autre parcours .";
+            $message_data = "Aucune donnée disponible , veuillez réessayer en définissant un autre critère de selection ou un autre parcours .";
         }
     }
 
@@ -277,7 +288,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <script src="../vendor/datatables/jquery.dataTables.min.js"></script>
 <script src="../vendor/datatables/dataTables.bootstrap4.min.js"></script>
-<script src="../src/js/datatable/datatable_etd.js"></script>
+<script src="../src/js/datatable/datatable_admis.js"></script>
 <script src="../src/js/ajax.js"></script>
 <script>
     $(document).ready(function () {

@@ -28,7 +28,7 @@ $(document).ready(function () {
         /* afficher le point de l'âge à côté du champ age*/
         $("#inputAge").val(age)
         if (age < 20) {
-            p_age = 0;
+            p_age = 5;
         } else if (age >= 20 && age < 24) {
             p_age = 5;
         } else if (age >= 24 && age < 26) {

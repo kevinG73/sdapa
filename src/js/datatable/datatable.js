@@ -15,6 +15,7 @@ $(document).ready(function () {
     function chargerDatatable(id_departement, id_parcours, id_annee) {
         dataTTT = $('#dataTable').DataTable(
             {
+                order: [[8, "desc"]],
                 language: {
                     url: "https://cdn.datatables.net/plug-ins/1.10.22/i18n/French.json"
                 },
