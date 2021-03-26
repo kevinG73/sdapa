@@ -469,6 +469,8 @@ include '../class/inscription.class.php';
                         <?php
                         if (!isset($_GET['id'])) {
                             include "include/crud_etudiant/modal_insert.php";
+                            include "include/crud_etudiant/infoInsert.php";
+                            include "include/crud_etudiant/infoParcou.php";
                         }
                         ?>
                         <?php
@@ -480,11 +482,11 @@ include '../class/inscription.class.php';
 
                 <div align="right">
                     <?php if (!isset($_GET['id'])): ?>
-                        <button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#saveClasseModal">Soumettre
+                        <button class="btn btn-lg btn-primary" type="button" onclick="alertInsert()">Soumettre
                         </button>
                         <button class="btn btn-lg btn-danger" type="reset">Annuler</button>
                     <?php elseif (isset($_GET['id'])) : ?>
-                        <button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#updateClasseModal">Soumettre
+                        <button class="btn btn-lg btn-primary" onclick="alertUpdate()">Soumettre
                         </button>
                         <button class="btn btn-lg btn-danger" onclick="destroy()">Annuler</button>
                     <?php endif; ?>
@@ -702,10 +704,33 @@ include '../class/inscription.class.php';
             });
         });
 
-
-
-
     });
+
+    function alertInsert(){
+        var id_parcours1 = parseInt($("select#id_parcours1 option:selected").val());
+        var id_parcours2 = parseInt($("select#id_parcours2 option:selected").val());
+        var id_parcours3 = parseInt($("select#id_parcours3 option:selected").val());
+        if (id_parcours1 == -1 && id_parcours2 == -1 && id_parcours3 == -1){
+            jQuery("#erreurParcours").modal();
+        }else {
+            if ((id_parcours1 == id_parcours2) || (id_parcours1 == id_parcours3) || (id_parcours2 == id_parcours3) || (id_parcours1 == id_parcours2 == id_parcours3)){
+                jQuery("#erreurPar").modal();
+            }else {
+                jQuery("#saveClasseModal").modal();
+            }
+        }
+    }
+    function alertUpdate(){
+        var id_parcours1 = parseInt($("select#id_parcours1 option:selected").val());
+        var id_parcours2 = parseInt($("select#id_parcours2 option:selected").val());
+        var id_parcours3 = parseInt($("select#id_parcours3 option:selected").val());
+        if (id_parcours1 == -1 && id_parcours2 == -1 && id_parcours3 == -1){
+            jQuery("#erreurParcours").modal();
+        }else {
+            jQuery("#updateClasseModal").modal();
+        }
+
+    }
 
     bootstrapValidate(['#carte_et', '#numero_mers', '#nom', '#prenoms', '#lieu_naissance', '#datenaiss', '#maila', '#contact', '#eta_anterieur'], 'required: Veuillez remplir les champs!')
     bootstrapValidate('#maila', 'email: Entrer email valide!')
