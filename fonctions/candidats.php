@@ -4,7 +4,7 @@
  * Liste des candidats
  * @return array
  */
-function ListeCandidats($annee, $id_etablissement, $id_departement, $id_parcours)
+function ListeCandidats($annee, $id_etablissement, $id_departement)
 {
     global $bdd;
     $requete = "select 

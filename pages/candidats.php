@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['action']) && $_POST['action'] === "consulter") {
         $_SESSION['select_mult'] = $id_parcours;
         $_SESSION['select_departemnt'] = $_POST['id_departement'];
-        $admis = ListeCandidats($id_annee, $id_etablissement, $id_departement, $id_parcours);
+        $admis = ListeCandidats($id_annee, $id_etablissement, $id_departement);
     }
 
     /* bouton imprimer */
@@ -148,19 +148,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 </div>
                             </div>
 
-                            <div class="d-flex mt-4">
-                                <div class="col-6 mr-5">
-                                    <label for="id_parcours">Parcours</label>
-                                    <select required class="form-control" name="id_parcours" id="id_parcours">
-                                        <option value="0">parcours</option>
-                                    </select>
-                                </div>
-                            </div>
-
 
                             <div class="float-right mt-2 pr-2">
                                 <input type="submit" class="btn btn-primary" name="action" value="consulter">
-                                <input type="submit" class="btn btn-primary" name="action" value="imprimer">
                             </div>
 
                         </div>
