@@ -731,7 +731,7 @@ include '../class/inscription.class.php';
             if ( ((id_parcours1 != -1) == (id_parcours2 != -1)) || ((id_parcours1 != -1) == (id_parcours3 != -1)) || ((id_parcours2 != -1) == (id_parcours3!= -1)) || ((id_parcours1 != -1) == (id_parcours2 != -1) == (id_parcours3 != -1))){
                 jQuery("#erreurPar").modal();
             }else {
-                jQuery("#saveClasseModal").modal();
+                jQuery("#updateClasseModal").modal();
             }
         }
 
