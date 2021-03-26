@@ -4,9 +4,8 @@ session_start();
 if (!isset($_SESSION['connecte']) || $_SESSION['connecte'] === "") {
     header("Location:login.php");
 }
-if(!isset($_GET['id']))
-{
-    $_SESSION['id_']='fghjkl';
+if (!isset($_GET['id'])) {
+    $_SESSION['id_'] = 'fghjkl';
 }
 
 require "../config/connection.php";
@@ -32,7 +31,7 @@ include '../class/inscription.class.php';
     <link href="../src/css/sb-admin-2.min.css" rel="stylesheet">
     <!-- Custom styles for this page -->
     <link href="../vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <link href="../vendor/select/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="../vendor/select/dist/css/select2.min.css" rel="stylesheet"/>
 
 </head>
 
@@ -75,8 +74,8 @@ include '../class/inscription.class.php';
                         $resdip = $resdd->fetch();
                         $_SESSION['id_etablissement'] = $resins['id_etablissement'];
                         $_SESSION['id_departement'] = $resins['id_departement'];
-                        $array_parcours=array();
-                        $_SESSION['id_']=$_GET['id'];
+                        $array_parcours = array();
+                        $_SESSION['id_'] = $_GET['id'];
 
 
                     } else {
@@ -86,8 +85,8 @@ include '../class/inscription.class.php';
                         $resins = $insc->fetch();
                         $resdd = $bdd->query('select * from cursus where id_etudiant ="' . $_GET['id'] . '"') or die(print_r($bdd->errorInfo()));
                         $resdip = $resdd->fetch();
-                        $array_parcours=array();
-                        $_SESSION['id_']=$_GET['id'];
+                        $array_parcours = array();
+                        $_SESSION['id_'] = $_GET['id'];
                     }
 
                     if (isset($_POST['modifier'])) {
@@ -106,7 +105,6 @@ include '../class/inscription.class.php';
                     $etablissements = ListeEtablissementsSession($_SESSION['id_etablissement']);
                 }
                 $etudiants = ListeEtudiants();
-
 
 
                 ?>
@@ -191,9 +189,15 @@ include '../class/inscription.class.php';
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label class="col-form-label-sm" for="id_parcours">Parcours</label>
-                                        <select class="form-control js-example-basic-multiple" required name="id_parcours[]" id="id_parcours" multiple>
+                                        <select class="form-control js-example-basic-multiple" required
+                                                name="id_parcours[]" id="id_parcours" multiple>
                                             <option value="0">parcours</option>
                                         </select>
+                                        <div class="text-left">
+                                            <p>L'ordre est important . <br> Le premier parcours selectionné répresente
+                                                le premier choix , ainsi de suite .
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -297,7 +301,7 @@ include '../class/inscription.class.php';
                                             <?php
                                             $sexes = $bdd->query("SELECT * FROM sexe");
                                             ?>
-                                            <?php while ($sexe = $sexes->fetch()) :?>
+                                            <?php while ($sexe = $sexes->fetch()) : ?>
                                                 <?php if ($res['sexe'] == $sexe['id_sexe']) : ?>
                                                     <option selected
                                                             value="<?= $sexe['id_sexe'] ?>"> <?= $sexe['libelle_sexe'] ?></option>
@@ -332,7 +336,7 @@ include '../class/inscription.class.php';
                                             <?php
                                             $nationalites = $bdd->query('SELECT * FROM nationalite')
                                             ?>
-                                            <?php while($nationalite = $nationalites->fetch()): ?>
+                                            <?php while ($nationalite = $nationalites->fetch()): ?>
                                                 <?php if ($res['nationalite'] == $nationalite['id_nationalite']): ?>
                                                     <option selected
                                                             value="<?= $res['nationalite'] ?>"> <?= $nationalite['libelle_nationalite'] ?></option>
@@ -347,12 +351,14 @@ include '../class/inscription.class.php';
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
                                         <label class="col-form-label-sm">Email</label>
-                                        <input type="email" class="form-control" id="maila" name="mail" autocomplete="off"
+                                        <input type="email" class="form-control" id="maila" name="mail"
+                                               autocomplete="off"
                                                value="<?php echo @ $res['email'] ?>">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label class="col-form-label-sm">Contact</label>
-                                        <input type="text" class="form-control text-uppercase" id="contact" autocomplete="off" min="10" max="10"
+                                        <input type="text" class="form-control text-uppercase" id="contact"
+                                               autocomplete="off" min="10" max="10"
                                                name="contat" required value="<?php echo @ $res['telephone'] ?>">
                                     </div>
 
@@ -372,7 +378,7 @@ include '../class/inscription.class.php';
                                             <?php
                                             $anneanterieur = $bdd->query("SELECT * FROM annee_academique order by id_annee_academique asc");
                                             ?>
-                                            <?php while($repanneante = $anneanterieur->fetch()) : ?>
+                                            <?php while ($repanneante = $anneanterieur->fetch()) : ?>
                                                 <?php
                                                 if ($repanneante['id_annee_academique'] == $resdip['id_anne_ante']) {
                                                     ?>
@@ -470,11 +476,13 @@ include '../class/inscription.class.php';
 
                 <div align="right">
                     <?php if (!isset($_GET['id'])): ?>
-                        <button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#saveClasseModal">Soumettre
+                        <button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#saveClasseModal">
+                            Soumettre
                         </button>
                         <button class="btn btn-lg btn-danger" type="reset">Annuler</button>
                     <?php elseif (isset($_GET['id'])) : ?>
-                        <button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#updateClasseModal">Soumettre
+                        <button class="btn btn-lg btn-primary" data-toggle="modal" data-target="#updateClasseModal">
+                            Soumettre
                         </button>
                         <button class="btn btn-lg btn-danger" onclick="destroy()">Annuler</button>
                     <?php endif; ?>
@@ -510,7 +518,7 @@ include '../class/inscription.class.php';
                                     <thead>
                                     <tr>
                                         <th></th>
-                                        <th>Carte étudiant </th>
+                                        <th>Carte étudiant</th>
                                         <th>Etudiant</th>
                                         <th>date de naissance</th>
                                         <th>lieu de naissance</th>
@@ -612,7 +620,7 @@ include '../class/inscription.class.php';
 <script src="../vendor/select/dist/js/select2.min.js"></script>
 <script>
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('.js-example-basic-multiple').select2();
         $('.js-example-basic-multiple').on("select2:select", function (evt) {
             var element = evt.params.data.element;
@@ -622,7 +630,7 @@ include '../class/inscription.class.php';
             $(this).trigger("change");
         });
     });
-    bootstrapValidate(['#carte_et', '#numero_mers', '#nom', '#prenoms', '#lieu_naissance', '#datenaiss', '#maila', '#contact', '#eta_anterieur','#id_parcours'], 'required: Veuillez remplir les champs!')
+    bootstrapValidate(['#carte_et', '#numero_mers', '#nom', '#prenoms', '#lieu_naissance', '#datenaiss', '#maila', '#contact', '#eta_anterieur', '#id_parcours'], 'required: Veuillez remplir les champs!')
     bootstrapValidate('#maila', 'email: Entrer email valide!')
     bootstrapValidate('#contact', 'min:10: Entrer votre numero sur 10 chiffres')
     bootstrapValidate('#contact', 'max:10: Votre numero ne doit pas depasser les 10 chiffres')
