@@ -474,6 +474,7 @@ include '../class/inscription.class.php';
                         }
                         ?>
                         <?php
+                        include "include/crud_etudiant/infoParcou.php";
                         include "include/crud_etudiant/modal_modifier.php";
                         ?>
                     </div>
